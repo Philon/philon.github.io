@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="零零散散macOS交叉编译Linux避坑指南 树莓派驱动开发实战00 Hello World01 GPIO驱动之LED02 GPIO按键中断03 设备IO访问技术04 PWM呼吸灯05 PWM音乐盒06 红外接收07 PDD与设备树   嵌入式Linux驱动学习一 环境准备二 HelloWorld三 rootfs启动过程详解四 字符设备五 调试技术六 并发和竞态七 中断与时钟 《GO语言实战》学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学习笔记">
+<meta property="og:url" content="https://ixx.life/notes/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="零零散散macOS交叉编译Linux避坑指南 树莓派驱动开发实战00 Hello World01 GPIO驱动之LED02 GPIO按键中断03 设备IO访问技术04 PWM呼吸灯05 PWM音乐盒06 红外接收07 PDD与设备树   嵌入式Linux驱动学习一 环境准备二 HelloWorld三 rootfs启动过程详解四 字符设备五 调试技术六 并发和竞态七 中断与时钟 《GO语言实战》学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-24T12:53:04.000Z">
+<meta property="article:modified_time" content="2021-07-30T21:47:18.709Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学习笔记 | 自增人生
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">学习笔记
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h2 id="零零散散"><a href="#零零散散" class="headerlink" title="零零散散"></a>零零散散</h2><p><a href="/notes/cross-compile-linux-on-macos">macOS交叉编译Linux避坑指南</a></p>
+<h2 id="树莓派驱动开发实战"><a href="#树莓派驱动开发实战" class="headerlink" title="树莓派驱动开发实战"></a>树莓派驱动开发实战</h2><p><a href="/RPiDriverInAction/00/">00 Hello World</a><br><a href="/RPiDriverInAction/01/">01 GPIO驱动之LED</a><br><a href="/RPiDriverInAction/02/">02 GPIO按键中断</a><br><a href="/RPiDriverInAction/03/">03 设备IO访问技术</a><br><a href="/RPiDriverInAction/04/">04 PWM呼吸灯</a><br><a href="/RPiDriverInAction/05/">05 PWM音乐盒</a><br><a href="/RPiDriverInAction/06/">06 红外接收</a><br><a href="/RPiDriverInAction/07/">07 PDD与设备树</a>  </p>
+<h2 id="嵌入式Linux驱动学习"><a href="#嵌入式Linux驱动学习" class="headerlink" title="嵌入式Linux驱动学习"></a>嵌入式Linux驱动学习</h2><p><a href="/ArmLinuxDriver/chapter1">一 环境准备</a><br><a href="/ArmLinuxDriver/chapter2">二 HelloWorld</a><br><a href="/ArmLinuxDriver/chapter3">三 rootfs启动过程详解</a><br><a href="/ArmLinuxDriver/chapter4">四 字符设备</a><br><a href="/ArmLinuxDriver/chapter5">五 调试技术</a><br><a href="/ArmLinuxDriver/chapter6">六 并发和竞态</a><br><a href="/ArmLinuxDriver/chapter7">七 中断与时钟</a></p>
+<h2 id="《GO语言实战》学习笔记"><a href="#《GO语言实战》学习笔记" class="headerlink" title="《GO语言实战》学习笔记"></a>《GO语言实战》学习笔记</h2><p><a href="/GoInAction/chapter1/">第一章 开篇</a><br><a href="/GoInAction/chapter2/">第二章 RSS阅读器</a><br><a href="/GoInAction/chapter3/">第三章 打包和工具链</a><br><a href="/GoInAction/chapter4/">第四章 数组、切片和映射</a><br><a href="/GoInAction/chapter5/">第五章 类型系统</a><br><a href="/GoInAction/chapter6/">第六章 并发</a><br><a href="/GoInAction/chapter7/">第七章 并发模式</a><br><a href="/GoInAction/chapter8/">第八章 标准库</a><br><a href="/GoInAction/chapter9/">第九章 测试和性能</a></p>
+<h2 id="【译】GitHub-API-手册（未完成）"><a href="#【译】GitHub-API-手册（未完成）" class="headerlink" title="【译】GitHub API 手册（未完成）"></a>【译】GitHub API 手册（未完成）</h2><p><a href="/github-api-v3/00/">一 起步</a><br><a href="/github-api-v3/01/">二 概要</a></p>
+<h2 id="【译】每个程序员都应该知道的97件事"><a href="#【译】每个程序员都应该知道的97件事" class="headerlink" title="【译】每个程序员都应该知道的97件事"></a>【译】每个程序员都应该知道的97件事</h2><p><a href="/97ThingsEveryProgrammerShouldKnow/01/">1 谨慎行动</a><br><a href="/97ThingsEveryProgrammerShouldKnow/02/">2 应用函数式编程原则</a><br><a href="/97ThingsEveryProgrammerShouldKnow/03/">3 问”用户想做什么”(你又不是用户)</a><br><a href="/97ThingsEveryProgrammerShouldKnow/04/">4 自动化你的代码标准</a><br><a href="/97ThingsEveryProgrammerShouldKnow/05/">5 美源自简约</a><br><a href="/97ThingsEveryProgrammerShouldKnow/06/">6 在你重构之前</a><br><a href="/97ThingsEveryProgrammerShouldKnow/07/">7 小心分享</a><br><a href="/97ThingsEveryProgrammerShouldKnow/08/">8 童子军法则</a><br><a href="/97ThingsEveryProgrammerShouldKnow/09/">9 责怪他人前，先检查自己的代码</a><br><a href="/97ThingsEveryProgrammerShouldKnow/10/">10 谨慎选择你的工具</a><br><a href="/97ThingsEveryProgrammerShouldKnow/11/">11 编写领域语言</a><br><a href="/97ThingsEveryProgrammerShouldKnow/12/">12 代码即设计</a><br><a href="/97ThingsEveryProgrammerShouldKnow/13/">13 代码布局很重要</a><br><a href="/97ThingsEveryProgrammerShouldKnow/14/">14 代码审查</a><br><a href="/97ThingsEveryProgrammerShouldKnow/15/">15 推理代码</a><br><a href="/97ThingsEveryProgrammerShouldKnow/16/">16 注释的注释</a><br><a href="/97ThingsEveryProgrammerShouldKnow/17/">17 只有在代码表达不清时才注释</a><br><a href="/97ThingsEveryProgrammerShouldKnow/18/">18 持续学习</a><br><a href="/97ThingsEveryProgrammerShouldKnow/19/">19 便利不是一种能力</a><br><a href="/97ThingsEveryProgrammerShouldKnow/20/">20 提前并经常部署</a><br><a href="/97ThingsEveryProgrammerShouldKnow/21/">21 辨别来自技术中的业务异常</a><br><a href="/97ThingsEveryProgrammerShouldKnow/22/">22 做大量刻意练习</a><br><a href="/97ThingsEveryProgrammerShouldKnow/23/">23 领域专用语言</a><br><a href="/97ThingsEveryProgrammerShouldKnow/24/">24 不要惧怕打破事情</a><br><a href="/97ThingsEveryProgrammerShouldKnow/25/">25 不要恶搞你的测试数据</a><br><a href="/97ThingsEveryProgrammerShouldKnow/26/">26 不要忽略错误</a><br><a href="/97ThingsEveryProgrammerShouldKnow/27/">27 不要只是学语言，要理解它的文化</a><br><a href="/97ThingsEveryProgrammerShouldKnow/28/">28 不要僵直钉死你的程序</a><br><a href="/97ThingsEveryProgrammerShouldKnow/29/">29 不要依赖“魔法出现”</a><br><a href="/97ThingsEveryProgrammerShouldKnow/30/">30 不要重复自我</a><br><a href="/97ThingsEveryProgrammerShouldKnow/31/">31 别碰代码</a><br><a href="/97ThingsEveryProgrammerShouldKnow/32/">32 封装行为，而不仅仅是状态</a><br><a href="/97ThingsEveryProgrammerShouldKnow/33-Floating/">33 浮点数不是实数</a><br><a href="/97ThingsEveryProgrammerShouldKnow/34/">34 通过开源实现你的抱负</a><br><a href="/97ThingsEveryProgrammerShouldKnow/35/">35 API设计黄金法则</a><br><a href="/97ThingsEveryProgrammerShouldKnow/36/">36 大师神话</a><br><a href="/97ThingsEveryProgrammerShouldKnow/37/">37 高强度工作不会得到回报</a><br><a href="/97ThingsEveryProgrammerShouldKnow/38/">38 如何使用Bug追踪器</a><br><a href="/97ThingsEveryProgrammerShouldKnow/39/">39 通过删除来改善代码</a><br><a href="/97ThingsEveryProgrammerShouldKnow/40/">40 安装我</a><br><a href="/97ThingsEveryProgrammerShouldKnow/41/">41 进程间通信影响应用响应时间</a><br><a href="/97ThingsEveryProgrammerShouldKnow/42/">42 保持构建的干净</a><br><a href="/97ThingsEveryProgrammerShouldKnow/43/">43 理解如何使用命令行工具</a><br><a href="/97ThingsEveryProgrammerShouldKnow/44/">44 掌握两种以上的编程语言</a><br><a href="/97ThingsEveryProgrammerShouldKnow/45/">45 了解你的IDE</a><br><a href="/97ThingsEveryProgrammerShouldKnow/46">46 了解你的限制</a><br><a href="/97ThingsEveryProgrammerShouldKnow/47">47 知道你的下次提交</a><br><a href="/97ThingsEveryProgrammerShouldKnow/48/">48 大型互联数据属于数据库</a><br><a href="/97ThingsEveryProgrammerShouldKnow/49/">49 学外语</a><br><a href="/97ThingsEveryProgrammerShouldKnow/50/">50 学会估算</a><br><a href="/97ThingsEveryProgrammerShouldKnow/51/">51 学会说：“Hello, World”</a><br><a href="/97ThingsEveryProgrammerShouldKnow/52/">52 让你的项目自己说话</a><br><a href="/97ThingsEveryProgrammerShouldKnow/53/">53 链接器并不是一个神奇的程序</a><br><a href="/97ThingsEveryProgrammerShouldKnow/54/">54 临时解决方案的持久性</a><br><a href="/97ThingsEveryProgrammerShouldKnow/55/">55 让接口易于正确使用并难以出错</a><br><a href="/97ThingsEveryProgrammerShouldKnow/56/">56 让不可见更可见</a><br><a href="/97ThingsEveryProgrammerShouldKnow/57/">57 消息传递可提高并行系统的可伸缩性</a><br><a href="/97ThingsEveryProgrammerShouldKnow/58/">58 写给未来的消息</a><br><a href="/97ThingsEveryProgrammerShouldKnow/59/">59 错失多态的机会</a><br><a href="/97ThingsEveryProgrammerShouldKnow/60/">60 怪诞新闻：测试者是你的朋友</a><br><a href="/97ThingsEveryProgrammerShouldKnow/61/">61 一个二进制</a><br><a href="/97ThingsEveryProgrammerShouldKnow/62/">62 只有代码会说实话</a><br><a href="/97ThingsEveryProgrammerShouldKnow/63/">63 拥有（或重构）构建器</a><br><a href="/97ThingsEveryProgrammerShouldKnow/64/">64 结对编程并体会流</a><br><a href="/97ThingsEveryProgrammerShouldKnow/65/">65 首选领域专用类型而非原始类型</a><br><a href="/97ThingsEveryProgrammerShouldKnow/66/">66 阻止错误</a><br><a href="/97ThingsEveryProgrammerShouldKnow/67/">67 做一名职业程序员</a><br><a href="/97ThingsEveryProgrammerShouldKnow/68/">68 把每件事都放入版本控制</a><br><a href="/97ThingsEveryProgrammerShouldKnow/69/">69 放下鼠标，离开键盘</a><br><a href="/97ThingsEveryProgrammerShouldKnow/70/">70 阅读代码</a><br><a href="/97ThingsEveryProgrammerShouldKnow/71/">71 阅读人文科学</a><br><a href="/97ThingsEveryProgrammerShouldKnow/72/">72 重新发明轮子</a><br><a href="/97ThingsEveryProgrammerShouldKnow/73/">73 抵住单例模式的诱惑</a><br><a href="/97ThingsEveryProgrammerShouldKnow/74/">74 脏代码炸弹搅乱性能之道路</a><br><a href="/97ThingsEveryProgrammerShouldKnow/75/">75 简单源自减法</a><br><a href="/97ThingsEveryProgrammerShouldKnow/76/">76 单一职责原则</a><br><a href="/97ThingsEveryProgrammerShouldKnow/77/">77 从yes开始</a><br><a href="/97ThingsEveryProgrammerShouldKnow/78/">78 退一步，然后自动化、自动化、自动化</a><br><a href="/97ThingsEveryProgrammerShouldKnow/79/">79 运用代码分析工具</a><br><a href="/97ThingsEveryProgrammerShouldKnow/80/">80 测试规定行为，而非次要行为</a><br><a href="/97ThingsEveryProgrammerShouldKnow/81/">81 严谨而具体地测试</a><br><a href="/97ThingsEveryProgrammerShouldKnow/82/">82 在你睡觉（以及周末）时测试</a><br><a href="/97ThingsEveryProgrammerShouldKnow/83/">83 测试是软件开发的工程严谨性</a><br><a href="/97ThingsEveryProgrammerShouldKnow/84/">84 思考状态</a><br><a href="/97ThingsEveryProgrammerShouldKnow/85/">85 两个脑袋常常比一个好</a><br><a href="/97ThingsEveryProgrammerShouldKnow/86/">86 两个错误导致一个正确（而且难以修复）</a><br><a href="/97ThingsEveryProgrammerShouldKnow/87/">87 为你的朋友“乌班图”编程</a><br><a href="/97ThingsEveryProgrammerShouldKnow/88/">88 Unix工具是你的朋友</a><br><a href="/97ThingsEveryProgrammerShouldKnow/89/">89 采用正确的算法和数据结构</a><br><a href="/97ThingsEveryProgrammerShouldKnow/90/">90 繁琐的日志会打扰你睡觉</a><br><a href="/97ThingsEveryProgrammerShouldKnow/91/">91 WET稀释了性能瓶颈</a><br><a href="/97ThingsEveryProgrammerShouldKnow/92/">92 当程序员和测试员合作后</a><br><a href="/97ThingsEveryProgrammerShouldKnow/93/">93 编写代码，余生都要支持它</a><br><a href="/97ThingsEveryProgrammerShouldKnow/94/">94 用示例编写小函数</a><br><a href="/97ThingsEveryProgrammerShouldKnow/95/">95 为人们编写测试</a><br><a href="/97ThingsEveryProgrammerShouldKnow/96/">96 你得关注代码</a><br><a href="/97ThingsEveryProgrammerShouldKnow/97/">97 你的客户言非其意</a>  </p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

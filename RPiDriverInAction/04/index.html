@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文源码：https:&#x2F;&#x2F;github.com&#x2F;Philon&#x2F;rpi-drivers&#x2F;tree&#x2F;master&#x2F;04-pwm_led 如果你对硬件了解不是很深，看了标题可能会一脸懵逼，PWM是什么？别急，在回答这个问题之前，先看看PWM+一个普通的LED灯能实现什么效果：  (动图有点大，请稍等…) 从结果来看可能第一反应是这样的，普通的LED灯只能控制开&#x2F;关，既然PWM可以控制LED的亮和暗，那它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="04：PWM呼吸灯">
+<meta property="og:url" content="https://ixx.life/RPiDriverInAction/04/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="本文源码：https:&#x2F;&#x2F;github.com&#x2F;Philon&#x2F;rpi-drivers&#x2F;tree&#x2F;master&#x2F;04-pwm_led 如果你对硬件了解不是很深，看了标题可能会一脸懵逼，PWM是什么？别急，在回答这个问题之前，先看看PWM+一个普通的LED灯能实现什么效果：  (动图有点大，请稍等…) 从结果来看可能第一反应是这样的，普通的LED灯只能控制开&#x2F;关，既然PWM可以控制LED的亮和暗，那它">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/09/08/zYci2Z4kymaEbho.gif">
+<meta property="og:image" content="https://i.loli.net/2019/09/08/fKURQTq8O6rgSAp.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/08/IYM7C91OXikftjy.png">
+<meta property="article:published_time" content="2019-09-08T15:33:01.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.020Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="驱动开发">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="树莓派">
+<meta property="article:tag" content="物联网">
+<meta property="article:tag" content="PWM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/08/zYci2Z4kymaEbho.gif">
+
+<link rel="canonical" href="https://ixx.life/RPiDriverInAction/04/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>04：PWM呼吸灯 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/RPiDriverInAction/04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          04：PWM呼吸灯
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-08 23:33:01" itemprop="dateCreated datePublished" datetime="2019-09-08T23:33:01+08:00">2019-09-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">树莓派驱动开发实战</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/RPiDriverInAction/04/" class="post-meta-item leancloud_visitors" data-flag-title="04：PWM呼吸灯" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/RPiDriverInAction/04/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/RPiDriverInAction/04/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文源码：<a target="_blank" rel="noopener" href="https://github.com/Philon/rpi-drivers/tree/master/04-pwm_led">https://github.com/Philon/rpi-drivers/tree/master/04-pwm_led</a></p>
+<p>如果你对硬件了解不是很深，看了标题可能会一脸懵逼，PWM是什么？别急，在回答这个问题之前，先看看PWM+一个普通的LED灯能实现什么效果：</p>
+<p><img src="https://i.loli.net/2019/09/08/zYci2Z4kymaEbho.gif" alt="pwmled.gif"></p>
+<p>(动图有点大，请稍等…)</p>
+<p>从结果来看可能第一反应是这样的，普通的LED灯只能控制开/关，既然PWM可以控制LED的亮和暗，那它应该是一种电压控制器！其实根本不是那么回事，和电压毛关系都没有。它背后的原理恰恰是它最有意思的地方，它的本领可不仅仅是拿来控制个灯的明暗那么low。</p>
+<h2 id="PWM基础"><a href="#PWM基础" class="headerlink" title="PWM基础"></a>PWM基础</h2><p>PWM——脉冲宽度调制，顾名思义，就是一个脉冲信号输出源，且方波的周期(period)以及高电平持续时间(duty)是可调的。从软件角度来看，主要关注两个地方：</p>
+<ul>
+<li><code>period</code>，脉冲周期，就是发送一次1和0交替的完整时间</li>
+<li><code>duty</code>，占空比，就是一个脉冲周期内1占了多长时间。</li>
+</ul>
+<p>有时候，还需要关注1秒钟发送多少个脉冲信号，即频率，不过对于本文要控制的led灯亮度而言，频率几乎可以忽略。关于PWM原理，如果还是云里雾里，就看一下这个视频介绍，非常简单。</p>
+<p>不过先提醒以下，PWM的实际应用非常广，有红外遥控、音频控制、通信等，最常见的要数直流电机控制，以及手机上的背光灯亮度。总之，掌握pwm的原理及应用是灰常有必要滴。</p>
+<iframe src="https://player.bilibili.com/player.html?aid=10356317&cid=17106116&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:480px;height:320px"> </iframe>
+
+<h2 id="树莓派上的PWM"><a href="#树莓派上的PWM" class="headerlink" title="树莓派上的PWM"></a>树莓派上的PWM</h2><p>树莓派上的PWM比较坑，明明很简单的东西我调了两天，网上99%的教程都是各种应用层的脚本或writingPi的函数调用，和Linux内核的边都沾不上，而且其中绝大多数还是相互复制粘贴。所以真正有用的资料寥寥无几，一直卡在<code>pwm_request</code>却获取不到pwm资源，当然最主要原因还是我对技术细节的不理解，好在发现了一个老外的博客：<a target="_blank" rel="noopener" href="https://jumpnowtek.com/rpi/Using-the-Raspberry-Pi-Hardware-PWM-timers.html">https://jumpnowtek.com/rpi/Using-the-Raspberry-Pi-Hardware-PWM-timers.html</a></p>
+<p>在官方的<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf">《BCM2835外围指南》</a>第9章说得很清楚，处理器内部集成了两个独立的PWM控制器，理论上可以达到100MHz的脉冲频率。<strong>树莓派扩展接口共有4个GPIO引出PWM</strong>，具体为：</p>
+<table>
+<thead>
+<tr>
+<th>PWM通道</th>
+<th>GPIO号</th>
+<th>物理引脚</th>
+<th>复用功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PWM0</td>
+<td>GPIO12</td>
+<td>32</td>
+<td>Alt Fun 0</td>
+</tr>
+<tr>
+<td>PWM1</td>
+<td>GPIO13</td>
+<td>33</td>
+<td>Alt Fun 0</td>
+</tr>
+<tr>
+<td>PWM0</td>
+<td>GPIO18</td>
+<td>12</td>
+<td>Alt Fun 5</td>
+</tr>
+<tr>
+<td>PWM1</td>
+<td>GPIO19</td>
+<td>35</td>
+<td>Alt Fun 5</td>
+</tr>
+</tbody></table>
+<p><strong>第一步，启用pwm（默认情况下未启用）</strong></p>
+<p>简而言之，你无法通过Linux内核API获取到PWM资源，因为在树莓派官方的设备树配置(<code>/boot/config.txt</code>)里并没有通知内核要启用pwm。因此第一步自然是让内核支持pwm驱动，使用如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim打开/boot/config.txt</span></span><br><span class="line"><span class="comment"># 在最后一行加入： dtoverlay=pwm</span></span><br><span class="line"><span class="comment"># 保存退出，重启</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~ $ sudo vim /boot/config.txt </span><br><span class="line">philon@rpi:~ $ sudo reboot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启之后，有两种方式确认pwm已启用</span></span><br><span class="line">philon@rpi:~ $ lsmod | grep pwm</span><br><span class="line">pwm_bcm2835            16384  1 <span class="comment"># 方式1: 加载了官方pwm驱动</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~ $ ls /sys/class/pwm/</span><br><span class="line">pwmchip0                        <span class="comment"># 方式2: sysfs里可以看到pwmchip0目录</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步，搭建硬件环境</strong></p>
+<p>非常简单，LED的正极拉到一个PWM通道，负极随便找一个GND接上。</p>
+<p><img src="https://i.loli.net/2019/09/08/fKURQTq8O6rgSAp.png" alt="PWMLED接线图"></p>
+<p>如图所示，将三色LED的绿灯脚接到GPIO18，也就是PWM0通道，再随便找一个GND接上即可，和第一章的点亮一个LED一样，关键看软件如何操作了。</p>
+<p><img src="https://i.loli.net/2019/09/08/IYM7C91OXikftjy.png" alt="PWMLED原理图"></p>
+<h2 id="使用命令行控制PWM"><a href="#使用命令行控制PWM" class="headerlink" title="使用命令行控制PWM"></a>使用命令行控制PWM</h2><p>根据之前的硬件接线，LED与树莓派的PWM0通道相连，所以使能pwm0即可点亮led，大体步骤为：</p>
+<ol>
+<li>请求pwm0资源</li>
+<li>设置脉冲周期</li>
+<li>设置占空比</li>
+<li>打开pwm0</li>
+</ol>
+<p>命令行控制pwm其实和gpio大同小异，都是通过sysfs这个虚拟文件系统完成的。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~ $ <span class="built_in">cd</span> /sys/class/pwm/pwmchip0/    <span class="comment"># 进入pwm资源目录</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 0 &gt; <span class="built_in">export</span>                <span class="comment"># 加载pwm0资源</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 10000000 &gt; pwm0/period    <span class="comment"># 设置脉冲周期为10ms(100Hz)</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 8000000 &gt; pwm0/duty_cycle <span class="comment"># 设置占空比为8ms</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 1 &gt; pwm0/<span class="built_in">enable</span>           <span class="comment"># 开始输出</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以自行调整脉冲周期和占空比，得到不同的亮度</span></span><br><span class="line"><span class="comment"># 如果玩够了，记得释放资源</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 0 &gt; pwm0/<span class="built_in">enable</span>           <span class="comment"># 关闭输出</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 0 &gt; unexport              <span class="comment"># 卸载pwm0资源</span></span><br></pre></td></tr></table></figure>
+
+<p>经过上面这番犀利操作，只要你够虔诚，就会看见一束绿光闯入你的眼里，心里，脑海里。</p>
+<h2 id="Linux驱动控制PWM"><a href="#Linux驱动控制PWM" class="headerlink" title="Linux驱动控制PWM"></a>Linux驱动控制PWM</h2><p>在实现pwm调光led之前，需要先交代清楚：</p>
+<p>由于本驱动仅仅是调节led的亮度，关于pwm的<code>占空比</code>和<code>脉冲周期</code>两个参数，其实只调节占空比就够了。你想一下，脉冲周期长短，无非就是led闪烁频率，只要人眼看着不闪，再快有个毛用。因此本驱动将脉冲周期固定为1ms，即1KHz，而占空比的取值为0~1000us，说白了，就是led从最暗到最亮一共分为一千个档位。</p>
+<p>内核为pwm提供了标准的API接口，需要掌握这几个：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PWM channel object</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pwm_device</span> &#123;</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *label;      <span class="comment">// name of the PWM device</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> flags;    <span class="comment">// flags associated with the PWM device</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> hwpwm;     <span class="comment">// per-chip relative index of the PWM device</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> pwm;       <span class="comment">// global index of the PWM device</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pwm_chip</span> *<span class="title">chip</span>;</span>  <span class="comment">// PWM chip providing this PWM device</span></span><br><span class="line">	<span class="keyword">void</span> *chip_data;        <span class="comment">// chip-private data associated with the PWM device</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pwm_args</span> <span class="title">args</span>;</span>   <span class="comment">// PWM arguments</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pwm_state</span> <span class="title">state</span>;</span> <span class="comment">// curent PWM channel state</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过pwm通道号获取pwm通道对象</span></span><br><span class="line"><span class="comment"> * @pwm_id    通道号</span></span><br><span class="line"><span class="comment"> * @label     pwm通道别名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct pwm_device *<span class="title">pwm_request</span><span class="params">(<span class="keyword">int</span> pwm_id, <span class="keyword">const</span> <span class="keyword">char</span> *label)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 释放pwm通道对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pwm_free</span><span class="params">(struct pwm_device *pwm)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置pwm通道的相关参数</span></span><br><span class="line"><span class="comment"> * @duty_ns     以纳秒为单位的占空比</span></span><br><span class="line"><span class="comment"> * @period_ns   以纳秒为单位的脉冲周期</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pwm_config</span><span class="params">(struct pwm_device *pwm, <span class="keyword">int</span> duty_ns, <span class="keyword">int</span> period_ns)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/**</span></span></span><br><span class="line"><span class="comment"><span class="function"> * 打开pwm通道，开始输出脉冲</span></span></span><br><span class="line"><span class="comment"><span class="function"> */</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pwm_enable</span><span class="params">(struct pwm_device *pwm)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/**</span></span></span><br><span class="line"><span class="comment"><span class="function"> * 关闭pwm通道，停止输出脉冲</span></span></span><br><span class="line"><span class="comment"><span class="function"> */</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pwm_disable</span><span class="params">(struct pwm_device *pwm)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>接着，实现pwmled的驱动吧：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/********************* pwmled.h *********************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PWMLED_MAX_BRIGHTNESS 1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line">  PWMLED_CMD_SET_BRIGHTNESS = <span class="number">0x1</span>,</span><br><span class="line">  PWMLED_CMD_GET_BRIGHTNESS,</span><br><span class="line">&#125; <span class="keyword">pwmled_cmd_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/********************* pwmled.c *********************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/pwm.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;pwmled.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;Dual MIT/GPL&quot;</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Phlon | https://ixx.life&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PWMLED_PERIOD 1000000 <span class="comment">// 脉冲周期固定为1ms</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pwm_device</span>* <span class="title">pwm</span>;</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> brightness;</span><br><span class="line">&#125; pwmled;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">pwmled_ioctl</span><span class="params">(struct file *filp, <span class="keyword">unsigned</span> <span class="keyword">int</span> cmd, <span class="keyword">unsigned</span> <span class="keyword">long</span> arg)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (cmd) &#123;</span><br><span class="line">  <span class="keyword">case</span> PWMLED_CMD_SET_BRIGHTNESS:</span><br><span class="line">    <span class="comment">// 所谓调节亮度，就是配置占空比，然后使能pwm0</span></span><br><span class="line">    pwmled.brightness = arg &lt; PWMLED_MAX_BRIGHTNESS ? arg : PWMLED_MAX_BRIGHTNESS;</span><br><span class="line">    pwm_config(pwmled.pwm, pwmled.brightness * <span class="number">1000</span>, PWMLED_PERIOD);</span><br><span class="line">    <span class="keyword">if</span> (pwmled.brightness &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      pwm_enable(pwmled.pwm);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      pwm_disable(pwmled.pwm);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">case</span> PWMLED_CMD_GET_BRIGHTNESS:</span><br><span class="line">    <span class="keyword">return</span> pwmled.brightness;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">return</span> -EINVAL;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> pwmled.brightness;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">file_operations</span> <span class="title">fops</span> =</span> &#123;</span><br><span class="line">  .owner = THIS_MODULE,</span><br><span class="line">  .unlocked_ioctl = pwmled_ioctl,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">miscdevice</span> <span class="title">dev</span> =</span> &#123;</span><br><span class="line">  .minor = <span class="number">0</span>,</span><br><span class="line">  .name = <span class="string">&quot;pwmled&quot;</span>,</span><br><span class="line">  .fops = &amp;fops,</span><br><span class="line">  .nodename = <span class="string">&quot;pwmled&quot;</span>,</span><br><span class="line">  .mode = <span class="number">0666</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> __init <span class="title">pwmled_init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 请求PWM0通道</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pwm_device</span>* <span class="title">pwm</span> =</span> pwm_request(<span class="number">0</span>, <span class="string">&quot;pwm0&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (IS_ERR_OR_NULL(pwm)) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">&quot;failed to request pwm\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> PTR_ERR(pwm);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  pwmled.pwm = pwm;</span><br><span class="line">  pwmled.brightness = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  misc_register(&amp;dev);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(pwmled_init);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> __exit <span class="title">pwmled_exit</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  misc_deregister(&amp;dev);</span><br><span class="line">  <span class="comment">// 停止并释放PWM0通道</span></span><br><span class="line">  pwm_disable(pwmled.pwm);</span><br><span class="line">  pwm_free(pwmled.pwm);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(pwmled_exit);</span><br></pre></td></tr></table></figure>
+
+<p>该驱动会自动创建<code>/dev/pwmled</code>设备节点，然后应用层通过ioctl即可设置和获取灯的亮度等级。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> fd = open(<span class="string">&quot;/dev/pwmled&quot;</span>, O_RDWR);</span><br><span class="line">  <span class="keyword">int</span> brightness = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">char</span> key = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> ((key = getchar()) != <span class="string">&#x27;q&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (key) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;=&#x27;</span>:</span><br><span class="line">      brightness += brightness &lt; PWMLED_MAX_BRIGHTNESS ? <span class="number">10</span> : <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">      brightness -= brightness &gt; <span class="number">0</span> ? <span class="number">10</span> : <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ioctl(fd, PWMLED_CMD_SET_BRIGHTNESS, brightness) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      perror(<span class="string">&quot;ioctl&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  close(fd);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>正如本文开头那张动图一样，用户只需要按<code>+/-</code>即可调节led的亮度，so easy~</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>PWM即脉冲宽度调制，可以实时改变脉冲源的占空比和周期时长</li>
+<li>树莓派Linux内核默认不加载pwm通道，需要在/boot/config.txt中增加一行dtoverlay=pwm</li>
+<li>pwm可以像gpio一样通过命令行对sysfs虚拟文件系统操作，即可控制pwm资源</li>
+<li>内核提供了标准的pwm接口，注意通道值的配置是以纳秒为单位</li>
+<li>pwm技术应用范围非常广，务必牢牢掌握</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/RPiDriverInAction/04/" title="04：PWM呼吸灯">https://ixx.life/RPiDriverInAction/04/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" rel="tag"># 驱动开发</a>
+              <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"># 嵌入式</a>
+              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag"># 树莓派</a>
+              <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" rel="tag"># 物联网</a>
+              <a href="/tags/PWM/" rel="tag"># PWM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/53/" rel="prev" title="链接器并不是一个神奇程序">
+      <i class="fa fa-chevron-left"></i> 链接器并不是一个神奇程序
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/54/" rel="next" title="临时方案的持久性">
+      临时方案的持久性 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文源码：https:&#x2F;&#x2F;github.com&#x2F;philon&#x2F;rpi-drivers&#x2F;tree&#x2F;master&#x2F;00-hello 最近打算利用手里的树莓派3B+及各种丰富的扩展模块学些一下嵌入式Linux驱动开发。我计划实现LED、温湿度传感器、陀螺仪、PS遥感、红外模组、超声波模组、光敏传感器等驱动，其目的是为了学习嵌入式Linux驱动开发的思想，以及常见的接口及模块的原理。我会把整个学习过程整理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="00：HelloWorld">
+<meta property="og:url" content="https://ixx.life/RPiDriverInAction/00/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="本文源码：https:&#x2F;&#x2F;github.com&#x2F;philon&#x2F;rpi-drivers&#x2F;tree&#x2F;master&#x2F;00-hello 最近打算利用手里的树莓派3B+及各种丰富的扩展模块学些一下嵌入式Linux驱动开发。我计划实现LED、温湿度传感器、陀螺仪、PS遥感、红外模组、超声波模组、光敏传感器等驱动，其目的是为了学习嵌入式Linux驱动开发的思想，以及常见的接口及模块的原理。我会把整个学习过程整理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/07/12/5d28aa437927829767.jpg">
+<meta property="article:published_time" content="2019-07-14T15:42:41.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.019Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="驱动开发">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="树莓派">
+<meta property="article:tag" content="实战">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/12/5d28aa437927829767.jpg">
+
+<link rel="canonical" href="https://ixx.life/RPiDriverInAction/00/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>00：HelloWorld | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/RPiDriverInAction/00/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          00：HelloWorld
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-14 23:42:41" itemprop="dateCreated datePublished" datetime="2019-07-14T23:42:41+08:00">2019-07-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">树莓派驱动开发实战</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/RPiDriverInAction/00/" class="post-meta-item leancloud_visitors" data-flag-title="00：HelloWorld" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/RPiDriverInAction/00/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/RPiDriverInAction/00/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文源码：<a target="_blank" rel="noopener" href="https://github.com/philon/rpi-drivers/tree/master/00-hello">https://github.com/philon/rpi-drivers/tree/master/00-hello</a></p>
+<p>最近打算利用手里的树莓派3B+及各种丰富的扩展模块学些一下嵌入式Linux驱动开发。我计划实现LED、温湿度传感器、陀螺仪、PS遥感、红外模组、超声波模组、光敏传感器等驱动，其目的是为了学习嵌入式Linux驱动开发的思想，以及常见的接口及模块的原理。我会把整个学习过程整理为《树莓派驱动开发实战》。当然，我的初衷是学习ARM-Linux驱动开发，如果不是必须，我不会可以强调硬件平台，而是更侧重于驱动编程和电路设计。</p>
+<p><img src="https://i.loli.net/2019/07/12/5d28aa437927829767.jpg"></p>
+<p>我的开发环境如下：</p>
+<ol>
+<li>宿主机：华硕A55VM | Ubuntu18.04</li>
+<li>开发板：Raspberry 3 Model B+ 2017</li>
+<li>编辑器：Visual Studio Code | C/C++扩展</li>
+</ol>
+<p>由于文章中会存在大量命令脚本的引用，先做个声明：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">philon@a55v:~$ <span class="comment"># 表示在宿主机敲出的命令</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~$  <span class="comment"># 表示在开发板敲出的命令</span></span><br></pre></td></tr></table></figure>
+
+<p>此外，如果不是必须，我不会拿串口调试开发板，一律ssh！</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>Linux驱动开发需要准备几样东西：</p>
+<ul>
+<li><code>Datasheet</code>：硬件手册，用于了解目标平台的规格/寄存器/内存地址/引脚定义等</li>
+<li><code>编译器</code>：用于编译目标平台的驱动源码，嵌入式开发，一般用交叉编译器</li>
+<li><code>内核源码</code>：编译驱动依赖于内核，<strong>且必须与目标平台系统内核版本一致</strong></li>
+<li><code>外围电路原理图</code>：连怎么走线都不知道，还开发个球啊！</li>
+</ul>
+<p>本文不涉及真实的模块驱动开发，因此具体的外围电路等实际开发的时候再看吧，先把前三样搞到手。</p>
+<h2 id="树莓派3B-硬件资料"><a href="#树莓派3B-硬件资料" class="headerlink" title="树莓派3B+硬件资料"></a>树莓派3B+硬件资料</h2><p>由于官网没有配套的树莓派3B+Datasheet，我只能尽可能从官网其他地方把硬件资料凑齐。任何有关硬件的资料都优先从官网找：<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/">https://www.raspberrypi.org/documentation/hardware/raspberrypi/</a></p>
+<p>树莓派3B+硬件介绍  </p>
+<ul>
+<li>处理器是BCM2837B0，64bit四核1.4GHz的Cortex-A53架构</li>
+<li>双频80211ac无线和蓝牙4.2</li>
+<li>千兆有线网卡，且支持PoE(网线供电)</li>
+</ul>
+<p>电路原理图下载：<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf">https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf</a></p>
+<h2 id="宿主机安装交叉编译器"><a href="#宿主机安装交叉编译器" class="headerlink" title="宿主机安装交叉编译器"></a>宿主机安装交叉编译器</h2><p>交叉编译器选择是有套路的：<code>&lt;arch&gt;-&lt;vendor&gt;-&lt;target&gt;</code></p>
+<p>例如：</p>
+<ul>
+<li>arm-linux-gnueabi-gcc 表示arm32位架构，目标可执行文件依赖Linux+glibc</li>
+<li>arm-linux-gnueabihf-gcc 表示arm32位/硬浮点数处理架构，其他同上</li>
+<li>aarch64-linux-gnueabi-gcc 表示arm64位架构，其他同上</li>
+</ul>
+<p>所以在选择交叉编译器之前要先确定开发板的处理器及操作系统环境：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~ $ uname -a</span><br><span class="line">Linux rpi 4.19.42-v7+ <span class="comment">#1219 SMP Tue May 14 21:20:58 BST 2019 armv7l GNU/Linux</span></span><br></pre></td></tr></table></figure>
+
+<p>注意最后的<strong>armv7</strong>，尽管RPi-3B+的处理器平台是64位4核，不过它的操作系统是32位的，所以应该安装arm32位glibc的交叉编译器。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">philon@a55v:~$ sudo apt install gcc-arm-linux-gnueabihf</span><br></pre></td></tr></table></figure>
+
+<h2 id="宿主机构建内核源码"><a href="#宿主机构建内核源码" class="headerlink" title="宿主机构建内核源码"></a>宿主机构建内核源码</h2><p>Linux驱动模块的编译依赖于内核源码，而且要注意版本问题。之前在开发板上查看Linux版本时已经知道其运行的内核是<code>Linux rpi 4.19.42-v7+</code>。所以最好是去官网下载对应版本号的内核源码。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载内核源码</span></span><br><span class="line">philon@a55v:~$ wget https://github.com/raspberrypi/linux/archive/rpi-4.19.y.tar.gz</span><br><span class="line"><span class="comment"># 解压，进入内核目录</span></span><br><span class="line">philon@a55v:~$ tar xvf rpi-4.19.y.tar.gz &amp;&amp; <span class="built_in">cd</span> linux-rpi-4.19.y</span><br><span class="line"><span class="comment"># 清理内核</span></span><br><span class="line">philon@a55v:~/linux-rpi-4.19.y$ make mrproper</span><br><span class="line"><span class="comment"># 加载RPi-3B+的配置</span></span><br><span class="line">philon@a55v:~/linux-rpi-4.19.y$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig</span><br><span class="line"><span class="comment"># 预编译</span></span><br><span class="line">philon@a55v:~/linux-rpi-4.19.y$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_prepare -j8</span><br></pre></td></tr></table></figure>
+
+<p>【题外话】：很多教程都是先把内核完整编译一遍，再拷贝各种头/库文件到目标平台，其实没必要，预编译内核即可。从<a target="_blank" rel="noopener" href="https://www.kernel.org/doc/Documentation/kbuild/modules.txt">内核官方文档</a>可以看到这样一段话：</p>
+<blockquote>
+<p>=== 2. How to Build External Modules<br>To build external modules, you must have a prebuilt kernel available<br>that contains the configuration and header files used in the build.<br>…<br>An alternative is to use the “make” target “modules_prepare.” This will<br>make sure the kernel contains the information required. The target<br>exists solely as a simple way to prepare a kernel source tree for<br>building external modules.<br>NOTE: “modules_prepare” will not build Module.symvers even if<br>CONFIG_MODVERSIONS is set; therefore, a full kernel build needs to be<br>executed to make module versioning work.</p>
+</blockquote>
+<p>简而言之，如果要构建外部驱动模块，内核必须有相关的配置及头文件。可以用“modules_prepare”准备内核源码树，这也仅仅用于构建外部驱动模块，但不会生成“Module.symvers”。</p>
+<h1 id="第一个树莓派驱动"><a href="#第一个树莓派驱动" class="headerlink" title="第一个树莓派驱动"></a>第一个树莓派驱动</h1><p>入门例子当然是留给HelloWorld啦！</p>
+<p>创建工程目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录，进入</span></span><br><span class="line">philon@a55v:~$ mkdir -p drivers/00-hello &amp;&amp; <span class="built_in">cd</span> drivers/00-hello</span><br><span class="line"><span class="comment"># 创建驱动模块源码及Makefile</span></span><br><span class="line">philon@a55v:~/drivers/00-hello$ touch hello.c Makefile</span><br></pre></td></tr></table></figure>
+
+<p>hello.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> __init <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;hello kernel\n&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(hello_init);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> __exit <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;bye kernel\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(hello_exit);</span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;GPL v2&quot;</span>); <span class="comment">// 开源许可证</span></span><br><span class="line">MODULE_DESCRIPTION(<span class="string">&quot;hello module for RPi 3B+&quot;</span>); <span class="comment">// 模块描述</span></span><br><span class="line">MODULE_ALIAS(<span class="string">&quot;Hello&quot;</span>); <span class="comment">// 模块别名</span></span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Philon&quot;</span>); <span class="comment">// 模块作者</span></span><br></pre></td></tr></table></figure>
+
+<p>Makefile</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模块驱动，必须以obj-m=xxx形式编写</span></span><br><span class="line">obj-m = hello.o</span><br><span class="line"></span><br><span class="line">KDIR = ../linux-rpi-4.19.y</span><br><span class="line">CROSS = ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line"><span class="section">all:</span></span><br><span class="line">	<span class="variable">$(MAKE)</span> -C <span class="variable">$(KDIR)</span> M=<span class="variable">$(PWD)</span> <span class="variable">$(CROSS)</span> modules</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	<span class="variable">$(MAKE)</span> -C <span class="variable">$(KDIR)</span> M=`pwd` <span class="variable">$(CROSS)</span> clean</span><br><span class="line">````</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line"><span class="comment"># 编译内核</span></span><br><span class="line"><span class="section">philon@a55v:~/drivers/00-hello$ make</span></span><br><span class="line"><span class="comment"># 将内核模块ko远程复制到开发板</span></span><br><span class="line"><span class="section">philon@a55v:~/drivers/00-hello$ scp hello.ko rpi.local:/home/philon/modules/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开发板加载hello模块</span></span><br><span class="line"><span class="section">philon@rpi:~/modules $ sudo insmod hello.ko</span></span><br><span class="line"><span class="comment"># 卸载内核</span></span><br><span class="line"><span class="section">philon@rpi:~/modules $ sudo rmmod hello</span></span><br><span class="line"><span class="comment"># 查看内核打印信息</span></span><br><span class="line"><span class="section">philon@rpi:~/modules $ dmesg | tail -5</span></span><br><span class="line">[ 1176.602268] Under-voltage detected! (0x00050005)</span><br><span class="line">[ 1182.842326] Voltage normalised (0x00000000)</span><br><span class="line">[ 4731.671023] hello: no symbol version for module_layout</span><br><span class="line">[ 4731.671042] hello: loading out-of-tree module taints kernel.</span><br><span class="line">[ 4731.672307] hello kernel  👈看到没，就是它了！</span><br><span class="line">[ 5010.908453] bye kernel</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/RPiDriverInAction/00/" title="00：HelloWorld">https://ixx.life/RPiDriverInAction/00/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" rel="tag"># 驱动开发</a>
+              <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"># 嵌入式</a>
+              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag"># 树莓派</a>
+              <a href="/tags/%E5%AE%9E%E6%88%98/" rel="tag"># 实战</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/47/" rel="prev" title="知道你的下次提交">
+      <i class="fa fa-chevron-left"></i> 知道你的下次提交
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/48/" rel="next" title="大型互联数据属于数据库">
+      大型互联数据属于数据库 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

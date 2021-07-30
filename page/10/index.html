@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个程序员的成长足迹">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自增人生">
+<meta property="og:url" content="https://ixx.life/page/10/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="一个程序员的成长足迹">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/page/10/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/42/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/42/" class="post-title-link" itemprop="url">保持构建的干净</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-10 22:48:30" itemprop="dateCreated datePublished" datetime="2019-06-10T22:48:30+08:00">2019-06-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/42/" class="post-meta-item leancloud_visitors" data-flag-title="保持构建的干净" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/42/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/42/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_42/">Keep the Build Clean</a></p>
+<p>你有没有看过编译器警告列表，是关于坏代码的语句长度，并想到自己：“你知道的，我却是应该做些什么…但我刚才没时间呀？”另外，你是否留意过刚才出现的一条警告，并修复了它？</p>
+<p>当我开启一个新项目时，没有警告、没有杂乱、没有问题。但随着代码库的增长，如果我不注意的话，这些杂乱、冗余(cruft)、警告，及问题就会开始堆积。当大量的噪音出现后，从数以百计的、我并不在意的警告中找出那个我却是需要阅读的警告，就会变得更困难。</p>
+<p>为了让警告再次有用，我对这些编译产生的警告采取零容忍。哪怕这些警告根本不重要，我都会处理掉。如果不是关键性的，但仍然相关，我也会修复它。如果编译器提示有个潜在空指针的异常，我就从源头修复——哪怕是我明确知道这个问题根本不会出现在生产环境。如果内嵌文档(Javadoc或者similar)引用已经被删除或者重命名，我就会清理文档。</p>
+<p>如果有些事情我确实不关系也确实不用操心，那我就问团队是否可以修改我们的警告策略。例如，我发现一个方法的参数和返回值在多数情况下都不会被添加任何值，那我们删除它就不应该得到警告。或者，编程语言升级到新版本后，之前的已经OK的代码也会发出警告。例如，当Java5引入泛型后，老代码中没有特别申明为泛型的参数都会给出一个警告。这是一种我不想被唠叨的警告(至少，曾经是)。有一套与现实不符的警告并不能服务任何人。</p>
+<p>通过确保构建总是干净的，每次遇到警告时，我就不必决策它是否无关紧要。忽略事情是一项脑力劳动，我要摆脱所有不相关的脑力劳动。有一个干净的构建也可以让他人更容易接手我的工作。如果我留下警告，其他人将不得不面对这些相关或不相关的错误。或者干脆忽略掉所有金高，包括那些重要的内容。</p>
+<p>构建中的警告很有用。你只是需要在它们刚开始出现时就摆脱它们。不要等到非得大扫除。当那些你不想看到的事物出现时，正确地清理它们。修复警告的源头，要么灭了这些警告，要么修改警告的策略。保持构建的干净不紧紧实保证没有编译错误和测试失败：警告也同样重要，是代码卫生的关键。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B25-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B25-6/" class="post-title-link" itemprop="url">春秋战国-《易中天中华史：卷5-6》</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-09 16:17:59" itemprop="dateCreated datePublished" datetime="2019-06-09T16:17:59+08:00">2019-06-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B25-6/" class="post-meta-item leancloud_visitors" data-flag-title="春秋战国-《易中天中华史：卷5-6》" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B25-6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B25-6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>春秋五霸，战国七雄，公元前722年-公元前221年，500年来可谓中国的乱世之秋，不过乱世出英雄，这个时代的节奏自然是各领风骚数十年，各种典故层出不穷。正是如此，春秋战国的内容占了本书过半的篇幅，读起来也是相当精彩。</p>
+<p>在正式拉卡春秋序幕之前，我们必须要先了解这段特殊历史时期的主旋律——天下共主！不要简单的认为，这个时期就是由于周朝没落，导致各路军阀混战，争当天子的过程。周天子虽没落了，但长期思想观念的固化，恐怕没有谁敢取而代之。</p>
+<p>这个思想观念就是“封建”和“礼乐”，封建即天下——&gt;国——&gt;家，对应权力等级为周天子——&gt;诸侯——&gt;士大夫。简单来说，诸侯的权力合法性必须有周天子的承认，大家都一致拥戴周天子为王，这是制度。此外，君王贵族已经被礼节道义长期洗脑，正直、礼貌、忠孝等观念已经刻在他们骨子里，以礼服人，以德治国，是贵族阶级的核心思想。</p>
+<p>从国家实力来说，周确实沦为第二梯队了，但诸侯国依然认可周王，依然认可天下，依然以自己属于中国为傲。周王是至尊不可动摇，诸侯追求的是至强。春秋是在这样的大背景下拉开序幕的。</p>
+<h1 id="彬彬有礼——春秋篇"><a href="#彬彬有礼——春秋篇" class="headerlink" title="彬彬有礼——春秋篇"></a>彬彬有礼——春秋篇</h1><p>提到春秋战国，可能首先想到的是战乱，春秋时期打仗自然是家常便饭，但并非我们映像中的战争，它更像是一场场竞技游戏。从表面看，春秋时期的战斗，多数讲排场，走过程，谈的是礼节上的你来我往。这种战斗大多一天之内搞定，有点像黑帮约群架——主要靠画面感。</p>
+<p>举个例子，楚晋两国交战，楚赢了，晋军在撤退的时候战车掉沟里，楚国的追兵就停下来，隔空喊话教他们怎么修车，修好了又接着追；再如，两军约战，先就位的一方会等另一方整装待发之后才开战；还有，追逃兵的时候，如果追50步还追不到，就不追了，下回再战。</p>
+<p>可能今天我们看待这种战争逻辑会特别搞笑，这可是打仗啊，那么彬彬有礼的，演给谁看呢？所以最开始才会特别指出，一定要注意春秋时代的大背景——天下共主。</p>
+<p>诸侯的地位是周天子授予的，诸侯之间交战就算赢了，周天子不承认你，你也最多算法强盗。而且这里的人自称华夏，意思是文明人，大家都讲道理的好不好，如果搞些阴谋诡计，会被看不起的，大家会自动把你归并到蛮夷那群低级文明中。</p>
+<p>所以，春秋时期的打仗，诸侯们追求的是称霸(而非称王)于天下，其目的是让你服我，没想过要吞并你，因为我们的领土和地位是周天子封的，我区区一个诸侯怎敢霸占。只要你认我做大哥，今后服从我的调度，我们还是好哥们儿。如此一来，既能扩张自己的势力范围，又能留的君子作派的美誉，一箭双雕啊。</p>
+<p>说回历史，春秋五霸到底是哪五霸还存在一些争论，按照易中天的说法，这个“五”其实不过是为了凑数，按照时间顺序罗列，前后共有：齐桓公、宋襄公、晋文公、秦穆公、楚庄王、吴王阖闾(hé lǘ)、越王勾践等人称霸。</p>
+<p>有没有发现，前面四人叫“公”，后面三人叫“王”，因为前者是在华夏文明圈，而后三者是在蛮夷圈。对于文明圈的人来说，王就表示天子，公表示诸侯。以楚国为例，他们也自诩为蛮夷，意思是老子不属于华夏人，不认你们这个天子，老子自己就是天子，所以要称王。</p>
+<p>根据《史记》上的记载，春秋五霸到楚庄王就截止了，剩下两个不算。这多少也说得，就我个人认为，春秋时期的战争节奏，一开始由华夏圈带动，各方都显得彬彬有礼，但蛮夷圈开始带节奏后，礼崩乐坏的萌芽就冒头了，他们没有那么多繁文缛节，光脚不怕穿鞋的，打仗的手段也越发残忍。所以，楚称霸之后，应该算作“后春秋”时期，这个时期中华出现文明的倒退，卸下祖宗的遗训，不再把天子当回事，不再崇尚君子作风，只讲手段讲利益。也正是如此，中国才步入了血腥的战国时代。</p>
+<h1 id="礼崩乐坏——战国篇"><a href="#礼崩乐坏——战国篇" class="headerlink" title="礼崩乐坏——战国篇"></a>礼崩乐坏——战国篇</h1><p>战国真的名副其实啊，绝对的兵荒马乱，腥风血雨，生灵涂炭。因为这个时候的诸侯国已经不讲什么仁义礼智信了，我打你的目的只有一个，杀掉你，然后侵吞你的所有财产。</p>
+<p>春秋结束，战国起航，标志性事件是三家分晋：赵、魏、韩等大夫架空晋幽公并瓜分晋国土地，最后居然得到周天子的承认，册封为侯。我们熟知的故事《赵氏孤儿》也就是这个时候流传出来的。士大夫谋权篡位变身为诸侯，做了一个极不好的开端，但归根结底是诸侯自作孽，你胆敢以下犯上藐视天子，那家臣就能上行下效谋害主公。这下好了，大家都扯下了最后的遮羞布，诸侯也要争做天子了！</p>
+<p>从春秋时期数百个大小邦国，到战国时期，彼此合并为二十来个，这其中包括我们熟知的战国七雄：齐、楚、秦、燕、赵、魏、韩。可想而知在彼此吞并过程中，发动了多少战争，有多少流离失所，又有多少血流成河。春秋时期是奥林匹克战斗，友谊第一，比赛第二，看了忍俊不禁；到了战国时期，动不动就屠城数十万，让人不寒而栗。但，这却是“天下主义”者们的黄金年代。政客们可以自由流动于各国间出谋划策，诸子们可以不管他人脸色而高谈阔论，这个时期，让本来懵懂的中华文明，思想和意识得到了空前的绽放。</p>
+<p>最该拿出来说的政客之一便是商鞅，没有他就没有秦国一统天下。商鞅变法，本质上是把秦国改造为纳粹般的战争机器，从思想上把分权变为中央集权；废除大夫贵族，改为郡县制；鼓励大家相互举报，知而不报会被连坐；大赏有功者，残惩有过者；限制言论自由；固定工种，不准迁户等等。这些手段看起来非常残暴，但秦国的实力却大幅提升，犹如虎狼之师。你想想，做了逃兵，轻则断手断脚，重则连坐邻里，累及家人；反之奋勇杀敌者，加官晋爵，良田美女因有尽有，是你你会怎么选。</p>
+<p>此外，还有著名的商人吕不韦，能把政治当生意来做的人，真人才啊。一心扶植秦异人上位，之后权倾朝野，赚得盆满钵满。然后花钱著了《吕氏春秋》。</p>
+<p>孙膑，兵家大神，孙膑原名孙伯灵，受过膑型(砍双脚并在脸上刻字)而称为膑。辅佐齐国田忌打下了几场有名的战役。著名的田忌赛马也出于他两。而后写过《孙膑兵法》，不过我们对《孙子兵法》可能更熟悉，当然，孙膑本人就是孙子(孙武)的后裔。</p>
+<p>张仪，权谋之高，令人佩服。就是他主张的合纵连横，把各国玩弄于鼓掌之中。合纵意思是，先煽动秦以外的六国联盟，就能与秦势均力敌；连横意思是，又鼓动秦王分别和六国一对一联盟，就能瓦解六国联盟。而他自己坐收渔利，但最终没有落的好下场，还被挂上了大骗子的恶名。</p>
+<p>战国时代，能人异士还是非常多的，就不一一列举了，只要知道这个时期的主旋律是吞并天下，不择手段！不过结局大家都清楚，秦始皇一统江山。</p>
+<h1 id="天道、王道、霸道——百家争鸣"><a href="#天道、王道、霸道——百家争鸣" class="headerlink" title="天道、王道、霸道——百家争鸣"></a>天道、王道、霸道——百家争鸣</h1><p>易中天并没有在春秋战国的乱世中穿插诸子百家的典故，而是把他们单独拿了出来。这个可以理解，前文说过，进入春秋后，中华文明进入了迷茫时期，主要是两点：其一、曾经的王室不行了，天下需要新的至尊，那就靠战争来解决；其二、中华文明到底需要怎样的制度与意识形态，才能万世太平，这是个问题，于是在这个没有硝烟的战场——百家争鸣。</p>
+<p>以孔子为首的儒家思想，注重“仁”和“礼”，其核心还是向周朝看齐，因为兵荒马乱就是社会礼崩乐坏的结果。所以君王有君王的素养，百姓有百姓的规矩，通过条条框框的教养，各自安分守己，天下自然太平。</p>
+<p>以庄子、老子为首的道家思想，注重无为和思辨，与民休息，统治阶级整天为天下操碎了心，都是在瞎操心，万事万物都有他自身的发展规律，给点阳光他就能灿烂。水利万物而不争，这才是无为的最高境界。</p>
+<p>以韩非子为首的法家思想，讲究以法治国，人之初性本恶，要通过法律制度来使人畏惧，这样才能限制人性丑恶的那一面，才出不了大乱子。</p>
+<p>当然，既然是诸子百家，自然还有很多流派，他们相互指责，相互诡辩，相互编故事来嘲讽。殊不知，这些都为后世留下了很多值得传颂的文籍。要特别指出的是，儒家思想在当时地位并不高，反而成了大家围攻的对象。之后也许是政治需要，也许是统治阶级的顾虑，儒家还是“战”到了最后。</p>
+<p>关于百家争鸣，毕竟是思想哲学和意识形态的问题，我个人没有太多想法，只是回归到这些争鸣最开始的地方。就我个人认为：</p>
+<ul>
+<li>以人性使然的顺应，乃天道</li>
+<li>以道德礼教的劝善，乃王道</li>
+<li>以法规制度的避恶，乃霸道</li>
+</ul>
+<p>天道、王道、霸道不分高低，在不同的场景下需要因地制宜的统治之道，所以这大概也是诸子百家，谁也说服不了谁的原因吧。秦帝国始于霸道，一统江山，却也亡于霸道。周始于王道，一而再，再而三，三而竭。天道呢？周王不去干涉诸侯的统治，换来的却是礼崩乐坏。</p>
+<p>哎，也许这终究是个问题，分分合合，周而复始。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/41/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/41/" class="post-title-link" itemprop="url">进程间通信影响应用响应时间</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-06 08:19:40" itemprop="dateCreated datePublished" datetime="2019-06-06T08:19:40+08:00">2019-06-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/41/" class="post-meta-item leancloud_visitors" data-flag-title="进程间通信影响应用响应时间" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/41/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/41/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_41/">Inter-Process Communication Affects Application Response Time</a></p>
+<p>响应时间对软件的可用性至关重要。等待一些软件系统响应会让人心烦，尤其是当我们与软件交互时遇到循环重复的刺激和响应。我们会觉得这个软件是在浪费时间，还影响我们的生产率。然后，因为响应时间短而被赞赏的情况却很少，尤其是当代的应用。很多关于性能管理的文献仍然聚焦于数据结构和算法，问题是在某些情况下可能有用，但在当今的多层企业级架构的应用中，不大可能改善性能。</p>
+<p>当性能成为应用程序的一个问题时，我个人的经验是，检查数据结构和算法并不能改善现状。响应时间更多依赖于无数个远程进程间通信(IPC)行为。尽管存在本地瓶颈，但大量的远程IPC才站主导地位。每个远程IPC都会对总体产生一些不容小觑的延迟，每个单独的延迟都会累加起来，尤其在它们按顺序运行时特别明显。</p>
+<p>最佳案例就是应用对象-关系映射的程序中采用“波纹加载”。波纹加载描述了多个数据库调用的执行顺序，以选择用于构建对象图所需的数据(看一下Martin Fowler’s的《企业级应用架构模式》中的懒加载)。当数据库客户端是呈现中间应用服务器的网页时，这些数据库就会在单线程中被频繁地顺序调用。每个小延迟的积累，汇集成巨大的响应时间。甚至是一个数据库仅花10ms，一个页面需要调用1000次(虽然不常见)，就能展现出将近10秒钟的响应时间。另一个例子是WEB服务的调用，来自浏览器的HTTP请求，分布式对象调用，请求应答消息，以及在自定义网络协议上的数据交互。越多的远程IPC所需的响应就越多，响应时间也就越长。</p>
+<p>有一小部分相对明确且众所周知的策略可以降低远程IPC每次处理的数量。其中之一是简约原则，优化两个进程间的接口，以便于用最小的交互来交换各自手上的目标数据。另一个策略是尽可能并发IPC，以便于让总体响应时间由最长延迟的IPC驱动。第三个策略是缓存之前的IPC结果，以便于用本地缓存来代替之后的IPC请求响应。</p>
+<p>当你在设置一个应用程序的时候，要警惕每个IPC响应延迟的数量。在分析低性能的应用程序时，我发现IPC与通信的比例经常是数千比一。不论通过缓存或并发或其他技术，请降低这个比例，这将比改变数据结构或调整排序算法要更有效。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B21-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B21-4/" class="post-title-link" itemprop="url">我们的信仰-《易中天中华史：卷1-4》读书笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-03 23:31:57" itemprop="dateCreated datePublished" datetime="2019-06-03T23:31:57+08:00">2019-06-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B21-4/" class="post-meta-item leancloud_visitors" data-flag-title="我们的信仰-《易中天中华史：卷1-4》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B21-4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E6%98%93%E4%B8%AD%E5%A4%A9%E4%B8%AD%E5%8D%8E%E5%8F%B21-4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我为什么要了解中国历史？大概是想认祖归宗吧！</p>
+<p>常可以看到或听到一些类似的观点：中国人没有信仰。那信仰又是什么？基督教？上帝？如来佛？阿门？这些都是理直气壮的信仰，为了这些信仰，人类塑造了无数虚无的神话，也流淌过太多真实的血液。说到底，人类为什么需要信仰，为什么在不同的民族国家都必然会产生信仰，它到底价值几何？</p>
+<p>人活着，需要意义，为此，我们始终相信着。这就是我的理解，信仰——为了身份认同！</p>
+<p>中国是一个多民族国家，但这个“多”是在历史的长河中一步步壮大起来的，而且和地球上的其他国家都不同，这个国家的人民不会把鬼神宗教当做自己的人生终极，而是光宗耀祖和落叶归根。为此，我始终相信中国有5000年的历史，我始终相信自己是炎黄子孙，我自己也乐意继承这些的文化礼教。这是我的信仰，还好它不是虚无的宗教或鬼神，趁我活着的时候，可以一探究竟。</p>
+<h1 id="初看易中天中华史"><a href="#初看易中天中华史" class="headerlink" title="初看易中天中华史"></a>初看易中天中华史</h1><p>这本书谈不上“严谨”，口水话和个人情感的抒发比较多，但也这是如此，才使得本书读起来津津有味，全然没有印象里枯燥无味的教科书的感觉。但也因此，书中的时间点不是特别清晰，读到一半你才发现，“哦，原来周朝讲完了，现在已经到春秋了”。此外，本书讲各种历史典故、文化、点评居多，而不是严格按照历史进程叙述各朝各代的事件和发展。</p>
+<p>另外，易老师在书中说的是中华3700年的历史，当时我懵了，不是5000年么？后面仔细看了下，这3700年是从商朝开始算的。换句话说，夏以前，三皇五帝的年代不算——叫做“史前史”。</p>
+<p>为什么被看作是史前，因为那个年代没有足够的文字记载，也找不出几个像样的历史文物，争议就很大。祖宗们的光荣历史都是一代又一代口口相传，传来传去自然是各种夸大其词，直到被后人记录在册，又因为政治被各种扭曲，我估计都面目全非了。与其称为“传说时代”，我觉得还不如叫“神话时代”。因为大家口中的历史人物，要么上能通天，要么五洋捉鳖。要说不信吧，老一辈说这是历史，要说信吧，糟老头子又坏得很。</p>
+<p>暂且不说远的，就是商朝和周朝，你对此最熟悉的历史桥段是什么——《封神榜》啊！但你确定武王伐纣带着雷震子么？还有，尧舜禹时代，个个都活到100+，比如尧活了140多岁，当年那医疗水平，那卫生条件，那平均寿命，活了140……</p>
+<p>诚然，从哪个时间点开始算做中华民族的起源，这是历史学家的事情，我等小白也没必要参与到这种无谓的意识形态斗争当中。不论如何，易中天中华史是从女娲时代，为我们诉说中华起源。</p>
+<h1 id="三皇五帝-从母爱到男权"><a href="#三皇五帝-从母爱到男权" class="headerlink" title="三皇五帝 - 从母爱到男权"></a>三皇五帝 - 从母爱到男权</h1><p>三皇距今约6000～5000年，但是现存史料很少，传说时代又是各种神话，各种说法都有，真伪难辨。按照本书的观点，三皇按照出现的时间顺序，分别是女娲、伏羲、炎帝。</p>
+<p><strong>女娲：氏族规模，生殖崇拜(女权)</strong></p>
+<p>我们在很多影视剧里看过，女娲是人面蛇身，黄泥造人，彩石补天。这自然是神话，但退去神的色彩，女娲这一角色必然真实存在，而且“娲”念作“蛙”是有原因的，因为她代表了中国的母系社会。</p>
+<p>不仅中国，历史上其他地方在文明前大多有一段母系社会时期，那个时候的人们还没有太多伦理道德束缚，所以在一个大家族中，都有自己的妈妈，却不知道自己的爹是哪位。</p>
+<p>女娲，其实是“女蛙”的意思，因为“蛙”代表着生命，之所以后来被传为蛇的化身，纯粹是男权社会的需要。包括“姓”，这个汉字已经写得很清楚了，“姓”本来就表示你是哪个女人生的，而“氏”才用来表示你爹是谁。这些观念都是男权社会之后，为了男尊女卑的需要，被颠倒黑白。说回女娲，她肯定不是一个婀娜多姿的大美女，相反，绝对是个丰乳肥臀的广场舞大妈。理由很简单，这种女人看起来生育能力强。这也代表着上古时代的生殖崇拜，能生养的女人地位是最高的，因为她们的身体象征着人丁兴旺。</p>
+<p>总结，女娲是蛙，代表着生命，意味着那个时代人们的生殖崇拜。人口规模也就是一个家族或氏族，人分认同靠的是血缘关系。</p>
+<p><strong>伏羲：氏族规模，生殖崇拜(男权)</strong></p>
+<p>伏羲时代其实家族规模变化不大，假如你以上帝视角来审视，甚至觉察不到它的变化。因为伏羲带来的改变只有一个，权力反转。</p>
+<p>女娲是母爱、温柔、生命延续的代表，同时也象征着女性主导权。<br>伏羲是男权、竞争、家族壮大的希望。此刻，他们有话要说。</p>
+<p>生殖繁衍后代这件事，男性也有参与；同时男性负责捕猎，跟着他有肉吃；再者，遇到他族入侵，也只有男人有能力发起反抗，保护族人，他们能带来安全。其实说到底，真实的原因是家族里开始有了剩余，继承思想就出现了，男人们需要思考一个问题：我爹是谁？谁又是我的子女。</p>
+<p>女娲是仁慈的母爱，伏羲是权利意识的觉醒，一个温柔善良，一个争强好胜，二者争霸，你说谁能赢？男人通过强硬作风，食物诱惑等手段，逐渐拿到了家族的话语权。易中天把伏羲比作披着羊皮的的蛇，他一面是猎人、一面是大祭司、一面是战士，通过这张羊皮俘获女子的芳心，直到生米煮成熟饭，漏出蛇身架空女娲。</p>
+<p>总结，伏羲是蛇，是男性权利意识的觉醒，氏族从母爱走到男权。但从人口规模上看，与女娲时代相差无几，这是个过渡时期。</p>
+<p><strong>炎、黄、蚩尤：从部落到联盟</strong></p>
+<p>女娲的身体本身就是大家崇拜的对象，男人不负责生娃，但他们发明了另一样东西——图腾。如何证明你是我的族人，看见图腾即是家，相信图腾即是家人。有了图腾之后，人类的身份认同就可以跨血缘了，而这个时期在不同地区又出现了三个狠角色，即炎帝和黄帝，还有蚩尤。</p>
+<p>我们都说自己是炎黄子孙，就是因为从他们建立图腾开始，有了部落，不同的部落(图腾)又相互融合在一起，有了部落联盟，有了联盟就会有最高统治者——大酋长。炎黄二帝在当时就相当于大酋长级别，男权社会里每个部落都有自己的氏，即爸爸叫什么，很多个部落聚集一起就叫做“百氏”，最终被偷换概念叫做“百姓”。</p>
+<p>我个人有个想法：不同的部落信仰不同的图腾，如果部落间要搞联盟，那该信仰谁家的图腾一定是个问题，所以当时的人就从各家图腾(其实就是动物)身上区一部分汇总起来，炮制了一个世上根本没有的生物——龙！认为自己是龙的传人，意味着自己是百氏联盟的一份子。</p>
+<p>说完炎黄，谈谈蚩尤，他是战神，但不是一个人在战斗！蚩尤在古文里其实是蛇灾的意思，氏族部落里某个领袖被叫做蚩尤，不见得是他的真名，更可能是大家敬畏他的力量而送给他的称谓。这个概念非常重要，因为接下来就该尧舜禹登场了。</p>
+<p><strong>尧舜：真有禅让？</strong></p>
+<p>前面说了，尧舜禹据历史记载能活到一百四五十岁，如果是某个人的寿命这显然很荒谬，但如果类似“蚩尤”，是某个氏族部落最强者的称谓，倒还是有几分可信的。</p>
+<p>相关的地方还有，尧舜禹时代是禅让制，也就是who can who up的游戏规则。但这个问题我们需要回归人性，哪怕是原始社会，自私也是人类的天性，一个手握最高统治者的权利的人，在那个没有法律的年代里，真有那么豁达，说让就让？</p>
+<p>本书的观点，那个时候虽说是部落联盟，其实也没多大，所谓的大酋长，可能也就相当于现在一个乡镇政府，归他管的事情也不多，也感受不到太多权力的滋味。最威风的时候可能就是搞搞祭祀拜拜天神啥的，更像是一个村里受人尊敬的老者。所以，让就让吧，芝麻绿豆大的机会还是留给年轻人吧。</p>
+<p><strong>大禹夏启：废除禅让</strong></p>
+<p>尧舜结束，大禹完成治水大业，到了这个时候百氏联盟在农业、水利、畜牧等方面都有了长足的进步，其结果就是人口规模的庞大，物资丰富。因此，禹的儿子夏启终于感受到了当皇帝的滋味(当然，那个时候还没有皇帝)，这么好的东西怎么可能留给外人呢，人性使然——他果断废除了禅让制。</p>
+<p>从此，中国进入了一个短暂且不成熟的世袭制，皇帝的孩子永远是皇帝，奴隶的孩子永远是奴隶，阶层开始形成，百氏联盟也逐渐发展为初期的国家形态。</p>
+<h1 id="从夏商到周天下-国家形成"><a href="#从夏商到周天下-国家形成" class="headerlink" title="从夏商到周天下 - 国家形成"></a>从夏商到周天下 - 国家形成</h1><p><strong>图腾倒了，信仰依旧</strong></p>
+<p>从女性的生殖崇拜——到男权社会——到图腾部落——到联盟，世界各文明大致都会经历这样的发展。But，从联盟到国家，中国却完全不与国际接轨，走出了一条奇葩，却超级稳定的国家发展道路。</p>
+<p>前面我说了，人活着，需要意义。不论是最小规模的家族，还是超大规模的国家，人都需要找到自己的归属感，这便是最基本的意义——身份认同。人类初期的身份认同也基本是亲缘关系到图腾崇拜，总之，大家都彼此相信这是一件理所当然的事，比如我妈是我妈，无需证明。</p>
+<p>但图腾以后，世界各地基本发展出两种身份认同：神和宗教。比如上帝、阿拉、基督教、穆斯林等等。其实神和宗教的效果和图腾是一样的——信徒们都是同类。不过相比于图腾，前者可以跨过山河大海，穿越人山人海，超越时空限制。统治阶层也能利用此来统治国家，获得权力的合法性，巩固地位。</p>
+<p>中国也炮制了很多神仙出来，但始终没变成人民的信仰。说白了，中国人求神拜佛，不过是种祭祀行为，与神签约，索要好处，真他妈实用主义啊！</p>
+<p>但，中国人信仰还是要有的——祖宗！</p>
+<p>祖宗崇拜，是中华文明的一大特色，哪怕是到现代，还是有中国人喜欢拜拜关二爷、孔子等古人。认祖归宗的结果就是，源头都是一个爹妈，我们56个民族是一家。所以，没了图腾，还有祖宗，只要祖上是一家人，我们后人也可以是一家人，也就达到了神和宗教崇拜的效果，跨过山河大海，穿越人山人海，这种身份始终得以维系；改朝换代，聚多离少，中华文明几乎没有断代，超级稳定。</p>
+<p><strong>稳定压倒一切</strong></p>
+<p>夏是中国历史上第一个真正的国家。夏人也不傻，既然废掉禅让制，我的后代们都要当皇帝，那最好的办法自然是阶级固化。其实这多少有点类似孔子鼓吹的君君臣臣父父子子。也就是把阶级当作一件理所当然的事情，比如为什么你是贵族，因为你爹是贵族，为什么你爹是贵族，因为你爹的爹也是贵族…</p>
+<p>只要各就各位、各司其职，大家彼此找准自己的社会地位和属性，不要以下犯上，这个国家就不会乱，不出乱子的国家就不会亡。以我们现在人的眼光来看，这肯定很荒谬，但麻烦看看隔壁印度，人家现在还保持着种姓制度，牛逼吧！</p>
+<p>不论这种制度有多么荒谬，在那样的时代，就是一个可行的制度，一直延续到商朝。但阶层固化的缺陷也很明显，既得利益者会越来越昏庸，放荡，残暴，泯灭人性。这些桥段我们还是很熟悉的，商纣王的酒池肉林、狐妖妲己、哪吒闹海……跑题了，总之，商的统治阶级越来越脱离群众，终于把自己给作死了。而给它最后一刀的竟是一个无名小卒——周。</p>
+<p><strong>周公吐哺，天下归心</strong></p>
+<p>其实周灭商没有影视剧里那么绚烂多彩，事实上周人确实为伐纣做了充足的准备，只是最后连他们自己都想不到，商已经这么不行了，才刚开始，就结束了。所以关于武王伐纣的过程不提也罢。</p>
+<p>周人和他们的前辈都不一样，忧患意识极强，勤勉认真，崇尚君子作风，周朝留下了4大遗产：</p>
+<ul>
+<li>井田：土地公有制，把土地平均分9块，周围8块自家种，中心一块大家种，上缴国家。</li>
+<li>封建：天子可封地给诸侯，诸侯可再封地给大夫，产权都归天子所有，但统治等权力归诸侯所有；</li>
+<li>宗法：包括社会分工、阶级划分、嫡长子继承制度等</li>
+<li>礼乐：不同社会阶层的人要有不同的要求与修养，不同的身份即不同的礼节，一种礼节即一种音符，连起来就是一篇华美的乐章。</li>
+</ul>
+<p>总之，“封建”让诸侯贵族阶层闭嘴了，“井田”让老百姓闭嘴了，再通过“宗法”让个阶层权力合法化，最后通过“礼乐”教化所有人，周朝为整个中华文明打下了坚实的基础，自此步入真正的文明时代，而这片土地上的人都为此而自豪，号称自己是礼仪之邦，胸怀天下。</p>
+<p>可以看到，周人的这4个制度中的一些思想，哪怕是当今社会都有所保留，这是他们留给后人非常宝贵的遗产之一。但我认为周朝给中华文明留下最重要的遗产就是“天下”。其实天下一词不是周公参悟了什么人生哲学，这货存粹是为了政治地位的合法性，估计他自己都想不到后来的君王都继承了他的天下观。</p>
+<p>周灭商，需要一个正当理由，中国不像老外，如果要欺负谁可以说上一句：“我代表月亮消灭你”或者“这是上帝的旨意”。因为老外信仰宗教和天神呀，他们至高无上的权力来自天神的恩赐，天神呢？虽然谁也没见过，但既然大家都相信，这个权力就是合法的。这是一种王权神授的观念。中国人不吃这套，反正老子没见过上帝，你周武王要万人景仰，凭什么张三李四不行？所以周人炮制了“天下”这一概念。天是最大的，笼罩着我们所生活的土地与四海，统称为天下。上天有好生之德，所有会派个人来爱戴苍生，也就是天子。如果身为天子却不为民解忧，那上天就会把天子的身份转移给其他人。</p>
+<p>这套逻辑简直天衣无缝，言下之意：老子灭商，是因为商自己作孽，导致民心涣散，老子是被上天选召的，废了这个孽畜，为黎民百姓讨个说法。这言辞，每每中国改朝换代之时都拿出来用，屡试不爽。</p>
+<p>普天之下，莫非王土。何谓天下？被天笼罩的地方，最外围是东南西北四海，再往里便是南蛮、北狄、东夷、西戎，被视为低级文明；最中心的区域即是中国，被视为高级文明——华夏。天以下都属于天子，即是权力也是责任。天子的权力源自天，诸侯的权力源自天子，大夫的权力源自诸侯。率土之滨，莫非王臣。</p>
+<p>周武王是个伟大的君主，周朝对整个中华文明的影响之深远，是后世所不能及的。但在伟大的君主也无法预测几百年后的发展，封建在当时是个好东西，但随着时间推移，周没落了，诸侯雄起了，各国越来越不听指挥了，周朝创立的天下体系还能否维持，这样的制度和思想真的有用吗，还有没有更先进的主义？谁都不知道，中华文明进入了迷茫期，兵荒马乱，百家争鸣，中国横冲直闯地跨入春秋战国时代。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/40/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/40/" class="post-title-link" itemprop="url">安装我</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-25 09:38:03" itemprop="dateCreated datePublished" datetime="2019-05-25T09:38:03+08:00">2019-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/40/" class="post-meta-item leancloud_visitors" data-flag-title="安装我" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/40/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/40/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_40/">Install Me</a></p>
+<p>我对你的程序毫无兴趣。</p>
+<p>我正被手上的问题和任务清单所包围。此刻在你网站的原因仅仅是由于我听到一个不大可能的谣言，我的每个问题都可以通过你的软件解决。请你原谅我的疑虑。</p>
+<p>如果眼球跟踪研究是正确的，我已经读到了标题并在搜寻被蓝色下划线标记的<em>download</em>文本了。顺便说一句，如果我来自英国的IP，通过Linux浏览器访问此页面，我自然是希望从欧洲的镜像中获取Linux版本，所以不要再问了。假设文件对话框立即打开，我会将其托管到下载文件夹并继续阅读。</p>
+<p>我们经常对自己所做的没见事情进行成本效益分析。如果你的项目低于我的门槛哪怕一秒钟，我都会放弃它并去做其他事情。</p>
+<p>第一个障碍就是安装。不认为那是个大问题？立刻去看看你的下载文件夹并浏览一下。被<em>tar</em>和<em>zip</em>沾满了对吧？这些文件中被你解压出来的占多少百分比？又有多少是被你安装的？如果你和我一样，只有三分之一是作为硬盘的填充物。</p>
+<p>我可能想要家门之便，但我可不像你在未经允许的情况下进到我家里。在安装之前我想确切地知道你是把东西放到了哪里。如果是我的电脑，我会尽量把吃它整洁。我也希望在我对它不感兴趣是能够立即删除它。如果我怀疑这是不可能的，那我不会先去安装它。我的机器现在很稳定，而且我希望保持这样。</p>
+<p>如果你的程序是基于图形界面的，我想要简单操作后就看到结果。男巫不需要帮助，因为他们所做的事情我看不懂。机会来自我想要读写一个文件。我不想创建工程、倒入目录、或者告诉你我的邮箱。如果一切OK，继续本教程。</p>
+<p>如果你的软件是一个库，然后我继续阅读你的网站搜寻“快速开始”手册。我想要的是类似于用5行代码切不用思考的“hello world”实例，并且有确切的描述。而不是填写一大个XML文件或者模版，仅仅需要单个脚本文件就够了。记住，我也会下载你竞争对手的框架。你知道吗，总有人会在论坛里声称他的东西比你的好太多了？如果一切OK，继续本教程。</p>
+<p>有个教程不存在？能用我理解的语言和我交流吗？</p>
+<p>如果教程里提到了我的问题，我会两眼放光。现在我正在阅读它，我可以从中建立兴趣，甚至是欢乐。我会靠后抿一口茶——我说过我来自英国？——我会运行你的实例并学习使用你的作品。如果它解决了我的问题，我会发送感谢邮件给你。当它崩溃时我会发送bug报告，并且为新功能提建议。我甚至会告诉我所有的朋友，你的软件是最棒的，甚至永远不会去尝试你对手的软件。而这一切都是因为你的关注点超过了我暂定的步骤。我又怎么可能怀疑你。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/ArmLinuxDriver/chapter7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ArmLinuxDriver/chapter7/" class="post-title-link" itemprop="url">七：中断与时钟</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-21 07:23:37" itemprop="dateCreated datePublished" datetime="2019-05-21T07:23:37+08:00">2019-05-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARM-Linux%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">ARM-Linux驱动开发</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ArmLinuxDriver/chapter7/" class="post-meta-item leancloud_visitors" data-flag-title="七：中断与时钟" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ArmLinuxDriver/chapter7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ArmLinuxDriver/chapter7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本篇学习笔记除了两本书籍外，同时参考博文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010503121/article/details/80502175">https://blog.csdn.net/u010503121/article/details/80502175</a></p>
+<h2 id="ARM的中断类型"><a href="#ARM的中断类型" class="headerlink" title="ARM的中断类型"></a>ARM的中断类型</h2><ul>
+<li>SGI(Software Generated Interrupt): 软件中断，由程序自行产生，常用于多核通信(一个CPU通过写寄存器中断另一个CPU)</li>
+<li>PPI(Private Peripheral Interrupt): 私有中断，中断信号只绑定给某个CPU</li>
+<li>SPI(Shared Peripheral Interrupt): 共享中断，中断信号可以路由给任何CPU</li>
+</ul>
+<h2 id="顶半部和底半部"><a href="#顶半部和底半部" class="headerlink" title="顶半部和底半部"></a>顶半部和底半部</h2><ul>
+<li>顶半部(Top Half)：处理优先级较高、紧急的硬件操作</li>
+<li>底半部(Bottom Half)：处理优先级较低、耗时的业务逻辑</li>
+</ul>
+<p>中断的处理之所以被拆分为顶半部和底半部，其实就是为了实时性，本质上两个“半部”都是为了处理同一个中断信号的相关业务逻辑，只不过这个业务逻辑可能会有轻重缓急之分，那么就把轻和急的交给顶半部，把重且缓的交给底半部。</p>
+<p>举个例子：医院的本质是给人看病，每个到访医院的病人就相当于是一次中断信号，其背后是一次完整的就诊过程。但要处理的病人多如牛毛，所以医院会先给每个病人快速挂号——顶半部，然后再去做耗时的诊断和医治——底半部。但有些病人可能不是来看病的，比如办理出院、交钱，这种事情就没必要拆分成两个流程来处理了，直接当场解决。</p>
+<p>主要记住一点：<strong>顶半部不可被中断，底半部可以</strong>。实际的中断实现要具体问题具体分析，常规情况下我们只在顶半部完成硬件信号的登记和关键信息记录，剩下的交给底半部做具体响应；但如果某些中断业务于硬件贴合非常紧密而且对实时性要求过高，那最好全部放在顶半部处理。</p>
+<h2 id="顶半部中断编程"><a href="#顶半部中断编程" class="headerlink" title="顶半部中断编程"></a>顶半部中断编程</h2><p>顶半部中断的实现相对简单：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  中断注册</span></span><br><span class="line"><span class="comment">  @irq      申请的硬件中断号</span></span><br><span class="line"><span class="comment">  @handler  中断事件响应函数，dev_id参数将被传递给它</span></span><br><span class="line"><span class="comment">  @flags    中断处理标志，上升沿触发，下降沿触发</span></span><br><span class="line"><span class="comment">  @devname  设置中断名称，通常是设备驱动程序的名称</span></span><br><span class="line"><span class="comment">  @dev      中断处理函数的传入参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">request_irq</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> irq, <span class="keyword">irq_handler_t</span> handler, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags, <span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="keyword">void</span> *dev)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  中断释放</span></span><br><span class="line"><span class="comment">  @irq  中断号</span></span><br><span class="line"><span class="comment">  @dev  由request时传入的dev参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free_irq</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> irq,<span class="keyword">void</span> *dev)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  @irq  中断号</span></span><br><span class="line"><span class="comment">  @dev  由request时传入的dev参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">irqreturn_t</span> <span class="title">intrrupt_handler</span><span class="params">(<span class="keyword">int</span> irq, <span class="keyword">void</span>* dev)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="底半部中断编程"><a href="#底半部中断编程" class="headerlink" title="底半部中断编程"></a>底半部中断编程</h2><p>一般来说，顶半部执行完底半部实现</p>
+<h3 id="1-tasklet"><a href="#1-tasklet" class="headerlink" title="1. tasklet"></a>1. tasklet</h3><h3 id="2-工作队列"><a href="#2-工作队列" class="headerlink" title="2. 工作队列"></a>2. 工作队列</h3><h3 id="3-软中断"><a href="#3-软中断" class="headerlink" title="3. 软中断"></a>3. 软中断</h3><h3 id="4-threaded-irq"><a href="#4-threaded-irq" class="headerlink" title="4. threaded_irq"></a>4. threaded_irq</h3><h2 id="内核定时器"><a href="#内核定时器" class="headerlink" title="内核定时器"></a>内核定时器</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct timer_list</span></span><br><span class="line"><span class="function"><span class="title">init_timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">add_timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">del_timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">mod_timer</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="内核延时"><a href="#内核延时" class="headerlink" title="内核延时"></a>内核延时</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ndelay()</span><br><span class="line">udelay()</span><br><span class="line">mdelay()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E7%9A%AE%E5%9B%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E7%9A%AE%E5%9B%8A/" class="post-title-link" itemprop="url">小镇青年——《皮囊》读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-20 22:57:36" itemprop="dateCreated datePublished" datetime="2019-05-20T22:57:36+08:00">2019-05-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E7%9A%AE%E5%9B%8A/" class="post-meta-item leancloud_visitors" data-flag-title="小镇青年——《皮囊》读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E7%9A%AE%E5%9B%8A/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E7%9A%AE%E5%9B%8A/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>上周末全家带着女儿去商场的儿童乐园玩，女儿的happy time上半场由我负责，下半场交给老婆。顺利完成交接后我溜进楼上的书店，开始认真搜寻着精神猎物，于是我看到了这本《皮囊》，本第一章关于阿太的故事深深吸引了。我认定这会是一本非常不错的小书，果断将其加入我的读数清单。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/books/%E7%9A%AE%E5%9B%8A/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/39/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/39/" class="post-title-link" itemprop="url">通过删除来改善代码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-12 10:27:40" itemprop="dateCreated datePublished" datetime="2019-05-12T10:27:40+08:00">2019-05-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/39/" class="post-meta-item leancloud_visitors" data-flag-title="通过删除来改善代码" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/39/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/39/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_39/">Improve Code by Removing It</a></p>
+<p>少即是多。这是一句老生常谈的话了，但很多时候它确实是真理。</p>
+<p>过去几周里，我对我们代码库的一项改进就是删除了它的一大块。</p>
+<p>我们以敏捷思想来写软件，包括YAGNI(就是You Aren’t Gonna Need It你不会需要它)。人性使然，我们必然会在一些地方留下短板。</p>
+<p>我注意到产品在执行某些任务时话了太长时间——应该是即时的简单任务。这是由于它们被过度实施了；被额外装饰得花里胡哨，但在当时看来确实个好点子。</p>
+<p>因此我简化了代码，提高了产品性能，通过删除代码库里那些多余的功能，降低了全局代码的熵级别。好处是，我的单元测试告诉我，在操作期间并没有破坏任何事。</p>
+<p>一个简单而令人满意的体验。</p>
+<p>那么，为什么不必要的代码会出现在最开始的地方？为什么一个程序员会觉得需要写下额外的代码，它又是如何通过评审和配对过程的？几乎可以肯定来自以下几点：</p>
+<ul>
+<li>这是一个有趣的额外的东西，程序员想要写(建议：写代码是为了提升其价值，而不是取悦你自己)。</li>
+<li>一些人认为它可能在未来有用，所以感觉它现在就该码出来(建议：这不是YAGNI。如果现在不需要，就不要现在写)。</li>
+<li>这个“扩展”看起来并不大，相对于站在客户角度思考是否真的有用，直接实现会更简单(建议：额外的代码总会花掉更长的时间来编写和实现。客户真的很和蔼😏。一个小小的扩展代码雪球，时间久了也会滚成庞大的维护工作量)。</li>
+<li>程序员自行炮制出额外的需求，既没有文档也没有论证过这些额外功能。这些需求实际上是假的。(建议：程序员不要设置系统需求，让客户来做)。</li>
+</ul>
+<p>你此刻正在做什么？这一切都需要吗？</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E6%9E%81%E7%AE%80%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E6%9E%81%E7%AE%80%E6%9C%AC/" class="post-title-link" itemprop="url">《中国历史极简本》书评</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-11 23:05:28" itemprop="dateCreated datePublished" datetime="2019-05-11T23:05:28+08:00">2019-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E6%9E%81%E7%AE%80%E6%9C%AC/" class="post-meta-item leancloud_visitors" data-flag-title="《中国历史极简本》书评" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E6%9E%81%E7%AE%80%E6%9C%AC/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E6%9E%81%E7%AE%80%E6%9C%AC/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近想通篇了解一下中国历史，无奈市面上讲中国通史的书籍甚少，好评的更是凤毛菱角。故上网搜了一堆，看到“中国社会科学院历史研究所”出品的《中国历史极简本》一书，主观上觉得会是一本很有底蕴的书，而且全是精华。然而事实上本书并不注重章节的连贯性，没有中华上下五千年一气呵成的感觉，而是仅仅按照时间顺序、根据中国不同朝代，挑选军事、经济、政治、文化、人物等不同的点或面进行叙述，当然，书中对中国古代各个方面的点评也相对中肯。不论如何，区区15万字能从炎黄到宣统，把中国古代历史完整咀嚼一遍，此书想必也下了一番功夫。我个人认为，把本书作为一本科普书更适合。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/books/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E6%9E%81%E7%AE%80%E6%9C%AC/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/ArmLinuxDriver/chapter6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ArmLinuxDriver/chapter6/" class="post-title-link" itemprop="url">六：并发和竞态</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-10 21:19:21" itemprop="dateCreated datePublished" datetime="2019-05-10T21:19:21+08:00">2019-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARM-Linux%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">ARM-Linux驱动开发</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ArmLinuxDriver/chapter6/" class="post-meta-item leancloud_visitors" data-flag-title="六：并发和竞态" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ArmLinuxDriver/chapter6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ArmLinuxDriver/chapter6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>临界资源：是指同一个时段内只允许唯一一个访问者操作的资源。比如打印机、IO模块等，但Linux是多任务的，其内核对资源的管理是抢占式的。多个进程同时运行即所谓的并发，而如果多个进程都同时访问同一个资源就会产生竞态。由于驱动模块的特殊性，它不可避免会存在被多个进程同时“打开、读写、关闭”的情况。设想一下，如果某个驱动的逻辑是open的时候分配一块缓存用于read/write，close的时候又释放缓存，就会存在A进程刚打开的设备节点，B进程就关闭，缓存分配了又释放，最终在读写时导致程序崩溃。</p>
+<p>所以，本章主要学习Linux驱动模块有哪些手段可以处理并发时的竞态问题。</p>
+<h2 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h2><p>原子操作就是保证对数据修改的完整性，也就是说<code>a = a + 1</code>这么简单的表达式也难以避免被编译为多个指令周期，也许在任务A中刚读完表达式右值，又被任务B更新了<code>a</code>的寄存器，结果一个简单的自加1的操作都可能出现很多诡异的结果。</p>
+<p>因此，为了确保<code>i++</code>就是自加1的操作，内核封装了很多API以实现变量的原子操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;asm/atomic.h&gt;</span> # 引入原子操作API</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义原子变量，并将其初始化为0</span></span><br><span class="line"><span class="keyword">atomic_t</span> v = ATOMIC_INIT(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变量的原子读写操作</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_read</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_set</span><span class="params">(<span class="keyword">atomic_t</span>* v, <span class="keyword">int</span> i)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变量运算的原子操作</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;    <span class="comment">// 加</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_sub</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;    <span class="comment">// 减</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_and</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;     <span class="comment">// 与</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_or</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;      <span class="comment">// 或</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_xor</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;     <span class="comment">// 异或</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_andnot</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;  <span class="comment">// 与非</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在运算的基础之上“返回原来的结果”</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_sub</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_and</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_or</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_xor</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_andnot</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_add_return</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 加，并返回新值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_sub_return</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 减，并返回新值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/******************************************</span></span><br><span class="line"><span class="comment"> * 强烈注意：</span></span><br><span class="line"><span class="comment"> *  以下定义在ARM平台(或Linux5.0+)不存在</span></span><br><span class="line"><span class="comment"> *  尽管各大书籍和网络文章里依然这么介绍</span></span><br><span class="line"><span class="comment">******************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_int</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 自增</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_dec</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 自减</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 带测试的加减运算，如果操作后原子值为0，则返回true，反之false。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_inc_and_test</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_dec_and_test</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_sub_and_test</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="comment">// 注意不是atomic_add_and_test</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_add_negative</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h2><p>自旋锁是一种对临界资源互斥访问的手段，也就是说在访问资源之前上个锁，访问完成后解锁，如果一个进程在访问资源是发现“锁住”了，就会原地打转——而非进入睡眠！直到锁被解开。就好比一辆车遇到红灯后停了下来但没熄火，发动机一直在空转，直到绿灯。但自旋锁有个很大的弊端——“如果红绿灯刚好坏了，发动机会永远空转下去”。</p>
+<p>先来看看自旋锁的简单用法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/spinlock.h&gt;</span> <span class="comment">// 引入自旋锁的头</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义并初始化一个锁</span></span><br><span class="line"><span class="keyword">spinlock_t</span> lock;</span><br><span class="line">spin_lock_init(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取锁状态，有两种方式</span></span><br><span class="line">spin_lock(&amp;lock);     <span class="comment">// 如果锁住了,原地打转</span></span><br><span class="line">spin_trylock(&amp;lock);  <span class="comment">// 如果锁住了,立即返回,不会锁死</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// todo...各种临界资源访问和处理</span></span><br><span class="line"></span><br><span class="line">spin_unlock(&amp;lock);   <span class="comment">// 解锁，为后来的访问者开绿灯</span></span><br></pre></td></tr></table></figure>
+
+<p>上边是最简单的使用方式，但自旋锁还会受到内核中断、底半部(BH)的影响，所以衍生出了更多的“锁定”和“解锁”API。就好比驾驶员在等红灯时跑去尿尿，恰好此时绿灯亮起，该怎么办？答：禁止驾驶员尿尿😄。</p>
+<p>这些函数要视情况具体使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_lock_irq</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>;   <span class="comment">// 禁用中断，并上锁</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_unlock_irq</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>; <span class="comment">// 启用中断，并解锁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 同上，但保存/恢复状态字</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_lock_irqsave</span><span class="params">(<span class="keyword">spinlock_t</span>* lock, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_unlock_irqrestore</span><span class="params">(<span class="keyword">spinlock_t</span>* lock, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_lock_bh</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>;    <span class="comment">// 禁用bh，并上锁</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_unlock_bh</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>;  <span class="comment">// 启用bh，并解锁</span></span><br></pre></td></tr></table></figure>
+
+<p>开发驱动时应谨慎使用自旋锁，要直到它“空转”的意思是不放弃CPU，所以在其自旋时会对CPU资源造成浪费，如果不小心锁死了，那就悲催了。</p>
+<p>综上，<strong>自旋锁只是在访问临界资源前后加了一层排他性的锁</strong>，至于锁内的资源操作它完全不关心，然而共享资源在并发访问时往往是这样的需求：<strong>可以被同时读，但不允许同时写</strong>。也是基于此，内核提供了更多的API来满足这些场景。</p>
+<ol>
+<li><strong>读写自旋锁</strong></li>
+</ol>
+<p>读写自旋锁会区别读和写的资源，满足并发读取，单一写入的要求，但底层也是“自旋”的机制。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读写锁定义</span></span><br><span class="line"><span class="keyword">rwlock_t</span> lock;</span><br><span class="line">rwlock_init(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取上锁/解锁</span></span><br><span class="line">read_lock(&amp;lock);</span><br><span class="line"><span class="comment">// todo...</span></span><br><span class="line">read_unlock(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写入上锁/解锁</span></span><br><span class="line">write_lock(&amp;lock);</span><br><span class="line"><span class="comment">// todo...</span></span><br><span class="line">write_unlock(&amp;lock);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>顺序锁</strong></li>
+</ol>
+<p>顺序锁是读写锁的优化版，因为读写锁的读和写操作是互斥的，所以使用顺序锁后，当资源正在写入时，依然可以被读取。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顺序锁API的定义</span></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">read_seqbegin</span><span class="params">(<span class="keyword">const</span> <span class="keyword">seqlock_t</span>* sl)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">read_seqretry</span><span class="params">(<span class="keyword">const</span> <span class="keyword">seqlock_t</span> *sl, <span class="keyword">unsigned</span> <span class="keyword">int</span> start)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_seqlock</span><span class="params">(<span class="keyword">seqlock_t</span> *sl)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_sequnlock</span><span class="params">(<span class="keyword">seqlock_t</span> *sl)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*-----------------以下是具体使用方法-----------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/seqlock.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 顺序锁定义</span></span><br><span class="line"><span class="keyword">seqlock_t</span> lock;</span><br><span class="line">seqlock_init(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顺序读的过程</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  start = read_seqbegin(&amp;lock);</span><br><span class="line">  <span class="comment">// todo...read</span></span><br><span class="line">&#125; <span class="keyword">while</span> (read_seqretry(&amp;lock, start));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写入上锁</span></span><br><span class="line">write_seqlock(&amp;lock);</span><br><span class="line"><span class="comment">// todo...write</span></span><br><span class="line">write_sequnlock(&amp;lock);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>RCU</strong>: Read-Copy-Update</li>
+</ol>
+<p>读——复制——更新的意思是：把要写的部分先读取被拷贝一个副本，然后把内容写入副本，等到何时的时机一把更新到源。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/rcupdate.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rcu_read_lock</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rcu_read_unlock</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">synchronize_rcu</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">call_rcu</span><span class="params">(struct callback_head *head, <span class="keyword">rcu_callback_t</span> func)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="互斥体"><a href="#互斥体" class="headerlink" title="互斥体"></a>互斥体</h2><p>互斥的机制在多线程中是很常见的，Linux内核的互斥体<code>metux</code>本质是由自旋锁实现的。但与自旋锁不同的是，互斥体会进入默认睡眠，放弃CPU抢占。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/mutex.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个互斥体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mutex</span> <span class="title">mutex</span>;</span></span><br><span class="line">mutex_init(&amp;mutex);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上锁/解锁方式</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mutex_lock</span><span class="params">(struct mutex *lock)</span></span>;  <span class="comment">// 睡眠后不可被中断</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mutex_lock_interruptible</span><span class="params">(struct mutex *lock)</span></span>; <span class="comment">// 睡眠后可被中断</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mutex_trylock</span><span class="params">(struct mutex *lock)</span></span>;  <span class="comment">// 如果能解锁就立即返回0，否则立即返回非0</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mutex_unlock</span><span class="params">(struct mutex *lock)</span></span>;  <span class="comment">// 解锁</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="completion"><a href="#completion" class="headerlink" title="completion"></a>completion</h2><p>completion就是指一个执行单元等待另一个执行单元的完成信号，有点多线程同步的意思。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/completion.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个completion</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">completion</span> <span class="title">completion</span>;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_completion</span><span class="params">(struct completion *x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reinit_completion</span><span class="params">(struct completion *x)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等待completion标志</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wait_for_completion</span><span class="params">(struct completion *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 唤醒一个执行单元</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">complete</span><span class="params">(struct completion *)</span></span>;</span><br><span class="line"><span class="comment">// 唤醒所有执行单元</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">complete_all</span><span class="params">(struct completion *)</span></span>;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

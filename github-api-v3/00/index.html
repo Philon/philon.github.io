@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="按照惯例，让我们过一遍API的核心概念吧。 概览大多数应用都会在你所熟悉的语言中存在一款封装库，但重要的是你得熟悉这些API底层的HTTP方法。 如何你打算使用其它客户端的话，没什么比cURL更好用的轮子了，注意在你发起请求的时候必须先发送有效的User Agent Header Hello World来不及解释了快上车吧！打开你的命令行终端并敲下如下指令： 12curl https:&#x2F;&#x2F;api.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【译】GitHub API 手册（一）：起步">
+<meta property="og:url" content="https://ixx.life/github-api-v3/00/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="按照惯例，让我们过一遍API的核心概念吧。 概览大多数应用都会在你所熟悉的语言中存在一款封装库，但重要的是你得熟悉这些API底层的HTTP方法。 如何你打算使用其它客户端的话，没什么比cURL更好用的轮子了，注意在你发起请求的时候必须先发送有效的User Agent Header Hello World来不及解释了快上车吧！打开你的命令行终端并敲下如下指令： 12curl https:&#x2F;&#x2F;api.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://developer.github.com/assets/images/personal_token.png">
+<meta property="og:image" content="https://developer.github.com/assets/images/oauth_prompt.png">
+<meta property="article:published_time" content="2020-04-25T03:03:13.000Z">
+<meta property="article:modified_time" content="2021-07-30T21:39:45.631Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="翻译">
+<meta property="article:tag" content="github">
+<meta property="article:tag" content="restful">
+<meta property="article:tag" content="api">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://developer.github.com/assets/images/personal_token.png">
+
+<link rel="canonical" href="https://ixx.life/github-api-v3/00/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>【译】GitHub API 手册（一）：起步 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/github-api-v3/00/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【译】GitHub API 手册（一）：起步
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-25 11:03:13" itemprop="dateCreated datePublished" datetime="2020-04-25T11:03:13+08:00">2020-04-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GitHub-API-%E6%89%8B%E5%86%8C/" itemprop="url" rel="index"><span itemprop="name">GitHub API 手册</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/github-api-v3/00/" class="post-meta-item leancloud_visitors" data-flag-title="【译】GitHub API 手册（一）：起步" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/github-api-v3/00/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/github-api-v3/00/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>按照惯例，让我们过一遍API的核心概念吧。</p>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>大多数应用都会在你所熟悉的语言中存在一款封装库，但重要的是你得熟悉这些API底层的HTTP方法。</p>
+<p>如何你打算使用其它客户端的话，没什么比<a target="_blank" rel="noopener" href="http://curl.haxx.se/">cURL</a>更好用的轮子了，注意在你发起请求的时候必须先发送有效的<a target="_blank" rel="noopener" href="https://developer.github.com/v3/#user-agent-required">User Agent Header</a></p>
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>来不及解释了快上车吧！打开你的命令行终端并敲下如下指令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl https://api.github.com/zen</span><br><span class="line">Keep it logically awesome.</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>上述的响应是从我们的设计理念中随机节选的。</p>
+<p>然后，让我们<code>GET</code>一下<a target="_blank" rel="noopener" href="https://github.com/defunkt">Chris Wanstrath</a>的<a target="_blank" rel="noopener" href="https://developer.github.com/v3/users/#get-a-single-user">Github profile</a>吧：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GET /users/defunkt</span></span><br><span class="line">curl https://api.github.com/users/defunkt</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;login&quot;</span>: <span class="string">&quot;defunkt&quot;</span>,</span><br><span class="line">  <span class="string">&quot;id&quot;</span>: 2,</span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://api.github.com/users/defunkt&quot;</span>,</span><br><span class="line">  <span class="string">&quot;html_url&quot;</span>: <span class="string">&quot;https://github.com/defunkt&quot;</span>,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>哟～～～看着像是<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/JSON">JSON</a>嘛。在刚刚的命令里加个<code>-i</code>标志看看它所包含的头：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/users/defunkt</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Server: GitHub.com</span><br><span class="line">Date: Sun, 11 Nov 2012 18:43:28 GMT</span><br><span class="line">Content-Type: application/json; charset=utf-8</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Status: 200 OK</span><br><span class="line">ETag: <span class="string">&quot;bfd85cbf23ac0b0c8a29bee02e7117c6&quot;</span></span><br><span class="line">X-RateLimit-Limit: 60</span><br><span class="line">X-RateLimit-Remaining: 57</span><br><span class="line">X-RateLimit-Reset: 1352660008</span><br><span class="line">X-GitHub-Media-Type: github.v3</span><br><span class="line">Vary: Accept</span><br><span class="line">Cache-Control: public, max-age=60, s-maxage=60</span><br><span class="line">X-Content-Type-Options: nosniff</span><br><span class="line">Content-Length: 692</span><br><span class="line">Last-Modified: Tue, 30 Oct 2012 18:58:42 GMT</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;login&quot;</span>: <span class="string">&quot;defunkt&quot;</span>,</span><br><span class="line">  <span class="string">&quot;id&quot;</span>: 2,</span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://api.github.com/users/defunkt&quot;</span>,</span><br><span class="line">  <span class="string">&quot;html_url&quot;</span>: <span class="string">&quot;https://github.com/defunkt&quot;</span>,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>貌似有个小东西藏在里面，注意看，<code>Content-Type</code>是<code>application/json</code>。</p>
+<p>任何以<code>X-</code>开头的都表示自定义头，非HTTP协议规定。例如：</p>
+<ul>
+<li><code>X-Github-Media-Type</code>的值是<code>github.v3</code>，是为了让我们知道本次响应的<a target="_blank" rel="noopener" href="https://developer.github.com/v3/media/">media type</a>。而Media Types让我们知道当前输出的API版本是v3.更多内容会在之后的章节展开讲。</li>
+<li>注意<code>X-RateLimit-Limit</code>和<code>X-RateLimit-Remaining</code>两个头。这一对头指明<a target="_blank" rel="noopener" href="https://developer.github.com/v3/#rate-limiting">一个客户端在一段时间内(默认一小时)能够发起多少次请求</a>，以及这些请求中有多少是已经客户端已经发送过的。</li>
+</ul>
+<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>未认证的客户端能够每小时发起60次请求。若想要每小时发起更多请求，我们就需要认证了。事实上，你想要用GitHub API进行任何“嘿嘿嘿”的操作前都必须经过<a target="_blank" rel="noopener" href="https://developer.github.com/v3/#authentication">认证</a>。</p>
+<h3 id="使用personal-access-tokens"><a href="#使用personal-access-tokens" class="headerlink" title="使用personal access tokens"></a>使用personal access tokens</h3><p>GitHub API最简单好用的认证方式莫过于<a target="_blank" rel="noopener" href="https://developer.github.com/v3/auth/#via-oauth-and-personal-access-tokens">OAuth令牌</a>的基本认证。OAuth令牌包括<a target="_blank" rel="noopener" href="https://help.github.com/articles/creating-an-access-token-for-command-line-use">个人访问令牌</a>。</p>
+<p>用<code>-u</code>标志位设置你的用户名：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -u your_username https://api.github.com/users/octocat</span><br></pre></td></tr></table></figure>
+
+<p>根据提示，你可以创建出OAuth令牌，但我们更推荐你将其设置为可变的：</p>
+<p>你可以通过<code>-u &quot;username:$token&quot;</code>并设置一个<code>token</code>环境变量以避免其暴露在shell历史命令中，尽量避免这种情况。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i -u username:<span class="variable">$token</span> https://api.github.com/users/octocat</span><br></pre></td></tr></table></figure>
+
+<p>认证成功后，你会看到请求限制率猛增到每小时5000次，主要在<code>X-RateLimit-Limit</code>头中体现。当然，认证后除了每小时更多次请求外，你还可以使用API读写私有信息。</p>
+<p>你可以在你的<a target="_blank" rel="noopener" href="https://github.com/settings/tokens">个人访问令牌设置页面</a>轻松地<a target="_blank" rel="noopener" href="https://help.github.com/articles/creating-an-access-token-for-command-line-use">创建一个<strong>个人访问令牌</strong></a>：</p>
+<p><img src="https://developer.github.com/assets/images/personal_token.png"></p>
+<h3 id="获取属于你自己的用户资料"><a href="#获取属于你自己的用户资料" class="headerlink" title="获取属于你自己的用户资料"></a>获取属于你自己的用户资料</h3><p>认证成功后，你就拥有了GitHub账户的高级许可。例如，试试获取<a target="_blank" rel="noopener" href="https://developer.github.com/v3/users/#get-the-authenticated-user">你的用户资料</a>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">curl -i -u your_username:your_token https://api.github.com/user</span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;plan&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;space&quot;</span>: 2516582,</span><br><span class="line">   <span class="string">&quot;collaborators&quot;</span>: 10,</span><br><span class="line">   <span class="string">&quot;private_repos&quot;</span>: 20,</span><br><span class="line">   <span class="string">&quot;name&quot;</span>: <span class="string">&quot;medium&quot;</span></span><br><span class="line"> &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次，我们省略了有关<a target="_blank" rel="noopener" href="https://github.com/defunkt">@defunkt</a>的公开信息，你应该能够看到类似上边的<strong>你的用户资料</strong>。例如，你会看到响应中的<code>plan</code>节点，提供了有关GitHub账户的计划细节。</p>
+<h3 id="使用OAuth-tokens-for-apps"><a href="#使用OAuth-tokens-for-apps" class="headerlink" title="使用OAuth tokens for apps"></a>使用OAuth tokens for apps</h3><p>若要在APP端以不同用户名义通过API读写私有信息的话应该采用<a target="_blank" rel="noopener" href="https://developer.github.com/apps/building-integrations/setting-up-and-registering-oauth-apps/">OAuth</a>。</p>
+<p>OAuth使用的是令牌。令牌提供两大特性：</p>
+<ul>
+<li><strong>访问撤销</strong>：用户可以在任何时候撤销第三方APP的认证</li>
+<li><strong>访问限制</strong>：用户可以在提供第三方APP认证前审查每个令牌的访问规则。</li>
+</ul>
+<p>令牌应该通过<a target="_blank" rel="noopener" href="https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/">Web流</a>创建。一个应用向GitHub发起用户登录。GitHub会给出对话框提示APP的名称，以及它被用户授权后的访问级别。当用户授权访问后，GitHub会将用户重定向到此应用。</p>
+<p><img src="https://developer.github.com/assets/images/oauth_prompt.png"></p>
+<p><strong>对待OAuth令牌应该像对待密码一样！</strong>不要将其共享给其他用户或存储到不安全的地方。这些令牌应该在你做完这些例程后被作废，其命名也要修改。</p>
+<p>现在，有关认证的内容，让我们踩下刹车，移步到有关<a target="_blank" rel="noopener" href="https://developer.github.com/v3/repos/">仓库API</a>，上车吧！</p>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><p>几乎任何一种有意义的GitHub API使用都会涉及到仓库信息的一些级别。我们可以通过类似拉取用户细节的方式去<code>GET</code><a target="_blank" rel="noopener" href="https://developer.github.com/v3/repos/#get-a-repository">仓库细节</a>。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/repos/twbs/bootstrap</span><br></pre></td></tr></table></figure>
+
+<p>同样地，我们可以<a target="_blank" rel="noopener" href="https://developer.github.com/v3/repos/#list-repositories-for-the-authenticated-user">为认证用户查阅仓库</a>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -i -H <span class="string">&quot;Authorization: token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4&quot;</span> \</span><br><span class="line">    https://api.github.com/user/repos</span><br></pre></td></tr></table></figure>
+
+<p>或者，我们可以<a target="_blank" rel="noopener" href="https://developer.github.com/v3/repos/#list-repositories-for-a-user">向其他用户展示仓库列表</a>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/users/octocat/repos</span><br></pre></td></tr></table></figure>
+
+<p>或者，我们可以<a target="_blank" rel="noopener" href="https://developer.github.com/v3/repos/#list-organization-repositories">向组织机构展示仓库列表</a>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/orgs/octo-org/repos</span><br></pre></td></tr></table></figure>
+
+<p>这些请求的反馈信息依赖于我们在认证时令牌的访问范围：</p>
+<ul>
+<li>一个<code>public_repo</code><a target="_blank" rel="noopener" href="https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/">范围</a>的令牌会返回一个包含github.com所能够看到的全部公开仓库的响应。</li>
+<li>一个带有<code>repo</code><a target="_blank" rel="noopener" href="https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/">范围</a>的令牌会返回一个包含github.com所能够看到的全部公开和私有仓库的响应。</li>
+</ul>
+<p>如下文所示，这些方法都可以通过<code>type</code>参数，根据用户对仓库的访问类型对这些返回的仓库进行过滤。通过这种方式，我们就可以拉取仅是直属仓库、组织仓库、或者是用户合作团队的仓库。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i <span class="string">&quot;https://api.github.com/users/octocat/repos?type=owner&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们抓取了仅octocat所拥有的仓库，而非她合作团队的。注意上边URL的引号。这部分取决于你安装的shell软件，cURL有时候需要将URL引起来，否则它就会把后边的查询字符串忽略掉。</p>
+<h3 id="创建一个仓库"><a href="#创建一个仓库" class="headerlink" title="创建一个仓库"></a>创建一个仓库</h3><p>拉取已有的仓库信息只是一个普通用例，GitHub API也支持新建仓库。为了<a target="_blank" rel="noopener" href="https://developer.github.com/v3/repos/#create-a-repository-for-the-authenticated-user">创建仓库</a>，我们要<code>POST</code>一些含有细节和配置的JSON语句：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl -i -H <span class="string">&quot;Authorization: token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4&quot;</span> \</span><br><span class="line">    -d <span class="string">&#x27;&#123; \</span></span><br><span class="line"><span class="string">        &quot;name&quot;: &quot;blog&quot;, \</span></span><br><span class="line"><span class="string">        &quot;auto_init&quot;: true, \</span></span><br><span class="line"><span class="string">        &quot;private&quot;: true, \</span></span><br><span class="line"><span class="string">        &quot;gitignore_template&quot;: &quot;nanoc&quot; \</span></span><br><span class="line"><span class="string">      &#125;&#x27;</span> \</span><br><span class="line">    https://api.github.com/user/repos</span><br></pre></td></tr></table></figure>
+
+<p>在上述的小例子中，我们新建了一个博客仓库（或许可以…将其用在<a target="_blank" rel="noopener" href="http://pages.github.com/">GitHub Pages</a>）。尽管博客是公开的，我们也可以把仓库变成私有的。在这一步骤中，我们也可以连同README、<a target="_blank" rel="noopener" href="http://nanoc.ws/">nanoc</a>、<a target="_blank" rel="noopener" href="https://github.com/github/gitignore">.gitignore template</a>一并初始化。</p>
+<p>在此之后，该仓库需要在<code>https://github.com/&lt;your_username&gt;/blog</code>才能被看到。若是在组织机构下创建的仓库，其API也需要从<code>/user/repos</code>变为<code>/orgs/&lt;org_name&gt;/repos</code>。</p>
+<p>下一步，让我们拉取刚才创建的仓库吧：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/repos/pengwynn/blog</span><br><span class="line">HTTP/1.1 404 Not Found</span><br><span class="line">&#123;</span><br><span class="line">   <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Not Found&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>阿咧～跑哪去了？哦，刚才我们把仓库设置成私有了，需要认证后才能看到它。如果你是个会哭的HTTP小孩，你可能希望有403吃。但我们并不希望泄露任何私有仓库的信息，所以GitHub API在这里返回的是404，就当我们在说“我即不肯定也不否定仓库的存在。”</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>GitHub对问题的UI旨在提供是“刚刚够”的工作流，同时又不会干扰到你。通过GitHub的<a target="_blank" rel="noopener" href="https://developer.github.com/v3/issues/">Issues API</a>，你可以通过其它工具拉取数据或创建问题以为你的团队创建一种工作流。</p>
+<p>正如github.com，API提供了一些简单的方法以给认证用户查看issues。若要<a target="_blank" rel="noopener" href="https://developer.github.com/v3/issues/#list-issues-assigned-to-the-authenticated-user">查看所有你的issues</a>，请调用<code>GET /issues</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -i -H <span class="string">&quot;Authorization: token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4&quot;</span> \</span><br><span class="line">    https://api.github.com/issues</span><br></pre></td></tr></table></figure>
+
+<p>若仅是获取<a target="_blank" rel="noopener" href="https://developer.github.com/v3/issues/#list-issues-assigned-to-the-authenticated-user">你所属GitHub组织的issues</a>，请调用<code>GET /orgs/&lt;org&gt;/issues</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -i -H <span class="string">&quot;Authorization: token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4&quot;</span> \</span><br><span class="line">    https://api.github.com/orgs/rails/issues</span><br></pre></td></tr></table></figure>
+
+<p>我们也可以获取<a target="_blank" rel="noopener" href="https://developer.github.com/v3/issues/#list-repository-issues">一个仓库的所有issues</a>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/repos/rails/rails/issues</span><br></pre></td></tr></table></figure>
+
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><p>一个标杆级的项目会有数千个issues。我们就需要<a target="_blank" rel="noopener" href="https://developer.github.com/v3/#pagination">分页</a>了，而且需要调用多个API后才能拿到数据。让我们重复最近因此请求，这次请留意响应头：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/repos/rails/rails/issues</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">...</span><br><span class="line">Link: &lt;https://api.github.com/repositories/8514/issues?page=2&gt;; rel=<span class="string">&quot;next&quot;</span>, &lt;https://api.github.com/repositories/8514/issues?page=30&gt;; rel=<span class="string">&quot;last&quot;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>这个<a target="_blank" rel="noopener" href="http://www.w3.org/wiki/LinkHeader/"><code>Link</code>头</a>提供了一种扩展资源链接的响应方式，作为本页的其它数据页面。经过我们的调用发现有超过30个问题（默认页面数），这个API告诉我们下一页和上一页分别在哪里。</p>
+<h3 id="创建一个问题"><a href="#创建一个问题" class="headerlink" title="创建一个问题"></a>创建一个问题</h3><p>现在我们知道了问题列表如何分页，让我们通过API<a target="_blank" rel="noopener" href="https://developer.github.com/v3/issues/#create-an-issue">创建一个问题吧</a>。</p>
+<p>为了创建问题，我们先要经过认证，因此我们会在header中传递一个OAuth令牌。同时，我们还会在想要创建问题的仓库的<code>/issues</code>路径下，通过JSON消息传递title、body、labels等。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">curl -i -H <span class="string">&#x27;Authorization: token 5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4&#x27;</span> \</span><br><span class="line">   -d <span class="string">&#x27;&#123; \</span></span><br><span class="line"><span class="string">        &quot;title&quot;: &quot;New logo&quot;, \</span></span><br><span class="line"><span class="string">        &quot;body&quot;: &quot;We should have one&quot;, \</span></span><br><span class="line"><span class="string">        &quot;labels&quot;: [&quot;design&quot;] \</span></span><br><span class="line"><span class="string">      &#125;&#x27;</span> \</span><br><span class="line">   https://api.github.com/repos/pengwynn/api-sandbox/issues</span><br><span class="line"></span><br><span class="line">HTTP/1.1 201 Created</span><br><span class="line">Location: https://api.github.com/repos/pengwynn/api-sandbox/issues/17</span><br><span class="line">X-RateLimit-Limit: 5000</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;pull_request&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;patch_url&quot;</span>: null,</span><br><span class="line">    <span class="string">&quot;html_url&quot;</span>: null,</span><br><span class="line">    <span class="string">&quot;diff_url&quot;</span>: null</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;created_at&quot;</span>: <span class="string">&quot;2012-11-14T15:25:33Z&quot;</span>,</span><br><span class="line">  <span class="string">&quot;comments&quot;</span>: 0,</span><br><span class="line">  <span class="string">&quot;milestone&quot;</span>: null,</span><br><span class="line">  <span class="string">&quot;title&quot;</span>: <span class="string">&quot;New logo&quot;</span>,</span><br><span class="line">  <span class="string">&quot;body&quot;</span>: <span class="string">&quot;We should have one&quot;</span>,</span><br><span class="line">  <span class="string">&quot;user&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;login&quot;</span>: <span class="string">&quot;pengwynn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;gravatar_id&quot;</span>: <span class="string">&quot;7e19cd5486b5d6dc1ef90e671ba52ae0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;avatar_url&quot;</span>: <span class="string">&quot;https://secure.gravatar.com/avatar/7e19cd5486b5d6dc1ef90e671ba52ae0?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png&quot;</span>,</span><br><span class="line">    <span class="string">&quot;id&quot;</span>: 865,</span><br><span class="line">    <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://api.github.com/users/pengwynn&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;closed_at&quot;</span>: null,</span><br><span class="line">  <span class="string">&quot;updated_at&quot;</span>: <span class="string">&quot;2012-11-14T15:25:33Z&quot;</span>,</span><br><span class="line">  <span class="string">&quot;number&quot;</span>: 17,</span><br><span class="line">  <span class="string">&quot;closed_by&quot;</span>: null,</span><br><span class="line">  <span class="string">&quot;html_url&quot;</span>: <span class="string">&quot;https://github.com/pengwynn/api-sandbox/issues/17&quot;</span>,</span><br><span class="line">  <span class="string">&quot;labels&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;color&quot;</span>: <span class="string">&quot;ededed&quot;</span>,</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;design&quot;</span>,</span><br><span class="line">      <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://api.github.com/repos/pengwynn/api-sandbox/labels/design&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;id&quot;</span>: 8356941,</span><br><span class="line">  <span class="string">&quot;assignee&quot;</span>: null,</span><br><span class="line">  <span class="string">&quot;state&quot;</span>: <span class="string">&quot;open&quot;</span>,</span><br><span class="line">  <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://api.github.com/repos/pengwynn/api-sandbox/issues/17&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>响应里给出了一对指向于最新创建的issue，包括响应头中的<code>Location</code>和响应JSON中的<code>uel</code>域。</p>
+<h2 id="其它请求"><a href="#其它请求" class="headerlink" title="其它请求"></a>其它请求</h2><p>要成为一名API良民很大一部分是通过缓存未更新的信息来遵守rate limits。API支持<a target="_blank" rel="noopener" href="https://developer.github.com/v3/#conditional-requests">条件请求</a>以及帮你做正确的事。回想一下最开始我们获取defunkt的个人资料的调用：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -i https://api.github.com/users/defunkt</span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">ETag: <span class="string">&quot;bfd85cbf23ac0b0c8a29bee02e7117c6&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>除JSON消息体之外，留意一下HTTP的状态码<code>200</code>以及<code>ETag</code>头。<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/HTTP_ETag">ETag</a>是一种响应指纹。若我们随后的调用通过了，我们可以告诉API在资源发生变化时再给我们：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -i -H <span class="string">&#x27;If-None-Match: &quot;bfd85cbf23ac0b0c8a29bee02e7117c6&quot;&#x27;</span> \</span><br><span class="line">   https://api.github.com/users/defunkt</span><br><span class="line">HTTP/1.1 304 Not Modified</span><br></pre></td></tr></table></figure>
+
+<p><code>304</code>状态码表示该资源与上次询问相比并未发生改变，响应种也不会包含消息体。作为好处，<code>304</code>的响应不会统计到你的<code>rate limit</code>中。</p>
+<p>呀呵！现在你已经基本掌握GitHub API了！</p>
+<ul>
+<li>基础 &amp; OAuth认证</li>
+<li>拉取 &amp; 创建仓库和问题</li>
+<li>条件请求</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/github-api-v3/00/" title="【译】GitHub API 手册（一）：起步">https://ixx.life/github-api-v3/00/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag"># 翻译</a>
+              <a href="/tags/github/" rel="tag"># github</a>
+              <a href="/tags/restful/" rel="tag"># restful</a>
+              <a href="/tags/api/" rel="tag"># api</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/books/%E7%99%BD%E5%A4%9C%E8%A1%8C/" rel="prev" title="读《白夜行》">
+      <i class="fa fa-chevron-left"></i> 读《白夜行》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/github-api-v3/01/" rel="next" title="【译】GitHub API 手册（一）：概要">
+      【译】GitHub API 手册（一）：概要 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

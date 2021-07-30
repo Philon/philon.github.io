@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="采用QEMU制作的最小linux顺利启动后，就该为其写内核模块了，所以这一节就是热热身：  学习如何通过vscode搭建linux驱动开发环境 编写第一个内核模块helloworld 初识linux内核模块机制  警告：在开始阅读下文之前，务必确保自己的linux内核被交叉编译过，并顺利生成zImage。 Ubuntu+VSCode的驱动开发环境搭建2015年底微软用自己的行动向世人证明，在IDE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二：HelloWorld">
+<meta property="og:url" content="https://ixx.life/ArmLinuxDriver/chapter2/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="采用QEMU制作的最小linux顺利启动后，就该为其写内核模块了，所以这一节就是热热身：  学习如何通过vscode搭建linux驱动开发环境 编写第一个内核模块helloworld 初识linux内核模块机制  警告：在开始阅读下文之前，务必确保自己的linux内核被交叉编译过，并顺利生成zImage。 Ubuntu+VSCode的驱动开发环境搭建2015年底微软用自己的行动向世人证明，在IDE">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/03/25/5c98e40cd2b1b.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/25/5c98ef6a9633b.gif">
+<meta property="og:image" content="https://i.loli.net/2019/03/25/5c98fa2533f3b.png">
+<meta property="article:published_time" content="2019-03-27T15:25:36.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.017Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="驱动开发">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/25/5c98e40cd2b1b.png">
+
+<link rel="canonical" href="https://ixx.life/ArmLinuxDriver/chapter2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>二：HelloWorld | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/ArmLinuxDriver/chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二：HelloWorld
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-27 23:25:36" itemprop="dateCreated datePublished" datetime="2019-03-27T23:25:36+08:00">2019-03-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARM-Linux%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">ARM-Linux驱动开发</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ArmLinuxDriver/chapter2/" class="post-meta-item leancloud_visitors" data-flag-title="二：HelloWorld" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ArmLinuxDriver/chapter2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ArmLinuxDriver/chapter2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>采用QEMU制作的最小linux顺利启动后，就该为其写内核模块了，所以这一节就是热热身：</p>
+<ul>
+<li>学习如何通过vscode搭建linux驱动开发环境</li>
+<li>编写第一个内核模块helloworld</li>
+<li>初识linux内核模块机制</li>
+</ul>
+<p>警告：在开始阅读下文之前，务必<strong>确保自己的linux内核被交叉编译过</strong>，并顺利生成zImage。</p>
+<h2 id="Ubuntu-VSCode的驱动开发环境搭建"><a href="#Ubuntu-VSCode的驱动开发环境搭建" class="headerlink" title="Ubuntu+VSCode的驱动开发环境搭建"></a>Ubuntu+VSCode的驱动开发环境搭建</h2><p>2015年底微软用自己的行动向世人证明，在IDE领域，你大爷还是你大爷，即便是<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">Visual Studio Code</a>这种所谓的代码编辑器，都可以傲视一堆所谓功能强大的集成开发环境。随着近几年的更新迭代，vscode在c/c++的开发方面也不逊色于vs了(我个人感受)，在GO、Web、C/C++以及很多非主力语言，它都是我的首选。因此，之后的内核模块代码编写，自然也少不了这利器。(一不小心闲话扯多了)</p>
+<p>进入正题，vscode安装好之后，务必安装微软官方扩展——<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a>，这个扩展的好处是提供语法高亮、智能补全、提示、调试等核心功能，剩下的酷炫功能及教程自行看官网。对于驱动来说，主要是方便代码补全和接口提示，以提高编写效率。</p>
+<p><img src="https://i.loli.net/2019/03/25/5c98e40cd2b1b.png"></p>
+<p>vscode及其扩展安装完毕后，开始写代码吧，创建第一个驱动源码——hello.c</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ~/varm/drivers/hello</span><br><span class="line">$ <span class="built_in">cd</span> ~/varm/drivers/hello</span><br><span class="line">$ touch hello.c</span><br></pre></td></tr></table></figure>
+
+<p>先别急着写代码，vscode扩展需要我们告诉它从哪里解析头文件，以分析和自动补全你想要的接口形式，所以：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/varm/drivers/hello$ mkdir .vscode <span class="comment"># 创建vscode当前项目配置目录</span></span><br><span class="line">~/varm/drivers/hello$ touch .vscode/c_cpp_properties.json <span class="comment"># 创建C/C++扩展的配置</span></span><br></pre></td></tr></table></figure>
+
+<p>打开刚创建的json配置文件，并把下方的内容拷贝进取，不过要注意<code>includePath</code>部分，里边的路径是我自己的环境，说白了就是要告诉vscode从哪里能够<strong>找到linux内核以及arm架构所需的头文件位置</strong>，这个需要根据自己的实际情况作调整。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Linux&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;includePath&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;/**&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/opt/varm/linux-5.0.3/include&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/opt/varm/linux-5.0.3/arch/arm/include&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/opt/varm/linux-5.0.3/arch/arm/include/generated&quot;</span>,</span><br><span class="line">                <span class="string">&quot;/opt/varm/linux-5.0.3/include/uapi&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;defines&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;__KERNEL__&quot;</span>,</span><br><span class="line">                <span class="string">&quot;__GNUC__&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;compilerPath&quot;</span>: <span class="string">&quot;/usr/bin/gcc&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cStandard&quot;</span>: <span class="string">&quot;c11&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cppStandard&quot;</span>: <span class="string">&quot;c++17&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;intelliSenseMode&quot;</span>: <span class="string">&quot;clang-x64&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>好了，现在可以愉快地写代码了，就像下图这样，vscode驱动开发环境配置结束。</p>
+<p><img src="https://i.loli.net/2019/03/25/5c98ef6a9633b.gif"></p>
+<h2 id="第一个linux内核驱动"><a href="#第一个linux内核驱动" class="headerlink" title="第一个linux内核驱动"></a>第一个linux内核驱动</h2><p>先看代码！</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 内核加载时触发</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> __init <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    printk(<span class="string">&quot;HELLO_MODULE: hello world\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 内核卸载时触发</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> __exit <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    printk(<span class="string">&quot;HELLO_MODULE: goodbye\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 真正向内核制定该模块出入口</span></span><br><span class="line">module_init(hello_init);</span><br><span class="line">module_exit(hello_exit);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 各种版权、扩展信息声明，无关紧要</span></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;GPL v2&quot;</span>); <span class="comment">// 开源许可证</span></span><br><span class="line">MODULE_DESCRIPTION(<span class="string">&quot;my first kernel module&quot;</span>); <span class="comment">// 模块描述</span></span><br><span class="line">MODULE_ALIAS(<span class="string">&quot;HelloWorld&quot;</span>); <span class="comment">// 模块别名</span></span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Philon&quot;</span>); <span class="comment">// 模块作者</span></span><br></pre></td></tr></table></figure>
+
+<p>上述代码可以说非常简单了，我们定义了两个函数<code>hello_init/hello_exit</code>都只是简单打印了一句话，并通过<code>module_init/module_exit</code>分别告诉内核，当加载/卸载该模块的时候执行对应的函数。</p>
+<p><strong>为什么不用printf函数打印</strong></p>
+<p>一是因为printf是C的标准库函数，依赖于C的动态库文件，比如/lib/libc.so.6文件，内核就不应该直接去访问这个文件。<br>二是因为模块是运行在内核层，而非用户层，printf要通过用户文件系统把内容输出到文件，同样是第一条理由，所以printk也就是指通过内核输出。</p>
+<p>不光printk，内核开发中还会遇到很多k结尾的函数，比如mallock，都是因为标准C库的原因，不能直接调用，但其功能及接口形式与标准库几乎一样。</p>
+<p><strong>两个函数前__init/__exit意味着什么</strong></p>
+<p>这两个是修师符，即使不添加也不会有任何表面上的区别，但建议加上！</p>
+<p><code>__init</code>表示该函数是初始化函数，在最终生成的模块文件中，这段代码会被强制放到.init.text段区，当模块加载完毕后，该区所有分配的内存资源都会被释放。<br><code>__exit</code>表示该函数是退出函数，如果你的驱动并非“模块”，而是直接编译进内核，那么被此修饰的函数显然是多余的(编译到内核中的驱动是无法卸载的)，因此该函数不会被链接，以缩小镜像大小。</p>
+<p><strong>关于开源与许可证</strong></p>
+<p>这部分会涉及到非常多的法律问题和风险，一般来说如果一个驱动没有声明GPL协议，在加载时会收到内核被污染的警告，逼死强迫症。但是对于我等初学小白而言，可以暂时不用考虑这部分内容。但如果是工作中的代码或涉及商业机密，建议还是谨慎对待，毕竟不是每个程序员都善于打官司。</p>
+<h2 id="编译并“运行”驱动"><a href="#编译并“运行”驱动" class="headerlink" title="编译并“运行”驱动"></a>编译并“运行”驱动</h2><p><strong>第一步：编译</strong></p>
+<p>linux的内核模块编译是必须依赖内核源码的，这就是为什么文章一开始注明必须确保linux内核已经交叉编译过的原因。而内核模块需要通过Makefile来指定是编译到内核中，还是以模块形式存在，也就是下面的第一行<code>obj-m=hello.o</code>。</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模块驱动，必须以obj-m=xxx形式编写</span></span><br><span class="line">obj-m = hello.o</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定内核源码目录及交叉编译环境</span></span><br><span class="line">KDIR = /opt/varm/linux-5.0.3</span><br><span class="line">CROSS = ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line"><span class="section">all:</span></span><br><span class="line">	<span class="variable">$(MAKE)</span> -C <span class="variable">$(KDIR)</span> M=`pwd` <span class="variable">$(CROSS)</span> modules</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">	<span class="variable">$(MAKE)</span> -C <span class="variable">$(KDIR)</span> M=`pwd` <span class="variable">$(CROSS)</span> clean</span><br></pre></td></tr></table></figure>
+
+<p>除了第一行需要留意下以外，其他都是常规Makefile语法，本文主要关注驱动开发，其他语法规则什么的就不废话了。直接make一下就能看到<code>hello.ko</code>的出现，这就是最终内核模块。</p>
+<p><strong>第二步：拷入根文件系统</strong></p>
+<p>虽然linux内核模块是运行在内核层的，但其加载、卸载、访问、操作等<strong>策略</strong>性的事物是完全交由用户层来管理，驱动仅仅负责实现和提供设备访问<strong>机制</strong>。所以现在需要把编译好的ko文件拷贝到之前制作好的根文件系统镜像中——rootfs.ext3。</p>
+<p>目前我们的linux最小系统还很简陋，没有网络共享，因此最粗暴的方式就是挂载镜像——复制——启动系统。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mount -o loop ~/varm/os/rootfs.ext3 /mnt</span><br><span class="line">$ sudo cp ~/varm/drivers/hello/hello.ko /mnt</span><br><span class="line">$ <span class="built_in">cd</span> ~/varm/os &amp;&amp; ./power_on <span class="comment"># 完成拷贝，启动系统</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第三步：加载/卸载</strong></p>
+<p>记住linux最简单的管理内核命令：</p>
+<ul>
+<li>insmod，加载内核模块</li>
+<li>rmmod，卸载内核模块</li>
+</ul>
+<p>正如下图所示，hello.ko和预期一样分别在加载和卸载模块时打印出了相应的内容。</p>
+<p><img src="https://i.loli.net/2019/03/25/5c98fa2533f3b.png"></p>
+<p>关于提示loading out-of-tree module taints kernel.主要是由于该模块并不存在设备树中，想想第一节的make dtbs，所以这个警告无关紧要。关键是<strong>第一个内核模块版本的HelloWorld顺利通过验收</strong>，鼓掌！</p>
+<p>以上是本节的实操，结束！</p>
+<hr>
+<p>以下是Linux内核知识，GO！</p>
+<h2 id="虚拟文件系统"><a href="#虚拟文件系统" class="headerlink" title="虚拟文件系统"></a>虚拟文件系统</h2><p>对于Linux“玩家”而言，文件系统(File System)是非常简单的概念，比如Windows的NTFS、macOS的APFS、Linux的Ext4、U盘的Fat32等等，所以文件系统就是对物理存储空间的逻辑抽象和数据组织管理的机制，根据不同的操作系统或存储介质演化出了如今众多的文件系统类型，但不论如何，我们口中的文件系统泛指对存储介质的数据管理系统。而Linux更是将这种思想发挥到了极致——一切皆文件。</p>
+<p>有了文件系统，我们可以非常直观地open、close、read、write任何文件，访问任何目录。但你有没有想过，硬盘里的“文件或目录”归根结底只是一些二进制数据，只要格式化就消失了。而计算机周围的键盘、鼠标、显示屏、打印机、摄像头等，这些可是真实设备啊，每种设备的操作方式都不同，意味着每增加一个设备，Linux内核就要专门为其开发一种API给用户访问，就算Linux社区的黑客们不嫌烦，我等芸芸众猿也学不过来呀。</p>
+<p>为此，Linux社区孕育了“把每个设备抽象成一个文件”的想法，这样不论什么新设备都可以用open、close、read、write函数访问，而组织管理这些设备文件的，自然就是设备文件系统，比如/dev、/sys等目录，我暂且把它们称作<strong>设备文件系统</strong>。</p>
+<p>此外，操作系统管理着很多进程，这些进程同样千奇百怪，如何让用户非常方便地访问呢？抽象成文件系统啊，每个进程都抽象成文件，直观地摆到用户面前，比如/proc目录，我暂且把它称作<strong>进程文件系统</strong>。</p>
+<p>还有，我们的电脑是可以网络通信，通过http、ftp等，网络上的资源也是让人眼花缭乱，怎么能直观呢？浏览器是个不错的选择，但对于只有命令行的黑客呢？抽象成<strong>网络文件系统</strong>吧。</p>
+<p>回首，<del>掏</del>再看看我们的根文件系统，最多把它称为<strong>硬盘文件系统</strong>。</p>
+<p>所以那么多的文件系统摆在我的面前，Windows没有好好珍惜，只是甩给用户一堆ABCDEFG盘。Linux不想这样，它不希望用户觉察到文件系统的存在，让用户觉得“去他妈的文件系统，老子只是打开了一个文件夹”。所以为了解决不同文件系统的“共生”问题，虚拟文件系统诞生了！</p>
+<h2 id="重新认识dev、sys、proc目录"><a href="#重新认识dev、sys、proc目录" class="headerlink" title="重新认识dev、sys、proc目录"></a>重新认识dev、sys、proc目录</h2><p>上边扯了一堆“废话”介绍有关虚拟文件系统的概念，换而言之，不要简单的认为/dev、/sys、/proc这几个根目录仅仅是个目录，否则接下来的设备驱动开发会看得云里雾里。</p>
+<h3 id="挂载proc文件系统"><a href="#挂载proc文件系统" class="headerlink" title="挂载proc文件系统"></a>挂载proc文件系统</h3><p>在介绍之前先启动之前用qemu做好的Linux系统，然后尝试用ps看一下进程😁</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">~/varm/os$ ./power_on.sh</span><br><span class="line">Booting Linux on physical CPU 0x0</span><br><span class="line">Linux version 5.0.3 (philon@philon-matebook) (gcc version 7.3.0 (Ubuntu/Linaro 7.3.0-27ubuntu1~18.04)) <span class="comment">#1 SMP Thu Mar 21 20:44:13 CST 2019</span></span><br><span class="line">...省略各种打印信息...</span><br><span class="line">Please press Enter to activate this console. </span><br><span class="line"></span><br><span class="line">/ <span class="comment"># ps</span></span><br><span class="line">PID   USER     TIME  COMMAND</span><br><span class="line">ps: can<span class="string">&#x27;&#x27;</span>t open <span class="string">&#x27;/proc&#x27;</span>: No such file or directory</span><br><span class="line">/ <span class="comment"># ls</span></span><br><span class="line">bin         lib         lost+found  usr</span><br><span class="line">dev         linuxrc     sbin</span><br></pre></td></tr></table></figure>
+
+<p>看，一个最简单的进程查看命令居然出错了，提示找不到<code>/proc</code>目录，简单啊——创建这个目录再试试：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/ <span class="comment"># mkdir /proc</span></span><br><span class="line">/ <span class="comment"># ps -a</span></span><br><span class="line">PID   USER     TIME  COMMAND</span><br><span class="line"></span><br><span class="line">/ <span class="comment"># ls /proc/</span></span><br><span class="line">/ <span class="comment"># </span></span><br></pre></td></tr></table></figure>
+
+<p>错误提示不见了，但依然什么进程都没有，连系统进程都没有，这怎么可能，proc目录下空空如也…</p>
+<p>呵呵，根本原因出在我们把<code>/proc</code>当作一个普通目录来处理了，正如前边所说，Linux会把所有的进程抽象为文件来组织管理，所以核心问题是以上命令并没有真正去挂载<code>procfs</code>，所以正确的做法是这样：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/ <span class="comment"># mount -t proc proc /proc # 把proc文件系统挂载到/proc目录下</span></span><br><span class="line">/ <span class="comment"># ls /proc</span></span><br><span class="line">1              28             815            diskstats      net</span><br><span class="line">10             29             828            driver         pagetypeinfo</span><br><span class="line">11             3              829            execdomains    partitions</span><br><span class="line">... <span class="comment"># 这样就可以访问到真正proc文件系统的所以进程ID内容了</span></span><br><span class="line"></span><br><span class="line">/ <span class="comment"># ps</span></span><br><span class="line">PID   USER     TIME  COMMAND</span><br><span class="line">    1 0         0:01 init</span><br><span class="line">    2 0         0:00 [kthreadd]</span><br><span class="line">    3 0         0:00 [rcu_gp]</span><br><span class="line">    4 0         0:00 [rcu_par_gp]</span><br><span class="line">... <span class="comment"># 系统进程也可以正常查看了</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="挂载sysfs文件系统"><a href="#挂载sysfs文件系统" class="headerlink" title="挂载sysfs文件系统"></a>挂载sysfs文件系统</h3><p>和proc文件系统道理一样，sysfs顾名但不要思义，顾名是指这个文件系统肯定是挂载到/sys目录，不要思义是指sysfs不是为了呈现系统而生的。</p>
+<p><code>sysfs</code>最开始Linux为了更好地以文件/目录形式在用户层展现设备树和驱动的结构及关联才开发的，其实就是从<code>/proc/sys</code>中剥离出来，所以最初其实这个文件系统名为<code>ddfs(Device-Driver-FS)</code>。后来这个文件系统和驱动模型被证明在其他子系统中也大有作为，就干脆叫做sysfs。</p>
+<p>说那么多，要搞清楚，<code>/sys</code>这个目录主要是为了清晰呈现设备、驱动、类型之间的关联(如果你不嫌烦可以一个个子目录翻了看看，其中有很多符号链接)。今后写驱动，可能会频繁地访问该目录。</p>
+<p>好了，把sysfs也挂载起来吧</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/ <span class="comment"># mkdir /sys</span></span><br><span class="line">/ <span class="comment"># mount -t sysfs sysfs /sys</span></span><br><span class="line">/ <span class="comment"># ls /sys</span></span><br><span class="line">block     class     devices   fs        module</span><br><span class="line">bus       dev       firmware  kernel    power</span><br></pre></td></tr></table></figure>
+
+<h3 id="dev与udev"><a href="#dev与udev" class="headerlink" title="/dev与udev"></a>/dev与udev</h3><p>其实如果你不较真儿的话，<code>/dev</code>可以就是个目录，但常见的Linux版本中更喜欢把它挂载到<code>tmpfs</code>文件系统，说白了就是个虚拟硬盘，临时内存区而已。说它可以是个普通目录的意思，是说该目录下的所有文件，理论上来说都是在用户层完成的，非内核在管理。设备和驱动真正被内核管理的地方是刚说的<code>sysfs</code>。这也是为什么在很多嵌入式Linux文件系统的启动脚本里，会有各种mknod命令出现。</p>
+<p>那<code>/dev</code>目录存在的意义是什么？很简单——设备描述符。任何设备被Linux抽象的符号链接最终都应该放在这里，比如我们要访问串口，不是区/sys目录下找XX设备，而是应该找<code>/dev/ttyXXX</code>设备描述符。</p>
+<p><code>udev</code>是什么？解释之前先了解另一个东东——<code>devfs</code>，这货其实就是最开始内核来管理设备的文件系统了，也就是说刚开始一个u盘插入后各种驱动加载、指定设备号、创建文件描述符等等工作都由它完成。出发点自然是很好，但封闭的弊端就是不灵活。此时<code>udev</code>注意到这些缺点，而且认为什么加载驱动、创建文件符号这些事情完全可以留给用户曾作，画蛇添足干嘛，所以udev才取代了devfs。</p>
+<p>简单来说，udev也类似于文件系统管理着/dev目录，但运行在用户态，通过监听<code>uevent</code>，动态为插拔设备做各种驱动加载、创建文件描述符等，但这些行为是根据用户层的匹配规则完成的。</p>
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ul>
+<li>vscode和c/c++扩展可以很好地支持Linux驱动的代码编辑</li>
+<li>内核模块编译依赖于内核源码，并通过<code>obj-m=xxx.o</code>指定模块名称</li>
+<li><code>insmod xxx.ko</code>加载一个内核模块</li>
+<li><code>rmmod xxx</code>卸载一个内核模块</li>
+<li><code>/dev /proc /sys</code>目录其实是三个文件系统</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/ArmLinuxDriver/chapter2/" title="二：HelloWorld">https://ixx.life/ArmLinuxDriver/chapter2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" rel="tag"># 驱动开发</a>
+              <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"># 嵌入式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/34/" rel="prev" title="通过开源实现你的抱负">
+      <i class="fa fa-chevron-left"></i> 通过开源实现你的抱负
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/books/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="next" title="《深度学习》简评">
+      《深度学习》简评 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

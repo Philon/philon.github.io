@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简单书评首先要声明，本书是我断断续续读完的。所以在内容衔接上可能有所“断片”。但总体而言，不论是作者引入了很多哲学思辨或是历史典故，我觉得并没有起到点睛之笔的作用，反而稍显累赘。此外，文中难免充斥着不小的篇幅关于物理公式和专业的逻辑推理，作为科普读物来说（或者就我个人而言）读起来稍显吃力。 本书作为《七堂极简物理课》的进阶版，更多的是体现在专业性的角度。毋庸置疑，书中确实在很多物理层面上更加深入地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《现实不似你所见》读书笔记">
+<meta property="og:url" content="https://ixx.life/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="简单书评首先要声明，本书是我断断续续读完的。所以在内容衔接上可能有所“断片”。但总体而言，不论是作者引入了很多哲学思辨或是历史典故，我觉得并没有起到点睛之笔的作用，反而稍显累赘。此外，文中难免充斥着不小的篇幅关于物理公式和专业的逻辑推理，作为科普读物来说（或者就我个人而言）读起来稍显吃力。 本书作为《七堂极简物理课》的进阶版，更多的是体现在专业性的角度。毋庸置疑，书中确实在很多物理层面上更加深入地">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-04T15:07:30.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.027Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="科普">
+<meta property="article:tag" content="物理">
+<meta property="article:tag" content="量子">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《现实不似你所见》读书笔记 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《现实不似你所见》读书笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-04 23:07:30" itemprop="dateCreated datePublished" datetime="2019-12-04T23:07:30+08:00">2019-12-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/" class="post-meta-item leancloud_visitors" data-flag-title="《现实不似你所见》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简单书评"><a href="#简单书评" class="headerlink" title="简单书评"></a>简单书评</h2><p>首先要声明，本书是我断断续续读完的。所以在内容衔接上可能有所“断片”。但总体而言，不论是作者引入了很多哲学思辨或是历史典故，我觉得并没有起到点睛之笔的作用，反而稍显累赘。此外，文中难免充斥着不小的篇幅关于物理公式和专业的逻辑推理，作为科普读物来说（或者就我个人而言）读起来稍显吃力。</p>
+<p>本书作为《七堂极简物理课》的进阶版，更多的是体现在专业性的角度。毋庸置疑，书中确实在很多物理层面上更加深入地展开讨论，但恰恰是这些有深度的内容，让像我这样的小白只能感叹——望成莫及。</p>
+<p>总而言之，我对本书的评价不算太高。然而对于豆瓣评分9+以上，我只能说，主要因为我智力水平有限。它要求读者有一定的物理基础，否则仅凭想象，很难对量子物理有一个感性的认知。</p>
+<p>不论如何，如果让我读起来发懵的书本，我认为还是整理成读书笔记比较好。</p>
+<h2 id="有限感官"><a href="#有限感官" class="headerlink" title="有限感官"></a>有限感官</h2><p>我们对现实的理解取决于我们具备什么样的感官，包括视觉、嗅觉、味觉、听觉、触觉等。但你必须知道，这些感觉是有范围限制的，比如我们能看到，又不能完全看到，因为在可见光之外，还有更多频率的电磁波（光既是电磁波）；再比如声音，我们能听到，又不能完全听到，因为人耳能感知的声音频率就那么一小段。同理，酸甜苦辣咸之外，可能还有人类无法品尝的美味。</p>
+<p>好在人类善于利用工具，可以通过不同的设备仪器探测到那些我们无法感知的事物。但…如果这些工具的感知能力也到了极限呢？</p>
+<p>是的，本书围绕二十世纪物理界最重要的两个理论展开讨论：</p>
+<ul>
+<li><strong>广义相对论</strong>重新定义了引力、时间和空间，它的研究对象很大，超过了人类已知的世界，超出了人类可想象的维度。</li>
+<li><strong>量子理论</strong>彻底颠覆了经典物理学，它的研究对象很小，小到比已知的最小粒子还要小上亿倍，小到同时存在又不存在，小到人类根本不可能观测到。</li>
+</ul>
+<p>虽然它们已经超出了人类有限的感官，但从理论出发，在实践中证明，这两个理论对现代科学，包括天体物理、核能、航空航天、计算机、通信等大部分领域都有极高的应用价值。然而讽刺的是这两个理论却是自相矛盾的。</p>
+<p>很可能，二者的矛盾依旧源自人类的有限感官——其实不过是同一件事物的不同面罢了。科学家希望能有一种大统一的理论来让二者和睦相处，目前比较主流的是<strong>弦理论</strong>和<strong>圈量子理论</strong>。</p>
+<p>本书的作者显然是圈量子理论的拥护者，换句话说，本文以及本书都是在描述圈量子理论，目前它仅仅是一种观点。（别太较真！）</p>
+<h2 id="时间和空间是同一种东西"><a href="#时间和空间是同一种东西" class="headerlink" title="时间和空间是同一种东西"></a>时间和空间是同一种东西</h2><p>传统意义上，我们会把时间、空间看作是两个独立且客观的事物。我们会觉得不论物质如何运动或者相互作用，因为它们“被包含在”时间和空间当中。空间是绝对独立的，时间亦是如此。但根据爱因斯坦的广义相对论：时间和空间是同一种东西，统称为“时空”。</p>
+<p>时空也并非独立客观的，尽管物体存在于时空中，但时空会因物体的质量被扭曲——这便是万有引力的本质。</p>
+<p>一个有趣的假想：越靠近大质量天体的地方，时空密度越高，时间就会越慢。如果一对双胞胎，哥哥住在山脚，弟弟住在山顶，多年之后，哥哥会比弟弟还年轻。</p>
+<p>当然，这也只能是假想，因为地球的质量没那么大，如果能在黑洞上做这个实验，那就真的是“一日不见如隔三秋”啦。</p>
+<p>but，圈量子理论认为：<strong>这个世界根本不存在所谓的时间</strong>。当然也没有所谓的真空，因为“空间”本身就是一种存在，它才是万物的根本，构成空间的是一种叫“空间量子”的东东。</p>
+<p>空间量子相互作用所产生的事件，被称为“物质”。什么意思呢？就像海浪，浪再大再猛烈再真实，它也只是无数水分子集体行为的结果，世上本没有浪，一部分水“跳”起来，浪就有了。所以，我们这个世界的万事万物可能是空间量子相互作用的结果。同理，物质的行为也会反过来影响空间量子——大质量的天体可以扭曲空间。</p>
+<h2 id="事件与概率"><a href="#事件与概率" class="headerlink" title="事件与概率"></a>事件与概率</h2><p>在量子世界中，是不存在“平滑连续”概念的，总有个最小粒度，一份一份地传递。在空间量子中亦是如此。</p>
+<p>我1秒钟走了1米，这其中可能存在某0.00000001秒走了0.00000001米，当然这个值可以继续往下分，但有一个最小值——1.6x10-³³厘米。这是普朗克长度，它很短，但不为0。假如人类能做一把量子尺，上面的刻度精度也只能到这个极限，因为这是空间的最小单位，否则它属于时空。我无法想象，一种事物没有空间、没有时间、没有质量、没有能量、没有信息，什么都没有，凭什么它还存在？</p>
+<p>好了，明确万事万物是不可无限分割的，才便于我们把物理公式中的时间变量t给拽走。</p>
+<p>传统观念里，我们会认为“粒子”是构成物质的基础，不论它是电子、原子、夸克或者其他。但正如前文所说，圈量子认为，这些粒子其实是空间量子的集体行为事件（或者说作用结果），就像海面上的浪一样。</p>
+<p>按照量子理论继续推导就会得出：粒子（物质）并非永恒的，它以什么形式存在或不存在只是个“概率”问题。而量子的行为是非连续的，是一个接着一个，称为“事件”，所以物质的运动其实是无数个短暂的瞬间。    </p>
+<p>这一切就像是看动画片，你以为它是连续的，其实它是一帧一帧的。这一切都和时间无关，动画播放的速度只取决于每帧之间的间隔，不论间隔多久，从一帧刷新到下一帧总是一瞬间的事。我们所存在的空间也是这样，空间量子总是一个事件接着一个事件在触发，这一切都不需要时间的参与。换句话说，宇宙中并不存在一个绝对统一的时间维度。</p>
+<p>好了，本书我能吸纳的内容也就这么多，关于其他如：圈量子的形态、量子黑洞、万物皆比特等，实在是云里雾里。待我智商充值后，再来好好消化吧。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/" title="《现实不似你所见》读书笔记">https://ixx.life/books/现实不似你所见/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E6%99%AE/" rel="tag"># 科普</a>
+              <a href="/tags/%E7%89%A9%E7%90%86/" rel="tag"># 物理</a>
+              <a href="/tags/%E9%87%8F%E5%AD%90/" rel="tag"># 量子</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/62/" rel="prev" title="只有代码会说实话">
+      <i class="fa fa-chevron-left"></i> 只有代码会说实话
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/" rel="next" title="《从一到无穷大》读书笔记">
+      《从一到无穷大》读书笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

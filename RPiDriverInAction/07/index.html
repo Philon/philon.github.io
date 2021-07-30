@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文源码：https:&#x2F;&#x2F;github.com&#x2F;Philon&#x2F;rpi-drivers&#x2F;tree&#x2F;master&#x2F;07-pdd 从《树莓派驱动开发实战》的第一篇至今，都是在写单个字符设备，这其中不难发现个问题——如果我有10个LED灯就意味着我要写10个led字符设备驱动，而其中的大部分代码都是重复的，它们之间可能仅仅是控制引脚不同。 一是为了解决这个问题，二是之后的驱动开发更多会涉及USB、I²C、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="07：PDD与设备树">
+<meta property="og:url" content="https://ixx.life/RPiDriverInAction/07/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="本文源码：https:&#x2F;&#x2F;github.com&#x2F;Philon&#x2F;rpi-drivers&#x2F;tree&#x2F;master&#x2F;07-pdd 从《树莓派驱动开发实战》的第一篇至今，都是在写单个字符设备，这其中不难发现个问题——如果我有10个LED灯就意味着我要写10个led字符设备驱动，而其中的大部分代码都是重复的，它们之间可能仅仅是控制引脚不同。 一是为了解决这个问题，二是之后的驱动开发更多会涉及USB、I²C、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-16T07:27:01.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.021Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="驱动开发">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="树莓派">
+<meta property="article:tag" content="设备树">
+<meta property="article:tag" content="总线">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/RPiDriverInAction/07/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>07：PDD与设备树 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/RPiDriverInAction/07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          07：PDD与设备树
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-16 15:27:01" itemprop="dateCreated datePublished" datetime="2019-11-16T15:27:01+08:00">2019-11-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">树莓派驱动开发实战</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/RPiDriverInAction/07/" class="post-meta-item leancloud_visitors" data-flag-title="07：PDD与设备树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/RPiDriverInAction/07/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/RPiDriverInAction/07/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文源码：<a target="_blank" rel="noopener" href="https://github.com/Philon/rpi-drivers/tree/master/07-pdd">https://github.com/Philon/rpi-drivers/tree/master/07-pdd</a></p>
+<p>从《树莓派驱动开发实战》的第一篇至今，都是在写单个字符设备，这其中不难发现个问题——如果我有10个LED灯就意味着我要写10个led字符设备驱动，而其中的大部分代码都是重复的，它们之间可能仅仅是控制引脚不同。</p>
+<p>一是为了解决这个问题，二是之后的驱动开发更多会涉及USB、I²C、UART之类的总线设备，三是为了更好地理解Linux驱动架构。从本篇文章开始正式以<code>驱动-总线-设备</code>模型和<code>设备树</code>机制来编写设备驱动。我觉得以<strong>平台驱动设备</strong>模型作为切入点较好——可以不涉及真实的硬件。</p>
+<h2 id="驱动-总线-设备模型"><a href="#驱动-总线-设备模型" class="headerlink" title="驱动-总线-设备模型"></a>驱动-总线-设备模型</h2><p>Linux2.6之后引入了全新驱动注册管理机制：<strong>驱动、总线、设备</strong>。一句话，为了高内聚低耦合！</p>
+<ul>
+<li>驱动部分：负责实现设备的控制逻辑及用户接口，并注册到内核</li>
+<li>设备部分：负责描述设备的硬件资源，并告知内核</li>
+<li>总线部分：负责实现设备与驱动之间的感知、识别、匹配规则</li>
+</ul>
+<p>举例来说，如果有100个按键(比如键盘)，我只需要实现<code>1个按键驱动</code>+<code>100个按键设备描述</code>，并把它们挂到<code>按键总线</code>上，总线会负责把二者匹配起来，所有的按键就都可以用了。</p>
+<p>内核提供了相应的<code>bus、device、driver、class</code>等最为底层的API和数据结构，即<code>驱动、总线、设备</code>模型来管理系统设备。但在日常驱动开发中，一般是用不到的。因为常见物理总线都基于这些API封装了对应的如<code>usb_bus、usb_device、usb_driver、tty_device、tty_driver</code>等接口，日常的设备驱动开发更多以这一层打交道。</p>
+<p>用面向对象的思想来说，驱动总线设备模型就是DeviceManage基类，由此派生出了USB、TTY、I²C、SPI、PCIe、GPIO等设备管理机制。当然，这其中也包括<code>platform</code>平台设备管理。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~ $ ls /sys/bus/</span><br><span class="line">amba         container     genpd  i2c              media     mmc_rpmb  scsi  usb</span><br><span class="line">clockevents  cpu           gpio   iscsi_flashnode  mipi-dsi  nvmem     sdio  workqueue</span><br><span class="line">clocksource  event_source  hid    mdio_bus         mmc       platform  spi</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>/sys/bus</code>目录可以看到系统当前存在的总线。👆注意看倒数第二个，<code>platform</code>平台总线出现了！！</p>
+<h2 id="平台总线、平台驱动、平台设备"><a href="#平台总线、平台驱动、平台设备" class="headerlink" title="平台总线、平台驱动、平台设备"></a>平台总线、平台驱动、平台设备</h2><p><strong>platform是一种虚拟总线</strong>。它是“驱动-总线-设备”模型的一种实现，与<code>usb_bus tty_bus spi_bus</code>等物理总线平级。为了把那些不走总线架构的设备囊括进来。</p>
+<p>回顾历史：</p>
+<ol>
+<li>编写字符设备<code>cdev</code>时需要关心主、次设备号，还要用mknod命令创建对应的设备节点。</li>
+<li>于是内核提供<code>misc</code>混杂设备，将所有不好管理的字符设备统一主设备号为10，自动分配和创建节点，本质上就是基于cdev再封装了一层。</li>
+<li>为了管理总线设备，内核又提出了<code>驱动总线设备</code>模型，并封装了各种USB、I²C、TTY等软件层。</li>
+<li>为了把非总线架构的设备也用总线思想来管理，内核提出了<code>平台驱动设备</code>层</li>
+</ol>
+<p>所以，<code>platform</code>和<code>misc</code>一样，都是为了给<code>“其他”</code>设备找一个爸爸。</p>
+<h2 id="最简单的PDD实例"><a href="#最简单的PDD实例" class="headerlink" title="最简单的PDD实例"></a>最简单的PDD实例</h2><p>根据上述可推断，<code>platform_bus</code>(即总线部分)内核已经实现了，所以我们只需要实现两边的<code>platform_xxx_driver</code>和<code>platform_xxx_device</code>即可，然后把它们挂到平台总线上去，总线会自动进行匹配的。以下只是以led为例说明platform相关接口用法，并未真正实现led驱动。</p>
+<p>led_driver.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/platform_device.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;Dual BSD/GPL&quot;</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Philon | https://ixx.life&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当总线匹配到设备时调用该函数</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">led_probe</span><span class="params">(struct platform_device* dev)</span> </span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;led %s probe\n&quot;</span>, dev-&gt;name);</span><br><span class="line">  <span class="comment">// todo: 字符设备注册、gpio申请之类的</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当总线匹配到设备卸载时调用该函数</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">led_remove</span><span class="params">(struct platform_device* dev)</span> </span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;led %s removed\n&quot;</span>, dev-&gt;name);</span><br><span class="line">  <span class="comment">// todo: 其他资源释放</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 平台驱动描述</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> <span class="title">led_driver</span> =</span> &#123;</span><br><span class="line">  .probe = led_probe,</span><br><span class="line">  .remove = led_remove,</span><br><span class="line">  .driver = &#123;</span><br><span class="line">    .name = <span class="string">&quot;my_led&quot;</span>, <span class="comment">// 👈务必注意，platform是以name比对来匹配的</span></span><br><span class="line">    .owner = THIS_MODULE,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 【宏】将led驱动挂到平台总线上</span></span><br><span class="line"><span class="comment">// 相当于同时定义了模块的入口和出口函数</span></span><br><span class="line"><span class="comment">// module_init(platform_driver_register)</span></span><br><span class="line"><span class="comment">// module_exit(platform_driver_unregister)</span></span><br><span class="line">module_platform_driver(led_driver);</span><br></pre></td></tr></table></figure>
+
+<p>led_device.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/platform_device.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;Dual BSD/GPL&quot;</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Philon | https://ixx.life&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ⚠️最好实现该接口，否则在设备释放的时候内核会报错</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">led_release</span><span class="params">(struct device* pdev)</span> </span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;led release!\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 平台设备描述</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_device</span> <span class="title">led_device</span> =</span> &#123;</span><br><span class="line">  .name = <span class="string">&quot;my_led&quot;</span>, <span class="comment">// 👈要确保与led_driver的定义一致，否则匹配不上</span></span><br><span class="line">  .dev = &#123;</span><br><span class="line">    .release = led_release,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将设备注册到平台总线</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leddev_init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  platform_device_register(&amp;led_device);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(leddev_init);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">leddev_exit</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  platform_device_unregister(&amp;led_device);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(leddev_exit);</span><br></pre></td></tr></table></figure>
+
+<p>简述一下代码的逻辑：</p>
+<ol>
+<li>platform_bus监听到有device注册时，会查看它的<code>device.name</code></li>
+<li>platform_bus会查找所有的<code>driver.name</code>，找到之后将设备和驱动进行绑定</li>
+<li>绑定成功后，<code>platform_driver.probe()</code>将触发，刚才的设备作为参数传递进去</li>
+<li>剩下的事情，就看你如何实现platform_driver了…</li>
+</ol>
+<p>实际操作下，加载led_driver.ko模块后，可以在平台总线目录下看到<code>my_led</code>驱动了。然后，加载led_device.ko模块后，同样可以在平台总线设备里查看到<code>my_led.0</code>的设备。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 平台总线里查看my_led驱动</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod led_driver.ko </span><br><span class="line">philon@rpi:~/modules $ ls /sys/bus/platform/drivers/my_led/</span><br><span class="line"><span class="built_in">bind</span>  module  uevent  unbind</span><br><span class="line"></span><br><span class="line"><span class="comment"># 平台总线里查看my_led设备</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod led_device.ko      </span><br><span class="line">philon@rpi:~/modules $ ls /sys/bus/platform/devices/my_led.0/</span><br><span class="line">driver  driver_override  modalias  power  subsystem  uevent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 看一下内核打印信息</span></span><br><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line">[225668.547712] led my_led probe</span><br><span class="line">[225687.213336] led my_led removed</span><br><span class="line">[225687.213448] led release!</span><br></pre></td></tr></table></figure>
+
+<p>⚠️温馨提示：不必操心driver/device模块的加载顺序，谁先谁后都一样，platform_bus会料理好一切。</p>
+<p>以上，便是PDD模型的一个基本展示，如果你愿意，可以在led_device.c文件里多注册几个设备。不过在此之前——你内心难道不会充满疑惑吗：这tm怎么匹配上的呀？🤔️</p>
+<h2 id="平台驱动和设备的匹配"><a href="#平台驱动和设备的匹配" class="headerlink" title="平台驱动和设备的匹配"></a>平台驱动和设备的匹配</h2><p>看一下内核是如何实现平台匹配的，非常容易理解：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// linux-rpi-4.19.y/drivers/base/platform.c line:963</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">platform_match</span><span class="params">(struct device *dev, struct device_driver *drv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">platform_device</span> *<span class="title">pdev</span> =</span> to_platform_device(dev);</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> *<span class="title">pdrv</span> =</span> to_platform_driver(drv);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* When driver_override is set, only bind to the matching driver */</span></span><br><span class="line">  <span class="keyword">if</span> (pdev-&gt;driver_override)</span><br><span class="line">    <span class="keyword">return</span> !<span class="built_in">strcmp</span>(pdev-&gt;driver_override, drv-&gt;name);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 首先尝试设备树匹配(OF - Open Firmware Standard) */</span></span><br><span class="line">  <span class="keyword">if</span> (of_driver_match_device(dev, drv))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 然后尝试匹配高级配置和电源接口</span></span><br><span class="line"><span class="comment">     (ACPI - https://baike.baidu.com/item/ACPI/299421?fr=aladdin)</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span> (acpi_driver_match_device(dev, drv))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 然后尝试匹配ID表 */</span></span><br><span class="line">  <span class="keyword">if</span> (pdrv-&gt;id_table)</span><br><span class="line">    <span class="keyword">return</span> platform_match_id(pdrv-&gt;id_table, pdev) != <span class="literal">NULL</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 最后尝试匹配驱动和设备的名称 */</span></span><br><span class="line">  <span class="keyword">return</span> (<span class="built_in">strcmp</span>(pdev-&gt;name, drv-&gt;name) == <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从以上代码可以看出，平台总线的匹配经过<code>设备树 &gt; ACPI &gt; ID表 &gt; 名称</code>等4种方式匹配，只要任意一种属性确认过眼神，就可以进行下一步。所以<code>led_driver</code>和<code>led_device</code>能够匹配上，正是因为它们内部的<code>name</code>值相同。</p>
+<p>接着，看看平台驱动和平台设备的数据结构，一切就明朗了。</p>
+<p>在平台驱动的数据结构中可以看到，它内部包含了底层的<code>device_driver</code>结构，如果驱动想要只是某些类型的设备，那就必须在相应的用于匹配的属性里事先声明。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> (*probe)(struct platform_device *);</span><br><span class="line">  <span class="keyword">int</span> (*remove)(struct platform_device *);</span><br><span class="line">  <span class="keyword">void</span> (*shutdown)(struct platform_device *);</span><br><span class="line">  <span class="keyword">int</span> (*suspend)(struct platform_device *, <span class="keyword">pm_message_t</span> state);</span><br><span class="line">  <span class="keyword">int</span> (*resume)(struct platform_device *);</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">device_driver</span> <span class="title">driver</span>;</span>  <span class="comment">// 底层驱动数据结构</span></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_device_id</span> *<span class="title">id_table</span>;</span> <span class="comment">// ID的匹配表👈</span></span><br><span class="line">  <span class="keyword">bool</span> prevent_deferred_probe;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">device_driver</span> &#123;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>        *name;      <span class="comment">// 驱动名，用于名称匹配👈</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">bus_type</span>   *<span class="title">bus</span>;</span>       <span class="comment">// 总线类型，如platform_bus</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">module</span>     *<span class="title">owner</span>;</span>     <span class="comment">// 这就不解释了</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>        *mod_name;  <span class="comment">// 用于构建模块</span></span><br><span class="line">  <span class="keyword">bool</span> suppress_bind_attrs;  <span class="comment">/* disables bind/unbind via sysfs */</span></span><br><span class="line">  <span class="class"><span class="keyword">enum</span> <span class="title">probe_type</span> <span class="title">probe_type</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">of_device_id</span>  *<span class="title">of_match_table</span>;</span>  <span class="comment">// 设备树的匹配表👈</span></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">acpi_device_id</span>  *<span class="title">acpi_match_table</span>;</span> <span class="comment">// acpi的匹配表👈</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> (*probe) (struct device *dev);     <span class="comment">// 探测设备：当匹配成功时回调</span></span><br><span class="line">  <span class="keyword">int</span> (*remove) (struct device *dev);    <span class="comment">// 移除设备：当设备卸载时回调</span></span><br><span class="line">  <span class="keyword">void</span> (*shutdown) (struct device *dev); <span class="comment">// 关闭设备</span></span><br><span class="line">  <span class="keyword">int</span> (*suspend) (struct device *dev, <span class="keyword">pm_message_t</span> state); <span class="comment">// 暂停</span></span><br><span class="line">  <span class="keyword">int</span> (*resume) (struct device *dev);    <span class="comment">// 恢复</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">attribute_group</span> **<span class="title">groups</span>;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">dev_pm_ops</span> *<span class="title">pm</span>;</span>           <span class="comment">// 电源管理</span></span><br><span class="line">  <span class="keyword">void</span> (*coredump) (struct device *dev); <span class="comment">// 核心转储</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">driver_private</span> *<span class="title">p</span>;</span>              <span class="comment">// 私有数据</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>和平台驱动很类似，其内部同样包含了底层的<code>device</code>结构体，如果设备想要被总线匹配上，同样要在自己的属性里配置好。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">platform_device</span> &#123;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>    *name;    <span class="comment">// 设备名，与驱动的name匹配 👈</span></span><br><span class="line">  <span class="keyword">int</span>            id;       <span class="comment">// 设备ID</span></span><br><span class="line">  <span class="keyword">bool</span>          id_auto;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">device</span>  <span class="title">dev</span>;</span>      <span class="comment">// 底层数据结构</span></span><br><span class="line">  u32    num_resources;    <span class="comment">// 设备要用的资源数量</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">resource</span>  *<span class="title">resource</span>;</span>  <span class="comment">// 设备的硬件资源描述</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_device_id</span>  *<span class="title">id_entry</span>;</span>  <span class="comment">// 设备ID，与驱动的ID表匹配 👈</span></span><br><span class="line">  <span class="keyword">char</span> *driver_override; <span class="comment">/* Driver name to force a match */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* MFD cell pointer */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">mfd_cell</span> *<span class="title">mfd_cell</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* arch specific additions */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pdev_archdata</span>  <span class="title">archdata</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>好了，本文并不打算详细讨论有关平台、驱动、设备及其如何匹配的原理。如果对此感兴趣或想要深入研究，请用好互联网。我个人也查了很多资料，感觉这位作者写的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaojiang1025/p/6367061.html">《Linux Platform驱动模型(一) _设备信息》</a>和<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaojiang1025/archive/2017/02/06/6367910.html">《Linux Platform驱动模型(二) _驱动方法》</a>还阔以，适合入门。</p>
+<p>那么接下来，我们已经知道平台总线提供了4种匹配方法，<code>name</code>匹配就不说了，另外两种不提也罢，最最最重要的<code>设备树</code>匹配该登场了。</p>
+<h2 id="设备树"><a href="#设备树" class="headerlink" title="设备树"></a>设备树</h2><p>先声明，关于设备树的语法、树莓派的配置规则，不会涉及太多。本文侧重于实战，原理知识请用好互联网。</p>
+<p>从历史上说，ARM-Linux引入设备树完全是被逼出来的。我们知道ARM以IP授权的商业模式运作，诞生了众多芯片厂商。它不像x86/x64架构只有Intel之类的寡头，产品大同小异比较好管理。arm的江湖可谓鱼龙混杂，每家都想在Linux内核种争的一席之地。可偏偏这帮家伙把又是硬件出生，对于兼容自家的不同产品只会用<code>if-else</code>，作为软件大神的Linus自然是怒了：“策略模式”难道不香么，你以为用C写一堆“电路板说明书”很高级么？如果你愿意，可以浏览下内核目录<code>arch/arm/mach-xxx</code>，非常多对吧。其实这些目录大多是SoC的硬件细节描述，用于适配各大厂商不同型号的处理器或开发板。</p>
+<p>闲话就扯那么多，总之，设备树就是用类C的文本语言编写，用于描述Soc及其外围电路模块的配置文件。通常情况下它由bootloader传递给内核。这种做法，极大的降低了驱动的维护难度，也大大增加了系统设备管理的灵活性。</p>
+<p>⚠️在阅读下文前，必须基本懂得两个知识点：</p>
+<ol>
+<li>设备树语法，我就不多嘴了，网上一搜一大堆</li>
+<li>树莓派overlay机制，这个网上几乎没有，我做个大概说明</li>
+</ol>
+<h3 id="树莓派的设备树配置"><a href="#树莓派的设备树配置" class="headerlink" title="树莓派的设备树配置"></a>树莓派的设备树配置</h3><p>本小结是从👉<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/configuration/device-tree.md">树莓派DeviceTree的官方介绍中</a>总结而来，如果想更全面地了解，可以看原文。</p>
+<p>一个常规的Arm-Linux设备树，主要是由源文件<code>.dts</code>和头文件<code>.dtsi</code>共同编译出<code>.dtb</code>二进制，内核在初始化后会加载这个dtb，并把相关设备都注册好，就可以愉快地使用了。例如树莓派3B+，<code>/boot/bcm2710-rpi-3-b-plus.dtb</code>就是树莓派SoC和外围电路的默认配置。</p>
+<p>对于大部分硬件产品来说这没什么问题，例如一部手机在出厂以后，它的硬件几乎是不会变的。但对于树莓派这种开发板来说，尤其是它的40pin扩展引脚，外围电路的变动可就大了去了，而内核加载<code>dtb</code>后是不能变的，所以需要一种<strong>动态覆盖配置</strong>的设备树机制，这就是树莓派的——dtoverlay(设备树覆盖)。</p>
+<p>dtoverlay同样是由dts源编译而来，语法几乎和设备树一样，不过输出文件扩展名为<code>dtbo</code>。树莓派提供了两种方式加载dtbo：</p>
+<ol>
+<li>将编译好的dtbo放到<code>/boot/overlays</code>下，并由<code>/boot/config.txt</code>配置和使能；</li>
+<li>通过命令<code>dtoverlay &lt;dtbo_file&gt;</code>动态覆盖设备树；</li>
+</ol>
+<p>第1种方式会涉及更复杂的语法规则，本篇文章仅仅是对平台设备及设备树的知识入门，因此选择第2种命令行的方式，动态加载。</p>
+<h3 id="用设备树注册设备"><a href="#用设备树注册设备" class="headerlink" title="用设备树注册设备"></a>用设备树注册设备</h3><p>led_driver.c：<br>其他内容不变，仅仅是增加<code>of_device_id</code>属性。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先用of_device_id声明了三种LED型号的表，支持设备树解析</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">of_device_id</span> <span class="title">of_leds_id</span>[] =</span> &#123;</span><br><span class="line">  &#123; .compatible = <span class="string">&quot;led_type_a&quot;</span> &#125;,</span><br><span class="line">  &#123; .compatible = <span class="string">&quot;led_type_b&quot;</span> &#125;,</span><br><span class="line">  &#123; .compatible = <span class="string">&quot;led_type_c&quot;</span> &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> <span class="title">led_driver</span> =</span> &#123;</span><br><span class="line">  .probe = led_probe,</span><br><span class="line">  .remove = led_remove,</span><br><span class="line">  .driver = &#123;</span><br><span class="line">    .name = <span class="string">&quot;my_led&quot;</span>,</span><br><span class="line">    .of_match_table = of_leds_id, <span class="comment">// 👈在驱动种添加对应属性</span></span><br><span class="line">    .owner = THIS_MODULE,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>接着新建一个设备树文件，并定义一个<code>led_type_a</code>的LED设备，并将其命名为<code>led_a1</code>。</p>
+<p>myled.dts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/dts-v1/;</span><br><span class="line">/plugin/;</span><br><span class="line"></span><br><span class="line">/ &#123;</span><br><span class="line">  fragment@0 &#123;</span><br><span class="line">    target-path = &quot;/&quot;;</span><br><span class="line">    __overlay__ &#123;</span><br><span class="line">      led_a1 &#123;</span><br><span class="line">        compatible = &quot;led_type_a&quot;;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>fragment</code>和<code>__overlay__</code>非常重要！！如果不这么写会导致动态加载失败，但其实以上的代码转化为标准的设备树语法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/led_a1 &#123;</span><br><span class="line">  compatible = &quot;led_type_a&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>最后用<code>dtc</code>编译器将<code>dts</code>编译为<code>dtbo</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux-rpi-4.19.y/scripts/dtc -I dts -o myled.dtbo myled.dts</span><br></pre></td></tr></table></figure>
+
+<p>万事俱备，看看效果吧：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步：加载led驱动</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod led_driver.ko </span><br><span class="line"><span class="comment"># 第二步：加载设备树覆盖</span></span><br><span class="line">philon@rpi:~/modules $ sudo dtoverlay myled.dtbo</span><br><span class="line"><span class="comment"># 第三部：看看平台设备里是否注册了一个叫“led_a1”的设备</span></span><br><span class="line">philon@rpi:~/modules $ ls /sys/devices/platform/</span><br><span class="line">alarmtimer  Fixed MDIO bus.0    👉led_a1👈  power         serial8250  uevent</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显然已经注册，根据led_driver的实现，设备注册后会在probe函数中打印一条消息</span></span><br><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line">...</span><br><span class="line">[  429.359567] leddrv: no symbol version <span class="keyword">for</span> module_layout</span><br><span class="line">[  429.359577] leddrv: loading out-of-tree module taints kernel.</span><br><span class="line">[  435.995744] led led_a1 probe 👈啊～我看到树上长了个灯</span><br></pre></td></tr></table></figure>
+
+<p>再来回顾下流程：</p>
+<ol>
+<li>首先驱动要支持<code>of_device_id</code>属性，并且以<code>compatible</code>作为匹配对象</li>
+<li>然后通过编写设备树定义相应的设备资源</li>
+<li>最后通过加载驱动和dtoverlay即可</li>
+</ol>
+<h3 id="让设备开机自动注册"><a href="#让设备开机自动注册" class="headerlink" title="让设备开机自动注册"></a>让设备开机自动注册</h3><p>这就非常简单了，前面已经说过<code>/boot/overlays</code>其实是通过<code>config.txt</code>配置和使能的，所以我们只需要将<code>myled.dtbo</code>放到overlays目录下，并在config.txt添加一行使能即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步：将自己的dtbo放到overlays下</span></span><br><span class="line">philon@rpi:~/modules $ sudo cp myled.dtbo /boot/overlays</span><br><span class="line"><span class="comment"># 第二步：在config.txt最后一行添加myled</span></span><br><span class="line">philon@rpi:~/modules $ sudo <span class="built_in">echo</span> <span class="string">&quot;dtoverlay=myled&quot;</span> | sudo tee -a /boot/config.txt</span><br><span class="line"><span class="comment"># 第三步：reboot...</span></span><br><span class="line"><span class="comment"># 第四步：可以在/sys/device/platform下查看到设备已经注册</span></span><br><span class="line">philon@rpi:~/modules $ ls /sys/devices/platform/</span><br><span class="line">alarmtimer  Fixed MDIO bus.0    👉led_a1👈  power         serial8250  uevent</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># ⚠️但是，设备树仅仅是定义了led_device，而led_driver.ko其实并没有开机加载，如果要更完善的话，应该把led_driver直接编译进内核！</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod leddrv.ko </span><br><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line">...</span><br><span class="line">[  214.076752] leddrv: no symbol version <span class="keyword">for</span> module_layout</span><br><span class="line">[  214.076771] leddrv: loading out-of-tree module taints kernel.</span><br><span class="line">[  214.077535] led led_a1 probe</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>Linux-2.6后引入了<code>驱动-总线-设备</code>的软件架构来管理系统设备；</li>
+<li><code>platform</code>设备和USB、TTY、UART一样，都是基于底层的抽象和封装；</li>
+<li><code>platform</code>是为了把那些没有总线的设备，以总线的思想管理起来，所以它算作一根虚拟总线；</li>
+<li>平台总线提供了多种驱动和设备的匹配规则：设备树、ACPI、ID表、名称等；</li>
+<li>设备树是由bootloader传递给内核，并且在初始化后基本不可修改；</li>
+<li>树莓派为了满足设备树动态修改的需求，引入了<code>dtoverlay</code>；</li>
+<li>dtoverlay采用常规的设备树语法，但需要<code>fragment</code>和<code>__overlay__</code>属性；</li>
+<li>驱动必须定义<code>of_device_id</code>数据结构，才能与设备树匹配；</li>
+<li>务必掌握设备树语法！</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/RPiDriverInAction/07/" title="07：PDD与设备树">https://ixx.life/RPiDriverInAction/07/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" rel="tag"># 驱动开发</a>
+              <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"># 嵌入式</a>
+              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag"># 树莓派</a>
+              <a href="/tags/%E8%AE%BE%E5%A4%87%E6%A0%91/" rel="tag"># 设备树</a>
+              <a href="/tags/%E6%80%BB%E7%BA%BF/" rel="tag"># 总线</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/books/%E4%B8%8A%E5%B8%9D%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%90%97/" rel="prev" title="读《上帝掷骰子吗？》">
+      <i class="fa fa-chevron-left"></i> 读《上帝掷骰子吗？》
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/59/" rel="next" title="错失多态的机会">
+      错失多态的机会 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

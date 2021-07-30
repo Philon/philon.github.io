@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="临界资源：是指同一个时段内只允许唯一一个访问者操作的资源。比如打印机、IO模块等，但Linux是多任务的，其内核对资源的管理是抢占式的。多个进程同时运行即所谓的并发，而如果多个进程都同时访问同一个资源就会产生竞态。由于驱动模块的特殊性，它不可避免会存在被多个进程同时“打开、读写、关闭”的情况。设想一下，如果某个驱动的逻辑是open的时候分配一块缓存用于read&#x2F;write，close的时候又释放缓">
+<meta property="og:type" content="article">
+<meta property="og:title" content="六：并发和竞态">
+<meta property="og:url" content="https://ixx.life/ArmLinuxDriver/chapter6/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="临界资源：是指同一个时段内只允许唯一一个访问者操作的资源。比如打印机、IO模块等，但Linux是多任务的，其内核对资源的管理是抢占式的。多个进程同时运行即所谓的并发，而如果多个进程都同时访问同一个资源就会产生竞态。由于驱动模块的特殊性，它不可避免会存在被多个进程同时“打开、读写、关闭”的情况。设想一下，如果某个驱动的逻辑是open的时候分配一块缓存用于read&#x2F;write，close的时候又释放缓">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-10T13:19:21.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.018Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="驱动开发">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/ArmLinuxDriver/chapter6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>六：并发和竞态 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/ArmLinuxDriver/chapter6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          六：并发和竞态
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-10 21:19:21" itemprop="dateCreated datePublished" datetime="2019-05-10T21:19:21+08:00">2019-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARM-Linux%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">ARM-Linux驱动开发</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ArmLinuxDriver/chapter6/" class="post-meta-item leancloud_visitors" data-flag-title="六：并发和竞态" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ArmLinuxDriver/chapter6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ArmLinuxDriver/chapter6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>临界资源：是指同一个时段内只允许唯一一个访问者操作的资源。比如打印机、IO模块等，但Linux是多任务的，其内核对资源的管理是抢占式的。多个进程同时运行即所谓的并发，而如果多个进程都同时访问同一个资源就会产生竞态。由于驱动模块的特殊性，它不可避免会存在被多个进程同时“打开、读写、关闭”的情况。设想一下，如果某个驱动的逻辑是open的时候分配一块缓存用于read/write，close的时候又释放缓存，就会存在A进程刚打开的设备节点，B进程就关闭，缓存分配了又释放，最终在读写时导致程序崩溃。</p>
+<p>所以，本章主要学习Linux驱动模块有哪些手段可以处理并发时的竞态问题。</p>
+<h2 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h2><p>原子操作就是保证对数据修改的完整性，也就是说<code>a = a + 1</code>这么简单的表达式也难以避免被编译为多个指令周期，也许在任务A中刚读完表达式右值，又被任务B更新了<code>a</code>的寄存器，结果一个简单的自加1的操作都可能出现很多诡异的结果。</p>
+<p>因此，为了确保<code>i++</code>就是自加1的操作，内核封装了很多API以实现变量的原子操作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;asm/atomic.h&gt;</span> # 引入原子操作API</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义原子变量，并将其初始化为0</span></span><br><span class="line"><span class="keyword">atomic_t</span> v = ATOMIC_INIT(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变量的原子读写操作</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_read</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_set</span><span class="params">(<span class="keyword">atomic_t</span>* v, <span class="keyword">int</span> i)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变量运算的原子操作</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;    <span class="comment">// 加</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_sub</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;    <span class="comment">// 减</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_and</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;     <span class="comment">// 与</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_or</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;      <span class="comment">// 或</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_xor</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;     <span class="comment">// 异或</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_andnot</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;  <span class="comment">// 与非</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在运算的基础之上“返回原来的结果”</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_add</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_sub</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_and</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_or</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_xor</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_fetch_andnot</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_add_return</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 加，并返回新值</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_sub_return</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 减，并返回新值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/******************************************</span></span><br><span class="line"><span class="comment"> * 强烈注意：</span></span><br><span class="line"><span class="comment"> *  以下定义在ARM平台(或Linux5.0+)不存在</span></span><br><span class="line"><span class="comment"> *  尽管各大书籍和网络文章里依然这么介绍</span></span><br><span class="line"><span class="comment">******************************************/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_int</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 自增</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">atomic_dec</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>; <span class="comment">// 自减</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 带测试的加减运算，如果操作后原子值为0，则返回true，反之false。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_inc_and_test</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_dec_and_test</span><span class="params">(<span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_sub_and_test</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br><span class="line"><span class="comment">// 注意不是atomic_add_and_test</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">atomic_add_negative</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">atomic_t</span>* v)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自旋锁"><a href="#自旋锁" class="headerlink" title="自旋锁"></a>自旋锁</h2><p>自旋锁是一种对临界资源互斥访问的手段，也就是说在访问资源之前上个锁，访问完成后解锁，如果一个进程在访问资源是发现“锁住”了，就会原地打转——而非进入睡眠！直到锁被解开。就好比一辆车遇到红灯后停了下来但没熄火，发动机一直在空转，直到绿灯。但自旋锁有个很大的弊端——“如果红绿灯刚好坏了，发动机会永远空转下去”。</p>
+<p>先来看看自旋锁的简单用法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/spinlock.h&gt;</span> <span class="comment">// 引入自旋锁的头</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义并初始化一个锁</span></span><br><span class="line"><span class="keyword">spinlock_t</span> lock;</span><br><span class="line">spin_lock_init(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取锁状态，有两种方式</span></span><br><span class="line">spin_lock(&amp;lock);     <span class="comment">// 如果锁住了,原地打转</span></span><br><span class="line">spin_trylock(&amp;lock);  <span class="comment">// 如果锁住了,立即返回,不会锁死</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// todo...各种临界资源访问和处理</span></span><br><span class="line"></span><br><span class="line">spin_unlock(&amp;lock);   <span class="comment">// 解锁，为后来的访问者开绿灯</span></span><br></pre></td></tr></table></figure>
+
+<p>上边是最简单的使用方式，但自旋锁还会受到内核中断、底半部(BH)的影响，所以衍生出了更多的“锁定”和“解锁”API。就好比驾驶员在等红灯时跑去尿尿，恰好此时绿灯亮起，该怎么办？答：禁止驾驶员尿尿😄。</p>
+<p>这些函数要视情况具体使用：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_lock_irq</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>;   <span class="comment">// 禁用中断，并上锁</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_unlock_irq</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>; <span class="comment">// 启用中断，并解锁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 同上，但保存/恢复状态字</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_lock_irqsave</span><span class="params">(<span class="keyword">spinlock_t</span>* lock, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_unlock_irqrestore</span><span class="params">(<span class="keyword">spinlock_t</span>* lock, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_lock_bh</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>;    <span class="comment">// 禁用bh，并上锁</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spin_unlock_bh</span><span class="params">(<span class="keyword">spinlock_t</span>* lock)</span></span>;  <span class="comment">// 启用bh，并解锁</span></span><br></pre></td></tr></table></figure>
+
+<p>开发驱动时应谨慎使用自旋锁，要直到它“空转”的意思是不放弃CPU，所以在其自旋时会对CPU资源造成浪费，如果不小心锁死了，那就悲催了。</p>
+<p>综上，<strong>自旋锁只是在访问临界资源前后加了一层排他性的锁</strong>，至于锁内的资源操作它完全不关心，然而共享资源在并发访问时往往是这样的需求：<strong>可以被同时读，但不允许同时写</strong>。也是基于此，内核提供了更多的API来满足这些场景。</p>
+<ol>
+<li><strong>读写自旋锁</strong></li>
+</ol>
+<p>读写自旋锁会区别读和写的资源，满足并发读取，单一写入的要求，但底层也是“自旋”的机制。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 读写锁定义</span></span><br><span class="line"><span class="keyword">rwlock_t</span> lock;</span><br><span class="line">rwlock_init(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取上锁/解锁</span></span><br><span class="line">read_lock(&amp;lock);</span><br><span class="line"><span class="comment">// todo...</span></span><br><span class="line">read_unlock(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写入上锁/解锁</span></span><br><span class="line">write_lock(&amp;lock);</span><br><span class="line"><span class="comment">// todo...</span></span><br><span class="line">write_unlock(&amp;lock);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>顺序锁</strong></li>
+</ol>
+<p>顺序锁是读写锁的优化版，因为读写锁的读和写操作是互斥的，所以使用顺序锁后，当资源正在写入时，依然可以被读取。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 顺序锁API的定义</span></span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">read_seqbegin</span><span class="params">(<span class="keyword">const</span> <span class="keyword">seqlock_t</span>* sl)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">int</span> <span class="title">read_seqretry</span><span class="params">(<span class="keyword">const</span> <span class="keyword">seqlock_t</span> *sl, <span class="keyword">unsigned</span> <span class="keyword">int</span> start)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_seqlock</span><span class="params">(<span class="keyword">seqlock_t</span> *sl)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_sequnlock</span><span class="params">(<span class="keyword">seqlock_t</span> *sl)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*-----------------以下是具体使用方法-----------------*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/seqlock.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 顺序锁定义</span></span><br><span class="line"><span class="keyword">seqlock_t</span> lock;</span><br><span class="line">seqlock_init(&amp;lock);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 顺序读的过程</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  start = read_seqbegin(&amp;lock);</span><br><span class="line">  <span class="comment">// todo...read</span></span><br><span class="line">&#125; <span class="keyword">while</span> (read_seqretry(&amp;lock, start));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写入上锁</span></span><br><span class="line">write_seqlock(&amp;lock);</span><br><span class="line"><span class="comment">// todo...write</span></span><br><span class="line">write_sequnlock(&amp;lock);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>RCU</strong>: Read-Copy-Update</li>
+</ol>
+<p>读——复制——更新的意思是：把要写的部分先读取被拷贝一个副本，然后把内容写入副本，等到何时的时机一把更新到源。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/rcupdate.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rcu_read_lock</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rcu_read_unlock</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">synchronize_rcu</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">call_rcu</span><span class="params">(struct callback_head *head, <span class="keyword">rcu_callback_t</span> func)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="互斥体"><a href="#互斥体" class="headerlink" title="互斥体"></a>互斥体</h2><p>互斥的机制在多线程中是很常见的，Linux内核的互斥体<code>metux</code>本质是由自旋锁实现的。但与自旋锁不同的是，互斥体会进入默认睡眠，放弃CPU抢占。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/mutex.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个互斥体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mutex</span> <span class="title">mutex</span>;</span></span><br><span class="line">mutex_init(&amp;mutex);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上锁/解锁方式</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mutex_lock</span><span class="params">(struct mutex *lock)</span></span>;  <span class="comment">// 睡眠后不可被中断</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mutex_lock_interruptible</span><span class="params">(struct mutex *lock)</span></span>; <span class="comment">// 睡眠后可被中断</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mutex_trylock</span><span class="params">(struct mutex *lock)</span></span>;  <span class="comment">// 如果能解锁就立即返回0，否则立即返回非0</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mutex_unlock</span><span class="params">(struct mutex *lock)</span></span>;  <span class="comment">// 解锁</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="completion"><a href="#completion" class="headerlink" title="completion"></a>completion</h2><p>completion就是指一个执行单元等待另一个执行单元的完成信号，有点多线程同步的意思。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/completion.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个completion</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">completion</span> <span class="title">completion</span>;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_completion</span><span class="params">(struct completion *x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reinit_completion</span><span class="params">(struct completion *x)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等待completion标志</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">wait_for_completion</span><span class="params">(struct completion *)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 唤醒一个执行单元</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">complete</span><span class="params">(struct completion *)</span></span>;</span><br><span class="line"><span class="comment">// 唤醒所有执行单元</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">complete_all</span><span class="params">(struct completion *)</span></span>;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/ArmLinuxDriver/chapter6/" title="六：并发和竞态">https://ixx.life/ArmLinuxDriver/chapter6/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" rel="tag"># 驱动开发</a>
+              <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"># 嵌入式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/38/" rel="prev" title="如何使用Bug跟踪器">
+      <i class="fa fa-chevron-left"></i> 如何使用Bug跟踪器
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/books/%E4%B8%AD%E5%9B%BD%E5%8E%86%E5%8F%B2%E6%9E%81%E7%AE%80%E6%9C%AC/" rel="next" title="《中国历史极简本》书评">
+      《中国历史极简本》书评 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

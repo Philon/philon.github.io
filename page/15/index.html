@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个程序员的成长足迹">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自增人生">
+<meta property="og:url" content="https://ixx.life/page/15/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="一个程序员的成长足迹">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/page/15/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/21/" class="post-title-link" itemprop="url">辨别来自技术中的业务异常</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-02 08:18:58" itemprop="dateCreated datePublished" datetime="2019-02-02T08:18:58+08:00">2019-02-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/21/" class="post-meta-item leancloud_visitors" data-flag-title="辨别来自技术中的业务异常" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/21/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/21/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_21/">Distinguish Business Exceptions from Technical</a></p>
+<p>导致运行时出错的事情根本上来说有两种原因：阻止我们使用程序的技术问题，以及组织我们滥用程序的业务逻辑。很多现代语言，如LISP、Java、Smalltalk和C#，运用异常来标记这两种情况。然而，这两种情况完全不同，要严格区分开。用相同级别的异常来描述他们会混淆潜在的来源，不要继承相同的异常类。</p>
+<p>但有一个程序错误时，可能是一个无法解决的技术问题导致的。例如，如果你尝试去访问长度为17的数组中的第83个元素，程序明显会跑飞，得到一些异常结果。有些小版本调用一些参数不当的代码库，导致内部库出现相同的情况。</p>
+<p>试图解决你自己造成的情况可能会是个错误。我们会把这个异常上升到顶层架构级别，并采用一些异常处理机制让其确保系统处于一个安全状态，比如回滚、日志和通知管理员，以及反馈(客气的)给用户。</p>
+<p>当你处在“库情况”中，调用者还违反你方法的调用规则，是这些情况的一个变种，例如，传入一个奇怪的参数或者没有正确设置依赖的对象。这就等同于从17个(长度数组)里面访问第83个：调用者应检查；否则就成了客户端开发程序员的错误了。正确的响应是抛出一个技术异常。</p>
+<p>有个不同的，但也属于技术范畴的情况，当一个程序由于运行环境问题导致无法继续，例如数据库无响应。在这种情况下，你必须假设基础设施能够解决这些问题——修复连接以及合理的重连几次——最后失败。即便原因不同，对于调用者而言这些情况是类似的：能做的很少。所以，我们把这个情况当作异常信号抛出交给一般异常处理机制。</p>
+<p>与此相反，我们遇到的情况是你无法完成领域逻辑调用的原因。因此我们将其视作异常情况。即不常见且让人不爽的，但并非怪异或者编程错误。例如，我尝试从一个余额不足的储蓄账户中取钱。换而言之，这种情况是约定的一部分，抛出一个异常仅用来<em>取代返回路径</em>，它是模型的一部分，客户能够意识到并着手应对。对于这些情况，适合创建一个特定异常或者异常此层结构，以便客户能根据自己的项目处理这些情况。</p>
+<p>把技术异常和业务异常混淆成相同的层次结构，含糊的差异，让调用者困惑于这些方法的约定是什么，什么是调用前必须的前提条件，它应该处理什么情况。分清这些情况，可能增加技术异常被一些程序框架处理掉的几率，而业务领域的异常实际上是由客户端代码考虑并处理的事情。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E4%B8%80%E8%AF%BE%E7%BB%8F%E6%B5%8E%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E4%B8%80%E8%AF%BE%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="post-title-link" itemprop="url">钱不是万能的-《一课经济学》读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-28 00:12:39" itemprop="dateCreated datePublished" datetime="2019-01-28T00:12:39+08:00">2019-01-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E4%B8%80%E8%AF%BE%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="post-meta-item leancloud_visitors" data-flag-title="钱不是万能的-《一课经济学》读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E4%B8%80%E8%AF%BE%E7%BB%8F%E6%B5%8E%E5%AD%A6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E4%B8%80%E8%AF%BE%E7%BB%8F%E6%B5%8E%E5%AD%A6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>努力做一个富人，而不仅仅是有钱人。</p>
+</blockquote>
+<h2 id="谁该拥有资本"><a href="#谁该拥有资本" class="headerlink" title="谁该拥有资本"></a>谁该拥有资本</h2><p>我们可能会习惯于用收入来衡量一个人的社会价值，这难免有失偏颇，我们应该站在生产的角度，用一个人生产力来衡量他对社会价值。</p>
+<p>即在有限的生产资源面前，应该优先把资本分配给生产效率高的群体，因为他们能够为社会创造更大的价值。</p>
+<p>这话说起来容易，做起来难，哪些才是生产效率高的群体，每个群体的配比是多少？这些问题书中归根结底就一个答案——交给市场去自我调节。</p>
+<p>当然，本书并不是要在政府干预和自由市场的意识形态层面争夺高下，主要还是列举一些常见的经济学谬误，给我们这种经济学小白普及一下基本知识，但我也看得出来，作者多少要倾向于自由市场，政府能不插手就不要插手。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/books/%E4%B8%80%E8%AF%BE%E7%BB%8F%E6%B5%8E%E5%AD%A6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/20/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/20/" class="post-title-link" itemprop="url">提前并经常部署</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-24 07:52:33" itemprop="dateCreated datePublished" datetime="2019-01-24T07:52:33+08:00">2019-01-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/20/" class="post-meta-item leancloud_visitors" data-flag-title="提前并经常部署" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/20/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/20/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_20/">原文链接</a></p>
+<p>调试部署和安装过程经常推迟到项目快结束时。在一些项目中会写好安装工具并委派给发布工程师，他们会视这个“烫手山芋”。评估和演示在手工制造的环境中完成以确保一切正常。结果就是团队无法通过部署过程和部署坏境中获得经验，每当做出改变时已经太晚了。</p>
+<p>安装/部署过程是业主最先看到的过程，安装/部署过程应该是生产环境中最可靠的第一步(或者至少很容易调试)。部署软件是给业主用的。用不靠谱的部署想把应用程序正确安装，在他们完整地使用你的软件之前，你将收到你客户的各种问题。</p>
+<p>通过安装程序启动你的项目，将让你有时间在产品开发周期内改进流程，并有机会修改程序代码让其更容易安装。定期在干净的环境中运行和测试安装程序也能够验证代码是否在开发和测试环境中存在依然的假设。</p>
+<p>将部署放到最后意味着可能需要更复杂地解决代码中的预估。在IDE中你能完全掌控环境，这看起来是个好主意，但也可能使部署过程变得更加复杂。早点了解全局利弊总比晚点知道好。</p>
+<p>相比于还跑在开发者笔记本中的程序，“具备可部署性”似乎没有很多早期的商业价值，直到你可以在目标环境中演示你的程序这都是事实，在你提供商业价值前还有很多工作要做。如果你推迟部署是因为它微不足道，那就更是要做(提前部署)，因为它低成本。如果它非常复杂，或者有很大的不确定性，你应该对应用程序代码进行：随时试验、评估、以及重构部署过程。</p>
+<p>安装/部署过程是对你客户和专业服务团队在生产效率方面至关重要，所有你要随时测试和重构这个过程。我们测试和重构遍布整个项目的源码。部署也不能少。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/GoInAction/chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/GoInAction/chapter2/" class="post-title-link" itemprop="url">二：从入门到放弃</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-22 21:01:46" itemprop="dateCreated datePublished" datetime="2019-01-22T21:01:46+08:00">2019-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E3%80%8AGO%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">《GO语言实战》学习笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/GoInAction/chapter2/" class="post-meta-item leancloud_visitors" data-flag-title="二：从入门到放弃" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/GoInAction/chapter2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/GoInAction/chapter2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>⚠️<strong>警告</strong>⚠️<br>本书第二章不适合新手阅读！<br>本书第二章不适合新手阅读！<br>本书第二章不适合新手阅读！  </p>
+<p>如果说第一章读起来还算愉快，就像上高数课一样，刚开始老师告诉你，这是<code>Σi是求和的符号，i从0到100</code>，很好理解对吧，然后你走神一秒钟，黑板上写满了各种微积分公示和计算过程…what the fuck?!</p>
+<p>本章涉及到的知识点较多且杂：</p>
+<ul>
+<li>RSS、XML和JSON语法规则</li>
+<li>GO语言的并发操作goroutine</li>
+<li>GO语言的数据同步</li>
+<li>GO语言类型、接口的定义与使用</li>
+<li>GO语言数组、切片的定义与使用</li>
+</ul>
+<p>其实本章一开始就说了，没必要第一次就读懂本章所有内容，我想作者的本意应该只是让读者感受一下GO语言的整体和编程思想，让读者明白，自己对力量的一无所知。</p>
+<p>本章相关的源码放在<a target="_blank" rel="noopener" href="https://github.com/goinaction/code/tree/master/chapter2/sample">https://github.com/goinaction/code/tree/master/chapter2/sample</a>，我读完本章并自我感觉理解之后自己“手抄”了一遍，大体和原著框架一致，细节上有所变动，基本上可以在当前文档执行<code>go run main.go</code>查看效果。</p>
+<h2 id="我的第一个RSS阅读器"><a href="#我的第一个RSS阅读器" class="headerlink" title="我的第一个RSS阅读器"></a>我的第一个RSS阅读器</h2><p>本章其实就做了一件事，写一个自己的RSS阅读器，根据用户的rss订阅表和关键字输入，搜集网上所有含有关键字的“新闻”，并在终端打印出来。</p>
+<p>用户的rss订阅表是由json写的，大概长这个样子：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;site&quot;</span> : <span class="string">&quot;npr&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;link&quot;</span> : <span class="string">&quot;http://www.npr.org/rss/rss.php?id=1001&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;type&quot;</span> : <span class="string">&quot;rss&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;site&quot;</span> : <span class="string">&quot;npr&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;link&quot;</span> : <span class="string">&quot;http://www.npr.org/rss/rss.php?id=1008&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;type&quot;</span> : <span class="string">&quot;rss&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;site&quot;</span> : <span class="string">&quot;npr&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;link&quot;</span> : <span class="string">&quot;http://www.npr.org/rss/rss.php?id=1006&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;type&quot;</span> : <span class="string">&quot;rss&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>所以我们的RSS阅读器程序需要完成一下几个步骤：</p>
+<ol>
+<li>读取并反序列化用户订阅表——data.json</li>
+<li>为订阅表中的每个URL启动一个并发任务——新闻搜索</li>
+<li>抓到之后，根据用户输入关键字，采用正则表达式过滤</li>
+<li>将过滤结果打印至终端后，单个并发任务退出</li>
+<li>启动一个并发任务，专门监听其他新闻搜索任务是否退出</li>
+<li>等待所有新闻搜索任务退出后，程序退出</li>
+</ol>
+<p>根据以上流程，书中对整个程序设计的架构图已经表达得比较清楚了：<br><img src="https://i.loli.net/2019/01/21/5c4536f520912.png" alt="RSS阅读器程序架构图"></p>
+<p>整个工程的目录结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- sample</span><br><span class="line">    - data</span><br><span class="line">        data.json   -- 包含一组数据源 </span><br><span class="line">    - matchers</span><br><span class="line">        rss.go      -- 搜索 rss 源的匹配器 </span><br><span class="line">    - search</span><br><span class="line">        default.go  -- 搜索数据用的默认匹配器</span><br><span class="line">        feed.go     -- 用于读取 json 数据文件</span><br><span class="line">        match.go    -- 用于支持不同匹配器的接口</span><br><span class="line">        search.go   -- 执行搜索的主控制逻辑</span><br><span class="line">  main.go           -- 程序的入口 </span><br></pre></td></tr></table></figure>
+
+<h3 id="1-关于数据源data-json和feed-go"><a href="#1-关于数据源data-json和feed-go" class="headerlink" title="1. 关于数据源data.json和feed.go"></a>1. 关于数据源data.json和feed.go</h3><p>可以简单理解，<code>feed.go</code>就是<code>data.json</code>的ORM。</p>
+<ul>
+<li><code>Feed</code>是一个类型，根据订阅表的数据结构<code>site/link/type</code>来对应其内部的三个属性。</li>
+<li><code>RetrieveFeeds()</code>仅负责加载data.json文件，并反序列化所有项目，装到Feed列表里。</li>
+</ul>
+<p>搞清楚结构体的定义就行：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Feed <span class="keyword">struct</span> &#123;</span><br><span class="line">  Name <span class="keyword">string</span> <span class="string">`json:&quot;npr&quot;`</span></span><br><span class="line">  URI  <span class="keyword">string</span> <span class="string">`json:&quot;link&quot;`</span></span><br><span class="line">  Type <span class="keyword">string</span> <span class="string">`json:&quot;type&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意每个属性最后那个由反引号括起来的标签，这很重要，应为数据源是json格式，而GO语言的<code>json.Decoder</code>可以根据这个标签的内容标记对原始的json数据进行反序列化。</p>
+<h3 id="2-关于match-go接口，以及rss-go和default-go的实现"><a href="#2-关于match-go接口，以及rss-go和default-go的实现" class="headerlink" title="2. 关于match.go接口，以及rss.go和default.go的实现"></a>2. 关于match.go接口，以及rss.go和default.go的实现</h3><p>这三个文件一定要结合起来看，否则就云里雾里了。</p>
+<ul>
+<li>match模块声明了<code>Matcher.Search()</code>接口行为、结果的数据结构和统一输出结果。</li>
+<li>default/rss都是是<code>Search()</code>接口的具体实现。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// match.Matcher 定义搜索匹配接口行为</span></span><br><span class="line"><span class="keyword">type</span> Matcher <span class="keyword">interface</span> &#123;</span><br><span class="line">  Search(feed *Feed, keyword <span class="keyword">string</span>) ([]*Result, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// default.defaultMatcher 实现默认搜索匹配接口</span></span><br><span class="line"><span class="keyword">type</span> defaultMatcher <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m defaultMatcher)</span> <span class="title">Search</span><span class="params">(feed *search.Feed, searchTerm <span class="keyword">string</span>)</span> <span class="params">([]*search.Result, error)</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// rss.rssMatcher 实现rss规则的搜索匹配接口</span></span><br><span class="line"><span class="keyword">type</span> rssMatcher <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m rssMatcher)</span> <span class="title">Search</span><span class="params">(feed *search.Feed, searchTerm <span class="keyword">string</span>)</span> <span class="params">([]*search.Result, error)</span> ...</span></span><br></pre></td></tr></table></figure>
+
+<p><code>default.go</code>里其实啥也没有，它的存在只是为了容错(或者说展示一下接口最简单的运用方式)，如果再看看<code>Feed.Type</code>就会发现，它映射的data.json里的type是字符串<code>rss</code>，而主函数<code>search.Run()</code>里其实是根据类型来查找相关匹配器的，换而言之，如果type的值不是<code>rss</code>而是其他类型，程序很可能会类似C/C++语言，越界访问数组而出错。所以干脆把找不到的类型全部设置成<code>default</code>类型。</p>
+<p><code>rss.go</code>模块就是具体的Http、XML、RSS、正则匹配的实现了，这部分相对独立与整体框架，不必太拘泥于此。</p>
+<p><strong>注意一点</strong></p>
+<p>default和rss都有个<code>init()</code>函数，而且实现得也很像，正如上面说的，init函数就是负责把自己以同名的方式保存到<code>search.matchers</code>当中，确保其他模块能后通过字符串的形式找到它们，这是个search模块的私有变量。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main函数之前执行，将自己的匹配器类型注册到search模块</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> matcher rssMatcher</span><br><span class="line">  search.Register(<span class="string">&quot;rss&quot;</span>, matcher)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-关于search-go"><a href="#3-关于search-go" class="headerlink" title="3. 关于search.go"></a>3. 关于search.go</h3><p>是整个阅读器的业务逻辑实现，也就是架构图当中左半部分<code>获取数据、执行搜索、跟踪结果、显示结果</code>几大步骤的调用，它本身并不负责实现任何搜索和匹配相关的功能。</p>
+<ul>
+<li>负责调用feed模块，获取订阅表(数据源)，并保存到feeds的切片当中</li>
+<li>为每一个feed常见一个<code>goroutine</code>，具体业务由<code>Matcher</code>接口相关的实现去执行</li>
+<li>创建一个统一的<code>goroutine</code>，监听/等待所有feeds匹配业务执行结束</li>
+</ul>
+<p>我认为<code>search.Run()</code>比较重要，关于<code>Matcher接口、JSON/XML、http</code>等其他模块的实现看不懂也没关系，书后面的相关章节会深入解析，而Run函数中关于<code>goroutine</code>的并发启动和<code>chan</code>数据通道这两个概念一定要搞清楚。</p>
+<p>以最简单的主监听器waitGroup的并发启动为例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">  waitGroup.Wait()</span><br><span class="line">  <span class="built_in">close</span>(results)</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<p>关键字<code>go foo()</code>负责启动一个goroutine，紧随其后是一个闭包(当然，也可以在其他地方先定义一个函数)，在这里可以看到，<strong>GO语言启动一个“线程”有多么愉快</strong>！</p>
+<h3 id="4-关于Display-函数及其调用过程"><a href="#4-关于Display-函数及其调用过程" class="headerlink" title="4. 关于Display()函数及其调用过程"></a>4. 关于Display()函数及其调用过程</h3><p>Display是非常值得拎出来说道说道的，仔细观察就会发现<strong>Display是在所有goroutine启动完之后，才仅仅被调用了一次！</strong></p>
+<p>而该函数的内部实现却非常简单，就是个for循环：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Run</span><span class="params">(keyword <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 各种加载订阅表，匹配器之后</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 启动goroutine，等待所有任务结束，最后关闭通道</span></span><br><span class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; ... &#125;()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 根据订阅表，启动相应数量的并发任务</span></span><br><span class="line">  <span class="keyword">for</span> _, feed := <span class="keyword">range</span> feeds &#123;</span><br><span class="line">    <span class="comment">// 启动goroutine，执行新闻搜索</span></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(matcher Matcher, feed *Feed)</span></span> &#123; ... &#125;(matcher, feed)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Display仅仅被调用了一次</span></span><br><span class="line">  Display(results)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Display</span><span class="params">(results <span class="keyword">chan</span> *Result)</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span> result := <span class="keyword">range</span> results &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;%s: \n%s\n\n&quot;</span>, result.Field, result.Content)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照一个正常猿类的思维模式，如果集合被遍历完之后，循环就会自动跳出，而且由于并发情况下，一开始的<code>results</code>里面其实啥也没有，应该直接退出。而事实上的执行过程是：一旦results被写入数据，for循环就会执行一次。</p>
+<p>为什么？</p>
+<p>注意results的类型<code>chan *Result</code>，<strong>在for-range一个通道的情况下，只要通道没有被关闭，该循环就会被阻塞，一旦通道内写入数据，循环就会被唤醒，直到通道被关闭，循环跳出</strong>。(这种机制太风骚了)</p>
+<h3 id="5-关于main-go"><a href="#5-关于main-go" class="headerlink" title="5. 关于main.go"></a>5. 关于main.go</h3><p>主模块唯一值得留意的地方是<code>import _ &quot;./matchers&quot;</code>，这是刻意也是必须这样写的：  </p>
+<ol>
+<li>GO语言不允许导入一个包，却不使用它</li>
+<li>matchers里面的rss和default模块都有init函数，不导入就不会被执行，会导致程序出错</li>
+<li>下划线’_’表示一个占位符，类似for循环的占位操作，就是告诉编译器，我确实需要导入这个包，但并不调用它，我只需要它自己执行init函数</li>
+</ol>
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ol>
+<li><strong>包</strong></li>
+</ol>
+<ul>
+<li>每个代码文件都必须属于一个包，原则上包名和目录名一致</li>
+<li>不论函数还是变量，首字母大写的标识符相当于<code>public</code>，否则相当于<code>private</code></li>
+</ul>
+<ol start="2">
+<li><p>任何包内的**init()**函数，都会先于main函数执行，前提是包被导入了。</p>
+</li>
+<li><p><strong>多返回值</strong>是GO语言的一大特性，GO的很多核心库都是<code>result, err</code>两个返回值。</p>
+</li>
+<li><p>根据“江湖规矩”，如果定义一个变量需要初始化为零值，采用<code>var name type</code>声明，如果是定义变量且被赋值，则采用<code>name := value</code>的形式定义</p>
+</li>
+<li><p><strong>range</strong>关键字</p>
+</li>
+</ol>
+<ul>
+<li>可用于迭代<code>数组、字符串、切片、映射和通道</code></li>
+<li>每次迭代都有两个返回值，第一个是索引，第二个是当前元素的副本。</li>
+<li>下划线<code>&#39;_&#39;</code>表示一个占位符，就是说，“虽然你给我了，但老子就是不要”的意思</li>
+</ul>
+<ol start="6">
+<li><p><strong>defer</strong>关键字表示函数返回时才执行，可以在open一个文件后，立刻调用<code>defer close</code>，但关闭这个动作会等到调用函数返回的时候才真的执行。(妈妈再也不用担心我的句柄，so easy)</p>
+</li>
+<li><p><strong>goroutine</strong>，使用<code>go foo()</code>的形式来启动一个并发，foo也可以是一个闭包。</p>
+</li>
+<li><p><strong>channel</strong>，通过<code>chan</code>关键字声明一个通道，当使用<code>range</code>循环来遍历一个通道时，只要通道不关闭，循环就是阻塞，直到通道内的数据有变化，当通道关闭后，循环退出。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/19/" class="post-title-link" itemprop="url">便利不是一种能力</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-22 08:01:12" itemprop="dateCreated datePublished" datetime="2019-01-22T08:01:12+08:00">2019-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/19/" class="post-meta-item leancloud_visitors" data-flag-title="便利不是一种能力" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/19/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/19/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_19/">原文链接</a></p>
+<p>有关优秀API设计的重要与挑战已经说过很多了。一步到位很难，以后改起来更难。有点像把小孩举起来。经验丰富的程序员会认识到，好的API遵循统一的抽象层次，展现出一致性和对称性，并形成富有表达力的语言词汇表。唉，要意识到，知道原则并不会自动转化为合适的行为。吃甜食对你并不好。</p>
+<p>我想获取的是一个特定的API设计’策略，’而不是站在高处讲道，我一次又一次遇到：便利的论证。它最典型的就是以以下“洞察”之一开头：</p>
+<ul>
+<li>我不希望其他类必须单独调用两次才能完成这件事。</li>
+<li>如果新的方法几乎和现在的一样，为什么我还要实现它呢？我仅仅想添加一个简单的选择判断。</li>
+<li>看吧，很简单：如果第二个字符串参数是以“.txt”结尾，这个方法就可以自动假设，第一个参数是一个文件名，因此我根本不需要两种方法。</li>
+</ul>
+<p>想法是好的，但这种参数容易在代码调用API时降低可读性。一个方法的调用会像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.processNodes(text, false)</span><br></pre></td></tr></table></figure>
+<p>不了解如何实现的情况下实际上是毫无意义的，或者至少要查看下文档。这个方法更像是为了实现者的方便而设计的，而不是调用者的方便——“我不希望调用者必须单独调用两次”可以被理解为“我不想代码被分成两个方法”。如果这是为了对抗乏味、笨拙和尴尬，这些便利本质上来说也没什么错。无论如何，如果我们进一步仔细思考，解决这些症状应该是高效的、统一的且优雅的，而便利性不是必须的。APIs被认为是将复杂性隐藏在其下，所以我们可切实地期望良好的API设计需要一些努力。一个长的方法肯定会比经过一系列深思熟虑的操作更容易编写，但他会更容易使用吗？</p>
+<p>API作为一种语言的比喻可以指导我们在这些情况下做出更好的设计决策。API应该提供一种富有表达力的语言，给予下一层充足的词汇表以问答有用的问题。这并不意味着它应该为每个可能有价值的问题都提供确切的方法或动词。一个多样的词汇表能让我们精妙地表达意境。例如：我们倾向于用run来代替walk(true)，哪怕是它们本质上是一回事，仅仅是速度上的不同。一个统一且深思熟虑的API词汇可以在下一层上生动表达且易于理解。更重要是，可组合的词汇表允许程序员以你可能没有预料到的方式使用API——确实，API为用户带来了极大的便利！下次你想把一些事情归并到API方法时，请记住，英语是不存在这样一个单词的<code>MakeUpYourRoomBeQuietAndDoYourHomeWork</code>，尽管这种频繁请求方式看起来很便利。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E5%88%9B%E6%84%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E5%88%9B%E6%84%8F/" class="post-title-link" itemprop="url">《创意，未来工作方式》-读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-20 21:16:23" itemprop="dateCreated datePublished" datetime="2019-01-20T21:16:23+08:00">2019-01-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E5%88%9B%E6%84%8F/" class="post-meta-item leancloud_visitors" data-flag-title="《创意，未来工作方式》-读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E5%88%9B%E6%84%8F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E5%88%9B%E6%84%8F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本书是我难得会感觉读不下去的书，以至于读后感的书评我都懒得取了。只能大概归结于三点：</p>
+<ul>
+<li>作者比较博学，见多识广，内容很有深度，我看不懂</li>
+<li>创意(群体)管理这个领域离我太遥远，无法感同身受</li>
+<li>我读此书的时候心不在焉</li>
+</ul>
+<p>当初购买此书的时候只是被标题吸引，加之很多大咖推荐。我以为是一本讲述个人创新、个体崛起以及未来个人工作和生活方式相关的思考和观点，但就本书内容及主旨而言，只能说似是而非。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/books/%E5%88%9B%E6%84%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/GoInAction/chapter1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/GoInAction/chapter1/" class="post-title-link" itemprop="url">一：GO</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-18 16:24:59" itemprop="dateCreated datePublished" datetime="2019-01-18T16:24:59+08:00">2019-01-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E3%80%8AGO%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">《GO语言实战》学习笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/GoInAction/chapter1/" class="post-meta-item leancloud_visitors" data-flag-title="一：GO" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/GoInAction/chapter1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/GoInAction/chapter1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li>时间：2007年9月的某个下午</li>
+<li>地点：Google公司</li>
+<li>人物：<br>Rob Pike(罗勃特·派克，unix成员，参与开发UTF-8)<br>Ken Thompson(肯尼斯·汤普逊，unix和c语言作者)<br>Robert Griesemer(罗伯特·格瑞史莫，参与v8引擎、甲骨文JVM开发)</li>
+</ul>
+<p>刚刚被C++标准委员会的人叫去讨论的他们，看到了下一代C++的新颖功能，由衷地发出感慨：<code>你们还觉得C++的特性不够多，不够复杂么！</code>回到办公室，三人接着各种喷，山河日下啊，是时候展现的技术了！</p>
+<p>所以他们利用Google给他们的20%自由支配时间，开始倒腾一种新语言，要简洁、高效、便于大型复杂软件开发。由于三人都是各种领域中的翘楚，吸纳了各种语言的优点，用实力告诉全世界什么叫做——less than more。</p>
+<p>他们把这门语言命名为GO，并配了一只土拨鼠作为吉祥物，为什么呢？估计是某个下午，他们当中的谁正在撸着C++代码，然后忍无可忍蹦出一句👇：</p>
+<p><img src="https://i.loli.net/2019/01/18/5c418a238e7a3.jpeg"></p>
+<p><em>以上是我结合历史背景瞎编的</em></p>
+<hr>
+<h2 id="Why-GO？"><a href="#Why-GO？" class="headerlink" title="Why GO？"></a>Why GO？</h2><ol>
+<li><strong>较高的开发速度</strong></li>
+</ol>
+<p>大型软件往往需要极漫长的编译时间，我曾尝试过手动编译gcc、chrome等经典软件，少了1个小时出不来，而且还是在不出错的情况下。而GO程序可以在1秒内完成编译，较大型的软件也仅需几十秒。</p>
+<p>此外，GO继承了静态语言和动态语言的优势，你可以像运行脚本一样运行go语言快速看结果，也可以直接编译成二进制提高性能。同时，GO不存在像javascript的变量类型不明确的问题，类似C/C++/Java一样，如果某个变量类型错误，在编译阶段你就能定位到。</p>
+<ol start="2">
+<li><strong>为并发而生</strong></li>
+</ol>
+<p>现如今，100多核的高性能服务器早已司空见惯，而传统的编程语言如C++/Java依旧是单核思想，尽管有线程机制，但开发者不得不谨慎思考<code>全局变量、共享内存、IO</code>这些资源访问方式，从而产生大量与业务无关的代码。</p>
+<p>GO语言提供goroutine和channel两种机制，也是该语言的核心思想之一：</p>
+<ul>
+<li>goroutine负责启动某个业务函数独立运行</li>
+<li>业务所生产/消费的数据直接放到channel中<br>两个goroutine间共享一个channel，其中的数据是同步的，开发者大可不必操心所谓的<code>互斥/同步</code>等访问机制，只需专注写业务代码。</li>
+</ul>
+<ol start="3">
+<li><strong>强大的类型系统</strong></li>
+</ol>
+<p>和C语言一样，GO语言仅内置了几种如int、string等类型，同时支持开发者自定义类型。</p>
+<p>如果从面向对象的视角来看，GO和Java/C#不一样，它不支持类型继承。换而言之，类似<code>Student -&gt; Peopler -&gt; Object</code>这种类型继承的思想在GO中是不存在的。GO提供一种全新的理念——行为建模。</p>
+<p><code>如果一只动物叫起来像鸭子，那它可能就是鸭子！</code></p>
+<p>记住上面这句话，这是GO对“继承”的重新定义，提供一种叫做“接口”的概念来对各种类型进行打包组合。初识GO的时候我很不理解这个概念，毕竟接口的概念面向对象也有(简单的理解就是留给继承者去实现的方法)，我仅在此试图做个简单总结：</p>
+<p>假设我们要为某个软件实现将数据/文件拷贝到USB设备的业务，同时要便于今后千奇百怪的存储设备的扩展。</p>
+<p>如果用Java，大概会这么实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UsbDisk</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">()</span></span>;</span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UsbHDD</span> <span class="keyword">implements</span> <span class="title">UsbDisk</span> ...</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">UsbSSD</span> <span class="keyword">implements</span> <span class="title">UsbDisk</span> ...</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">file</span>.<span class="title">copyTo</span>(<span class="title">UsbDevice</span> <span class="title">device</span>)</span>;</span><br></pre></td></tr></table></figure>
+<p>说白了，为了满足<code>file.copyTo()</code>这个方法能够支持各种各样的类型，我们需要先抽象一个<code>UsbDisk </code>(不管是接口还是基类)，而实现它的<code>UsbHDD UsbSSD</code>总存在着千丝万缕的关系，否则就无法被copyTo调用。</p>
+<p>有意思的地方来了，USB口不仅可以插存储设备，还可以插鼠标、键盘、手机等，这些设备也存在读写操作，比如<code>iPhone</code>这个类没有继承或实现，或者干脆就不属于<code>UsbDisk</code>，怎么办？</p>
+<p>可能有一波自诩大师的架构者们会说：<code>哪个二货会这么干？从一开始就应该抽象一个UsbDevice</code>。是的，正如我们今天看到的，很多面向对象的框架下，数以百计的类型都有一个共同的基类——Object。</p>
+<p>但如果用GO，则完全不同：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为当前业务定义好某种接口</span></span><br><span class="line"><span class="keyword">type</span> UsbDisk <span class="keyword">interface</span> &#123;</span><br><span class="line">    Read()</span><br><span class="line">    Write()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个UsbHDD类型，实现read/write方法，但没有“继承”</span></span><br><span class="line"><span class="keyword">type</span> UsbHDD <span class="keyword">struct</span> &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d UsbHDD)</span> <span class="title">Read</span><span class="params">()</span> ...</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d UsbHDD)</span> <span class="title">Wirte</span><span class="params">()</span> ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// UsbSSD和IPhone的实现同上👆</span></span><br><span class="line"><span class="keyword">type</span> UsbSSD <span class="keyword">struct</span> &#123;&#125; ...</span><br><span class="line"><span class="comment">// 就算iPhone不属于存储设备，只要实现读写操作，一样可用</span></span><br><span class="line"><span class="keyword">type</span> IPhone <span class="keyword">struct</span> &#123;&#125; ...</span><br><span class="line"></span><br><span class="line"><span class="comment">// file.copyTo，接受任何实现UsbDisk接口方法的类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">copyTo</span><span class="params">(device UsbDisk)</span></span> &#123;</span><br><span class="line">  device.Read()</span><br><span class="line">  device.Write()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，GO语言中<code>UsbHDD UsbSSD IPhone</code>这三个类之间根本没有任何关系，也不继承<code>UsbDisk</code>，但却可以通过以下方法来调用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> hdd UsbHDD</span><br><span class="line">  <span class="keyword">var</span> ssd UsbSSD</span><br><span class="line"></span><br><span class="line">  copyTo(hdd)</span><br><span class="line">  copyTo(ssd)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是说，<code>实现了相同方法的类型(叫起来像鸭子)，可以被当作同一类型(它就是鸭子)</code>。如果再遇到业务扩展时，不需要推翻之前的架构，或者陷入“抽象”的哲学思考当中。(啊～人和咸鱼，到底有什么共性呢)</p>
+<p>PS：相比于面向对象，GO语言的接口概念比较颠覆，一口气写多了😅</p>
+<ol start="4">
+<li><strong>内存垃圾回收</strong></li>
+</ol>
+<p>还是原来的配方，还是原来的味道，本书也只是提了这么一句。我觉得垃圾回收机制根本算不上GO的优势，毕竟很多经典语言都有的功能好伐。(C/C++笑而不语，谁敢和我比经典)</p>
+<p>总之，作者的意思应该是说，憋管内存分配的问题，放心大胆地用。另外GO虽然有指针，但不是你想的那样。</p>
+<h2 id="Hello-GO！"><a href="#Hello-GO！" class="headerlink" title="Hello GO！"></a>Hello GO！</h2><p>好了，说了那么多，无非就是helloworld：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main  <span class="comment">// 每个go源码都所属一个包，参考java</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span>  <span class="comment">// 导入依赖包，参考java</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 入口函数，main函数必须在main包当中，必须！</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">&quot;Hello world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ul>
+<li>GO是一门现代计算机技术驱动下的语言</li>
+<li>GO通过goroutine和channel机制优雅地解决并发问题</li>
+<li>GO同时具备静态和动态类型语言的有点，可以二进制或脚本形式运行</li>
+<li>GO的接口思想是一种“鸭子类型”的继承概念</li>
+<li>GO同样提供内存垃圾回收管理机制</li>
+<li>GO提供了类似Java/NodeJS/dotnet一样功能丰富的包</li>
+<li><a target="_blank" rel="noopener" href="http://play.golang.org/">The Go Playground</a>可以在web上执行代码，前提是科学上网</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/18/" class="post-title-link" itemprop="url">持续学习</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-18 08:56:30" itemprop="dateCreated datePublished" datetime="2019-01-18T08:56:30+08:00">2019-01-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/18/" class="post-meta-item leancloud_visitors" data-flag-title="持续学习" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/18/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/18/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_18/">原文链接</a></p>
+<p>我们活在一个有趣的时代。随着开发(这种技能)散布于全球，你要认识到大量有能力的人可以胜任你的工作。你需要持续学习来保持市场。否则，你会变得落伍，栓死在同样的工作圈内，有一点，你将不再被需要，或者你的岗位被更便宜的外包团队拿走。</p>
+<p>那么你应该如何应对？一些老板可能比较有良心，会提供足够的培训来扩大你的能力圈。其他人可能不会拿出时间和金钱做任何的培训。为了安全起见，你需要担当起自我教育的责任。</p>
+<p>下面是让你保持学习的清单。其中有很多都可以从网上免费获取到：</p>
+<ul>
+<li>阅读书籍、杂志、博客、微博提要、网站等。如果你想要深入某个主题，考虑加入邮件群或新闻组。</li>
+<li>如果你确实想要浸泡在技术当中，动手——写代码！</li>
+<li>总要尝试去和导师一起工作。作为领路人也可能阻碍你的教育，尽管你能从任何人那里学到任何事，但你能从更聪明或比你有经验的人那里学到多得多的东西。如果你找不到一个导师，请接着找！</li>
+<li>利用虚拟导师。从网上找一些你确实很喜欢的作者和开发者，并会阅读他们写的任何东西。订阅他们的博客。</li>
+<li>获取知名的框架和库给你用。去了解他们是如何工作的，以便让你更好的利用它。如果它们是开源的，那你就太幸运了。用调试器逐步跑完一段代码，看看幕后会发生什么。你会看到代码是被一群非常聪明的人写成并审查过的。</li>
+<li>当你出错时，修复bug或带着问题跑一遍，尝试去真的了解到底发生了什么。在网上很可能有人也遇到了相同的问题，此时Google时非常有用的。</li>
+<li>加入或开启一个学习小组(社区模式)，或者你感兴趣的任何语言、技术、学科类的本地用户组。</li>
+<li>参加研讨会。如果你不能去，很多研讨会都会把他们的会谈内容免费发放到网上。</li>
+<li>通勤路程很长？听一些播客吧(听书、广播)。</li>
+<li>曾在代码库中运行静态分析工具或者IDE中看到警告？去了解所报告的内容以及为什么。</li>
+<li>听取<a target="_blank" rel="noopener" href="http://www.pragprog.com/titles/tpp/the-pragmatic-programmer">《务实的程序员》The Pragmatic Programmers</a>，每年学习一门新语言，至少是一种新技术或工具。学习分支的输出会让你在运用自己的技术栈时带来新的想法。</li>
+<li>你的学习不应该只局限于技术。学一些你工作领域的知识，可以帮助你更好的理解业务需求，帮助解决业务上的问题。学习如何高效输出——更好的工作————这是一个很不错的选项。</li>
+<li>重返校园。</li>
+</ul>
+<p>如果能有一种尼奥在矩阵中的能力就相当nice了，可以简单地把我们需要的信息下载到大脑。(不懂得，请看黑客帝国)。然而我们不行，所以需要对自己的时间负责。你不得不花费每天醒着的时光学习。每周都做一点，总比什么都没有要好。这是(起码是)你业余生活的一部分。</p>
+<p>技术迭代太快，别被甩在身后！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/17/" class="post-title-link" itemprop="url">只有在代码表达不清时才注释</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-16 08:01:33" itemprop="dateCreated datePublished" datetime="2019-01-16T08:01:33+08:00">2019-01-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/17/" class="post-meta-item leancloud_visitors" data-flag-title="只有在代码表达不清时才注释" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/17/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/17/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_17/thing_17/">原文链接</a></p>
+<p>理论与实践的不同在于实践要比理论站的更高——这一观点也适用于注释。理论上，给代码注释是很有价值的观点：便于读者掌握细节，解释将会发生什么。什么比帮助更有帮助？然而在实践中，注释通常会成为一种障碍。和其他写作形式一样，写好注释是一种能力，知道什么时候不写注释是更重要的能力。</p>
+<p>当代码格式错误时，编译器、解释器和其他工具肯定会提出反对。假如一段代码是功能性的错误，审查、静态分析、测试、日复一日的生产环境中大量的bug将浮现出来。但注释做呢？在《The Elements of Programming Style Kernighan and Plauger》指出<code>如果出错了，注释的价值为零(或负的)。</code>然而一些注释经常“乱丢”在代码库中，并以永远不可能出错的方式存在着。它们成为错误和分心的持续来源，对程序员的思维造成一种微妙的拖累。</p>
+<p>哪些注释没有技术上的错误，但对代码没有任何价值？一些注释就是噪音。鹦鹉学舌般重复代码流程对读者而言没有额外的意义——用代码和自然语言各表达一次的情况并不会让其更正确或更实际。注释掉的代码是不可执行的，所以它对读者和运行时而言没什么帮助。它很快会变得陈旧。版本相关的注释及注释掉的代码都试图解决版本控制和历史问题。但这些问题已通过版本控制工具解决(效果更好)。</p>
+<p>一些代码库中的噪声和错误注释会导致程序员忽略掉所有的注释，或通过跳过、或通过主动隐藏的方式。程序员有足够的智慧绕过任何被破坏掉的东西：折叠注释；选择一个和背景色差不多的配色方案给注释；写一个注释过滤脚本。为了避免代码库中由于程序员的创造导致的失误，以及减少真正有价值的注释被忽略掉的风险，应该像对待代码一样去对待注释。每一次注释都应该给读者带来附加值，其他存粹占空间的部分就应该被删掉或者重写。</p>
+<p>什么叫作有价值？注释应该说的事情代码不要也不能说。一段代码的注释应该说明数据结构和编程约定，其他的地方代码会‘自圆其说’。而不是糟糕的方法或类名，重命名他们。不用写一大段长函数的注释，儿时提取其中匿名函数(较小部分)，并写清楚其意图。尽可能尝试通过代码来表达。你想表达的和你代码本身表达的差异都会成为有用的候选注释。注释意味着代码自己不能说的，而不仅仅是代码没有说的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E5%BC%82%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E5%BC%82%E7%B1%BB/" class="post-title-link" itemprop="url">为什么80后不成功-《异类》读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-13 21:18:01" itemprop="dateCreated datePublished" datetime="2019-01-13T21:18:01+08:00">2019-01-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E5%BC%82%E7%B1%BB/" class="post-meta-item leancloud_visitors" data-flag-title="为什么80后不成功-《异类》读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E5%BC%82%E7%B1%BB/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E5%BC%82%E7%B1%BB/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>请认清现实，成功除了个人的不懈努力外，必须要天时地利人和。</p>
+</blockquote>
+<p>《异类：不一样的成功启示录》，看书名会误以为这本书要揭示某项成功秘籍，可能是我太笨，没有get到任何一个<code>只要这么做你就能成功</code>的观点，相反，第一感觉，这是一本反成功学的书。因为书的本意只是换个角度审视“成功”背后的规律，但这些规律大部分是天注定，根本不可能通过个人努力来改变。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/books/%E5%BC%82%E7%B1%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="# Title Beats Difficulty    001 Two Sum 100% easy   002 Add Two Numbers 100% medium   003 Longest Substring Without Repeating Characters 100% medium   004 Median of Two Sorted Arrays 100% hard   00">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LeetCode刷题">
+<meta property="og:url" content="https://ixx.life/leetcode/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="# Title Beats Difficulty    001 Two Sum 100% easy   002 Add Two Numbers 100% medium   003 Longest Substring Without Repeating Characters 100% medium   004 Median of Two Sorted Arrays 100% hard   00">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-06-05T08:00:18.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.036Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/leetcode/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>LeetCode刷题 | 自增人生
+</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content page posts-expand">
+            
+
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">LeetCode刷题
+</h1>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <table>
+<thead>
+<tr>
+<th>#</th>
+<th>Title</th>
+<th align="center">Beats</th>
+<th align="center">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/001-two_sum">Two Sum</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>002</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/002-add_two_numbers">Add Two Numbers</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>003</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/003-longest_substring_without_repeating_characters">Longest Substring Without Repeating Characters</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>004</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/004-median_of_two_sorted_arrays">Median of Two Sorted Arrays</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>005</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/005-longest_palindromic_substring">Longest Palindromic Substring</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>006</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/006-zig_zag_conversion">ZigZag Conversion</a></td>
+<td align="center">55.3%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>007</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/007-reverse_integer">Reverse Integer</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>008</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/008-string_to_integer">String to Integer(atoi)</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>009</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/009-palindrome_number">Palindrome Number</a></td>
+<td align="center">88.3%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>010</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/010-regular_expression_matching">Regular Expression Matching</a></td>
+<td align="center">-</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>011</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/011-container_with_most_water">Container With Most Water</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>012</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/012-integer_to_roman">Integer to Roman</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>013</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/013-roman_to_integer">Roman to Integer</a></td>
+<td align="center">21%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>014</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/014-longest_common_prefix">Longest Common Prefix</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>015</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/015-3sum">3Sum</a></td>
+<td align="center">39%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>016</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/016-3sum_closest">3Sum Closest</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>017</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/017-letter_combinations_of_a_phone_number">Letter Combinations of a Phone Number</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>018</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/018-4sum">4Sum</a></td>
+<td align="center">66.4%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>019</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/019-remove_nth_node_from_end_of_list">Remove Nth Node From End of List</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>020</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/020-valid_parentheses">Valid Parentheses</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>021</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/021-merge_two_sorted_lists">Merge Two Sorted Lists</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>022</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/022-generate_parentheses">Generate Parentheses</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>023</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/023-merge_k_sorted_lists">Merge K Sorted Lists</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>024</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/024-swap_nodes_in_pairs">Swap Nodes in Pairs</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>025</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/025-reverse_nodes_in_k-group">Reverse Nodes in K-Group</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>026</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/026-remove_duplicates_from-sorted_array">Remove Duplicates From Sorted Array</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>027</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/027-remove_element">Remove Element</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>028</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/028-implement_strstr">Implement strStr</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>029</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/029-divide_two_integers">Divide Two Integers</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>030</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/030-substring_with_concatenation_of_all_words">Substring with Concatenation of All Words</a></td>
+<td align="center">❌</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>031</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/031-next_permutation">Next Permutation</a></td>
+<td align="center">18.6%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>032</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/032-longest_valid_parentheses">Longest Valid Parentheses</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>033</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/033-search_in_rotated_sorted_array">Search in Rotated Sorted Array</a></td>
+<td align="center">88.3%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>034</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/034-find_first_and_last_position_of_element_in_sorted_array">Find First and Last Position of Element in Sorted Array</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>035</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/035-search_insert_position">Search Insert Position</a></td>
+<td align="center">74.8%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>036</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/036-valid_sudoku">Valid Sudoku</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>037</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/037-sudoku_solver">Sudoku Solver</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>038</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/038-count_and_say">Count and Say</a></td>
+<td align="center">75.7%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>039</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/039-combination_sum">Combination Sum</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>040</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/040-combination_sum_II">Combination Sum II</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>041</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/040-first_missing_positive">First Missing Positive</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>042</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/042-trapping_rain_water">Trapping Rain Water</a></td>
+<td align="center">98%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>043</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/043-mutiply_strings">Multiply Strings</a></td>
+<td align="center">92.6%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>044</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/044-wildcard_matching">Wildcard Matching</a></td>
+<td align="center">40.3%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>045</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/045-jump_game_ii">Jump Game II</a></td>
+<td align="center">99.8%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>046</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/046-permutations">Permutations</a></td>
+<td align="center">99.8%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>053</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/053-maximum_subarray">Maximum Subarray</a></td>
+<td align="center">82%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>058</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/058-length_of_last_word">Length of Last Word</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>066</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/066-plus_one">Plus One</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>067</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/philon/arts/tree/master/algorithm/067-add_binary">Add Binary</a></td>
+<td align="center">87.3%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>069</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/069-sqrtx">Sqrt(x)</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>070</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/070-climbing_stairs">Climbing Stairs</a></td>
+<td align="center">52.3%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>083</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/083-remove_duplicates_from_sorted_list">Remove Duplicates from Sorted List</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>088</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/088-merge_stored_array">Merge Stored Array</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>100</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/100-same_tree">Same Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>101</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/tree/master/algorithm/101-symmetric_tree">Symmertric Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>104</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/104-maximum_depth_of_binary_tree">Maximux Depth of Binary Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>107</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/107-binary_tree_level_order_traversal_ii">Binary Tree Level Order Traversal II</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>108</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/108-convert_sorted_array_to_binary_search_tree">Convert Sorted Array to Binary Search Tree</a></td>
+<td align="center">86%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>110</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/110-balanced_binary_tree">Balanced Binary Tree</a></td>
+<td align="center">55%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>111</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/111-minimum_depth_of_binary_tree">Minimum Depth of Binary Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>112</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/112-path_sum">Path Sum</a></td>
+<td align="center">74%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>118</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/118-pascals_triangle">Pascals Triangle</a></td>
+<td align="center">82.8%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>119</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Philon/arts/blob/master/algorithm/119-pascals_triangle_ii">PAscals Triangle II</a></td>
+<td align="center">76%</td>
+<td align="center">easy</td>
+</tr>
+</tbody></table>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

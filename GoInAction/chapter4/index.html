@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本章开始，进入GO语言的基本数据结构的学习。我认为无论如何还是要仔细读一遍第4-6章，和其他“胎教”类的教科书不一样，这几章内容并不是教你：int表示一种整数、汽车摩托车都是车类，轮子是一种属性，跑是一种方法、数组就是一种连续的空间。相反，以本章内容为例，单刀直入告诉你数组、切片、映射的内存结构，实现原理，以及一些高级用法，不论新手老手，读一读总能有所收获。 数组GO语言的数组类型和绝大多数其他编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="四：数组、切片、映射">
+<meta property="og:url" content="https://ixx.life/GoInAction/chapter4/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="本章开始，进入GO语言的基本数据结构的学习。我认为无论如何还是要仔细读一遍第4-6章，和其他“胎教”类的教科书不一样，这几章内容并不是教你：int表示一种整数、汽车摩托车都是车类，轮子是一种属性，跑是一种方法、数组就是一种连续的空间。相反，以本章内容为例，单刀直入告诉你数组、切片、映射的内存结构，实现原理，以及一些高级用法，不论新手老手，读一读总能有所收获。 数组GO语言的数组类型和绝大多数其他编">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/02/06/5c5a44fe9a219.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/06/5c5adc19ba042.png">
+<meta property="og:image" content="https://i.loli.net/2019/02/06/5c5aea32cb873.png">
+<meta property="article:published_time" content="2019-02-06T14:20:57.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.019Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="GO语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/02/06/5c5a44fe9a219.png">
+
+<link rel="canonical" href="https://ixx.life/GoInAction/chapter4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>四：数组、切片、映射 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/GoInAction/chapter4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          四：数组、切片、映射
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-06 22:20:57" itemprop="dateCreated datePublished" datetime="2019-02-06T22:20:57+08:00">2019-02-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E3%80%8AGO%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">《GO语言实战》学习笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/GoInAction/chapter4/" class="post-meta-item leancloud_visitors" data-flag-title="四：数组、切片、映射" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/GoInAction/chapter4/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/GoInAction/chapter4/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本章开始，进入GO语言的基本数据结构的学习。我认为无论如何还是要仔细读一遍第4-6章，和其他“胎教”类的教科书不一样，这几章内容并不是教你：<em>int表示一种整数、汽车摩托车都是车类，轮子是一种属性，跑是一种方法、数组就是一种连续的空间</em>。相反，以本章内容为例，单刀直入告诉你数组、切片、映射的内存结构，实现原理，以及一些高级用法，不论新手老手，读一读总能有所收获。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>GO语言的数组类型和绝大多数其他编程语言的思想是类似的，没有太多新东西，把基本用法掌握即可。</p>
+<h3 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建并初始化一个长度为3的数组</span></span><br><span class="line">a1 := [<span class="number">3</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="comment">// 创建并初始化一个数组，长度根据初始化元素决定</span></span><br><span class="line">a2 := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// 声明一个长度为5的数组，元素为0值</span></span><br><span class="line"><span class="keyword">var</span> a3 [<span class="number">5</span>]<span class="keyword">int</span></span><br><span class="line"><span class="comment">// 创建一个长度为5的数组，初始化个别元素</span></span><br><span class="line">a4 := [<span class="number">5</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>: <span class="number">3</span>, <span class="number">4</span>: <span class="number">55</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>看上边的代码，其他都很好理解，但是<code>a2 = [...]</code>这种形式很怪异，道理很好理解，就是<code>a2</code>的长度取决于后边定义的元素个数，但为什么要多三个点呢？能不能写成这样<code>nums := []int&#123;1, 2, 3, 4, 5&#125;</code>？</p>
+<p>答：不能🙅！！省略三个点后，nums就声明为切片了，<strong>切片可以理解为动态长度的数组，但内存结构和数组完全不同</strong>！不要图方便就彼此混淆。</p>
+<h3 id="元素访问"><a href="#元素访问" class="headerlink" title="元素访问"></a>元素访问</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// 索引访问</span></span><br><span class="line">a[<span class="number">1</span>] = <span class="number">22</span></span><br><span class="line">a[<span class="number">3</span>] = <span class="number">44</span></span><br><span class="line"><span class="comment">// 遍历访问</span></span><br><span class="line"><span class="keyword">for</span> i, v := <span class="keyword">range</span> a &#123;</span><br><span class="line">  fmt.Printf(<span class="string">&quot;a[%d] = %d\n&quot;</span>, i, v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组克隆"><a href="#数组克隆" class="headerlink" title="数组克隆"></a>数组克隆</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"><span class="comment">// 完全复制</span></span><br><span class="line">b := a</span><br><span class="line"><span class="comment">// 从a[1]开始，复制长度为3-1=2个</span></span><br><span class="line">c := a[<span class="number">1</span>:<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="指针数组"><a href="#指针数组" class="headerlink" title="指针数组"></a>指针数组</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 和数组复制类似，nums2复制了nums1的内容</span></span><br><span class="line"><span class="comment">// 但由于其元素都是指针类型</span></span><br><span class="line"><span class="comment">// 所以修改nums2时，nums1也会受影响</span></span><br><span class="line">nums1 := [...]*<span class="keyword">int</span>&#123;<span class="built_in">new</span>(<span class="keyword">int</span>), <span class="built_in">new</span>(<span class="keyword">int</span>), <span class="built_in">new</span>(<span class="keyword">int</span>)&#125;</span><br><span class="line">*nums1[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">*nums1[<span class="number">1</span>] = <span class="number">20</span></span><br><span class="line">*nums1[<span class="number">2</span>] = <span class="number">30</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> nums2 [<span class="number">3</span>]*<span class="keyword">int</span></span><br><span class="line">nums2 = nums1</span><br><span class="line">*nums2[<span class="number">2</span>] = <span class="number">99</span> <span class="comment">// 相当于修改nums1[2]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 声明一个多维(4行2列)数组</span></span><br><span class="line"> <span class="keyword">var</span> array [<span class="number">4</span>][<span class="number">2</span>]<span class="keyword">int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 声明并初始化一个多维数组</span></span><br><span class="line">array := [<span class="number">4</span>][<span class="number">2</span>]<span class="keyword">int</span>&#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">3</span>, <span class="number">4</span>&#125;, &#123;<span class="number">5</span>, <span class="number">6</span>&#125;, &#123;<span class="number">7</span>, <span class="number">8</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 声明一个多维数组，且仅初始化第一行所有列、第四行第二列</span></span><br><span class="line">array := [<span class="number">4</span>][<span class="number">2</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>: &#123;<span class="number">88</span>, <span class="number">99</span>&#125;, <span class="number">3</span>: &#123;<span class="number">1</span>: <span class="number">66</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 数组的复制和一维数组一样</span></span><br><span class="line"><span class="keyword">var</span> arr2 [<span class="number">4</span>][<span class="number">2</span>]<span class="keyword">int</span></span><br><span class="line">arr2 = array</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数中数组传参-👈-务必要留意这条！"><a href="#函数中数组传参-👈-务必要留意这条！" class="headerlink" title="函数中数组传参 👈 务必要留意这条！"></a>函数中数组传参 👈 务必要留意这条！</h3><p>数组有非常多的应用场景：内容缓存、请求/应答消息等，此类数据有可能体积较为庞大，比如默认给某个buffer开2M的空间，让它在不同的函数间传递，然而GO语言<code>函数参数中，数组是以复制的形式传递的</code>，这就会导致每次调用函数<code>压栈</code>的开销特别大，如果您在来几个递归…那后果就是灾难性的。</p>
+<p>所以，日常开发中，如果数组长度非常大，且作为一个”输入输出”参数，最好不要直接定义为数组，而是定义为数组指针。</p>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>切片是对数组的进一步抽象，以便于达到“动态”增长数组的效果。但不要简单的理解为就是在数组的连续内存尾巴后“追加”新的内存，那是不阔愣滴～</p>
+<h3 id="切片的内存结构"><a href="#切片的内存结构" class="headerlink" title="切片的内存结构"></a>切片的内存结构</h3><p>切片是一个很小的对象，如下图所示，它有3个字段：<code>地址、长度、容量</code>。</p>
+<ul>
+<li>地址：很好理解——指向数组的首地址，真正存储切片数据的地方</li>
+<li>长度：切片实际上能索引的元素个数</li>
+<li>容量：切片允许增长的元素个数</li>
+</ul>
+<p><img src="https://i.loli.net/2019/02/06/5c5a44fe9a219.png" alt="切片的内存结构"></p>
+<p><strong>✍️划重点✍️</strong></p>
+<p>对我这种新手而言，容量和长度刚开始不太好理解，感觉就是一回事。其实不然，先记住一句话：<code>长度和访问相关，容量和增长相关</code>。</p>
+<p>比如<code>slice := make([]int, 3, 5)</code>，我们创建了一个长度为3，容量为5的切片：</p>
+<ul>
+<li>如果我们试图访问第4个元素(即slice[3])时，就会报错，因为超出长度。</li>
+<li>我们可以用append追加一个新元素——<code>newSlice := append(slice, 666)</code>，此时切片长度为4，但容量依旧为5。因为长度没有超过容量，不会分配新内存。</li>
+<li>同理，我们在追加两个新元素，当长度超过了容量，容量就会直接翻倍，此时长度为6，容量为10。</li>
+</ul>
+<p><em>👀向右看齐👀：切片容量小于1000是，每次都是成倍增长。超过1000时，每次增长25%，当然，这种增长算法可能会在未来作出改变。</em></p>
+<h3 id="1-切片创建和初始化"><a href="#1-切片创建和初始化" class="headerlink" title="1. 切片创建和初始化"></a>1. 切片创建和初始化</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个空切片</span></span><br><span class="line"><span class="keyword">var</span> s1 []<span class="keyword">string</span></span><br><span class="line"><span class="comment">// 创建并初始化一个切片，注意它和数组初始化的区别</span></span><br><span class="line">s2 := []<span class="keyword">string</span>&#123;<span class="string">&quot;hello&quot;</span>, <span class="string">&quot;world&quot;</span>&#125;</span><br><span class="line"><span class="comment">// 创建一个长度为3、容量为5的切片</span></span><br><span class="line">s3 := <span class="built_in">make</span>([]<span class="keyword">string</span>, <span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>关于切片的元素访问，表面上就是个动态数组，所以它的使用和数组的形式几乎无二，这部分参考数组的内容即可。</p>
+<h3 id="2-切片复制"><a href="#2-切片复制" class="headerlink" title="2. 切片复制"></a>2. 切片复制</h3><p>切片复制和前边的数组复制大体上类似，使用方式上就不重复说明了。</p>
+<p>关键是要弄懂切片内部的“数组地址”，从“切片的内存结构”可以了解，切片本身只有3个字段，其中第1个字段是<strong>数组的地址</strong>，所以复制一个切片后，修改副本的同时，原始切片的元素也会改变。</p>
+<p><strong>但是</strong>！！！ ✍️你懂的✍️</p>
+<p>依旧是<code>长度</code>和<code>容量</code>的问题，如果不把这里搞懂，一定会遇上各种诡异的事情！请看<del>大屏幕</del>代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个切片，长度和容量均为5</span></span><br><span class="line">a := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以a[2]为起始地址，长度为4-2=2，将a切片复制给b</span></span><br><span class="line"><span class="comment">// 注意b的容量为3，因为a的实际容量是5，减去前面两个元素就为3</span></span><br><span class="line">b := a[<span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意个基本概念，尽管b的容量为3，也就是说一直延伸到a的末尾</span></span><br><span class="line"><span class="comment">// a[4] = 111 ✅ 因为a的长度为5，所以访问第五元素没问题</span></span><br><span class="line"><span class="comment">// b[2] = 111 ❌ 因为b的长度为2，所以最多访问到b[1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 因为a和b指向同一个数组的不同地址 👈 务必理解</span></span><br><span class="line">b[<span class="number">1</span>] = <span class="number">666</span>         <span class="comment">// 相当于a[3] = 666</span></span><br><span class="line">b = <span class="built_in">append</span>(b, <span class="number">777</span>) <span class="comment">// 相当于追加b[2] = 777，也相当于 a[4] = 777</span></span><br><span class="line">b = <span class="built_in">append</span>(b, <span class="number">888</span>) <span class="comment">// 相当于追加b[3] = 888，已经超出a的边界了😏</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回来修改b[0]，见证诡异的时刻！</span></span><br><span class="line">b[<span class="number">0</span>] = <span class="number">555</span> <span class="comment">// 按照上边的惯例，应该也相当于a[2] = 555</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 但实际情况...a[2] == 3，并没有被修改</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;a(%d): %v\n&quot;</span>, <span class="built_in">len</span>(a), a) <span class="comment">// a(5): [1 2 3 666 777]</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;b(%d): %v\n&quot;</span>, <span class="built_in">len</span>(b), b) <span class="comment">// b(5): [555 666 777 888]</span></span><br></pre></td></tr></table></figure>
+
+<p>从上边的例子可以看出，当<code>切片副本增长超出容量时，就会分配新内存空间，完全脱离原始切片</code>。就会看到上面，时而访问的是同一个数组，时而访问的是两个不相干的数组。如果不把这里搞懂，在各种数据缓存、函数参数传递等情况下，无疑会留下巨大的坑。</p>
+<h3 id="3-指定切片复制的容量"><a href="#3-指定切片复制的容量" class="headerlink" title="3. 指定切片复制的容量"></a>3. 指定切片复制的容量</h3><p>其实理解了切片对底层数组的内存管理(长度和容量)，其实用<code>dst := src[i:j]</code>的拷贝方式也无妨，小心一点即可。</p>
+<p>但GO语言提供了更健全的拷贝方式：<code>dst := src[i:j:k]</code>：</p>
+<ul>
+<li><code>&#39;i&#39;</code>：表示要拷贝的原切片“地址”索引</li>
+<li><code>&#39;j&#39;</code>：表示要拷贝的原切片“长度”索引</li>
+<li><code>&#39;k&#39;</code>：表示要考呗的原切片“容量”索引</li>
+</ul>
+<p>拷贝的时候限定新切片的容量是个不错的习惯，可能更好地管理内存空间，减少触发很多莫名其妙的情况。但要注意，指定的容量索引不可以超出原始切片的边界，否则就报错。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以a[2]为起始地址，长度为3-2=1，容量为3-2=1，将切片复制给b</span></span><br><span class="line">a := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">b := a[<span class="number">2</span>:<span class="number">3</span>:<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 由于b的长度和容量一样，一旦append就会分配新内存，脱离a</span></span><br><span class="line">b = <span class="built_in">append</span>(b, <span class="number">666</span>)</span><br><span class="line">b[<span class="number">0</span>] = <span class="number">555</span> <span class="comment">// a[2]不再受影响</span></span><br><span class="line"></span><br><span class="line">fmt.Printf(<span class="string">&quot;a(%d): %v\n&quot;</span>, <span class="built_in">len</span>(a), a) <span class="comment">// a(5): [1 2 3 4 5]</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;b(%d): %v\n&quot;</span>, <span class="built_in">len</span>(b), b) <span class="comment">// b(5): [555 666]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="多维切片、函数参数"><a href="#多维切片、函数参数" class="headerlink" title="多维切片、函数参数"></a>多维切片、函数参数</h3><p>多维切片同样可以理解为多维动态数组，例如二维切片的定义：  </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个二维</span></span><br><span class="line">slice := [][]<span class="keyword">int</span>&#123;&#123;<span class="number">1</span>&#125;, &#123;<span class="number">2</span>, <span class="number">3</span>&#125;, &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;&#125;</span><br><span class="line"><span class="comment">// 给第一个切片追加一个33的元素</span></span><br><span class="line">slice[<span class="number">0</span>] = <span class="built_in">append</span>(slice[<span class="number">0</span>], <span class="number">33</span>)</span><br></pre></td></tr></table></figure>
+
+<p>同时，切片本身只是个很小的对象，作为参数在函数间传递开销是很小的。就算我们定义了一个容量为100M的切片，但归根结底切片里存的仅仅是个数组的地址而已，根本不浪费栈空间。</p>
+<h2 id="映射-map"><a href="#映射-map" class="headerlink" title="映射(map)"></a>映射(map)</h2><p>映射就是一个存储键值对的无序集合。可以把它简单比作字典、哈希表之类的数据结构。</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>map的使用是非常简单且灵活的，没什么需要特别注意的地方，此外作为函数参数进行传递时，<strong>并不会</strong>创造一个副本，在函数内部修改某个映射，外部也能察觉到修改。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个空的映射</span></span><br><span class="line">a := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line"><span class="comment">// 创建一个映射，并初始化两个元素</span></span><br><span class="line">b := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;<span class="string">&quot;Red&quot;</span>: <span class="string">&quot;#da1337&quot;</span>, <span class="string">&quot;Orange&quot;</span>: <span class="string">&quot;#e95a22&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接插入一个新元素</span></span><br><span class="line">a[<span class="string">&quot;hello&quot;</span>] = <span class="number">5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用delete删除一个元素</span></span><br><span class="line"><span class="built_in">delete</span>(b, <span class="string">&quot;Red&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过键索引访问，可获取对象、是否存在两个值</span></span><br><span class="line">value, exists := b[<span class="string">&quot;Blue&quot;</span>]</span><br><span class="line"><span class="keyword">if</span> !exists &#123;</span><br><span class="line">  b[<span class="string">&quot;Blue&quot;</span>] = <span class="string">&quot;#1e90ff&quot;</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="built_in">println</span>(value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">colors := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">  <span class="string">&quot;AliceBlue&quot;</span>: <span class="string">&quot;#f0f8ff&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Coral&quot;</span>:     <span class="string">&quot;#ff7F50&quot;</span>,</span><br><span class="line">  <span class="string">&quot;DarkGray&quot;</span>:  <span class="string">&quot;#a9a9a9&quot;</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过for-range访问map</span></span><br><span class="line"><span class="keyword">for</span> key, value := <span class="keyword">range</span> colors &#123;</span><br><span class="line">  fmt.Printf(<span class="string">&quot;colors[%s] = %s\n&quot;</span>, key, value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="内部实现"><a href="#内部实现" class="headerlink" title="内部实现"></a>内部实现</h3><p>有关映射的内部实现书中讲的不多，也不是特别深入，可能因为背后的原理比较复杂，我只能把自己的理解大体做个总结，不一定准确！！</p>
+<p><img src="https://i.loli.net/2019/02/06/5c5adc19ba042.png" alt="映射的内部结构"></p>
+<p>如上图所示，map的内部就是一堆<code>桶</code>和<code>散列表</code>：</p>
+<ul>
+<li>桶：是多个键值对“打包”存放的一个连续的内存空间。</li>
+<li>散列表：是根据某种散列算法，记录着不同的“键值”存储在哪个桶里。</li>
+</ul>
+<p>简单来说，通过一个键可以计算出散列值——根据散列值找到对应的“桶”——从“桶”里把键所对应的那个值取出来。如下图所示：</p>
+<p><img src="https://i.loli.net/2019/02/06/5c5aea32cb873.png" alt="映射的工作原理"></p>
+<p>这个过程可能是非常复杂的，只需要记住：随着映射存储的增加，索引分布越均匀，访问值的速度就越快。</p>
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ol>
+<li>数组是实现切片和映射的基石，后两者本质都是对数组的封装</li>
+<li>切片为了“动态数组”，映射为了“数据字典”</li>
+<li>len函数用于返回数组、切片、映射的长度</li>
+<li>cap函数用于返回切片容量，且仅作用于切片</li>
+<li>make函数用于创建切片和映射，可以指定其长度(容量)</li>
+<li>append函数用于追加切片元素，且仅作用于切片</li>
+<li>delete函数用于删除映射元素，且仅作用于映射</li>
+<li>作为函数参数传递时，数组的开销可能是巨大的，切片和映射不存在这个问题</li>
+<li>切片追加元素，长度超过容量时，会重新分配内存，不再指向原来的</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/GoInAction/chapter4/" title="四：数组、切片、映射">https://ixx.life/GoInAction/chapter4/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GO%E8%AF%AD%E8%A8%80/" rel="tag"># GO语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/25/" rel="prev" title="不要恶搞你的测试数据">
+      <i class="fa fa-chevron-left"></i> 不要恶搞你的测试数据
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/books/%E5%8E%9F%E5%88%99/" rel="next" title="盖一座红砖房-《原则》读后感">
+      盖一座红砖房-《原则》读后感 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

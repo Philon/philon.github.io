@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本篇学习笔记除了两本书籍外，同时参考博文：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u010503121&#x2F;article&#x2F;details&#x2F;80502175 ARM的中断类型 SGI(Software Generated Interrupt): 软件中断，由程序自行产生，常用于多核通信(一个CPU通过写寄存器中断另一个CPU) PPI(Private Peripheral Interrupt):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="七：中断与时钟">
+<meta property="og:url" content="https://ixx.life/ArmLinuxDriver/chapter7/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="本篇学习笔记除了两本书籍外，同时参考博文：https:&#x2F;&#x2F;blog.csdn.net&#x2F;u010503121&#x2F;article&#x2F;details&#x2F;80502175 ARM的中断类型 SGI(Software Generated Interrupt): 软件中断，由程序自行产生，常用于多核通信(一个CPU通过写寄存器中断另一个CPU) PPI(Private Peripheral Interrupt):">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-20T23:23:37.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.018Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="ARM">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="驱动开发">
+<meta property="article:tag" content="嵌入式">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/ArmLinuxDriver/chapter7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>七：中断与时钟 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/ArmLinuxDriver/chapter7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          七：中断与时钟
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-21 07:23:37" itemprop="dateCreated datePublished" datetime="2019-05-21T07:23:37+08:00">2019-05-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ARM-Linux%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">ARM-Linux驱动开发</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ArmLinuxDriver/chapter7/" class="post-meta-item leancloud_visitors" data-flag-title="七：中断与时钟" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ArmLinuxDriver/chapter7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ArmLinuxDriver/chapter7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本篇学习笔记除了两本书籍外，同时参考博文：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010503121/article/details/80502175">https://blog.csdn.net/u010503121/article/details/80502175</a></p>
+<h2 id="ARM的中断类型"><a href="#ARM的中断类型" class="headerlink" title="ARM的中断类型"></a>ARM的中断类型</h2><ul>
+<li>SGI(Software Generated Interrupt): 软件中断，由程序自行产生，常用于多核通信(一个CPU通过写寄存器中断另一个CPU)</li>
+<li>PPI(Private Peripheral Interrupt): 私有中断，中断信号只绑定给某个CPU</li>
+<li>SPI(Shared Peripheral Interrupt): 共享中断，中断信号可以路由给任何CPU</li>
+</ul>
+<h2 id="顶半部和底半部"><a href="#顶半部和底半部" class="headerlink" title="顶半部和底半部"></a>顶半部和底半部</h2><ul>
+<li>顶半部(Top Half)：处理优先级较高、紧急的硬件操作</li>
+<li>底半部(Bottom Half)：处理优先级较低、耗时的业务逻辑</li>
+</ul>
+<p>中断的处理之所以被拆分为顶半部和底半部，其实就是为了实时性，本质上两个“半部”都是为了处理同一个中断信号的相关业务逻辑，只不过这个业务逻辑可能会有轻重缓急之分，那么就把轻和急的交给顶半部，把重且缓的交给底半部。</p>
+<p>举个例子：医院的本质是给人看病，每个到访医院的病人就相当于是一次中断信号，其背后是一次完整的就诊过程。但要处理的病人多如牛毛，所以医院会先给每个病人快速挂号——顶半部，然后再去做耗时的诊断和医治——底半部。但有些病人可能不是来看病的，比如办理出院、交钱，这种事情就没必要拆分成两个流程来处理了，直接当场解决。</p>
+<p>主要记住一点：<strong>顶半部不可被中断，底半部可以</strong>。实际的中断实现要具体问题具体分析，常规情况下我们只在顶半部完成硬件信号的登记和关键信息记录，剩下的交给底半部做具体响应；但如果某些中断业务于硬件贴合非常紧密而且对实时性要求过高，那最好全部放在顶半部处理。</p>
+<h2 id="顶半部中断编程"><a href="#顶半部中断编程" class="headerlink" title="顶半部中断编程"></a>顶半部中断编程</h2><p>顶半部中断的实现相对简单：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  中断注册</span></span><br><span class="line"><span class="comment">  @irq      申请的硬件中断号</span></span><br><span class="line"><span class="comment">  @handler  中断事件响应函数，dev_id参数将被传递给它</span></span><br><span class="line"><span class="comment">  @flags    中断处理标志，上升沿触发，下降沿触发</span></span><br><span class="line"><span class="comment">  @devname  设置中断名称，通常是设备驱动程序的名称</span></span><br><span class="line"><span class="comment">  @dev      中断处理函数的传入参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">request_irq</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> irq, <span class="keyword">irq_handler_t</span> handler, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags, <span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="keyword">void</span> *dev)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  中断释放</span></span><br><span class="line"><span class="comment">  @irq  中断号</span></span><br><span class="line"><span class="comment">  @dev  由request时传入的dev参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">free_irq</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> irq,<span class="keyword">void</span> *dev)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  @irq  中断号</span></span><br><span class="line"><span class="comment">  @dev  由request时传入的dev参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">irqreturn_t</span> <span class="title">intrrupt_handler</span><span class="params">(<span class="keyword">int</span> irq, <span class="keyword">void</span>* dev)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="底半部中断编程"><a href="#底半部中断编程" class="headerlink" title="底半部中断编程"></a>底半部中断编程</h2><p>一般来说，顶半部执行完底半部实现</p>
+<h3 id="1-tasklet"><a href="#1-tasklet" class="headerlink" title="1. tasklet"></a>1. tasklet</h3><h3 id="2-工作队列"><a href="#2-工作队列" class="headerlink" title="2. 工作队列"></a>2. 工作队列</h3><h3 id="3-软中断"><a href="#3-软中断" class="headerlink" title="3. 软中断"></a>3. 软中断</h3><h3 id="4-threaded-irq"><a href="#4-threaded-irq" class="headerlink" title="4. threaded_irq"></a>4. threaded_irq</h3><h2 id="内核定时器"><a href="#内核定时器" class="headerlink" title="内核定时器"></a>内核定时器</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct timer_list</span></span><br><span class="line"><span class="function"><span class="title">init_timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">add_timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">del_timer</span><span class="params">()</span></span></span><br><span class="line"><span class="function"><span class="title">mod_timer</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="内核延时"><a href="#内核延时" class="headerlink" title="内核延时"></a>内核延时</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ndelay()</span><br><span class="line">udelay()</span><br><span class="line">mdelay()</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/ArmLinuxDriver/chapter7/" title="七：中断与时钟">https://ixx.life/ArmLinuxDriver/chapter7/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91/" rel="tag"># 驱动开发</a>
+              <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" rel="tag"># 嵌入式</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/books/%E7%9A%AE%E5%9B%8A/" rel="prev" title="小镇青年——《皮囊》读后感">
+      <i class="fa fa-chevron-left"></i> 小镇青年——《皮囊》读后感
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/40/" rel="next" title="安装我">
+      安装我 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

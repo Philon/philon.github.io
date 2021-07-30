@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在很多软件开发中，单元测试是最为基础且最有效的软件质量保证手段。我个人是搞C语言开发出身，想当年，printf打天下，从来就没怕过谁。而后来逐步接触C#&#x2F;Java等企业级的编程语言，才明白单元测试对功能模块和业务的重要性，加之现在IDE的强悍，查错效率也是极高的。 GO语言也提供了相对完善的测试框架——testing包，其实这类内容网上一搜一大把，作者却将其作为本书的最后一章单独提出来，想必他也清">
+<meta property="og:type" content="article">
+<meta property="og:title" content="九：测试和性能">
+<meta property="og:url" content="https://ixx.life/GoInAction/chapter9/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="在很多软件开发中，单元测试是最为基础且最有效的软件质量保证手段。我个人是搞C语言开发出身，想当年，printf打天下，从来就没怕过谁。而后来逐步接触C#&#x2F;Java等企业级的编程语言，才明白单元测试对功能模块和业务的重要性，加之现在IDE的强悍，查错效率也是极高的。 GO语言也提供了相对完善的测试框架——testing包，其实这类内容网上一搜一大把，作者却将其作为本书的最后一章单独提出来，想必他也清">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-03-17T13:00:31.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.019Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="GO语言">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/GoInAction/chapter9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>九：测试和性能 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/GoInAction/chapter9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          九：测试和性能
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-17 21:00:31" itemprop="dateCreated datePublished" datetime="2019-03-17T21:00:31+08:00">2019-03-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E3%80%8AGO%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">《GO语言实战》学习笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/GoInAction/chapter9/" class="post-meta-item leancloud_visitors" data-flag-title="九：测试和性能" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/GoInAction/chapter9/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/GoInAction/chapter9/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在很多软件开发中，单元测试是最为基础且最有效的软件质量保证手段。我个人是搞C语言开发出身，想当年，<code>printf</code>打天下，从来就没怕过谁。而后来逐步接触C#/Java等企业级的编程语言，才明白单元测试对功能模块和业务的重要性，加之现在IDE的强悍，查错效率也是极高的。</p>
+<p>GO语言也提供了相对完善的测试框架——testing包，其实这类内容网上一搜一大把，作者却将其作为本书的最后一章单独提出来，想必他也清楚“测试”对软件开发而言的地位。</p>
+<p>所以，就我个人而言，最后一章不难，主要是学习如何全方位地做软件测试，即<code>testing</code>包和<code>go test</code>命令的使用，这些内容很重要，包括:</p>
+<ul>
+<li>如何创建单元测试</li>
+<li>如何模拟生产环境</li>
+<li>如何测试性能</li>
+</ul>
+<h2 id="GO语言单元测试"><a href="#GO语言单元测试" class="headerlink" title="GO语言单元测试"></a>GO语言单元测试</h2><ol>
+<li>确保文件名为<code>xxx_test.go</code>的形式</li>
+<li>确保单元测试函数为<code>TestXXX(t *testing.T)</code>的形式</li>
+<li>使用<code>go test</code>直接运行所有的测试文件</li>
+</ol>
+<p>此外，本书还按场景提供了不同的测试方法，主要有：</p>
+<ul>
+<li><strong>基础单元测试</strong>：最常规的，按照预期值测试</li>
+<li><strong>表组测试</strong>：多个输入值，多个预期值测试</li>
+<li><strong>模仿调用</strong>：本地模拟服务端，排除网络问题，仅测试业务</li>
+<li><strong>端点测试</strong>：针对类似RESTful结构，测试某个单一路径功能</li>
+</ul>
+<p>为了说明这些测试是如何实现和使用的，我们需要先声明两个全局变量，后续的所有代码中都会调用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 如果测试通过，在行尾打✅</span></span><br><span class="line"><span class="keyword">const</span> checkMark = <span class="string">&quot;\u2713&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果测试失败，在行尾打❌</span></span><br><span class="line"><span class="keyword">const</span> ballotX = <span class="string">&quot;\u2717&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-基础单元测试"><a href="#1-基础单元测试" class="headerlink" title="1.基础单元测试"></a>1.基础单元测试</h3><p>以下测试是按照书中的举例写的，主要是对某个url发起http请求，正常情况下服务端都会响应200表示OK，但也可能会出现404找不到，或者干脆连接超时的情况出现。这段代码中的url是书中提供的，<strong>会出现404或超时</strong>：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestSingle</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">  url := <span class="string">&quot;http://www.goinggo.net/feeds/posts/default?alt=rss&quot;</span></span><br><span class="line">  statusCode := <span class="number">200</span></span><br><span class="line"></span><br><span class="line">  t.Log(<span class="string">&quot;测试下载: &quot;</span>, url)</span><br><span class="line">  &#123;</span><br><span class="line">    t.Logf(<span class="string">&quot;\t预期收到状态码为: %d&quot;</span>, statusCode)</span><br><span class="line">    &#123;</span><br><span class="line">      resp, err := http.Get(url)</span><br><span class="line">      <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        t.Fatal(<span class="string">&quot;\t\t调用http.Get()发起请求失败: &quot;</span>, ballotX, err)</span><br><span class="line">      &#125;</span><br><span class="line">      t.Log(<span class="string">&quot;\t\t调用http.Get()发起请求&quot;</span>, checkMark)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">      <span class="keyword">if</span> resp.StatusCode == statusCode &#123;</span><br><span class="line">        t.Logf(<span class="string">&quot;\t\t收到状态码 %v %v&quot;</span>, resp.StatusCode, checkMark)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        t.Errorf(<span class="string">&quot;\t\t收到状态码 %v %v&quot;</span>, resp.StatusCode, ballotX)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ---------- go test -v ----------</span></span><br><span class="line">=== RUN   TestSingle</span><br><span class="line">--- FAIL: TestSingle (<span class="number">3.69</span>s)</span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">18</span>: 测试下载:  http:<span class="comment">//www.goinggo.net/feeds/posts/default?alt=rss</span></span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">20</span>:    预期收到状态码为: <span class="number">200</span></span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">26</span>:            调用http.Get()发起请求 ✓</span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">32</span>:            收到状态码 <span class="number">404</span> ✗</span><br></pre></td></tr></table></figure>
+
+<p>如上述代码可以看到，所谓<strong>单元测试，主要是通过执行某些过程，比对其结果是否符合预期</strong>。这里发起http请求只是过程，而<strong>断言</strong><code>http.Get()</code>函数会成功以及服务端响应200是预期。从执行结果可以看到，请求成功了，但服务端响应状态码为404，不符合预期，测试失败。</p>
+<p>注意<code>t.Log</code>的使用，基本是从log包定制的一套日志实例，主要是能在每行日志前增加测试的源文件及行号，便于错误定位。</p>
+<p>另外，源码中每个<code>t.Log</code>后都带有一对大括号，这个不是必须的，因为几乎每个日志内容里都含有<code>\t</code>缩进符，估计作者的本意是为了直观地表示缩进吧。</p>
+<h3 id="2-表组测试"><a href="#2-表组测试" class="headerlink" title="2.表组测试"></a>2.表组测试</h3><p>很多时候我们都需要用大量且不同的参数来测试某个函数的执行结果是否都符合预期，而这就是表组测试。其实表组测试没有什么特别的地方，无非就是<strong>把测试参数装进数组里，通过遍历测试每一个</strong>。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestMulti</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">  urls := []<span class="keyword">struct</span> &#123;</span><br><span class="line">    url  <span class="keyword">string</span></span><br><span class="line">    code <span class="keyword">int</span></span><br><span class="line">  &#125;&#123;</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;https://www.github.com&quot;</span>,</span><br><span class="line">      http.StatusOK, <span class="comment">// 200</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      <span class="string">&quot;https://www.github.com/philon/123&quot;</span>,</span><br><span class="line">      http.StatusNotFound, <span class="comment">// 404</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  t.Log(<span class="string">&quot;测试访问一组URL，并检查状态码是否正确&quot;</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">for</span> _, u := <span class="keyword">range</span> urls &#123;</span><br><span class="line">      t.Logf(<span class="string">&quot;\t对&#x27;%s&#x27;发起请求，预期状态码为: %d&quot;</span>, u.url, u.code)</span><br><span class="line">      &#123;</span><br><span class="line">        resp, err := http.Get(u.url)</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">          t.Fatal(<span class="string">&quot;\t\t发起请求失败: &quot;</span>, err, ballotX)</span><br><span class="line">        &#125;</span><br><span class="line">        t.Log(<span class="string">&quot;\t\t发起请求成功&quot;</span>, checkMark)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line">        <span class="keyword">if</span> resp.StatusCode == u.code &#123;</span><br><span class="line">          t.Log(<span class="string">&quot;\t\t收到状态码: &quot;</span>, resp.StatusCode, checkMark)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          t.Log(<span class="string">&quot;\t\t收到状态码: &quot;</span>, resp.StatusCode, ballotX)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ---------- go test -v ----------</span></span><br><span class="line">=== RUN   TestMulti</span><br><span class="line">--- PASS: TestMulti (<span class="number">1.77</span>s)</span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">52</span>: 测试访问一组URL，并检查状态码是否正确</span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">55</span>:    对<span class="string">&#x27;https://www.github.com&#x27;</span>发起请求，预期状态码为: <span class="number">200</span></span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">61</span>:            发起请求成功 ✓</span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">65</span>:            收到状态码:  <span class="number">200</span> ✓</span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">55</span>:    对<span class="string">&#x27;https://www.github.com/philon/123&#x27;</span>发起请求，预期状态码为: <span class="number">404</span></span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">61</span>:            发起请求成功 ✓</span><br><span class="line">    unit_test.<span class="keyword">go</span>:<span class="number">65</span>:            收到状态码:  <span class="number">404</span> ✓</span><br></pre></td></tr></table></figure>
+
+<p>如上，<strong>把多个测试参数放进一个[]struct{}形式的切片中，并通过for-range循环遍历测试</strong>，就是表组测试的最基本用法。剩下的内容和第一节的单元测试没什么不同。</p>
+<h3 id="3-模仿调用"><a href="#3-模仿调用" class="headerlink" title="3.模仿调用"></a>3.模仿调用</h3><p>前两个例子一直是对某些网站发起请求，如果对面的服务器挂了怎么办？或者我们的服务器根本就还没上线怎么办？模仿调用就是<strong>模拟服务端</strong>的意思，模拟出一个服务器，对其发起请求，主要测试业务逻辑是否正常。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mockServer 创建虚拟http服务</span></span><br><span class="line"><span class="comment">// 默认响应200，并返回一段json数据</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">mockServer</span><span class="params">()</span> *<span class="title">httptest</span>.<span class="title">Server</span></span> &#123;</span><br><span class="line">  f := <span class="function"><span class="keyword">func</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">    w.WriteHeader(<span class="number">200</span>)</span><br><span class="line">    w.Header().Set(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/json&quot;</span>)</span><br><span class="line">    fmt.Fprintln(w, <span class="string">`&#123;&quot;id&quot;: 9527, &quot;login&quot;: &quot;philon&quot;&#125;`</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> httptest.NewServer(http.HandlerFunc(f))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestMocking</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">...</span><br><span class="line">  <span class="comment">// 在测试函数中将模拟服务器启动</span></span><br><span class="line">  server := mockServer()</span><br><span class="line">  <span class="keyword">defer</span> server.Close()</span><br><span class="line">  <span class="comment">// 通过server.URL可访问到模拟服务器</span></span><br><span class="line">  resp, err := http.Get(server.URL)</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码没有完，因为除了模拟http服务端的部分，其它都会基础单元测试一样，就不重复了。<strong>http服务端模拟主要通过httptest包实现的</strong>，把这部分用法搞清楚即可。</p>
+<h3 id="4-端点测试"><a href="#4-端点测试" class="headerlink" title="4.端点测试"></a>4.端点测试</h3><p>众所周知，RESTFul的基本设计思想就是通过URL资源访问，并以<code>GET|POST|PUT|DELETE|PATCH</code>等请求方法区别不同的业务逻辑，比如：</p>
+<ul>
+<li>GET /users 获取用户列表</li>
+<li>PATCH /users/philon/profile 更新用户配置</li>
+<li>DELETE /users/philon 删除指定用户</li>
+</ul>
+<p>所谓的端点也就是<strong>访问路径</strong>的意思，比如/users、/users/philon这样的路径，并针对不同的请求方法进行测试。</p>
+<p><strong>自建http服务端</strong></p>
+<p>要完成这部分的演示，需要先自建一个RESTFul的服务端，或者说传统的MVC架构的服务，为了简单说明，这里仅仅实现<code>GET /users</code>获取用户列表的功能。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Routes 全局路由映射</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Routes</span><span class="params">()</span></span> &#123;</span><br><span class="line">  http.HandleFunc(<span class="string">&quot;/users&quot;</span>, Users)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Users 用户列表控制器</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Users</span><span class="params">(rw http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">  list := []<span class="keyword">struct</span> &#123;</span><br><span class="line">    ID   <span class="keyword">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">    Name <span class="keyword">string</span> <span class="string">`json:&quot;username&quot;`</span></span><br><span class="line">  &#125;&#123;</span><br><span class="line">    &#123;<span class="number">1234</span>, <span class="string">&quot;张三&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4567</span>, <span class="string">&quot;李四&quot;</span>&#125;,</span><br><span class="line">    &#123;<span class="number">5678</span>, <span class="string">&quot;王五&quot;</span>&#125;,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  rw.Header().Set(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/json&quot;</span>)</span><br><span class="line">  rw.WriteHeader(http.StatusOK)</span><br><span class="line">  json.NewEncoder(rw).Encode(&amp;list)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  Routes()</span><br><span class="line">  log.Println(<span class="string">&quot;Http server start listening: &quot;</span>, <span class="number">4000</span>)</span><br><span class="line">  http.ListenAndServe(<span class="string">&quot;:4000&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面这段代码通过<code>go run main.go</code>将该服务启动后，可以通过浏览器直接访问<code>http://localhost:4000/users</code>即可看到结果，这里用curl请求也一样：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ curl -i localhost:4000/users</span><br><span class="line"></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: application/json</span><br><span class="line">Date: Fri, 15 Mar 2019 00:18:13 GMT</span><br><span class="line">Content-Length: 98</span><br><span class="line"></span><br><span class="line">[&#123;<span class="string">&quot;id&quot;</span>:1234,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;张三&quot;</span>&#125;,&#123;<span class="string">&quot;id&quot;</span>:4567,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;李四&quot;</span>&#125;,&#123;<span class="string">&quot;id&quot;</span>:5678,<span class="string">&quot;username&quot;</span>:<span class="string">&quot;王五&quot;</span>&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>如此这般，一个最简单的RESTFul设计风格的http服务端就做好了。但是！！这并不是端点测试的全部，注意<code>Routes()</code>函数里的<code>http.HandleFunc(&quot;/users&quot;, Users)</code>，这才是路由功能的实现，将路径<code>/users</code>只想Users函数。设想一下，如果你把Users相关的服务端的业务代码写完，你会如何测试？搭建http环境——跑服务代码——跑客户端请求代码——看结果？NO，效率太低了。因为只是测试Users函数有没有正确返回json数据，所以可以仿照<code>3.模仿调用</code>的方式虚拟一个http服务器，直接去测试<code>/users</code>路径。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// 初始化路径，给端点测试用</span></span><br><span class="line">  Routes()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestController</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">  t.Log(<span class="string">&quot;测试服务端点&quot;</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    req, err := http.NewRequest(<span class="string">&quot;GET&quot;</span>, <span class="string">&quot;/users&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">      t.Fatal(<span class="string">&quot;\t创建请求对象失败 &quot;</span>, ballotX, err)</span><br><span class="line">    &#125;</span><br><span class="line">    t.Log(<span class="string">&quot;\t创建请求对象成功 &quot;</span>, checkMark)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// httptest创建虚拟服务器</span></span><br><span class="line">    rw := httptest.NewRecorder()</span><br><span class="line">    http.DefaultServeMux.ServeHTTP(rw, req)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> rw.Code != http.StatusOK &#123;</span><br><span class="line">      t.Fatalf(<span class="string">&quot;\t收到状态码 %d 不符合预期 %v&quot;</span>, rw.Code, ballotX)</span><br><span class="line">    &#125;</span><br><span class="line">    t.Log(<span class="string">&quot;\t收到状态码&quot;</span>, rw.Code, checkMark)</span><br><span class="line"></span><br><span class="line">    users := []<span class="keyword">struct</span> &#123;</span><br><span class="line">      ID   <span class="keyword">int</span>    <span class="string">`json:&quot;id&quot;`</span></span><br><span class="line">      Name <span class="keyword">string</span> <span class="string">`json:&quot;username&quot;`</span></span><br><span class="line">    &#125;&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> err := json.NewDecoder(rw.Body).Decode(&amp;users); err != <span class="literal">nil</span> &#123;</span><br><span class="line">      t.Fatal(<span class="string">&quot;响应不是json类型的数据 &quot;</span>, ballotX)</span><br><span class="line">    &#125;</span><br><span class="line">    t.Log(<span class="string">&quot;\tJSON反序列化成功 &quot;</span>, checkMark)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(users) == <span class="number">3</span> &#123;</span><br><span class="line">      t.Log(<span class="string">&quot;\t用户列表长度检查 &quot;</span>, checkMark)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      t.Log(<span class="string">&quot;\t用户列表长度检查 &quot;</span>, ballotX)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ul>
+<li>GO语言自带测试框架testing包</li>
+<li>go test用来运行测试</li>
+<li>测试文件必须以_test.go结尾</li>
+<li>测试有单元测试、表组测试、模拟测试、端点测试</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/GoInAction/chapter9/" title="九：测试和性能">https://ixx.life/GoInAction/chapter9/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GO%E8%AF%AD%E8%A8%80/" rel="tag"># GO语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/books/%E8%A4%9A%E6%97%B6%E5%81%A5%E4%BC%A0/" rel="prev" title="时代的勇士-《褚时健传》读后感">
+      <i class="fa fa-chevron-left"></i> 时代的勇士-《褚时健传》读后感
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/books/%E6%BF%80%E8%8D%A1%E5%8D%81%E5%B9%B4%E6%B0%B4%E5%A4%A7%E9%B1%BC%E5%A4%A7/" rel="next" title="那一年我没买房-《激荡十年，水大鱼大》书评">
+      那一年我没买房-《激荡十年，水大鱼大》书评 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个程序员的成长足迹">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自增人生">
+<meta property="og:url" content="https://ixx.life/page/4/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="一个程序员的成长足迹">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/page/4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/76/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/76/" class="post-title-link" itemprop="url">单一职责原则</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-17 19:40:09" itemprop="dateCreated datePublished" datetime="2020-02-17T19:40:09+08:00">2020-02-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/76/" class="post-meta-item leancloud_visitors" data-flag-title="单一职责原则" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/76/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/76/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原文：<a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_76/">The Single Responsibility Principle</a></p>
+<p>好的设计的一个最基本原则是：</p>
+<pre><code>将改变原因相同的事物放到一起，将改变原因不同的事物分开。
+</code></pre>
+<p>这个原则常被认为是<em>单一职责原则</em>，或者说SRP。简而言之，它是说一个子系统、模块、类、甚至是一个函数，不应该有超过一种以上的改变原因。下面这个例子是一个拥有分别处理业务规则、报告和数据库的方法的类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Emloyee</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Money <span class="title">calculatePay</span><span class="params">()</span> ...</span></span><br><span class="line"><span class="function">	<span class="keyword">public</span> String <span class="title">reportHours</span><span class="params">()</span> ...</span></span><br><span class="line"><span class="function">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span> ...</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>有些程序员可能会觉得把这三个函数放到同一个类中是非常完美的。毕竟，类被认为是执行公共变量操作的函数的集合。然而，问题在于这三个函数是对完全不同的原因作出的改变。<code>calculatePay</code>函数是作用于薪酬计算时的业务规则。<code>reportHours</code>函数作用于某人期望得到不同格式的报告。<code>save</code>函数作用于数据库管理员变更数据库时。这三种变化原因的结合会让<code>Employee</code>变得不稳定。其中任何原因都会使其发生变化。更重要的是，任何依赖于<code>Employee</code>的类也会跟着受到影响。</p>
+<p>好的系统设计意味着我们可以把组件独立部署到系统里。独立部署意味着即使我们修改了某个组件，也没必要去重新部署其他部分。然而，如果<code>Employee</code>被大量地应用到其他组件的类中，每次我们改变Employee都会使其他组件被重新部署，从而抵消了组件设计（或着说SOA，如果你喜欢髦的术语）的好处。下面这种简单的分离就能解决这个问题：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Money <span class="title">calculatePay</span><span class="params">()</span> ...</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class EmployeeReporter </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">reportHours</span><span class="params">(Employee e)</span> ...</span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> class EmployeeRepository </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">(Employee e)</span> ...</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>每个类都有属于自己的归属。确切地说，所有的报告类都可以放在报告组件中。所有的关系数据库类都可以放在资料库中。所有的业务规则都可以放在业务规则组件中。</p>
+<p>精明的读者可能注意到，上边的解决方案仍然是依赖关系。<code>Employee</code>仍然受其它类的依赖。如果Employee被修改了，其他类似乎也不得不重新编译和部署。因此Employee做不到修改后独立部署。然而，其他的类是可以做到修改后独立部署的。对它们当中任何一个的修改都不会迫使其它的重新编译部署。甚至Employee通过谨慎地使用<em>依赖倒置原则</em>（DIP）也能够独立部署，但这是另一本书的主题了。</p>
+<p>谨慎应用SRP，把不同变化原因的事物分离开来，是创建具备独立可部署的组件结构的设计关键之一。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/75/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/75/" class="post-title-link" itemprop="url">简单源自减法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-16 11:01:14" itemprop="dateCreated datePublished" datetime="2020-02-16T11:01:14+08:00">2020-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/75/" class="post-meta-item leancloud_visitors" data-flag-title="简单源自减法" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/75/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/75/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原文：<a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_75/">Simplicity Comes from Reduction</a></p>
+<p><strong>“这个重做…”</strong></p>
+<p>我老板一边说着一边把他的手指去按Delete键。当我的代码（一行一行的）灰飞烟灭后，我盯着电脑屏幕在哪发呆。</p>
+<p>我老板，Stefan，并不总这样直言不讳，但他看得出什么是烂代码。并且他很清楚如何对付它。</p>
+<p>我的定位是一名程序员初学者，体力充沛且富有激情，就是不知道如何变成。我有种可怕的思维倾向，即解决任何问题都是去某些地方增加变量，或者在行内throw。那是糟糕的一天，本来是要通过每次修改来优化这项逻辑的，但我的代码逐渐增大，越来越复杂，已经不能像原来一样工作了。</p>
+<p>自然的，尤其是当你很焦躁的时候，本来只是想对现有代码进行最小修改，却越改越糟糕。大部分程序员都会维持烂代码，相比于恢复原状，重来明显要花费更多精力。对于那些可以正常工作的代码而言，这是正确的选择，但对于那些“跑飞”的来说，则无济于事。</p>
+<p>浪费在挽救不良工作上的时间已经超出了它应有的。一旦某项事物变成了资源包袱，它就应该被抛弃。尽快！</p>
+<p>并不是说所有的类型、命名、格式都简单粗暴的扔掉。我老板的反应太极端了，但它却是强迫我第二遍（偶尔第三遍）重新思考代码。当然，代码被无情地重构、转移或删除的机制，确实是修复烂代码的最佳方案。</p>
+<p>代码应该简洁。应该最小化变量、函数、声明，以及其他必要语言语法的数量。多余的行、多余的变量…多余的任何事，确实，应该立即清除掉。剩下的那些足够完成算法或性能计算的工作即可。除此以外都是多余的，不必要的噪音，偶然的引入，掩盖了流程也隐藏了重要的内容。</p>
+<p>当然，如果这样不行，那就把它们删掉并重来。通过这种方式抽出一个人的记忆，通常可以帮助消除大量不必要的混乱。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/rework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/rework/" class="post-title-link" itemprop="url">《Rework》读书笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-15 16:32:33" itemprop="dateCreated datePublished" datetime="2020-02-15T16:32:33+08:00">2020-02-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/rework/" class="post-meta-item leancloud_visitors" data-flag-title="《Rework》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/rework/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/rework/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>《重来：更为简单的商业思维》的作者是37signals的合伙人，这是一家软件开发商，只有十多名员工——遍布于两大洲的8座城市里老死不相往来，他们“拒绝长大”，没有财务规划和5年计划，办公开支甚少，却盈利颇丰。好神奇，这么“小”的一家公司，是怎么活下来的。</p>
+<p><strong>一、放下陈旧观念吧</strong></p>
+<p>失败不一定是成功之母，失败只能帮你鉴别掉过的坑，还有很多从没见过的坑等着你掉呢。</p>
+<p>不要被“现实世界”束缚，信息爆炸的时代，却要强迫一群平庸的人定时定点聚在一起混日子，真的好么？</p>
+<p>工作狂不是英雄，透支身体只会出更多的错，还会给身边的人造成不必要的压力。</p>
+<p>少去做中长期规划，所谓的中长期计划大多是拍脑袋瞎猜而已！你要知道人们对工作量的预估其实是非常不靠谱的。</p>
+<p>公司大了，变革性降低，精力分散，灵活度下降，成本升高，你确定自己驾驭得了？</p>
+<p><strong>二、做一个行动派</strong></p>
+<p>“没时间”只是你的借口，那句话怎么说来着…就像乳沟，挤一挤总是有的。</p>
+<p>当然，你还有很多堂而皇之的借口，比如喜欢开会，目标宏大、追求大而全、过早关注细节等等。这些借口的背后都指向了同一个因素——效率。</p>
+<p>效率是指事情从0到1完成的投入产出比，一定要记住这个大前提——<em>事情完成</em>。</p>
+<p>如果你喜欢半途而废，那你追求效率就毫无意义。如果你真的像有效率，应该从产品的核心出发，速战速决，把产品做出来，跑起来，然后接着改进和扩展。</p>
+<p>如果你的团队一开始就关注产品外包装该用什么字体，立项流程改怎么走，人员绩效考核方式，并总是以研究讨论的名义开会闲聊，你就知道这活是干不下去的。</p>
+<p>所以，团队里务必警惕那些懒散的伪装，有想法行动起来，把它做出来。</p>
+<p><strong>三、兵不在多而在精，将不在勇而在谋</strong></p>
+<p>现在创业的套路是“融资+烧钱+疯狂扩张”，似乎只有大体量才是王道——大而不倒，强者恒强。但是这么做的后果是公司会养的很“胖”，而不是“壮”。</p>
+<p>如果是一家正在成长的小公司，会根据业务需求本能地选择招兵买马，但你确定人人都有活干吗？一个公司百把号人相互连名字都对不上号，每天上班像是来参加化妆舞会，一哒哒二哒哒…领导说啥我做啥，领导走了我睡觉。</p>
+<p>所以，一定要在受不了的时候再招人。</p>
+<p>然后，小公司更需要独当一面的人才，有执行力的人不需要制度的鞭策，混日子的人你就是牵只老虎来盯着，他也能摸鱼。</p>
+<p>其次，招聘和留住的人才，除了有执行力，还要有能力。但要注意，不是每一个牛人都适合你。比如人家是世界500强副总裁，你一个不到10个人的小公司花重金把人家挖来又能如何？放过彼此吧。</p>
+<p>如何识别一个人是否有能力呢？其一：在实际工作中观察，对于两个披萨就能养活的团队，你要相信，谁有几斤几两大家心知肚明；其二：看他写的文章，虽然“写作能力”不等同于“工作能力”，但一篇文章写得好至少说明他思路清晰，一个思维是杂乱无章的人，你还指望他把事情做得漂亮？</p>
+<p>最后，你会发现网上招聘要求几乎都是一个模式：学历、工作年限、所在城市…你仔细想想，一个人工作是否热情和他的学历及工作年限真的相关吗？而他的工作就非得朝九晚五呆在办公室完成？</p>
+<p>很多精兵强将，明明是你自己放弃的。</p>
+<p><strong>四、要成就事业，不能只是创业</strong></p>
+<p>你的创业动机是什么？赚钱？这太庸俗了吧。梦想？毒鸡汤喝多了吧。</p>
+<p>选择创业，就会有员工、业务、客户等事物的出现。所谓梦想，就是通过这些事物的力量让世界变得更好；所谓赚钱，就是通过经营这些事物让公司盈利。梦想和赚钱应该兼而有之。只想赚钱，容易走邪门歪道；只谈梦想，一定是江湖骗子。</p>
+<p>不过现在有很多创业者走上了另类的“盈利”模式——故事融资。</p>
+<p>其实，不到万不得已不要融资。你虽然是创始人，可投资人进来后，你就有了“领导”，他只想尽早获利退出，要是弄不好就会带你走邪门歪道。此外，烧钱一时爽，你却上瘾了，不断回避公司如何真正赚钱的问题，这游戏还玩得下去么？</p>
+<p>赚钱不耽搁你的梦想，有梦想的公司才会伟大。所以，从创业之初就应该问题。</p>
+<p>其次，不要听风就是雨。要关注不变因素，拥抱经典，把自己的公司经营好。投资热潮随时再换，你跟得过来么。网红年年有，退潮后——尸横遍野。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/74/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/74/" class="post-title-link" itemprop="url">脏代码炸弹搅乱性能之道路</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-13 20:20:48" itemprop="dateCreated datePublished" datetime="2020-02-13T20:20:48+08:00">2020-02-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/74/" class="post-meta-item leancloud_visitors" data-flag-title="脏代码炸弹搅乱性能之道路" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/74/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/74/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_74/">The Road to Performance Is Littered with Dirty Code Bombs</a></p>
+<p>通常，对系统性能调优需要你修改代码。当我们需要修改代码时，每处过于复杂或高耦合的代码块都是脏代码炸弹，等着蓄谋（让程序）跑飞。脏代码造成的第一批伤亡就会成为你的日程表。倘若前进的道路是平坦的，那你很容易预估完成时间。倘若遇到那些意外的脏代码，想要做出合理的预估就难咯。</p>
+<p>试想一下你发现了某个执行热点的情况。常规的做法是将低基础算法的强度。假设你对经理的要求给出了预计3-4小时的答案。然后着手开始修复，你会很快意识到某个依赖部分被破坏了。通常关系密切的事物都是高内聚的，这次破坏更像是找到了原因并得到了解决。但如果把这里的依赖结果修复掉，那其他还在破损的抵赖部分又会发生什么呢？此外，这项依赖离它的发生出越远，你就越不可能在预估中辨别并解决它。很快，你的3-4个小时就会膨胀为3-4个星期。通常，这些意外会在日程表里放大到一两天。需要数月才能完成的“快速”重构并不常见。在这些情况中，一个有责任的团队的信誉及政治资本都会遭到极大（甚至是终极）的损害。如果我们能有个工具帮我们识别并量化这些风险。。。</p>
+<p>事实上，我们有很多量化和控制代码耦合度及复杂度的方法。软件指标可以用来计数我们代码中具体功能出现的次数。这些计数与代码质量息息相关。衡量耦合度的指标之二即扇入和扇出。类中所谓的扇出：定义为直接或间引用感兴趣类的次数。你可以理解为你的类被编译之前需要编译的其它类的数量。另一方面，扇入就是指所有其它类对这个感兴趣的类的引用次数。知道了扇入和扇出，我们就使用<code>I = fo / (fi + fo)</code>计算一个不稳定因素。若结<em>I</em>趋近于0，这个包就会很稳定。若<em>I</em>趋近于1，这个包就不稳定。稳定的包对于重新写代码是低风险的，而不稳定的包更像是充满脏代码的炸弹。重构的目标当然是使<em>I</em>更接近于0.</p>
+<p>使用指标时必须记住，它们只是经验法则。基于纯粹的数学，我们可以在<em>fo</em>不变的情况下增大<em>fi</em>，照样可以使<em>I</em>接近0.然而，又一个非常高的扇入值是很糟糕的：如果破解依赖关系，很多类就难以再修改。当然，如果不解决扇出问题，你就不可能切实降低风险，所以必须保持一定平衡。</p>
+<p>软件指标的一大缺点是，计量工具所产生的大体量的软件指标数字可能会震惊到初学者。就是说，软件指标可以变成我们争取干净代码的利器。它们可以帮助我们辨别并消除脏代码炸弹，以免它们严重影响性能调整工作。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E6%9B%BE%E5%9B%BD%E8%97%A9%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E6%9B%BE%E5%9B%BD%E8%97%A9%E4%BC%A0/" class="post-title-link" itemprop="url">一个愤青的自我修养</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-10 21:58:42" itemprop="dateCreated datePublished" datetime="2020-02-10T21:58:42+08:00">2020-02-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E6%9B%BE%E5%9B%BD%E8%97%A9%E4%BC%A0/" class="post-meta-item leancloud_visitors" data-flag-title="一个愤青的自我修养" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E6%9B%BE%E5%9B%BD%E8%97%A9%E4%BC%A0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E6%9B%BE%E5%9B%BD%E8%97%A9%E4%BC%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>早在很多年前，曾国藩这个名字就如雷贯耳。当然，我听到的情况是，人们歌颂他“尚拙”的作风与“结硬寨打呆仗”的军事思想。总之就是不去投机取巧，一门心思脚踏实地把自己的基础打扎实，以达到无招胜有招，战无不胜的境界。</p>
+<p>脚踏实地——当然是政治正确的口号，但试问有几个人会真的贯彻执行。我之前从未读过曾国藩相关书籍，但是听到他这种精神后，自然对其产生迷之崇拜。就像一个愤青面对自己的祖国，总是一副恨铁不成钢的样子。往深了，也说不来为什么，就只能人云亦云地喊喊口号罢了。</p>
+<p>所以我想认真了解一下这个人，便通读了张宏杰这本《曾国藩传》。坦白讲，对于读过那么几本书的我而言，能识别出出作者在本书中有浓烈的个人主观色彩，但这并不影响它成为一本好书，也不影响我对曾国藩个人的判断。</p>
+<h2 id="我眼中的曾国藩"><a href="#我眼中的曾国藩" class="headerlink" title="我眼中的曾国藩"></a>我眼中的曾国藩</h2><p>我觉得，曾国藩的伟大在于——平易近人。</p>
+<p>怎么说呢？</p>
+<p>你要是从后往前看，会看到曾国藩面对晚清颓势，力挽狂澜，创湘军、灭太平、兴百姓、办洋务，近乎以一人之力为当朝续命五十年。同时，他朋友门生遍天下，且多是社会中流砥柱，无不对他敬佩有加。此外，他修养极高，毕生弘扬儒理思想，身先士卒，又在权盛至极时甘于为朝廷做出牺牲。正所谓立德立功立言三不朽，他全做到了，堪称完人。</p>
+<p>这样的人，不免让人觉得太遥远，我平民百姓只配瞻仰，哪能相提并论。</p>
+<p>但你要是从前往后看，会发现曾国藩出身一般，顶多算现在所谓的中产阶级家庭，无背景无权势只能啃老。而且天资平庸，当年的“高考”考了七八次才考上。上了大学（翰林院）后，抽烟喝酒打牌，喜欢看人杀头，调戏美女，混日子。刚踏入社会（当官和创建湘军）后，对政府当局各种愤恨，直骂皇帝、弹劾同事、抱怨家人，总喜欢站在道德的制高点贬低他人来抬高自己，为人处事总要摆出一副舍我其谁的姿态。</p>
+<p>这样的人，其实离我们挺近的。可如果把他的故事说成是“屌丝逆袭”，又好像不伦不类。</p>
+<p>曾国藩并没有给我一种励志的感觉，反而是结局本该如此。</p>
+<p>读书不行，那么就拼命学习嘛；<br>考试不行，那就钻研应试技巧嘛；<br>没有学问，那就读圣贤书嘛；<br>品行不端，那就严于律己嘛；<br>要打仗了，那就征战沙场嘛；<br>朝廷迂腐，那我不学就是了嘛；<br>受人排挤，那就善于人下嘛；<br>上司无能，那自己争点气嘛；<br>遭人妒忌，别往心里去嘛；</p>
+<p>总之一句话——错了，那就改嘛！</p>
+<p>是啊，知错能改，善莫大焉。问题是“知错”不易呀，试问有几个人能做到常自省，又有几个人听得进他人的忠言。即便真的意识到自身问题了，又有多少人贯彻“能改”。就好像“吸烟有害健康”对烟民而言，不过是句正确的废话。</p>
+<p>一边自我感觉良好，一边得过且过。或许这就是为什么曾国藩能成为圣人，而我们只能沦为平庸的原因吧。</p>
+<p>观其一生，曾国藩的伟大就在于此。他身先士卒，用自己的一言一行，在那个腐朽的王朝，没落的年代里，为这个古老的文明再次竖起灯塔，让那些优秀的思想得以继续在这片土地传承。</p>
+<h2 id="从愤青到圣贤"><a href="#从愤青到圣贤" class="headerlink" title="从愤青到圣贤"></a>从愤青到圣贤</h2><blockquote>
+<p>晚清以来，有一个规律性现象，那就是在对外交往中，凡是主张强硬，甚至主张“蛮不讲理”的人，通常都会获得民众的热烈欢呼，被称为“民族英雄”“扬我国威”。而主张和洋人“讲理”“妥协”的，几乎都会被骂卖国，被称为汉奸，声名尽毁。</p>
+</blockquote>
+<p>书中这段评价很有意思，哪怕放到现在也未必过时。愤青的逻辑其实不在于政治正确，而是情绪宣泄。为了发泄自己的“爱国”情绪，所做之事一样蛮不讲理。</p>
+<p>曾国藩年轻时候的表现却是像个愤青。他理直气壮地批评皇帝，压迫同僚，为人处事一根筋，只为证明自己是对的。当然，这也比现在的“键盘侠”要高级一点，至少人家是真刀真枪的干！</p>
+<p>后来在官场上被别人玩得头破血流，方才恍然大悟。自己从前凡事据理力争，且不说容易得罪人，就是那种得理不饶人的态度，也无形中伤害了很多想对他好的人。所以他后来变得恭谦礼让，能够体谅别人的难处，能居人于下。“于理”的同时兼顾“于情”。但这只是其一。</p>
+<p>曾国藩是个高级愤青，他可不是一介匹夫。在“救国”方面他有战略、有目标、有思想、有行动。只不过前些年忽略了自身环境和游戏规则。现在他已得要领，这也是为何在官场上他选择同流合污，却不自甘堕落的原因。他需要借助整个清政府体系的力量，但不是为了肥自己，而是为了兴国家！</p>
+<h2 id="关于“尚拙”"><a href="#关于“尚拙”" class="headerlink" title="关于“尚拙”"></a>关于“尚拙”</h2><p>其实我个人的价值观是很能接受尚拙的，毕竟我也是这么要求自己的。简单来说，就是用一些看似笨拙的方法去完成那些重要的事情，骨子里就是不要想着耍小聪明，脚踏实地才是正道。尚拙精神非常值得推崇，但要小心，小心人性，稍不注意就会本末倒置。因为尚拙有一个很致命的前提，就是你的格局是否高。</p>
+<p><strong>难以戒掉的既得利益</strong></p>
+<p>人本能会追求及时满足，要达成某个目的，渴求马上达到。可惜决定一个人命运的往往是那些需要“慢慢消化”的小事。</p>
+<p>这就好像跑步减肥一样，累死累活一天下来毫无变化，明天也是，后天也是，人就会放弃，去追逐那些轻松速效减肥之法。</p>
+<p>再如工作中大谈人脉、选择、技巧等，而忽略了最基本的认真做事原则。学习上质疑读书无用，挑挑拣拣，只想学习那些马上看见成效的拳脚功夫，不肯修炼内力。</p>
+<p>总之，尚拙需要一颗持之以恒的心，每天看似不重要且朴实的坚持，久而久之就会变得非同凡响。</p>
+<p><strong>用勤劳来掩盖懒惰</strong></p>
+<p>人本能会躺在舒适区，你可能觉得自己很努力，但那不过是无脑的机械重复罢了。</p>
+<p>这就像奉行资历主义的人，以为只要工作年限够就会升职加薪。又或者只会墨守成规按流程办事，出多少力气都行，但别让自己动脑子，只做自己会的，永远不去探索自己未知的。</p>
+<p>其实这种状态是很容易让人舒服的，生活一帆风顺，无忧无虑。可惜经不起半点风霜。</p>
+<p>总之，尚拙需要一颗“天天向上”的心，经常自省，挑战自我，渐进式的努力才是有意义的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/73/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/73/" class="post-title-link" itemprop="url">抵住单例模式的诱惑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-08 00:02:17" itemprop="dateCreated datePublished" datetime="2020-02-08T00:02:17+08:00">2020-02-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/73/" class="post-meta-item leancloud_visitors" data-flag-title="抵住单例模式的诱惑" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/73/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/73/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_73/">Resist the Temptation of the Singleton Pattern</a></p>
+<p>单例模式可以解决你的很多问题。你会认为只要单例模式就够了。这可以保证实例在初始化之前就能使用。通过一个全局指针访问就能保持你的设计简洁。这么经典的设计模式还有什么不对的地方吗？</p>
+<p>其实太多了。它们可能很有诱惑力，但根据经验来看，其所带来的损害要大过好处。它们阻碍了可测试性和可维护性。不幸的是，这种认识应该还没有得到广泛的传播，单例模式仍然吸引住广大程序员中的。但它们值得被抵抗：</p>
+<ul>
+<li><em>单例需求是被幻想出来的</em>。很多情况下，它只是对未来不会再有新增实例的纯粹推测。把这种推测贯穿到整个应用程序设计势必会在某些地方引起痛苦。需求总会变。好的设计拥抱这一点，单例模式不会。</li>
+<li><em>单例导致概念上独立的代码单元之间存在隐式依赖</em>。所造成的问题是单例在单元之间是隐藏的，并引入了不必要的耦合。当你尝试写个松耦合的单元测试有选择性地来模拟真实情况的时候，这种代码闻起来相当刺鼻。单例简单粗暴地阻碍了这种模拟。</li>
+<li><em>单例还会带有隐式的持久状态，再次阻挠了单元测试</em>。单元测试是彼此独立了，因此测试可以在任何情况下运行，程序在每次测试执行前也可以设置为一个已知的状态。一旦你在可变状态下引入单例，就很难达到效果。此外，这种全局访问的持久状态将会使代码变得更难以查找问题，尤其是在多线程环境。</li>
+<li><em>多线程进一步加大了单例模式的陷阱</em>。简单的加锁访问不是很有效率，被称作双重验证锁的模式（DCLP）广受欢迎。不幸的是，这可能是一种致命吸引力的形式，不论在哪里，都仍然有可能弄巧成拙。</li>
+</ul>
+<p>清除单例也存在着最终的挑战：</p>
+<ul>
+<li><em>不支持显式杀死单例</em>。在某些情况下这是个很严重的问题，例如，在插件架构中，一个插件只有在所有对象都被清理干净后才能被安全写在。</li>
+<li><em>不支持在程序退出后隐式清理</em>。对于含有相互依存的单例将会非常麻烦。当应用程序关闭时，某个单例可能会去访问其他已经被销毁的（对象）。</li>
+</ul>
+<p>这其中的一些缺陷可通过引入额外的机制来解决。但无不如何，这样做的代价是增加了代码本可以用其他设计来避免的复杂度。</p>
+<p>所以，把你使用的单例模式限制在永远不会实例化超过一次的类上。不要在含糊不清的代码里使用单个全局访问指针。相反，对单例的直接访问应该来自几个定义明确的地方，可以通过接口传递给其他代码。这里的其他代码是不知道它的，不需要依赖单例或其他类的实现接口。这就破除了单元测试的依赖性，并提高了可维护性。所以，下次你想要实现和访问单例的时候，我希望你能三思而后行。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/72/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/72/" class="post-title-link" itemprop="url">经常重新发明轮子</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-06 20:23:41" itemprop="dateCreated datePublished" datetime="2020-02-06T20:23:41+08:00">2020-02-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/72/" class="post-meta-item leancloud_visitors" data-flag-title="经常重新发明轮子" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/72/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/72/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_72/">Reinvent the Wheel Often</a></p>
+<p><em>仅使用已存在的事物——就是在重新发明轮子…</em></p>
+<p>你是否时常听到这种或类似的声音？确定你有！每个开发者或学生都会经常听到类似的评论。为什么呢？为什么重新发明轮子就这么愁眉不展？因为，很多时候，现有的代码是有效的。它已经通过了某种质量控制和严格的测试，并被成功地应用。此外，相较于使用现有的产品或代码库，把时间和精力投入到重新发明是不大可能有回报的。你还应该重新发明轮子么？为什么？什么时候？</p>
+<p>或许你看过一些有关软件开发模式的刊物或软件设计书籍。先让这些书去睡觉吧，不管它们包含了多么精彩的内容。观看航海电影和真的去航海是非常不同的，正如使用现有代码对应了从头设计一个属于自己的软件，（需要）测试它、破坏它、修复它，然后逐步完善它。</p>
+<p>重新发明轮子并不仅仅是代码从哪构建的练习：它是为了充分了解现有不同组件的内部工作原理。你知道内存管理机制？虚拟页呢？你能自己实现这些吗？什么是双向链表？动态数组类？ODBC客户端？你能写出一个你喜欢的流行图形界面吗？你会创建属于自己的web浏览器插件吗？你知道何时写一个多线程系统与多线程本身？如何决定使用文件数据库还是内存数据库呢？</p>
+<p>大部分开发者根本没有自己创造过这些核心软件实现的类型，对其如何工作的也未必了然于胸。其结果就是这类软件看起来不过是个会运行的神秘黑盒。浅尝辄止是看不到潜藏在下方的危险的。不更生层次的了解软件开发将限制你创造出色作品的能力。</p>
+<p>重新发明轮子并碰壁要比一用到底更有价值。通过试错学到的教训会有感性的成分，是阅读技术书籍无法给予的。</p>
+<p>学习书本和实践至关重要，但要成为一个伟大的程序员则更多的要从实践中总结经验。重新发明轮子对开发者的教育和技能，就如同健身队举重运动员一样重要。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/71/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/71/" class="post-title-link" itemprop="url">阅读人文科学</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-05 21:57:58" itemprop="dateCreated datePublished" datetime="2020-02-05T21:57:58+08:00">2020-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/71/" class="post-meta-item leancloud_visitors" data-flag-title="阅读人文科学" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/71/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/71/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_71/">Read the Humanities</a></p>
+<p>在所有的开发项目中，人与人共事。在除了抽象领域研究中，人们编写软件以到达他人的某些目标。人们编写软件给人用。所以这是人的生意。不幸的是，教导程序员如何处理与他们的服务对象间的关系却非常困难。幸运的事，这里有一整套有用的秘籍。</p>
+<p>例如，Ludwig Wittgenstein （路德维格·维特根斯坦）就在哲学研究中讲了个很好的例子，我们所用的任何与别人交流的语言（都不是）一种序列化格式，无法将一个人的思维、或想法、或图片直接放入另一个人的脑袋里。因此，当我们在“收集需求”的时候，就应该注意防止误会。Wittgenstein还表明。我们相互理解的能力根本不来自描述共享，而是来自经验共享，来自生活的形式。这或许也解释了为什么喜欢浸泡在自己问题领域的程序员比那些浅尝辄止的程序员做得更好的原因。</p>
+<p>Lakoff和Johnson向我们展示了《我们赖以生存的隐喻》（芝加哥大学出版社），暗示语言在很大程度上是隐喻的，这些隐喻为我们如何理解世界提供了见解。即使我们在谈论金融系统时也可会遇到看似具体的术语，例如“现金流”，可以把它视为隐喻：“钱是一种流体”。隐喻是如何影响我们对货币处理系统的思考的？又或者我们可能会谈论协议栈中的各层，有高层有底层。这是个很强力的隐喻：用户是“高层”而技术是“底层”。这也暴露了我们搭建系统结构的思想。这也可能标志着一种懒惰的思维习惯，而我们时不时的会从中获益。</p>
+<p>Martin Heidegger 仔细研究了人们体验工具的方法。程序员会构建并使用工具，我们思考、创建、修改、重构工具。工具是我们感兴趣的对象。但对于它的用户，Heidegger在《存在的时间》所展示的那样，工具变成了一种看不见的东西，只有在使用时才能理解。对于用户来说，当工具不工作时，它就会变成一个感兴趣的对象。每当讨论可用性时，都应该牢记这种差异的重要性。</p>
+<p>Eleanor Rosch 通过组织我们对世界的理解，推翻了Aristotelean 的分类模型。当程序员向用户询问系统需求时，我们倾向于要求他们以谓词来定义。这对我们来说是非常方便的。谓词中的术语可以很方便的变成类中的属性或数据表中的列。这些分类是清晰的、不相交的、整洁的。不幸的是，像Rosch 在“自然分类”及其之后的作品中所展示的一样，这并不是人们通常对世界的理解。他么需要通过实例来理解。一些实例，所谓的原型，要比其它方式更好，其分类结果是模糊的，重叠的，内部结构是丰富的。若坚持Aristotelean的观点，我们在用户的世界里对他们提出正确的问题，并难以达成共识。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/70/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/70/" class="post-title-link" itemprop="url">阅读代码</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-03 22:07:36" itemprop="dateCreated datePublished" datetime="2020-02-03T22:07:36+08:00">2020-02-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/70/" class="post-meta-item leancloud_visitors" data-flag-title="阅读代码" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/70/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/70/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_70/">Read Code</a></p>
+<p>我们码农是种非常神奇的生物。我们热爱写代码，但等到要阅读它的时候，我们就犯困了。毕竟，写代码是如此的欢乐，而读代码就太难了——有时几乎不可能。阅读别人的代码尤为困难。不一定是别人的代码就很烂，更又可能是和你解决问题的思维方式不同罢了。但你真的觉得阅读别人的代码对你的提高没有帮助吗？</p>
+<p>下次你读代码的时候，停下来想一想。这段代码是难还是简单？如果它难读懂，又是为什么？格式化不好？命名反直觉或者不符合常识？同一段代码混合了多个事情？或许语言的选择阻止了代码的可读性。试着去学习别人的错误，你的代码就不会包含同样的错。你或许会收获惊喜。例如，依赖注入技术（原文dependency-breaking techniques）也许能很好地降低代码耦合，但它们有时会让代码变得难读。因此，有人称之为优雅的代码，有人称之为不可读。</p>
+<p>如果代码容易阅读，停下来看看是否有你可以学习的地方。也许其中就包含你不知道的设计模式，或者之前不会的实现。或许这些方法比你的更简短且命名准确。一些开源项目完全就是如何写出绝妙可读代码的典范——而其他人则恰恰相反！签出他们的代码看一看吧。</p>
+<p>读一读你以前的代码，比如你现在已经不在参与的项目的，也能从中有所启发。从最老的代码开始，逐步发展到现在。你很可能会发现它并不像你编写时那样可读。哪怕你最近写的代码也可能存在另你尴尬的娱乐价值，就像你昨天在酒吧喝醉后说过的话一样。看看你多年来是如何挖掘自己的潜力的——确实有激励作用。着重看看难读懂的代码是哪些，并反思一下今天是否还用相同的方式在写代码。</p>
+<p>所以，下次感觉需要提升一下自己编程技能的时候，别着急看书。阅读代码吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/69/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/69/" class="post-title-link" itemprop="url">放下鼠标，离开键盘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-03 21:00:39" itemprop="dateCreated datePublished" datetime="2020-02-03T21:00:39+08:00">2020-02-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/69/" class="post-meta-item leancloud_visitors" data-flag-title="放下鼠标，离开键盘" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/69/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/69/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_69/">Put the Mouse Down and Step Away from the Keyboard</a></p>
+<p>你肯定有过花几个小时研究某个懊恼的问题，但始终没有个明确的解决方案。然后用力跺脚或者去题贩卖机，结果在回来的路上，灵光乍现。</p>
+<p>这种情况请起来熟悉吗？有没有想过为什么会这样？其实是因为你一直在写代码，你大脑负责逻辑的区域被激活了，而负责创造的部分被关闭了。它不可能联想任何事情，直到你停止逻辑区域。</p>
+<p>有个真实案例：我正在清理某段遗存的代码，并让其跑到了“关注”的方法里。它是设计用来校验一个字符串是否包含以<em>hh:mm:ss xx</em>格式的时间，其中hh表示小时，mm表示分钟，ss表示秒钟，xx表示AM或PM。</p>
+<p>这个方法用以下代码将（表示小时的）两个字符转化为一个数字，并校验其是否在合法范围：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;    Integer.parseInt(time.substring(<span class="number">0</span>, <span class="number">2</span>)); </span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception x) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;<span class="keyword">if</span> (Integer.parseInt(time.substring(<span class="number">0</span>, <span class="number">2</span>)) &gt; <span class="number">12</span>) &#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相同的代码出现了两次，而且测试分钟和秒钟也只是通过修改相应的字符偏移和上限。方法的最后是用来检查AM和PM的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!time.substring(<span class="number">9</span>, <span class="number">11</span>).equals(<span class="string">&quot;AM&quot;</span>) &amp; !time.substring(<span class="number">9</span>, <span class="number">11</span>).equals(<span class="string">&quot;PM&quot;</span>)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果这些比较流出现失败，就返回false，否则返回true。</p>
+<p>以上代码看起来冗长且难以理解，但别担心。我知道该怎么做——就是说我已经想到一些办法来简化它了。我重构了它，并编写了一个简单的单元测试来确保它正常工作。</p>
+<p>完成后，我对结果感到满意。新的版本更容易读懂，而且只有之前一半大小，也更精确了，因为之前的代码仅测试了小时、分钟、秒钟的上限。</p>
+<p>当第二天准备上班的时候，我的脑袋碰的一下：为什么不用正则表达式来校验这个字符串呢？敲了几分钟键盘后，我仅用了一行代码就实现了该功能。如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateTime</span><span class="params">(String time)</span> </span>&#123;    <span class="keyword">return</span> time.matches(<span class="string">&quot;(0[1-9]|1[0-2]):[0-5][0-9]:[0-5][0-9] ([AP]M)&quot;</span>); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>这个故事的重点不用我用一行代码就替换了原本的30行代码。重点是直到我离开电脑之前，我都自认为第一次的尝试就是问题的最佳解决方案。</p>
+<p>所以，下次你碰到让人恼火的问题时，帮自己个忙。一旦你理解了这个问题，就去做一些可以激活你大脑创造力区域的事情——勾勒出问题，听一些音乐，或者去散个步。有时为了解决问题，你可以做的最好的事情或许是，放下鼠标，离开键盘。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

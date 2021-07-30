@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个程序员的成长足迹">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自增人生">
+<meta property="og:url" content="https://ixx.life/page/5/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="一个程序员的成长足迹">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/page/5/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/68/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/68/" class="post-title-link" itemprop="url">把每件事都放入版本控制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-02 15:07:09" itemprop="dateCreated datePublished" datetime="2020-02-02T15:07:09+08:00">2020-02-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/68/" class="post-meta-item leancloud_visitors" data-flag-title="把每件事都放入版本控制" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/68/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/68/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_68/">Put Everything Under Version Control</a></p>
+<p>把你项目中的每件事情都放到版本控制下。你可能需要用到这些工具：比如免费的Subversion、Git、Mercurial、以及CVS；足够大的硬盘；有性价比的服务器；无所不在的网络；甚至还需项目托管服务。当你安装完这些版本控制软件后，为了将你的工作放进仓库里，你所需要做的就是在一个包含你代码的干净目录中用发出相应的命令。之后你只有两个基本的操作要学：将你改变的代码<code>提交</code>到仓库，将你工作的版本<code>更新</code>到仓库版本。</p>
+<p>一旦你的项目处理版本控制下，你就可以很直观地追踪其历史，看到是谁写什么什么样的代码，并通过ID去指向文件或项目版本。更重要的是，你可以放心大胆地去修改代码——不必为了将来可能需要它就暂时注释掉代码，因为它们依旧安全地存放在仓库的旧版本中。你可以（也应该）用一个符号名来标记软件发行版本，以便于将来可以追溯用户所运行软件的确切版本。你还可以创建并行的开发<em>分支</em>：大部分项目都有一个活跃的开发分支，以及一个或多个维护分支，用于积极地支持发行版。</p>
+<p>一个版本控制系统能最大程度地降低开发者之间的摩擦。程序员们各自开发软件的独立部分，然后魔法般地整合到一起。当他们相互冲突时，系统会发出通知，并允许他们解决冲突。通过一些附加的设置，系统还可以通知到每一个已提交过的开发者那里，从而对项目进展达成共识。</p>
+<p>当你的项目启动后，不要小气鬼：将所有项目相关的内容都放入版本控制。除了源代码，还包括文档、工具、构建脚本、测试用例、工艺、甚至是库等。将整个项目完整的塞进这个（定期备份的）仓库中，让磁盘或数据丢失的风险降至最低。在新机器上搭建开发环境只需要简单地从仓库签出即可。这简化了在不同平台上的分发、构建以及测试代码：在每台设备上，每条更新指令都能保障其软件是当前版本。</p>
+<p>一旦你见识到使用版本控制系统工作的美妙，遵循下面几条规则就会让你和你的团队变得更有效率：</p>
+<ul>
+<li>将每次逻辑变更都进行单独的提交操作。将很多的变更集中到一次性提交的话，会使它们在功能上变得很难被分解。这在你进行项目范围的重构或改变风格的时候尤为重要，会很容易掩盖其他的修改。</li>
+<li>每次提交都伴随一条解释信息。要简短地描述你做了什么改变，但如果你想记录一下改变的缘由，也最合适放在此处。</li>
+<li>最后，避免提交的代码会破环项目的构建，否则你会受到项目组其他开发者的鄙视。</li>
+</ul>
+<p>版本控制系统的人生多么美好呀，不用废止就能轻松避开错误。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/67/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/67/" class="post-title-link" itemprop="url">做一名职业程序员</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-01 22:36:27" itemprop="dateCreated datePublished" datetime="2020-02-01T22:36:27+08:00">2020-02-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/67/" class="post-meta-item leancloud_visitors" data-flag-title="做一名职业程序员" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/67/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/67/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_67/">The Professional Programmer</a></p>
+<p>何为职业程序员？</p>
+<p>职业程序员最重要的一个特点就是<em>个人责任感</em>。职业程序员会为他们的事业、估算、承诺、错误、技能等负责到底。职业程序员不会将这些责任推诿给其他人。</p>
+<ul>
+<li><em>如果你是职业的，你就会对自己的事业负责。</em>你有责任阅读和学习。你有责任了解最新的行业技术。很多程序员觉得应该是他们的雇主来培养他们。抱歉，这是大错特错。你会认为医生是这样过来的吗？你会认为律师是这样过来的吗？非也，他们都是利用自己时间和精力来自我培养。他们会花大量的业余时间来阅读期刊和决策，让自己保持最前沿。所以我们也必须如此。你和你雇主的关系在劳动合同里有很好的阐述：雇主承诺付给你薪水，而你承诺做好一份工作。</li>
+<li><em>专业人士为他们所写的代码负责。</em>除非他们确认运行正常，否则就不会发布他们的代码。试想一下，如果你愿意发布一份自己都不确定的代码，你又怎么敢认为自己的职业的呢？职业程序员会希望QA团队找不出任何问题，因为在他们没有完成测试过代码之前是不会发布它们的。当然，QA总能找出些问题，毕竟人非圣贤。但作为一个职业者，我们的态度是必须消除QA找出的一切问题。</li>
+<li><em>专业人士是团队的玩家。</em>他们为整个团队的输出负责，而不仅限于自己的工作范围。他们帮助他人、教导他人、从他人身上学习，甚至在必要时替他人掩护。当某个队友栽跟头时，其他人就介入进来，因为他们知道自己有一天也会变成需要被掩护的那一个。</li>
+<li><em>专业人士不会容忍大bug表。</em>一个庞大的bug列表就是草率的。在问题跟踪库里包含了数千条问题的系统就是粗心大意的悲剧。确实，对多数项目而言，极度依赖问题跟踪系统就是一种粗心的态度。只有最庞大的系统才应该配备问题列表，以便于自动化管理它们。</li>
+<li><em>专业人士不会去捣乱。</em>他们以自己的技能为傲。他们保持代码的简洁、良好的结构、以及可读性。他们遵循公认的标准和最佳实践。他们从不焦躁。想象一下你元神出窍来观察一名心脏外科医生在给你做手术。这名医生有了一个deadline（就是字面意思）。他必须在心扉旁路仪损耗你过多血红细胞之前完成手术。那你希望他怎么做？你会希望他像一个典型的软件开发者一样，焦躁并乱搞一通？你会希望他说：“我过会儿再来修复”？还是说你会希望他恪守纪律，抓紧时间，确信自己的方案时他可以做到的最佳方案。那么，你是希望他捣蛋，还是职业化。</li>
+</ul>
+<p>职业是一种责任感。他们为自己的事业负责。他们会为自己的代码正常工作负责。他们会为自己的技能质量负责。他们不会在截止时间逼近就亲言放弃。确实，当压力越来越大时，专业人士会纪律严明地坚持自己学识的正确性。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/66/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/66/" class="post-title-link" itemprop="url">阻止错误</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-01 11:45:27" itemprop="dateCreated datePublished" datetime="2020-02-01T11:45:27+08:00">2020-02-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/66/" class="post-meta-item leancloud_visitors" data-flag-title="阻止错误" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/66/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/66/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_66/">Prevent Errors</a></p>
+<p>错误消息是用户和系统其余部分之间的最关键交互。它们往往发生在用户和系统间的通信快要断开时。</p>
+<p>由用户输入错误而引起的错误是很容易理解的。不过人们犯错是可预测的，是有规律的。因此，就像调试系统和其他组件一样，“调试”用户与系统间的通信也是有可能的。</p>
+<p>例如，假设你想让用户输入一个合法范围的日期。相对于让用户输入任意日期，不如提供一个仅显示合法日期的列表或日历的设备。这就消除了用户范围之外的日期的可能性。</p>
+<p>格式化错误也是另一种常见问题。例如，用户使用“日期”文本字段输入了一个明确的日期“2012年7月29日”，结果被简单粗暴的给拒绝了，就因为它不是首选格式（如DD/MM/YYYY）。更糟糕的是还会拒绝“29 / 07 / 2012”，因为它们当中包含了空格——这种问题简直让用户怀疑人生，因为他们给的日期似乎在所需格式里呀。</p>
+<p>发生这种错误是因为，相对于解析三四种常见日期格式，直接拒绝这些日期要更容易。这些错误会让用户觉得烦躁，继而失去专注导致更多错误。所以，尊重用户的输入习惯，而非数据本身。</p>
+<p>另一种避免格式错误的方法是给出提示——例如，在字段标示上展示所需格式（“DD/MM/YYYY”）。另一种提示则是让字段分为2-2-4字符长度三个文本框。</p>
+<p>提示和说明是有区别的：提示更倾向于暗示；而说明则是一种详述。提示出现在交互时；而说明出现在交互前。提示仅用于上下文，而说明则强调如何使用。</p>
+<p>一般来说，说明是无法阻止错误的。用户会假设界面将按照他们过去的经验工作（“难道每个人都明白‘July 29，2012’是什么意思？”）。因此使用说明从来不读，而提示才可以让用户远离错误。</p>
+<p>还有一种避免错误的方法是提供默认值。例如<em>今天、明天、我的生日、截止日期、我上次输入表格的时间</em>等，都是用户的典型输入。根据上下文。其中之一将会是明智的默认选项。</p>
+<p>无论什么原因，系统都应该有容错能力。你可以通过多级别的<em>撤销</em>来简化这些操作——尤其是可能破坏或修改用户数据的操作。</p>
+<p>记录并解析<em>撤销</em>操作也可以突出显示界面，将用户吸引到无意识的错误上。例如连续的点击“错误”按钮。这些错误通常是由于有误导性的提示或交互序列引起的，你可以重新设计以阻止它们。</p>
+<p>不论你选择何种方案，大部分错误都是系统性的——都是用户与软件之间误解的结果。理解用户的想法，对信息的解释，做出的决定，以及输入的数据都将帮助你更好地调试软件与用户间的交互方式。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/65/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/65/" class="post-title-link" itemprop="url">首选领域专用类型而非原始类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-31 10:58:36" itemprop="dateCreated datePublished" datetime="2020-01-31T10:58:36+08:00">2020-01-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/65/" class="post-meta-item leancloud_visitors" data-flag-title="首选领域专用类型而非原始类型" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/65/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/65/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_65/">Prefer Domain-Specific Types to Primitive Types</a></p>
+<p>1999年9月23日，由于地球上的软件错误，价值3.276亿美元的火星气候轨道器在进入火星轨道后失联。该错误后来被称为<em>度量混淆</em>。地面航天站采用的单位是“磅”，而航天器采用的是“牛顿”，导致了地面站将推进器的功率低估了4.45倍。</p>
+<p>这只是众多案例之一，如果采用更多更健全的领域专用类型就可避免的软件故障。这也是Ada语言众多特性背后的原理的一个示例，其设计的首要目标之一就是实现嵌入式安全关键软件。Ada拥有强大的类型功能，可以对原始类型和用户自定义类型进行静态类型检查：</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">Velocity_In_Knots </span><span class="keyword">is</span> <span class="keyword">new</span> Float <span class="keyword">range</span> <span class="number">0.0</span> .. <span class="number">500.00</span>;</span><br><span class="line"><span class="keyword">type</span> <span class="type">Distance_In_Nautical_Miles </span><span class="keyword">is</span> <span class="keyword">new</span> Float <span class="keyword">range</span> <span class="number">0.0</span> .. <span class="number">3000.00</span>;</span><br><span class="line">Velocity: Velocity_In_Knots;</span><br><span class="line">Distance: Distance_In_Nautical_Miles;</span><br><span class="line">Some_Number: Float;</span><br><span class="line">Some_Number:= Distance + Velocity; <span class="comment">-- 此处将会被编译器捕获一个类型错误。 </span></span><br></pre></td></tr></table></figure>
+
+<p>在要求较低的领域中，开发者也能通过应用领域专用类型获益，否则他们就会继续使用语言或库提供的原始数据类型，如strings或floats。在Java、C++、Python以及其他现在语言，抽象数据类型被理解为class。采用诸如<code>Velocity_In_Knots</code>和<code>Distance_In_Nautical_Miles</code>的累定义会给代码质量方面增添价值：</p>
+<ul>
+<li>由于不是简单的Float或String，领域的概念可以得到体现，这样的代码变得更可读。</li>
+<li>由于代码封装了易于测试的行为，这样的代码更具备可测试性。</li>
+<li>这样的代码促进了跨平台或系统间的复用性。</li>
+</ul>
+<p>这个方法对于静态或动态类型语言的用户也同样有效。唯一的区别是，静态类型语言的开发者可以从编译器获取一些放逐，而那些拥抱动态类型语言的开发者更多的需要依赖于他们的单元测试。检查的方式或许不同，但所展现的初衷是一致的。</p>
+<p>其寓意是为了开发高质量软件而开始探索领域专用类型。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/64/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/64/" class="post-title-link" itemprop="url">结对编程并体会流</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-30 10:56:43" itemprop="dateCreated datePublished" datetime="2020-01-30T10:56:43+08:00">2020-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/64/" class="post-meta-item leancloud_visitors" data-flag-title="结对编程并体会流" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/64/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/64/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_64/">Pair Program and Feel the Flow</a></p>
+<p><em>【译注】：根据我现有的认知，文中的“流”（flow）表示一种心理状态，比如近期比较火的“心流”是指极度冷静、沉稳、专注的做事情的状态。所以这里的流应该是要表达特别顺畅的意思。</em></p>
+<p>想象一下你完全被正在做的事情吸引住——专注、一心一意、全情投入。你会发现时光飞逝。那种感觉肯定很好。你正在经历体验流（experiencing flow<br>）。对于一个团队的开发者而言，要达到并维持这种流是很困难的，因为它会被非常多的中断任务、交流、以及分心给轻易打破。</p>
+<p>如果你有过结对编程的经验，那么你很可能熟知结对是多么有助于达到这种流状态。如果你还没试过，我们希望通过自己的经验促使你赶快行动起来！为使结对编程取得成功，团队中的个体以及团队本身都不得不付出一些努力。</p>
+<p>作为团队的一份子，你要对经验不足的开发者有耐心。也不要被比你强的开发者吓倒。要明白人所不同，各有千秋。意识到你自己以及团队其他人的长处和短处。你就会惊讶自己可以从同事身上获益良多。</p>
+<p>作为团队，引入结对编程来促进技能和知识在整个项目中的合理匹配。你应该配对任务，并经常轮换配对和任务。商讨出一个轮换规则，放一边，在必要时再进行调整。我们的经验是，在轮换到下一个结对前你也不是非要完成现有任务。中断当前任务将其留给下一组结对者听起来可能会反直觉，但我们发现这样做照样运转正常。</p>
+<p>流可能被很多情况打断，以下是一些保持流的方法：</p>
+<ul>
+<li><strong>降低“卡车因子”。</strong>这是个略微消极的观点，但是在团队无法完成最终交付之前，有多个成员不得不被卡车撞到呢？换而言之，你的交付有多依赖于团队中的某些成员？知识是私有的还是共享的？如果你采取结对方式轮换完成任务，那就总有人具备完成这项工作的知识。你的团队流也就不会受“卡车因子”的影响。</li>
+<li><strong>高效地解决问题。</strong>如果你在结对编程中遇到了挑战，总是有人可以和你一起探讨。相对于你一个人在那困扰，这样的对话更有解决的可能性。随着工作的轮换，你们的解决方案会被下一组结对回顾和反思，因此即使刚开始选择的不是最有解决方案也没关系。</li>
+<li><strong>平滑整合。</strong>如果你们当前的任务需要调用他人的代码片段，你当然希望其方法名、文档、以及测试都有充分的说明好让你掌握它。否则，直接与编写此代码的开发者结对工作，也能给你更好的概述并更快地整合到你的代码中。此外，你还能借这次讨论的机会改进命名、文档和测试。</li>
+<li><strong>缓解中断。</strong>如果其他人来问你问题，或者电话响起，或者不得不回复某个紧急邮件，又或者不得不去开会，与你结对编程的伙伴将继续编码。当你回来后，你的同伴仍然在流中，而你也能迅速地同他参与其中。</li>
+<li><strong>更快地培养新人。</strong>通过合理的轮换组队和任务的结对编程，新来的人能快速地掌握代码，以及认识团队成员。</li>
+</ul>
+<p>流，可以让你变得难以置信的高产。但它也非常脆弱。尽力达到这种状态并维持着！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E4%BA%BA%E7%94%9F%E6%B5%B7%E6%B5%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E4%BA%BA%E7%94%9F%E6%B5%B7%E6%B5%B7/" class="post-title-link" itemprop="url">人生海海，太难了！</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-22 22:06:32" itemprop="dateCreated datePublished" datetime="2020-01-22T22:06:32+08:00">2020-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E4%BA%BA%E7%94%9F%E6%B5%B7%E6%B5%B7/" class="post-meta-item leancloud_visitors" data-flag-title="人生海海，太难了！" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E4%BA%BA%E7%94%9F%E6%B5%B7%E6%B5%B7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E4%BA%BA%E7%94%9F%E6%B5%B7%E6%B5%B7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这一生要经历多少低谷？</p>
+<p>这一生要熬过多久磨难？</p>
+<p>面对生活，年轻气盛的你随口甩出一句“未来可期”，生活却以为你是在期待被它蹂躏，当然要卯足了劲地玩你！等你终于扛不住了，终于承认自己的矮小了，终于说出那句“我太难了”…像是在乞求怜悯的时候，生活会回答你的，“乖，摸摸头，未来继续可期😁”。</p>
+<p>人生海海，没办法，谁还没有过血气方刚的时候，动不动就要胜天半子。</p>
+<p>人生海海，没办法，我们已经到了枸杞续命的年纪，就让一切随缘吧…</p>
+<p>可是，偏偏就有这样一种人，当看清生活的真相后依然热爱生活，朴实而机械地执着，似乎永远看不到头，但他从来不会放弃，像只打不死的小强，一天一天和生活较量着。</p>
+<p>人生海海，敢死不叫勇气，活着才需要勇气！</p>
+<p>《人生海海》是一部非常用心的小说，讲述了一个村一群人的往事，以第一人称视角“偷窥”或见证了几个主要人物的一生。当然，男一号毕竟只有一个——上校。</p>
+<p>上校本是村里的木匠，之后加入了国军，亲历了抗日战争，当过军医，做过军统特务，而后又转到共军，参加过抗美援朝。他是军队里的上校，又是救死扶伤的金一刀，更是村民流言蜚语的太监。后来还成了文革期间的大汉奸，公安局要抓的逃犯，日本寡妇的玩物，监牢里的囚犯…</p>
+<p>上校这辈子沧海桑田，人生多面，每次起起落落都足以摧垮一个人，而他却依然能我行我素地活着。诚然，上校的性格是一方面，但我觉得更重要的是他为了坚守肚皮上的耻辱所作出的牺牲。试问哪个男人愿意承认自己曾是卖国贼的玩具，这也许便是上校与生活抗争的勇气。</p>
+<p>。。。。。。</p>
+<p>坦白说，我难得会遇到一部小说，读完之后没有半点想要总结归纳的心思，大概是这部小说太有感染力了吧！</p>
+<p>管它的，我很感激这样的年纪能读到这样的故事，让我明白人的一生还会如此凄惨，原谅我的幸灾乐祸，这大概也是我在不如意的生活里，寻找到的一丝丝慰藉。（自找的矫情，呵呵！）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/63/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/63/" class="post-title-link" itemprop="url">拥有（或重构）构建器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-08 08:18:56" itemprop="dateCreated datePublished" datetime="2020-01-08T08:18:56+08:00">2020-01-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/63/" class="post-meta-item leancloud_visitors" data-flag-title="拥有（或重构）构建器" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/63/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/63/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_63/">Own (and Refactor) the Build</a></p>
+<p>在一个团队里，纪律严明地开展编程实践而忽视构建脚本的情况并不罕见，他们认为那些只不过是无关紧要的细节或者害怕其中的复杂度，倾向于让狂热的版本发行工程师去做此事。而那些带有重复和错误的构建脚本所导致的问题，与那些糟糕的代码一样需要严重。</p>
+<p>为什么要自律的原因是，熟练的开发者会把构建器作为他们的第二要务。另一个原因就是构建不算是真正的“代码”。还有些现实情况要面对，大部分开发者喜欢学习新语言，而构建器是用来给开发者生成可执行文件的，以及终端用户用来测试和运行的。没有经过构建的代码毫无用处，构建器被定义为应用程序的组件架构。构建是开发过程中必要的一环，并决定了构建过程中能够制造的代码，以及更简单的编程。</p>
+<p>用错误的方法编写的构建脚本难以维护，所以更重要的是，它需要被完善。花点时间去理解正确的方法以做出改变是非常有价值的。Bug会在应用程序采用错误的版本以来构建或错误的构建时间配置时浮现出来。</p>
+<p>传统上，测试总是留给“质保”团队的事情。而现在我们意识到，边写代码边测试有很必要的，可传递出预测价值。因此，构建过程需要被开发团队掌握。</p>
+<p>理解构建（原理）可以使整个开发生命周期变得简单并降低成本。一个易于执行的构建起也能让一个开发新人快速轻松地上手。构建中的自动配置也可以实现多人协同项目时结果的一致性，从而避免了“它在我电脑上运行正常”的尬聊。很多构建工具都可以让你得到一份代码质量报告，让你更快地感知到潜在问题。所以，花点时间了解一下如果制作个你自己的构建起，帮助你的同时也帮助了团队里的每个人。你也可以专注功能开发，让相关利益者受益，让工作更愉快。</p>
+<p>充分学习你的构建过程，明白何时以及如何做出改变。构建脚本是代码。它们太重要了以至于必不可少。在被构建之前，应用都不算开发完成。在我们交付软件工作之前，编程任务就不算结束。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8/" class="post-title-link" itemprop="url">越穷越见鬼</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-01-06 23:39:11" itemprop="dateCreated datePublished" datetime="2020-01-06T23:39:11+08:00">2020-01-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8/" class="post-meta-item leancloud_visitors" data-flag-title="越穷越见鬼" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>凡是少的，就连他所有的，也要夺过来。凡是多的，还要给他，叫他多多益善——《新约·马太福音》</p>
+</blockquote>
+<p>我是个穷人吗？不知道…</p>
+<p>我有一份还算体面的工作，一个还算安稳的家庭。当然，我还是一个负债百万的房奴。生活里没有太多糟心的事，但也不敢去奢望那些人生巅峰。</p>
+<p>我倾向于认为自己是一个穷人，理由很简单：我没有富人思维。</p>
+<p>正是出于此，我翻开了这本《<strong>贫穷的本质，我们为什么摆脱不了贫穷</strong>》，本书由2019年诺贝尔经济学将得主所著。当然，书中并没有太多宏大的经济论调，但说不上为什么，总是给我一种非常死板的感受，或许是经济学家都喜欢算帐吧😁。</p>
+<p>既然没有富人思维，那至少应该要理解一下什么是穷人思维，客观地认识自己，这就是我阅读本书的目的。不过在读完前半部分后才发现，作者所说的穷人和我没太大关系。</p>
+<p>作者研究的对象，是那些每天生活费不足0.99美元的穷苦人家（那是真穷啊），对于这些人的生活境遇，书中给出了一个总结——贫穷陷阱。</p>
+<h2 id="什么是贫穷陷阱"><a href="#什么是贫穷陷阱" class="headerlink" title="什么是贫穷陷阱"></a>什么是贫穷陷阱</h2><p>当一个人或家庭非常贫困时，他们不得不想尽办法榨干每一分钱用于基本的生活开销，以至于根本不可能留有剩余，作为明天讨生活的本钱。</p>
+<p>就好比一个人每天至少吃两个馒头才有力气干活，而他的收入只够每天买一个馒头，导致他越来越没力气，越没力气干活挣的就越少，挣的越少馒头就更少，恶性循环…营养不了的他随之生病了，又没钱看病。</p>
+<p>越穷越见鬼！</p>
+<h2 id="有多少人处于贫穷陷阱"><a href="#有多少人处于贫穷陷阱" class="headerlink" title="有多少人处于贫穷陷阱"></a>有多少人处于贫穷陷阱</h2><p>如前文所说，每天生活费不到0.99美元的人就处在陷阱当中，作为还能上个网看看新闻的我们而言，一天折合人民币6、7块钱的开支确实难以想象——这种人应该是极少数吧？</p>
+<p>10亿！是的，全球约有10亿人在贫困线上挣扎着。</p>
+<p>当然，生在当下的中国，对这个数字的吃惊是可以理解的，毕竟想要过上一天不足10块钱的日子还是比较难的，因为国家有各种低保和特殊群体照顾。所以这些人普遍集中在一些亚非极度落后地区，或者中东战乱国家。</p>
+<p>对于他们的境遇我深表同情，只可惜眼泪无法填饱肚子，让世间不再有饥饿是全人类共同的目标。但，10个亿呀，试问有谁能解决这么多张吃饭的嘴，以及贫穷给他们带来的连锁反应。</p>
+<h2 id="穷人为什么穷"><a href="#穷人为什么穷" class="headerlink" title="穷人为什么穷"></a>穷人为什么穷</h2><p>本书用10个章节从不同面阐述了贫穷的原因，我大致总结了一下：</p>
+<ul>
+<li>吃不饱饭，导致发育迟缓，输在起跑线上</li>
+<li>卫生习惯差，导致非常容易生病，又没有价美物廉的医疗资源</li>
+<li>没有良好的教育环境，老师不负责，孩子不听话，家长不在乎</li>
+<li>就业难度极高，只能打临工，工资低，基本处于半失业状态</li>
+<li>连做小生意的本钱都没有，也无法从银行贷款，只能借高利贷</li>
+<li>没有存钱意识，或者说压根就没钱可存</li>
+<li>没有风险意识，一旦来个小的天灾人祸，基本就是毁灭性打击</li>
+<li>政府政策落后，加之公职人员的贪腐，进一步恶化生存环境</li>
+</ul>
+<p>由此可见，穷，是一个非常复杂的命题。俗话说救急不救穷，毕竟穷是由多方面因素共同作用的结果，救10个人可以，救10亿…</p>
+<p>那穷人就真的无药可救了？</p>
+<h2 id="穷人之所以穷"><a href="#穷人之所以穷" class="headerlink" title="穷人之所以穷"></a>穷人之所以穷</h2><p>当然，我们会习惯性的开始骂爹骂娘，把责任都推给执政者的不作为。但我读完本书后觉得，贫穷似乎更多源于人的主观思想——短视！</p>
+<p>不过这种短视并非穷人的专属，而是人性使然。<strong>我们往往只看得到投资的直接回报，所以很少选择具有间接但高价值回报的投资</strong>。</p>
+<p>书中在描述穷人境遇时引入了很多案例，比如：</p>
+<p>政府为了抵抗疟疾，向民众发放蚊帐，可蚊帐再便宜穷人也不买，如果免费了吧，他们把蚊帐改成丝巾抹布之类的。不得不继续投入资金去宣传教育。</p>
+<p>如果某个人突然打工挣了一点钱，够他勉强吃半个月天了，但实际上他会去买更高级的食物烟酒，或者消费娱乐，不出两三天钱就花光了。</p>
+<p>穷人喜欢生更多小孩，认为东方不亮西方亮，然而随着家庭人口的增加导致生活水平的骤降，每个小孩分得的资源就会更少，进一步恶化小孩的成长空间。</p>
+<p>穷人似乎不太在乎孩子的学业，认为那是学校的事情，而老师又觉得既然家长都不关心，我又瞎操心个毛，喝茶看报吧。</p>
+<p>一般情况下，穷人不大可能主动接种疫苗，但他们会想尽办法凑钱治病。他们也不太会给自己的耕地买保险，如果恰好今年丰收，更是会觉得保险费打水漂了。</p>
+<p>穷人可以精打细算到榨干每一分钱，但主要用于生活支出，很少考虑把它当作来年做事的本钱。他们也会在被逼无奈时去找民间贷款，高额的利息进一步恶化了他们的生活条件。</p>
+<p>真的，穷不可怕，可怕的是穷人心态！</p>
+<p>但是，还是要强调，本书研究的对象都是那些落后地区或战争国家，他们生来就比别人落后一大截，他们需要花费比发达国家多出10倍的努力恐怕都无法勉强赶上那里的人民。更何况，很多时候的选择，都是人性使然。</p>
+<p>如果我们单纯从第三方的角度去审视穷人，甚至某些国家的论调，都会觉得，环境那么恶劣，自身还不努力，烂泥扶不上墙——没救了！</p>
+<p>中国人说：授人以鱼不如授人以渔。</p>
+<p>要让10亿人脱离贫穷陷阱，纯粹的发钱或者慈善事业显然是不够的。中国曾经也穷过，但中国人的理念就是勤劳致富、自强不息，所以这个国家很快变强大起来。</p>
+<p>脱贫，靠政府推动和政策支持是必不可少的，在改善穷人生活环境的同时，不论政策引导，或是宣传教育，让穷人真正认识到贫穷的本质除了客观条件，还有自身原因也是非常重要的。</p>
+<p>（😒为什么我会写出如此…那啥…的一段话）</p>
+<h2 id="我是穷人吗？"><a href="#我是穷人吗？" class="headerlink" title="我是穷人吗？"></a>我是穷人吗？</h2><p>我是！看完这本书后，这个答案已经非常明确了。</p>
+<p>不仅如此，从思维上来说，我和那些穷人也有很多相似的地方。不同的是那些他们的贫穷更多是环境导致的。而导致我的贫穷是…</p>
+<p>哎～😂</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/" class="post-title-link" itemprop="url">《从一到无穷大》读书笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-31 21:24:05" itemprop="dateCreated datePublished" datetime="2019-12-31T21:24:05+08:00">2019-12-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/" class="post-meta-item leancloud_visitors" data-flag-title="《从一到无穷大》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="如何证明地球是圆的？"><a href="#如何证明地球是圆的？" class="headerlink" title="如何证明地球是圆的？"></a>如何证明地球是圆的？</h2><p>也许有人会说：飞到天上去看一眼不就行了。</p>
+<p>这是个好方法，但这是三维世界生物的思考方式，如果是一个二维世界的生物，它又如何知道自己的世界是平的还是圆的呢？</p>
+<p>三角形的内角之和为180°，这是中学生都知道的理论。现在想象一下，你在一张平铺的A4纸上画了一个三角形，又在一个大西瓜上画了一个三角形。毋庸置疑，A4纸上的三角形内角和为180°，那么西瓜上的三角形呢？😁</p>
+<p>是的，球形曲面上的三角形内角和大于或小于180°，反过来说，如果你画了一个三角形并测量它的内角和不等于180°，那这个三角形必然处于曲面中。</p>
+<p>好了，理论上我们可以在北极取一个顶点，在赤道上取两个顶点，绘制出一个超大三角形，从而证明地球不是方的。</p>
+<p><strong>问：如何证明三维空间被扭曲了？</strong></p>
+<p>生活在三维世界的人类，用三角形证明地球是圆的，可能没什么意义。但我们却可以用此方法来检测空间是否被扭曲了。</p>
+<p>我们的太阳如此庞大，从理论上来说，它对周围的空间必然产生了强大的扭曲，怎么证明呢？</p>
+<p>我们可以在3月份和8月份观测太阳“身后”某一颗遥远的星星，再把地球两次观测时间点的轨道位置作为两个顶点，与星星绘制成一个很大很大很大的三角形，然后计算其内角和。</p>
+<p>事实证明，这个内角和小于180°——星光经过太阳附近时，和时空一同被扭曲了。</p>
+<h2 id="世界有多小"><a href="#世界有多小" class="headerlink" title="世界有多小"></a>世界有多小</h2><p>我们曾觉得细菌很小，殊不知细菌由更渺小的细胞构成；<br>我们曾觉得细胞很小，殊不知细胞内还有更小的DNA；<br>我们曾觉得DNA很小，殊不知DNA由更小的分子结合而来；<br>我们曾觉得分子很小，殊不知分子由原子构成；<br>我们曾觉得原子已经最小了，没想到还有原子核、电子…</p>
+<p>中学化学物理课中学到过，电子带有负电荷，原子核带有等量的正电荷，电子围绕的原子核转圈圈，彼此平衡。可事实的真相却是…</p>
+<p>原子核内部有一部分带电，另一部分不带电，经过实验得知原子核内核其实还分为：带正电的质子，和不带电的中子。</p>
+<p>后来科学家们又发现，宇宙中还存在带正电荷的正电子，和带负电荷的负质子，以及不带电的中微子。</p>
+<p>换句话说，我们人类存在的于绝大多数都是“质子+电子”元素组成的世界。同样也会存在一个由“负质子+正电子”元素组成的地方，那里的东西表面上看起来和我们这儿的没什么区别。比如刚好有一个“反你”，你激动地和它来个拥抱，噗～正负抵消，你们两就这么消失了。</p>
+<h2 id="生命的本质——逆熵"><a href="#生命的本质——逆熵" class="headerlink" title="生命的本质——逆熵"></a>生命的本质——逆熵</h2><p>宇宙在膨胀，它将走向何方？科学家给出了一种假说——热寂！</p>
+<p>日月星辰，时光流逝，在浩瀚的时空中，万事万物都按照自身规律在运作着。可不论渺小的沙粒，或是伟大的太阳，它们都有终结的那天。这里所说的终结，便是自身无法维持规律而走向无序。</p>
+<p>熵，表示无序的程度，宇宙目前处于熵增当中（越来越无序），让所有天崩地裂过后，万物无序，熵趋于无穷大，这便是热寂。</p>
+<p>可是地球上却偏偏出现了有机生命，它的运作方式非常另类。</p>
+<p>生命的源起是DNA，它会主动吸收周围的介质，并将其同化为自身的化学结构。我们把这种现象称为“自我复制”。至少目前为止，我们还未发现一粒沙子、一滴水、一种金属存在这种自我复制的现象。</p>
+<p>如果地球或者太阳最终走向无序而告终，你就会发现，生命的自我复制行为，其实就是源源不断把周围无序的元素重新排序。</p>
+<p>我们不断繁衍，生生不息，生命系统越发复杂，在热寂这一大命运前，生命似乎在呐喊，就是要逆熵而行！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/" class="post-title-link" itemprop="url">《现实不似你所见》读书笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-04 23:07:30" itemprop="dateCreated datePublished" datetime="2019-12-04T23:07:30+08:00">2019-12-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/" class="post-meta-item leancloud_visitors" data-flag-title="《现实不似你所见》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简单书评"><a href="#简单书评" class="headerlink" title="简单书评"></a>简单书评</h2><p>首先要声明，本书是我断断续续读完的。所以在内容衔接上可能有所“断片”。但总体而言，不论是作者引入了很多哲学思辨或是历史典故，我觉得并没有起到点睛之笔的作用，反而稍显累赘。此外，文中难免充斥着不小的篇幅关于物理公式和专业的逻辑推理，作为科普读物来说（或者就我个人而言）读起来稍显吃力。</p>
+<p>本书作为《七堂极简物理课》的进阶版，更多的是体现在专业性的角度。毋庸置疑，书中确实在很多物理层面上更加深入地展开讨论，但恰恰是这些有深度的内容，让像我这样的小白只能感叹——望成莫及。</p>
+<p>总而言之，我对本书的评价不算太高。然而对于豆瓣评分9+以上，我只能说，主要因为我智力水平有限。它要求读者有一定的物理基础，否则仅凭想象，很难对量子物理有一个感性的认知。</p>
+<p>不论如何，如果让我读起来发懵的书本，我认为还是整理成读书笔记比较好。</p>
+<h2 id="有限感官"><a href="#有限感官" class="headerlink" title="有限感官"></a>有限感官</h2><p>我们对现实的理解取决于我们具备什么样的感官，包括视觉、嗅觉、味觉、听觉、触觉等。但你必须知道，这些感觉是有范围限制的，比如我们能看到，又不能完全看到，因为在可见光之外，还有更多频率的电磁波（光既是电磁波）；再比如声音，我们能听到，又不能完全听到，因为人耳能感知的声音频率就那么一小段。同理，酸甜苦辣咸之外，可能还有人类无法品尝的美味。</p>
+<p>好在人类善于利用工具，可以通过不同的设备仪器探测到那些我们无法感知的事物。但…如果这些工具的感知能力也到了极限呢？</p>
+<p>是的，本书围绕二十世纪物理界最重要的两个理论展开讨论：</p>
+<ul>
+<li><strong>广义相对论</strong>重新定义了引力、时间和空间，它的研究对象很大，超过了人类已知的世界，超出了人类可想象的维度。</li>
+<li><strong>量子理论</strong>彻底颠覆了经典物理学，它的研究对象很小，小到比已知的最小粒子还要小上亿倍，小到同时存在又不存在，小到人类根本不可能观测到。</li>
+</ul>
+<p>虽然它们已经超出了人类有限的感官，但从理论出发，在实践中证明，这两个理论对现代科学，包括天体物理、核能、航空航天、计算机、通信等大部分领域都有极高的应用价值。然而讽刺的是这两个理论却是自相矛盾的。</p>
+<p>很可能，二者的矛盾依旧源自人类的有限感官——其实不过是同一件事物的不同面罢了。科学家希望能有一种大统一的理论来让二者和睦相处，目前比较主流的是<strong>弦理论</strong>和<strong>圈量子理论</strong>。</p>
+<p>本书的作者显然是圈量子理论的拥护者，换句话说，本文以及本书都是在描述圈量子理论，目前它仅仅是一种观点。（别太较真！）</p>
+<h2 id="时间和空间是同一种东西"><a href="#时间和空间是同一种东西" class="headerlink" title="时间和空间是同一种东西"></a>时间和空间是同一种东西</h2><p>传统意义上，我们会把时间、空间看作是两个独立且客观的事物。我们会觉得不论物质如何运动或者相互作用，因为它们“被包含在”时间和空间当中。空间是绝对独立的，时间亦是如此。但根据爱因斯坦的广义相对论：时间和空间是同一种东西，统称为“时空”。</p>
+<p>时空也并非独立客观的，尽管物体存在于时空中，但时空会因物体的质量被扭曲——这便是万有引力的本质。</p>
+<p>一个有趣的假想：越靠近大质量天体的地方，时空密度越高，时间就会越慢。如果一对双胞胎，哥哥住在山脚，弟弟住在山顶，多年之后，哥哥会比弟弟还年轻。</p>
+<p>当然，这也只能是假想，因为地球的质量没那么大，如果能在黑洞上做这个实验，那就真的是“一日不见如隔三秋”啦。</p>
+<p>but，圈量子理论认为：<strong>这个世界根本不存在所谓的时间</strong>。当然也没有所谓的真空，因为“空间”本身就是一种存在，它才是万物的根本，构成空间的是一种叫“空间量子”的东东。</p>
+<p>空间量子相互作用所产生的事件，被称为“物质”。什么意思呢？就像海浪，浪再大再猛烈再真实，它也只是无数水分子集体行为的结果，世上本没有浪，一部分水“跳”起来，浪就有了。所以，我们这个世界的万事万物可能是空间量子相互作用的结果。同理，物质的行为也会反过来影响空间量子——大质量的天体可以扭曲空间。</p>
+<h2 id="事件与概率"><a href="#事件与概率" class="headerlink" title="事件与概率"></a>事件与概率</h2><p>在量子世界中，是不存在“平滑连续”概念的，总有个最小粒度，一份一份地传递。在空间量子中亦是如此。</p>
+<p>我1秒钟走了1米，这其中可能存在某0.00000001秒走了0.00000001米，当然这个值可以继续往下分，但有一个最小值——1.6x10-³³厘米。这是普朗克长度，它很短，但不为0。假如人类能做一把量子尺，上面的刻度精度也只能到这个极限，因为这是空间的最小单位，否则它属于时空。我无法想象，一种事物没有空间、没有时间、没有质量、没有能量、没有信息，什么都没有，凭什么它还存在？</p>
+<p>好了，明确万事万物是不可无限分割的，才便于我们把物理公式中的时间变量t给拽走。</p>
+<p>传统观念里，我们会认为“粒子”是构成物质的基础，不论它是电子、原子、夸克或者其他。但正如前文所说，圈量子认为，这些粒子其实是空间量子的集体行为事件（或者说作用结果），就像海面上的浪一样。</p>
+<p>按照量子理论继续推导就会得出：粒子（物质）并非永恒的，它以什么形式存在或不存在只是个“概率”问题。而量子的行为是非连续的，是一个接着一个，称为“事件”，所以物质的运动其实是无数个短暂的瞬间。    </p>
+<p>这一切就像是看动画片，你以为它是连续的，其实它是一帧一帧的。这一切都和时间无关，动画播放的速度只取决于每帧之间的间隔，不论间隔多久，从一帧刷新到下一帧总是一瞬间的事。我们所存在的空间也是这样，空间量子总是一个事件接着一个事件在触发，这一切都不需要时间的参与。换句话说，宇宙中并不存在一个绝对统一的时间维度。</p>
+<p>好了，本书我能吸纳的内容也就这么多，关于其他如：圈量子的形态、量子黑洞、万物皆比特等，实在是云里雾里。待我智商充值后，再来好好消化吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

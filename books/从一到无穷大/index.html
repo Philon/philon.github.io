@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="如何证明地球是圆的？也许有人会说：飞到天上去看一眼不就行了。 这是个好方法，但这是三维世界生物的思考方式，如果是一个二维世界的生物，它又如何知道自己的世界是平的还是圆的呢？ 三角形的内角之和为180°，这是中学生都知道的理论。现在想象一下，你在一张平铺的A4纸上画了一个三角形，又在一个大西瓜上画了一个三角形。毋庸置疑，A4纸上的三角形内角和为180°，那么西瓜上的三角形呢？😁 是的，球形曲面上的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《从一到无穷大》读书笔记">
+<meta property="og:url" content="https://ixx.life/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="如何证明地球是圆的？也许有人会说：飞到天上去看一眼不就行了。 这是个好方法，但这是三维世界生物的思考方式，如果是一个二维世界的生物，它又如何知道自己的世界是平的还是圆的呢？ 三角形的内角之和为180°，这是中学生都知道的理论。现在想象一下，你在一张平铺的A4纸上画了一个三角形，又在一个大西瓜上画了一个三角形。毋庸置疑，A4纸上的三角形内角和为180°，那么西瓜上的三角形呢？😁 是的，球形曲面上的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-31T13:24:05.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.022Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="科普">
+<meta property="article:tag" content="物理">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《从一到无穷大》读书笔记 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《从一到无穷大》读书笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-31 21:24:05" itemprop="dateCreated datePublished" datetime="2019-12-31T21:24:05+08:00">2019-12-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/" class="post-meta-item leancloud_visitors" data-flag-title="《从一到无穷大》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="如何证明地球是圆的？"><a href="#如何证明地球是圆的？" class="headerlink" title="如何证明地球是圆的？"></a>如何证明地球是圆的？</h2><p>也许有人会说：飞到天上去看一眼不就行了。</p>
+<p>这是个好方法，但这是三维世界生物的思考方式，如果是一个二维世界的生物，它又如何知道自己的世界是平的还是圆的呢？</p>
+<p>三角形的内角之和为180°，这是中学生都知道的理论。现在想象一下，你在一张平铺的A4纸上画了一个三角形，又在一个大西瓜上画了一个三角形。毋庸置疑，A4纸上的三角形内角和为180°，那么西瓜上的三角形呢？😁</p>
+<p>是的，球形曲面上的三角形内角和大于或小于180°，反过来说，如果你画了一个三角形并测量它的内角和不等于180°，那这个三角形必然处于曲面中。</p>
+<p>好了，理论上我们可以在北极取一个顶点，在赤道上取两个顶点，绘制出一个超大三角形，从而证明地球不是方的。</p>
+<p><strong>问：如何证明三维空间被扭曲了？</strong></p>
+<p>生活在三维世界的人类，用三角形证明地球是圆的，可能没什么意义。但我们却可以用此方法来检测空间是否被扭曲了。</p>
+<p>我们的太阳如此庞大，从理论上来说，它对周围的空间必然产生了强大的扭曲，怎么证明呢？</p>
+<p>我们可以在3月份和8月份观测太阳“身后”某一颗遥远的星星，再把地球两次观测时间点的轨道位置作为两个顶点，与星星绘制成一个很大很大很大的三角形，然后计算其内角和。</p>
+<p>事实证明，这个内角和小于180°——星光经过太阳附近时，和时空一同被扭曲了。</p>
+<h2 id="世界有多小"><a href="#世界有多小" class="headerlink" title="世界有多小"></a>世界有多小</h2><p>我们曾觉得细菌很小，殊不知细菌由更渺小的细胞构成；<br>我们曾觉得细胞很小，殊不知细胞内还有更小的DNA；<br>我们曾觉得DNA很小，殊不知DNA由更小的分子结合而来；<br>我们曾觉得分子很小，殊不知分子由原子构成；<br>我们曾觉得原子已经最小了，没想到还有原子核、电子…</p>
+<p>中学化学物理课中学到过，电子带有负电荷，原子核带有等量的正电荷，电子围绕的原子核转圈圈，彼此平衡。可事实的真相却是…</p>
+<p>原子核内部有一部分带电，另一部分不带电，经过实验得知原子核内核其实还分为：带正电的质子，和不带电的中子。</p>
+<p>后来科学家们又发现，宇宙中还存在带正电荷的正电子，和带负电荷的负质子，以及不带电的中微子。</p>
+<p>换句话说，我们人类存在的于绝大多数都是“质子+电子”元素组成的世界。同样也会存在一个由“负质子+正电子”元素组成的地方，那里的东西表面上看起来和我们这儿的没什么区别。比如刚好有一个“反你”，你激动地和它来个拥抱，噗～正负抵消，你们两就这么消失了。</p>
+<h2 id="生命的本质——逆熵"><a href="#生命的本质——逆熵" class="headerlink" title="生命的本质——逆熵"></a>生命的本质——逆熵</h2><p>宇宙在膨胀，它将走向何方？科学家给出了一种假说——热寂！</p>
+<p>日月星辰，时光流逝，在浩瀚的时空中，万事万物都按照自身规律在运作着。可不论渺小的沙粒，或是伟大的太阳，它们都有终结的那天。这里所说的终结，便是自身无法维持规律而走向无序。</p>
+<p>熵，表示无序的程度，宇宙目前处于熵增当中（越来越无序），让所有天崩地裂过后，万物无序，熵趋于无穷大，这便是热寂。</p>
+<p>可是地球上却偏偏出现了有机生命，它的运作方式非常另类。</p>
+<p>生命的源起是DNA，它会主动吸收周围的介质，并将其同化为自身的化学结构。我们把这种现象称为“自我复制”。至少目前为止，我们还未发现一粒沙子、一滴水、一种金属存在这种自我复制的现象。</p>
+<p>如果地球或者太阳最终走向无序而告终，你就会发现，生命的自我复制行为，其实就是源源不断把周围无序的元素重新排序。</p>
+<p>我们不断繁衍，生生不息，生命系统越发复杂，在热寂这一大命运前，生命似乎在呐喊，就是要逆熵而行！</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/books/%E4%BB%8E%E4%B8%80%E5%88%B0%E6%97%A0%E7%A9%B7%E5%A4%A7/" title="《从一到无穷大》读书笔记">https://ixx.life/books/从一到无穷大/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%91%E6%99%AE/" rel="tag"># 科普</a>
+              <a href="/tags/%E7%89%A9%E7%90%86/" rel="tag"># 物理</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/books/%E7%8E%B0%E5%AE%9E%E4%B8%8D%E4%BC%BC%E4%BD%A0%E6%89%80%E8%A7%81/" rel="prev" title="《现实不似你所见》读书笔记">
+      <i class="fa fa-chevron-left"></i> 《现实不似你所见》读书笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/books/%E8%B4%AB%E7%A9%B7%E7%9A%84%E6%9C%AC%E8%B4%A8/" rel="next" title="越穷越见鬼">
+      越穷越见鬼 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

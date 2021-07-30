@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个程序员的成长足迹">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自增人生">
+<meta property="og:url" content="https://ixx.life/page/6/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="一个程序员的成长足迹">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/page/6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/62/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/62/" class="post-title-link" itemprop="url">只有代码会说实话</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-24 21:27:56" itemprop="dateCreated datePublished" datetime="2019-11-24T21:27:56+08:00">2019-11-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/62/" class="post-meta-item leancloud_visitors" data-flag-title="只有代码会说实话" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/62/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/62/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_62/">Only the Code Tells the Truth</a></p>
+<p>程序的最终语义是给出可执行代码。如果它只有一段二进制码，就会非常难读懂！但如果你的程序是典型的商业软件开发、开源项目、或者动态解释语言的代码，它就应该可读。当你在阅读源码时，程序的意图就应该浮现出来。为了搞懂程序要做什么，最终你肯定要阅读源码。大多数精确的规范文档甚至都无法告诉你全部的真相：毕竟它无法容纳程序实际处理的全部细节，仅仅是高层次的需求分析。一份设计文档可能抓得住一部分设计规划，但它缺乏实现的必要细节。这些文档可能与当前的实现内容失去同步…或者就干脆放弃掉了，从一开始就没写过。而源码可能是唯一剩下的东西。</p>
+<p>基于这一点，问一下自己要如何清爽地告诉你或者其他程序猿，你的代码要做什么。</p>
+<p>你可能会说：“噢，我的注释就可以告诉你想要知道的任何内容。”但请记住，注释不是运行代码。它们会存在于文档一样形式的错误。流传着一种说法，注释理所当然是件好事，一些程序猿就不假思索地写越来越多的注释，甚至重复解释那些琐碎的已经很明确的代码。这对于阐明你的代码，完全是错误的。</p>
+<p>如果你的代码需要注释，考虑重构它以免除注释。大量的注释会扰乱屏幕空间，甚至可能被IDE自动隐藏掉。如果你想要解释某个变更，那就在版本控制系统签入消息，而不是代码里。</p>
+<p>你要做些什么才能让代码尽可能清晰地表达“真相”？争取一个好名字。结构化代码以内聚功能，选择简单的命名。解耦代码以实现正交性。编写自动测试来解释和检查接口的行为意图。当你学到更简约的代码或更好的解决方案时，果断重构。让你的代码尽可能地易于理解和阅读。</p>
+<p>对待你的代码要像对待其他创作一样，如一首诗、一篇散文、一个博客、或是重要的email。仔细制作你要表达的内容，使其做它该做的，并尽可能直接传达出它正在做的事情；即便你离开后，它也能传达出你的意图。请记住，有用的代码会比预期使用更长时间。今后的维护者会感激你，如果你是维护者，并且你所处理的代码并不能轻易说明事实，请积极地应用上述准则。在代码中建立理智，并让自己保持理智。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/61/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/61/" class="post-title-link" itemprop="url">一个二进制</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-20 21:24:01" itemprop="dateCreated datePublished" datetime="2019-11-20T21:24:01+08:00">2019-11-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/61/" class="post-meta-item leancloud_visitors" data-flag-title="一个二进制" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/61/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/61/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_61/">One Binary</a></p>
+<p>我遇到过几个项目，其中的构建代码会重写一部分，以便为不同的目标环境生成对应的二进制文件。这总是会让事情变得比它原来更复杂，并带来一个风险——对于每个安装包，团队可能都没有个统一的版本号。至少，这些多个编译目标几乎都是该软件的副本，只不过被部署到了不同的地方。这就意味着很多不必要的部分也被移植过去，也意味着错误的可能性更高。</p>
+<p>我曾在一个团队中工作过，每个特性变更时都不得不进行一次完整的构建周期检查，因此每次微调时测试员都得随时待命（我有提到过构建时间也很长吗？）。我还在另一个团队中工作过，那里的系统管理员坚持要求在生产环境重新构建（使用我们的脚本），这就意味着我们无法证明生产版本是经过测试的。等等吧。</p>
+<p>规则很简单：<strong>只构建一个二进制文件，你能够在发布管道内进行所有阶段的识别和升级</strong>。保持环境的具体细节<strong>在环境中</strong>。比如，把它们放进一个组件容器、或已知的文件、或路径。</p>
+<p>如果你的团队将代码分离编译或是将所有目标平台设置存到代码里，那就说明这是一个没有经过慎重考虑的设计，不足以将应用程序的核心部分与平台细节分离开。另一种可能：团队知道怎么做，但不能先试着去改变。</p>
+<p>当然，也有例外：你可能在为有着显著资源限制区别的目标平台做构建，但这并不适用于我们大多数编写“数据库筛查和返回”应用程序的人。又或者，你可能正遇到一些难以立刻修复的遗留问题。这种情况下，不得不逐步前行——但最好尽快开始。</p>
+<p>还有一件事：也要确保环境信息的版本化。没什么比破坏环境配置和搞不清哪里被修改更糟糕的了。环境信息应当独立与代码进行版本化，因为它们会以不同的频率和原因发生变化。一些团队会采用分布式版本控制系统来进行管理（比如bazaar和git），因为它们很容易在生产环境中作出变更——必然的——也能回退到仓库。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/60/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/60/" class="post-title-link" itemprop="url">怪诞新闻：测试者是你的朋友</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-19 20:14:08" itemprop="dateCreated datePublished" datetime="2019-11-19T20:14:08+08:00">2019-11-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/60/" class="post-meta-item leancloud_visitors" data-flag-title="怪诞新闻：测试者是你的朋友" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/60/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/60/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_60/">News of the Weird: Testers Are Your Friends</a></p>
+<p>不论你把他们称为<em>质量保证</em>还是<em>质量控制</em>，我们程序员通常叫他们<em>挑事者</em>。在我的映像中，程序员都会和测试他们软件的人树立敌对关系。经常可以听到一些抱怨：“他们也太挑刺儿了”以及“就是一帮处女座”。很熟悉的声音对吧？</p>
+<p>我不确定为什么，我对测试员有着不同的映像。或许我的第一份工作中的“测试员”是公司秘书的缘由吧。Margaret是个非常nice的女性，总能看到她在办公室忙碌着，并且会试图教一些年轻的程序员如何在顾客面前表现得更专业。她有一种能在短时间内发现bug的能力，不论多么复杂。</p>
+<p>说回来，我当时在处理一个由自认为是程序员的会计所写的程序。不消说，有很多棘手的问题。当我认为理顺了一部分问题后，Margaret就会试着用一下，不用多久，就能通过新的操作方式让它挂掉。有时真的很失落并有点尴尬，但她就是那种令人愉悦到我不会因为难堪而责怪她的人。最终，有一天Margaret能利落地打开程序，开出票据并打印，最后关闭。我很欣慰，更棒的是，我们在客户的电脑上安装好软件，一切正常。他们不会看到任何问题，因为在此之前Margaret已经帮我发现并修复了它们。</p>
+<p>这就是我为什么说测试者是你的朋友。你可能会认为他们反馈一些微不足道的问题致使你难堪。但消费者却因不会遇到那些恼人的“小问题”而欣慰，QC助你修复了它们，而你也看起来很伟大。明白我的意思吗？</p>
+<p>想象一下：你正在使用一款基于“突破性的人工智能算法”的测试工具来发现并修复并发问题。你启动它并立刻注意到屏幕上的“人工只能”拼写错误。有点扫兴，但只是个小错误，对吧？然后你又注意到配置页面中本该用单选的控件却用成了勾选栏，还有一些快捷键无法使用。现在，每个问题都没什么，但它们叠加到一起后，你就会开始问候写这个软件的程序员了。如果连这么简单的事情都做不好，你还指望他们的AI能帮你发现并修复这些棘手的并发问题？</p>
+<p>他们可能都是天才，聚焦于AI领域并狂热地把它变得更伟大，以至于连这些小问题都从来不关注，没有“挑剔的测试者”来指出这些问题，而让你发现了它们。然后你开始质疑这帮家伙的水平。</p>
+<p>所以，听起来可能很奇怪，那些励志要揭露你代码中的每个小bug的测试者，确实是你的朋友。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/59/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/59/" class="post-title-link" itemprop="url">错失多态的机会</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-17 16:04:03" itemprop="dateCreated datePublished" datetime="2019-11-17T16:04:03+08:00">2019-11-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/59/" class="post-meta-item leancloud_visitors" data-flag-title="错失多态的机会" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/59/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/59/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_59/">Missing Opportunities for Polymorphism</a></p>
+<p>Polymorphism(多态)是面向对象中重要的思想之一。源于希腊语，即多(poly)面(morph)的意思。在程序的上下文中，多态是特定类的对象或方法的多种形态。但多态并不是简单的交替式实现。使用时要小心，多态会创建个很小的局部执行上下文，以让我们无需去关心那冗长的if-then-else代码块。在上下文内部允许我们直接处理事务，但在上下文外部却要强制我们重建它之后才能处理事务。谨慎使用交替实现，我们可以捕获上下文以让代码更少更可读。最好先看个代码示例，比如下面这段简单(到爆)的购物车：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShoppingCart</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ArrayList&lt;Item&gt; cart = <span class="keyword">new</span> ArrayList&lt;Item&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> 	<span class="keyword">void</span> <span class="title">add</span><span class="params">(Item item)</span> </span>&#123; cart.add(item); &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> Item <span class="title">takeNext</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> cart.remove(<span class="number">0</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> cart.isEmpty(); &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>假设我们的网店里陈列着可下载的(虚拟)产品和需要运输的(实物)产品。我们就要让对象支持这些操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Shipping</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">ship</span><span class="params">(Item item, SurfaceAddress address)</span> </span>&#123; ... &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">ship</span><span class="params">(Item item, EMailAddress address)</span> </span>&#123; ... &#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>当用户下单后，我们需要发货：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (!cart.isEmpty()) &#123;</span><br><span class="line">	shipping.ship(cart.takeNext(), ???); </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>代码中的的<code>???</code>可不是什么花式操作；而是用来询问我该用电子邮件还是快递发送这些商品。但回答这个问题的上下文并不存在，我们只能用<code>布尔</code>或<code>枚举</code>的形式事先捕获发货方式，然后用if-then-else去补全这个参数。</p>
+<p>另一种解决方案是创建两个继承于<code>Item</code>的类，称为<code>DownloadableItem</code>和<code>SurfaceItem</code>。现在来实现代码，我会让<code>Item</code>作为一个接口，并支持单一方法——<code>ship</code>。为了能顺利发货购物车的商品，我们需要调用<code>item.ship(shipper)</code>。而<code>DownloadableItem</code>和<code>SurfaceItem</code>两个类都需要实现<code>ship</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DownloadableItem</span> <span class="keyword">implements</span> <span class="title">Item</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">ship</span><span class="params">(Shipping shipper, Customer customer)</span> </span>&#123;</span><br><span class="line">    shipper.ship(<span class="keyword">this</span>, customer.getEmailAddress());</span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SurfaceItem</span> <span class="keyword">implements</span> <span class="title">Item</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">ship</span><span class="params">(Shipping shipper, Customer customer)</span> </span>&#123;</span><br><span class="line">    shipper.ship(<span class="keyword">this</span>, customer.getSurfaceAddress()); </span><br><span class="line">  &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，我们将负责运输的工作委托给了每个商品。由于每个商品都清楚自己的最佳发货方式，这种模式可以继续下去，且不在需要if-then-else。这个段代码也示范了两种经常一起使用的设计模式：命令模式和双重调度。能否有效地运用这些设计模式取决于你是否谨慎地使用多态。这样一来，能够大幅缩减代码中的if-then-else。</p>
+<p>尽管在某些情况下用if-then-else会比多态更实用，但更多时候，多态的编码风格将产出更小巧、更可读、也更健壮的代码库。错失机会的次数可能就是我们代码中if-then-else的数量。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/RPiDriverInAction/07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RPiDriverInAction/07/" class="post-title-link" itemprop="url">07：PDD与设备树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-16 15:27:01" itemprop="dateCreated datePublished" datetime="2019-11-16T15:27:01+08:00">2019-11-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">树莓派驱动开发实战</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/RPiDriverInAction/07/" class="post-meta-item leancloud_visitors" data-flag-title="07：PDD与设备树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/RPiDriverInAction/07/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/RPiDriverInAction/07/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文源码：<a target="_blank" rel="noopener" href="https://github.com/Philon/rpi-drivers/tree/master/07-pdd">https://github.com/Philon/rpi-drivers/tree/master/07-pdd</a></p>
+<p>从《树莓派驱动开发实战》的第一篇至今，都是在写单个字符设备，这其中不难发现个问题——如果我有10个LED灯就意味着我要写10个led字符设备驱动，而其中的大部分代码都是重复的，它们之间可能仅仅是控制引脚不同。</p>
+<p>一是为了解决这个问题，二是之后的驱动开发更多会涉及USB、I²C、UART之类的总线设备，三是为了更好地理解Linux驱动架构。从本篇文章开始正式以<code>驱动-总线-设备</code>模型和<code>设备树</code>机制来编写设备驱动。我觉得以<strong>平台驱动设备</strong>模型作为切入点较好——可以不涉及真实的硬件。</p>
+<h2 id="驱动-总线-设备模型"><a href="#驱动-总线-设备模型" class="headerlink" title="驱动-总线-设备模型"></a>驱动-总线-设备模型</h2><p>Linux2.6之后引入了全新驱动注册管理机制：<strong>驱动、总线、设备</strong>。一句话，为了高内聚低耦合！</p>
+<ul>
+<li>驱动部分：负责实现设备的控制逻辑及用户接口，并注册到内核</li>
+<li>设备部分：负责描述设备的硬件资源，并告知内核</li>
+<li>总线部分：负责实现设备与驱动之间的感知、识别、匹配规则</li>
+</ul>
+<p>举例来说，如果有100个按键(比如键盘)，我只需要实现<code>1个按键驱动</code>+<code>100个按键设备描述</code>，并把它们挂到<code>按键总线</code>上，总线会负责把二者匹配起来，所有的按键就都可以用了。</p>
+<p>内核提供了相应的<code>bus、device、driver、class</code>等最为底层的API和数据结构，即<code>驱动、总线、设备</code>模型来管理系统设备。但在日常驱动开发中，一般是用不到的。因为常见物理总线都基于这些API封装了对应的如<code>usb_bus、usb_device、usb_driver、tty_device、tty_driver</code>等接口，日常的设备驱动开发更多以这一层打交道。</p>
+<p>用面向对象的思想来说，驱动总线设备模型就是DeviceManage基类，由此派生出了USB、TTY、I²C、SPI、PCIe、GPIO等设备管理机制。当然，这其中也包括<code>platform</code>平台设备管理。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~ $ ls /sys/bus/</span><br><span class="line">amba         container     genpd  i2c              media     mmc_rpmb  scsi  usb</span><br><span class="line">clockevents  cpu           gpio   iscsi_flashnode  mipi-dsi  nvmem     sdio  workqueue</span><br><span class="line">clocksource  event_source  hid    mdio_bus         mmc       platform  spi</span><br></pre></td></tr></table></figure>
+
+<p>通过<code>/sys/bus</code>目录可以看到系统当前存在的总线。👆注意看倒数第二个，<code>platform</code>平台总线出现了！！</p>
+<h2 id="平台总线、平台驱动、平台设备"><a href="#平台总线、平台驱动、平台设备" class="headerlink" title="平台总线、平台驱动、平台设备"></a>平台总线、平台驱动、平台设备</h2><p><strong>platform是一种虚拟总线</strong>。它是“驱动-总线-设备”模型的一种实现，与<code>usb_bus tty_bus spi_bus</code>等物理总线平级。为了把那些不走总线架构的设备囊括进来。</p>
+<p>回顾历史：</p>
+<ol>
+<li>编写字符设备<code>cdev</code>时需要关心主、次设备号，还要用mknod命令创建对应的设备节点。</li>
+<li>于是内核提供<code>misc</code>混杂设备，将所有不好管理的字符设备统一主设备号为10，自动分配和创建节点，本质上就是基于cdev再封装了一层。</li>
+<li>为了管理总线设备，内核又提出了<code>驱动总线设备</code>模型，并封装了各种USB、I²C、TTY等软件层。</li>
+<li>为了把非总线架构的设备也用总线思想来管理，内核提出了<code>平台驱动设备</code>层</li>
+</ol>
+<p>所以，<code>platform</code>和<code>misc</code>一样，都是为了给<code>“其他”</code>设备找一个爸爸。</p>
+<h2 id="最简单的PDD实例"><a href="#最简单的PDD实例" class="headerlink" title="最简单的PDD实例"></a>最简单的PDD实例</h2><p>根据上述可推断，<code>platform_bus</code>(即总线部分)内核已经实现了，所以我们只需要实现两边的<code>platform_xxx_driver</code>和<code>platform_xxx_device</code>即可，然后把它们挂到平台总线上去，总线会自动进行匹配的。以下只是以led为例说明platform相关接口用法，并未真正实现led驱动。</p>
+<p>led_driver.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/platform_device.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;Dual BSD/GPL&quot;</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Philon | https://ixx.life&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当总线匹配到设备时调用该函数</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">led_probe</span><span class="params">(struct platform_device* dev)</span> </span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;led %s probe\n&quot;</span>, dev-&gt;name);</span><br><span class="line">  <span class="comment">// todo: 字符设备注册、gpio申请之类的</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当总线匹配到设备卸载时调用该函数</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">led_remove</span><span class="params">(struct platform_device* dev)</span> </span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;led %s removed\n&quot;</span>, dev-&gt;name);</span><br><span class="line">  <span class="comment">// todo: 其他资源释放</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 平台驱动描述</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> <span class="title">led_driver</span> =</span> &#123;</span><br><span class="line">  .probe = led_probe,</span><br><span class="line">  .remove = led_remove,</span><br><span class="line">  .driver = &#123;</span><br><span class="line">    .name = <span class="string">&quot;my_led&quot;</span>, <span class="comment">// 👈务必注意，platform是以name比对来匹配的</span></span><br><span class="line">    .owner = THIS_MODULE,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 【宏】将led驱动挂到平台总线上</span></span><br><span class="line"><span class="comment">// 相当于同时定义了模块的入口和出口函数</span></span><br><span class="line"><span class="comment">// module_init(platform_driver_register)</span></span><br><span class="line"><span class="comment">// module_exit(platform_driver_unregister)</span></span><br><span class="line">module_platform_driver(led_driver);</span><br></pre></td></tr></table></figure>
+
+<p>led_device.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/platform_device.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;Dual BSD/GPL&quot;</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Philon | https://ixx.life&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ⚠️最好实现该接口，否则在设备释放的时候内核会报错</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">led_release</span><span class="params">(struct device* pdev)</span> </span>&#123;</span><br><span class="line">  printk(<span class="string">&quot;led release!\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 平台设备描述</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_device</span> <span class="title">led_device</span> =</span> &#123;</span><br><span class="line">  .name = <span class="string">&quot;my_led&quot;</span>, <span class="comment">// 👈要确保与led_driver的定义一致，否则匹配不上</span></span><br><span class="line">  .dev = &#123;</span><br><span class="line">    .release = led_release,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将设备注册到平台总线</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">leddev_init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  platform_device_register(&amp;led_device);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(leddev_init);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">leddev_exit</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  platform_device_unregister(&amp;led_device);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(leddev_exit);</span><br></pre></td></tr></table></figure>
+
+<p>简述一下代码的逻辑：</p>
+<ol>
+<li>platform_bus监听到有device注册时，会查看它的<code>device.name</code></li>
+<li>platform_bus会查找所有的<code>driver.name</code>，找到之后将设备和驱动进行绑定</li>
+<li>绑定成功后，<code>platform_driver.probe()</code>将触发，刚才的设备作为参数传递进去</li>
+<li>剩下的事情，就看你如何实现platform_driver了…</li>
+</ol>
+<p>实际操作下，加载led_driver.ko模块后，可以在平台总线目录下看到<code>my_led</code>驱动了。然后，加载led_device.ko模块后，同样可以在平台总线设备里查看到<code>my_led.0</code>的设备。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 平台总线里查看my_led驱动</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod led_driver.ko </span><br><span class="line">philon@rpi:~/modules $ ls /sys/bus/platform/drivers/my_led/</span><br><span class="line"><span class="built_in">bind</span>  module  uevent  unbind</span><br><span class="line"></span><br><span class="line"><span class="comment"># 平台总线里查看my_led设备</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod led_device.ko      </span><br><span class="line">philon@rpi:~/modules $ ls /sys/bus/platform/devices/my_led.0/</span><br><span class="line">driver  driver_override  modalias  power  subsystem  uevent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 看一下内核打印信息</span></span><br><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line">[225668.547712] led my_led probe</span><br><span class="line">[225687.213336] led my_led removed</span><br><span class="line">[225687.213448] led release!</span><br></pre></td></tr></table></figure>
+
+<p>⚠️温馨提示：不必操心driver/device模块的加载顺序，谁先谁后都一样，platform_bus会料理好一切。</p>
+<p>以上，便是PDD模型的一个基本展示，如果你愿意，可以在led_device.c文件里多注册几个设备。不过在此之前——你内心难道不会充满疑惑吗：这tm怎么匹配上的呀？🤔️</p>
+<h2 id="平台驱动和设备的匹配"><a href="#平台驱动和设备的匹配" class="headerlink" title="平台驱动和设备的匹配"></a>平台驱动和设备的匹配</h2><p>看一下内核是如何实现平台匹配的，非常容易理解：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// linux-rpi-4.19.y/drivers/base/platform.c line:963</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">platform_match</span><span class="params">(struct device *dev, struct device_driver *drv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">platform_device</span> *<span class="title">pdev</span> =</span> to_platform_device(dev);</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> *<span class="title">pdrv</span> =</span> to_platform_driver(drv);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* When driver_override is set, only bind to the matching driver */</span></span><br><span class="line">  <span class="keyword">if</span> (pdev-&gt;driver_override)</span><br><span class="line">    <span class="keyword">return</span> !<span class="built_in">strcmp</span>(pdev-&gt;driver_override, drv-&gt;name);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 首先尝试设备树匹配(OF - Open Firmware Standard) */</span></span><br><span class="line">  <span class="keyword">if</span> (of_driver_match_device(dev, drv))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 然后尝试匹配高级配置和电源接口</span></span><br><span class="line"><span class="comment">     (ACPI - https://baike.baidu.com/item/ACPI/299421?fr=aladdin)</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">if</span> (acpi_driver_match_device(dev, drv))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 然后尝试匹配ID表 */</span></span><br><span class="line">  <span class="keyword">if</span> (pdrv-&gt;id_table)</span><br><span class="line">    <span class="keyword">return</span> platform_match_id(pdrv-&gt;id_table, pdev) != <span class="literal">NULL</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/* 最后尝试匹配驱动和设备的名称 */</span></span><br><span class="line">  <span class="keyword">return</span> (<span class="built_in">strcmp</span>(pdev-&gt;name, drv-&gt;name) == <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从以上代码可以看出，平台总线的匹配经过<code>设备树 &gt; ACPI &gt; ID表 &gt; 名称</code>等4种方式匹配，只要任意一种属性确认过眼神，就可以进行下一步。所以<code>led_driver</code>和<code>led_device</code>能够匹配上，正是因为它们内部的<code>name</code>值相同。</p>
+<p>接着，看看平台驱动和平台设备的数据结构，一切就明朗了。</p>
+<p>在平台驱动的数据结构中可以看到，它内部包含了底层的<code>device_driver</code>结构，如果驱动想要只是某些类型的设备，那就必须在相应的用于匹配的属性里事先声明。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> (*probe)(struct platform_device *);</span><br><span class="line">  <span class="keyword">int</span> (*remove)(struct platform_device *);</span><br><span class="line">  <span class="keyword">void</span> (*shutdown)(struct platform_device *);</span><br><span class="line">  <span class="keyword">int</span> (*suspend)(struct platform_device *, <span class="keyword">pm_message_t</span> state);</span><br><span class="line">  <span class="keyword">int</span> (*resume)(struct platform_device *);</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">device_driver</span> <span class="title">driver</span>;</span>  <span class="comment">// 底层驱动数据结构</span></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_device_id</span> *<span class="title">id_table</span>;</span> <span class="comment">// ID的匹配表👈</span></span><br><span class="line">  <span class="keyword">bool</span> prevent_deferred_probe;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">device_driver</span> &#123;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>        *name;      <span class="comment">// 驱动名，用于名称匹配👈</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">bus_type</span>   *<span class="title">bus</span>;</span>       <span class="comment">// 总线类型，如platform_bus</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">module</span>     *<span class="title">owner</span>;</span>     <span class="comment">// 这就不解释了</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>        *mod_name;  <span class="comment">// 用于构建模块</span></span><br><span class="line">  <span class="keyword">bool</span> suppress_bind_attrs;  <span class="comment">/* disables bind/unbind via sysfs */</span></span><br><span class="line">  <span class="class"><span class="keyword">enum</span> <span class="title">probe_type</span> <span class="title">probe_type</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">of_device_id</span>  *<span class="title">of_match_table</span>;</span>  <span class="comment">// 设备树的匹配表👈</span></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">acpi_device_id</span>  *<span class="title">acpi_match_table</span>;</span> <span class="comment">// acpi的匹配表👈</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> (*probe) (struct device *dev);     <span class="comment">// 探测设备：当匹配成功时回调</span></span><br><span class="line">  <span class="keyword">int</span> (*remove) (struct device *dev);    <span class="comment">// 移除设备：当设备卸载时回调</span></span><br><span class="line">  <span class="keyword">void</span> (*shutdown) (struct device *dev); <span class="comment">// 关闭设备</span></span><br><span class="line">  <span class="keyword">int</span> (*suspend) (struct device *dev, <span class="keyword">pm_message_t</span> state); <span class="comment">// 暂停</span></span><br><span class="line">  <span class="keyword">int</span> (*resume) (struct device *dev);    <span class="comment">// 恢复</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">attribute_group</span> **<span class="title">groups</span>;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">dev_pm_ops</span> *<span class="title">pm</span>;</span>           <span class="comment">// 电源管理</span></span><br><span class="line">  <span class="keyword">void</span> (*coredump) (struct device *dev); <span class="comment">// 核心转储</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">driver_private</span> *<span class="title">p</span>;</span>              <span class="comment">// 私有数据</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>和平台驱动很类似，其内部同样包含了底层的<code>device</code>结构体，如果设备想要被总线匹配上，同样要在自己的属性里配置好。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">platform_device</span> &#123;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">char</span>    *name;    <span class="comment">// 设备名，与驱动的name匹配 👈</span></span><br><span class="line">  <span class="keyword">int</span>            id;       <span class="comment">// 设备ID</span></span><br><span class="line">  <span class="keyword">bool</span>          id_auto;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">device</span>  <span class="title">dev</span>;</span>      <span class="comment">// 底层数据结构</span></span><br><span class="line">  u32    num_resources;    <span class="comment">// 设备要用的资源数量</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">resource</span>  *<span class="title">resource</span>;</span>  <span class="comment">// 设备的硬件资源描述</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_device_id</span>  *<span class="title">id_entry</span>;</span>  <span class="comment">// 设备ID，与驱动的ID表匹配 👈</span></span><br><span class="line">  <span class="keyword">char</span> *driver_override; <span class="comment">/* Driver name to force a match */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* MFD cell pointer */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">mfd_cell</span> *<span class="title">mfd_cell</span>;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">/* arch specific additions */</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pdev_archdata</span>  <span class="title">archdata</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>好了，本文并不打算详细讨论有关平台、驱动、设备及其如何匹配的原理。如果对此感兴趣或想要深入研究，请用好互联网。我个人也查了很多资料，感觉这位作者写的<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaojiang1025/p/6367061.html">《Linux Platform驱动模型(一) _设备信息》</a>和<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaojiang1025/archive/2017/02/06/6367910.html">《Linux Platform驱动模型(二) _驱动方法》</a>还阔以，适合入门。</p>
+<p>那么接下来，我们已经知道平台总线提供了4种匹配方法，<code>name</code>匹配就不说了，另外两种不提也罢，最最最重要的<code>设备树</code>匹配该登场了。</p>
+<h2 id="设备树"><a href="#设备树" class="headerlink" title="设备树"></a>设备树</h2><p>先声明，关于设备树的语法、树莓派的配置规则，不会涉及太多。本文侧重于实战，原理知识请用好互联网。</p>
+<p>从历史上说，ARM-Linux引入设备树完全是被逼出来的。我们知道ARM以IP授权的商业模式运作，诞生了众多芯片厂商。它不像x86/x64架构只有Intel之类的寡头，产品大同小异比较好管理。arm的江湖可谓鱼龙混杂，每家都想在Linux内核种争的一席之地。可偏偏这帮家伙把又是硬件出生，对于兼容自家的不同产品只会用<code>if-else</code>，作为软件大神的Linus自然是怒了：“策略模式”难道不香么，你以为用C写一堆“电路板说明书”很高级么？如果你愿意，可以浏览下内核目录<code>arch/arm/mach-xxx</code>，非常多对吧。其实这些目录大多是SoC的硬件细节描述，用于适配各大厂商不同型号的处理器或开发板。</p>
+<p>闲话就扯那么多，总之，设备树就是用类C的文本语言编写，用于描述Soc及其外围电路模块的配置文件。通常情况下它由bootloader传递给内核。这种做法，极大的降低了驱动的维护难度，也大大增加了系统设备管理的灵活性。</p>
+<p>⚠️在阅读下文前，必须基本懂得两个知识点：</p>
+<ol>
+<li>设备树语法，我就不多嘴了，网上一搜一大堆</li>
+<li>树莓派overlay机制，这个网上几乎没有，我做个大概说明</li>
+</ol>
+<h3 id="树莓派的设备树配置"><a href="#树莓派的设备树配置" class="headerlink" title="树莓派的设备树配置"></a>树莓派的设备树配置</h3><p>本小结是从👉<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/configuration/device-tree.md">树莓派DeviceTree的官方介绍中</a>总结而来，如果想更全面地了解，可以看原文。</p>
+<p>一个常规的Arm-Linux设备树，主要是由源文件<code>.dts</code>和头文件<code>.dtsi</code>共同编译出<code>.dtb</code>二进制，内核在初始化后会加载这个dtb，并把相关设备都注册好，就可以愉快地使用了。例如树莓派3B+，<code>/boot/bcm2710-rpi-3-b-plus.dtb</code>就是树莓派SoC和外围电路的默认配置。</p>
+<p>对于大部分硬件产品来说这没什么问题，例如一部手机在出厂以后，它的硬件几乎是不会变的。但对于树莓派这种开发板来说，尤其是它的40pin扩展引脚，外围电路的变动可就大了去了，而内核加载<code>dtb</code>后是不能变的，所以需要一种<strong>动态覆盖配置</strong>的设备树机制，这就是树莓派的——dtoverlay(设备树覆盖)。</p>
+<p>dtoverlay同样是由dts源编译而来，语法几乎和设备树一样，不过输出文件扩展名为<code>dtbo</code>。树莓派提供了两种方式加载dtbo：</p>
+<ol>
+<li>将编译好的dtbo放到<code>/boot/overlays</code>下，并由<code>/boot/config.txt</code>配置和使能；</li>
+<li>通过命令<code>dtoverlay &lt;dtbo_file&gt;</code>动态覆盖设备树；</li>
+</ol>
+<p>第1种方式会涉及更复杂的语法规则，本篇文章仅仅是对平台设备及设备树的知识入门，因此选择第2种命令行的方式，动态加载。</p>
+<h3 id="用设备树注册设备"><a href="#用设备树注册设备" class="headerlink" title="用设备树注册设备"></a>用设备树注册设备</h3><p>led_driver.c：<br>其他内容不变，仅仅是增加<code>of_device_id</code>属性。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 首先用of_device_id声明了三种LED型号的表，支持设备树解析</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">of_device_id</span> <span class="title">of_leds_id</span>[] =</span> &#123;</span><br><span class="line">  &#123; .compatible = <span class="string">&quot;led_type_a&quot;</span> &#125;,</span><br><span class="line">  &#123; .compatible = <span class="string">&quot;led_type_b&quot;</span> &#125;,</span><br><span class="line">  &#123; .compatible = <span class="string">&quot;led_type_c&quot;</span> &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">platform_driver</span> <span class="title">led_driver</span> =</span> &#123;</span><br><span class="line">  .probe = led_probe,</span><br><span class="line">  .remove = led_remove,</span><br><span class="line">  .driver = &#123;</span><br><span class="line">    .name = <span class="string">&quot;my_led&quot;</span>,</span><br><span class="line">    .of_match_table = of_leds_id, <span class="comment">// 👈在驱动种添加对应属性</span></span><br><span class="line">    .owner = THIS_MODULE,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>接着新建一个设备树文件，并定义一个<code>led_type_a</code>的LED设备，并将其命名为<code>led_a1</code>。</p>
+<p>myled.dts</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/dts-v1/;</span><br><span class="line">/plugin/;</span><br><span class="line"></span><br><span class="line">/ &#123;</span><br><span class="line">  fragment@0 &#123;</span><br><span class="line">    target-path = &quot;/&quot;;</span><br><span class="line">    __overlay__ &#123;</span><br><span class="line">      led_a1 &#123;</span><br><span class="line">        compatible = &quot;led_type_a&quot;;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>fragment</code>和<code>__overlay__</code>非常重要！！如果不这么写会导致动态加载失败，但其实以上的代码转化为标准的设备树语法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/led_a1 &#123;</span><br><span class="line">  compatible = &quot;led_type_a&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>最后用<code>dtc</code>编译器将<code>dts</code>编译为<code>dtbo</code>：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux-rpi-4.19.y/scripts/dtc -I dts -o myled.dtbo myled.dts</span><br></pre></td></tr></table></figure>
+
+<p>万事俱备，看看效果吧：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步：加载led驱动</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod led_driver.ko </span><br><span class="line"><span class="comment"># 第二步：加载设备树覆盖</span></span><br><span class="line">philon@rpi:~/modules $ sudo dtoverlay myled.dtbo</span><br><span class="line"><span class="comment"># 第三部：看看平台设备里是否注册了一个叫“led_a1”的设备</span></span><br><span class="line">philon@rpi:~/modules $ ls /sys/devices/platform/</span><br><span class="line">alarmtimer  Fixed MDIO bus.0    👉led_a1👈  power         serial8250  uevent</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显然已经注册，根据led_driver的实现，设备注册后会在probe函数中打印一条消息</span></span><br><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line">...</span><br><span class="line">[  429.359567] leddrv: no symbol version <span class="keyword">for</span> module_layout</span><br><span class="line">[  429.359577] leddrv: loading out-of-tree module taints kernel.</span><br><span class="line">[  435.995744] led led_a1 probe 👈啊～我看到树上长了个灯</span><br></pre></td></tr></table></figure>
+
+<p>再来回顾下流程：</p>
+<ol>
+<li>首先驱动要支持<code>of_device_id</code>属性，并且以<code>compatible</code>作为匹配对象</li>
+<li>然后通过编写设备树定义相应的设备资源</li>
+<li>最后通过加载驱动和dtoverlay即可</li>
+</ol>
+<h3 id="让设备开机自动注册"><a href="#让设备开机自动注册" class="headerlink" title="让设备开机自动注册"></a>让设备开机自动注册</h3><p>这就非常简单了，前面已经说过<code>/boot/overlays</code>其实是通过<code>config.txt</code>配置和使能的，所以我们只需要将<code>myled.dtbo</code>放到overlays目录下，并在config.txt添加一行使能即可。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步：将自己的dtbo放到overlays下</span></span><br><span class="line">philon@rpi:~/modules $ sudo cp myled.dtbo /boot/overlays</span><br><span class="line"><span class="comment"># 第二步：在config.txt最后一行添加myled</span></span><br><span class="line">philon@rpi:~/modules $ sudo <span class="built_in">echo</span> <span class="string">&quot;dtoverlay=myled&quot;</span> | sudo tee -a /boot/config.txt</span><br><span class="line"><span class="comment"># 第三步：reboot...</span></span><br><span class="line"><span class="comment"># 第四步：可以在/sys/device/platform下查看到设备已经注册</span></span><br><span class="line">philon@rpi:~/modules $ ls /sys/devices/platform/</span><br><span class="line">alarmtimer  Fixed MDIO bus.0    👉led_a1👈  power         serial8250  uevent</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># ⚠️但是，设备树仅仅是定义了led_device，而led_driver.ko其实并没有开机加载，如果要更完善的话，应该把led_driver直接编译进内核！</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod leddrv.ko </span><br><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line">...</span><br><span class="line">[  214.076752] leddrv: no symbol version <span class="keyword">for</span> module_layout</span><br><span class="line">[  214.076771] leddrv: loading out-of-tree module taints kernel.</span><br><span class="line">[  214.077535] led led_a1 probe</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>Linux-2.6后引入了<code>驱动-总线-设备</code>的软件架构来管理系统设备；</li>
+<li><code>platform</code>设备和USB、TTY、UART一样，都是基于底层的抽象和封装；</li>
+<li><code>platform</code>是为了把那些没有总线的设备，以总线的思想管理起来，所以它算作一根虚拟总线；</li>
+<li>平台总线提供了多种驱动和设备的匹配规则：设备树、ACPI、ID表、名称等；</li>
+<li>设备树是由bootloader传递给内核，并且在初始化后基本不可修改；</li>
+<li>树莓派为了满足设备树动态修改的需求，引入了<code>dtoverlay</code>；</li>
+<li>dtoverlay采用常规的设备树语法，但需要<code>fragment</code>和<code>__overlay__</code>属性；</li>
+<li>驱动必须定义<code>of_device_id</code>数据结构，才能与设备树匹配；</li>
+<li>务必掌握设备树语法！</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E4%B8%8A%E5%B8%9D%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%90%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E4%B8%8A%E5%B8%9D%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%90%97/" class="post-title-link" itemprop="url">读《上帝掷骰子吗？》</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-20 23:24:07" itemprop="dateCreated datePublished" datetime="2019-10-20T23:24:07+08:00">2019-10-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E4%B8%8A%E5%B8%9D%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%90%97/" class="post-meta-item leancloud_visitors" data-flag-title="读《上帝掷骰子吗？》" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E4%B8%8A%E5%B8%9D%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%90%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E4%B8%8A%E5%B8%9D%E6%8E%B7%E9%AA%B0%E5%AD%90%E5%90%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本书全名为《上帝掷骰子吗：量子物理史话》，所以是讲量子物理及其发展历史的科普书，由于“量子”对我这种普门外汉而言较为高深，所以我的理解可能与原著会有极大的偏差。</p>
+<h2 id="光，是什么？"><a href="#光，是什么？" class="headerlink" title="光，是什么？"></a>光，是什么？</h2><p>光是一种物质吗？光有具体的形状吗？为什么宇宙的极限速度是光速？当然，古代的人们会告诉你：“上帝说要有光，于是就有了光”。不过对于这帮物理学家而言，这是毫无说服力的。</p>
+<p>很早以前，物理学家们就从科学的角度去解释光到底是什么，然而谁也说不清。不过业界争论的焦点在于：光是一种粒子，还是一种波。并由此引发了三次波粒战争。</p>
+<p><strong>第一次波粒战争：彩虹</strong></p>
+<p>17世纪，以鼎鼎大名的艾萨克·牛顿为首，支持“微粒说”；以同样著名的物理学家胡克为首，支持“波动说”。</p>
+<p>其实当时牛顿最初还相对中立，因为没有确凿的实验证据。但胡克这家伙总是对他冷嘲热讽，牛顿的个性也相当尖锐，因此干脆一边倒支持微粒。</p>
+<p>最终，牛顿通过三棱镜发现了阳光其实由7中不同色彩的光组成，光被假想为不同颜色的小球混合在一起的结果。当时牛顿已发现了万有引力而闻名天下，再加上这么个极具说服力的实验结果，舆论就支持微粒，“波动说”输的体无完肤。</p>
+<p><strong>第二次波粒战争：双缝衍射、电磁波</strong></p>
+<p>18世纪，一名叫托马斯·杨做出了光的双缝衍射实验，发现光穿过两条小缝后，墙面会出现明暗相间的条纹——这可是波的专属。由此波动说异军突起。</p>
+<p>之后，菲涅尔更是通过数学推理出光照到一小块圆片上，会因为衍射而在其影子的中心有一小块亮斑，后期被实验证明，这便是著名的柏松亮斑。</p>
+<p>紧接着，伟大的赫兹登场了，他做了一个非常简单却非常牛逼的试验：</p>
+<p>通过给两个金属铁球充电直到激发击穿电压，此时可以在空气中看到电火花；同时，在附近的另外两个金属铁球之间，也会附和着产生电火花，而它们却没接入任何电源。</p>
+<p>通俗的解释试验原理：好比在平静的水平上晃动一个球，水面产生的波纹会导致另一个球跟着晃动。是的，这个试验证明电磁波的存在，无线通信由此产生，没有它，就没有我们的Wi-Fi蓝牙。</p>
+<p>又是光的衍射、又是电磁波，波动说终于扳回一局！</p>
+<p><strong>第三次波粒战争：黑体辐射、量子、光电效应</strong></p>
+<p>19世纪，人们开始研究黑体辐射，所谓黑体是一种理想物质，可以对其无限升温，随着温度的升高，该物体会向发光，颜色从红——橙——黄——白——蓝渐变。正如宇宙中常见的恒星一样。简而言之，物体温度越高，电磁波(即光)的波长越短。那有没有一套公式能推导出温度和波长的关系？</p>
+<p>抱歉，科学家总结的公式不仅复杂，而且与实际观测结果总是对不上号。必须用“长波公式”和“短波公式”来描述不同颜色下能量与波长的对应。就好比必须用两个路码表，一个只在100km/h内有效，一个只在100km/h以外有效，见鬼了。</p>
+<p>终于，伟大的普朗克来了，它假设：“能量的传递必须有一个不连续的单位，一份份的传递”，叫做“能量子”——也就是后来的量子。带着如此叛逆的想法，他重新整合了实验数据，并得到了以下方程：</p>
+<p>E = hv</p>
+<p>E代表能量，h是普朗克常数(神秘的量子常数)，v是电磁波波长。</p>
+<p>如此简洁，并能完美地应用到了任何波长当中。但背后却是一个如此叛逆的思想——能量有一个最小值！这种说法就像在宣称“圆周率3.1415926….一定有结束的那一位”！不过，这个概念在生活中很容里理解，比如一张照片，哪怕它有100亿像素的分辨率，它的最小单位也只能是像素，不可再往下分。</p>
+<p>量子——能量是一份一份的传递的，也就是说能量是一种微粒！</p>
+<p>好吧，普朗克一手开启了量子的新纪元，却因为思想过去颠覆而不肯面对，量子从出生就惨遭抛弃，谁也没想到再随后的一个多世纪里，它饱经沧桑，受尽人间冷暖，终于闯出了自己的一片天地。</p>
+<p>如果说量子的概念还没让“微粒说”站稳脚跟，那么接下来的故事真可谓：成也萧何，败也萧何。</p>
+<p>波动说凭借电磁波的发现扬眉吐气，打得微粒说满地找牙。但是，电磁波的试验留下了一个巨大的BUG——当光照在金属铁球表面时，电磁波更明显，后来证明这是由于光照在金属表面，会打出一部分电子——光电效应。</p>
+<p>光电效应更重要的一点是：再强烈的红光一个电子也打不出，再微弱的蓝光也可以打出电子。说明打出电子只和光的波长相关，和光束本身的能量大小无关，为什么？</p>
+<p>爱因斯坦登场了：根据量子理论，假设光由光子组成(光的量子)，根据普朗克的E=hv，单个光子的能量只和它的频率大小(波长)有关，当光子的能量超过电子时，才能把它撞出来。再说强烈的红光，这仅能说明红光的光子数量庞大，但每个光子的个体能量依旧低于电子，量子理论中能量是一份份传递的，作用结果不累加，所以红光打不出电子。就像小孩搬石头，一次只允许一个人搬，而小孩的力气小于石头的重量，你就是把全世界的孩子叫过来搬——一块也搬不走。</p>
+<p>量子、光子，微粒说还是打出了自己的一片天地，战争发展至此，双方都骑虎难下，只能论持久战了。不论战争的输赢，量子这个叛逆的孩子，早已在双方的激战中成长起来。</p>
+<h2 id="卷土重来，电子的波粒二象性"><a href="#卷土重来，电子的波粒二象性" class="headerlink" title="卷土重来，电子的波粒二象性"></a>卷土重来，电子的波粒二象性</h2><p>同样是19世纪，人们发现原子并非世间最小的物质，它由原子核及其周围的电子构成。伟大的物理学家玻尔，通过量子理论和实验观测，推导出了原子内部结构——电子围绕着原子核运动，且电子的运行轨道是量子化的。</p>
+<p>但很快，人们发现这套理论的bug，电子围绕原子核运行时需要释放电磁辐射，从能量守恒的角度，电子会因能量衰减而坠落中心。于是乎有个叫德布罗意的科学家提出了一个假设：电子的运动伴随着一个波。这个概念解释起来很复杂，总之当电子以波的形式运动，能够支撑它稳定在自己的轨道中。</p>
+<p>电子是个波？！</p>
+<p>我们努力从量子概念来解释原子内部结构，解释能量的传递方式，结果用尽毕生的努力，从微粒的角度居然推导出一个波？！</p>
+<p><strong>电子双缝衍射</strong></p>
+<p>好吧，要证明/证伪电子是一种波很简单，只要是波就有衍射现象，那就让电子通过两条小缝，看看电子感光屏上会不会出现明暗相间的条纹。</p>
+<p>结果——真的出现了！</p>
+<p>接着有人提出，这种衍射是电子们的群体行为，很正常。你不信一次只发射一个电子，衍射图案肯定就没了。</p>
+<p>结果——还是有衍射！</p>
+<p>注意，实验过程是一次只发射一个电子，感光屏上会随机留下一个点，发射多足够多次后就会看到，这些点其实排列成了多条明暗相间的衍射条纹——就像事先约定好了一样。</p>
+<p>到这里，连物理学家都懵逼了，电子是个波我认了，但一个电子怎么可能同时穿过双缝——自己衍射自己？事实胜于雄辩，让我们看个究竟…</p>
+<p>结果——衍射行为消失了。</p>
+<p>经过反复试验确认得出个结论：当人们不观察时，一个电子也能衍射；可当人们观察其过程时，电子就像颗普通的玻璃球，只是随机穿过其中一条缝。至于为什么，至今无解！</p>
+<p><strong>看不到，就用理论证明</strong></p>
+<p>电子“存心”不让人类看到它是如何运动的，那好，根据实验结果，至少在理论上描述一下吧？然而接下来发生的事情很讽刺…</p>
+<p>海森堡登场，他站在粒子的角度，通过量子理论推导出了一套矩阵力学(其实就是数学中的线性代数)，可以很好地计算出电子在不同轨道上的能量。</p>
+<p>薛定谔登场，他站在波动的角度，通过经典数学，也得出了一套方程式，能够很好地计算出电子在轨道和能量之间的对应关系。</p>
+<p>呵呵，看来，电子既是粒子也是波，世界是连续的也是非连续的。打了几个世纪的波粒战争，结果却是盲人摸象，一派摸到了这边，一派摸到了另一边！只见电子笑而不语——傻了吧？粒子和波是同一种东西。</p>
+<p>是啊，人类所在的维度太低，根本无法想象，一只手既是左也是右，一个球可以同时穿过两扇门，一只猫既是死的也是活的，一种物质既是连续的也是不连续的。</p>
+<h2 id="一些假说"><a href="#一些假说" class="headerlink" title="一些假说"></a>一些假说</h2><p>物理学家的争吵还在继续，如果我们继续追随他们的足迹，只会一脸茫然而不知所措。不必沮丧，“没人能理解量子论”，就连爱因斯坦对此也是彷徨的。</p>
+<p>首先要明确，量子的几大(诡异)特性：</p>
+<ol>
+<li>不连续，总有个最小的、不可分割的单位值</li>
+<li>随机，例如电子出现的位置是无法计算的，只能用概率统计</li>
+<li>叠加态，常识中截然不同的两种状态会同时存在</li>
+<li>超距作用，不论相隔多远，两个量子的行为可以瞬间同步</li>
+<li>不可观察，量子的行为表现，取决于你如何观察它</li>
+<li>未来可以决定过去，通过量子纠缠</li>
+</ol>
+<p>总之，量子的世界很魔幻，但唯一可以肯定的是，那里没有上帝！此外总结一些主流的假说，便于更形象地理解量子理论。</p>
+<p><strong>平行宇宙</strong></p>
+<p>我们，来自更高维度的投影。就像地上的影子，它是二维的，对于二维世界来说，每个影子都认为自己的独立客观存在的。但是站在三维世界的我们很清楚，人的影子数量是无限的，只要光源不同，影子就不同。</p>
+<p>当没有光(不观察)的时候影子是游离状态，一旦有光(观察)的时候，影子会瞬间聚合成形。而影子的形状取决于光的角度，同一个人的不同影子可以高矮胖瘦，同时出现。</p>
+<p>用影子做比喻可能不恰当，但大意就是这样，每当我们观察的时候，就会创造一个全新的宇宙。</p>
+<p><strong>隐变量</strong></p>
+<p>听说过虚数吗？我们从小就明白一个道理——负负得正！请你想象一个数字：</p>
+<p>i² = -1</p>
+<p>是的，存在这样一种数字，它自己乘自己后的结果是一个负数。而且，虚数这种思想在数学和物理界都非常有用。那虚数是什么？不好说，只能想象成一个我们看不到的“维度”，既然看不到，就叫它们隐变量。</p>
+<p>比如，存在这样一根线，它恰好同时垂直于xyz轴——你能想象吗？如果存在，那这根线的每个坐标值都是虚数。</p>
+<p>这类似于前面所说的平行宇宙，有一些物质，它的坐标除了三维之外，还有我们无法想象的更高纬度，必须要把那部分的坐标值代入，才能精确计算。</p>
+<p><strong>超弦理论</strong></p>
+<p>这部分我不是很懂，大意是说，万事万物都是由无数条一维的线构成，这根线在不停震动，这就是弦。如果进一步观察，会看到弦其实更像一根水管，中间是空的…不是说一维的吗？无法理解…</p>
+<h2 id="一点点哲学"><a href="#一点点哲学" class="headerlink" title="一点点哲学"></a>一点点哲学</h2><p>尝试理解量子理论，包括本书，都不得不引入很多哲学概念，实在没办法，量子的概念过于飘渺，而且很多观点也真的只是想象而已！不论如何，我比较喜欢平行宇宙的假说，起码它更客观一点，更好理解一些。</p>
+<p>比如，观察一下就会创造一个全新的宇宙。可能会觉得太过于夸张，但仔细想想，我们来自高纬度的投影，那我们所看到的就是客观真实的吗？</p>
+<p>白马非“白”马，人的眼中马是白色的，那拥有温度感官的蛇的眼中呢？有超声波感官的蝙蝠眼中呢？有紫外线感官的蜜蜂眼中呢？白色，只是马对太阳光的反射罢了，恰巧人眼能感知7中颜色而已，里面还有太多太多的“颜色”是我们根本感受不到的，但不代表它不存在。</p>
+<p>同样的，什么是客观上的“我”，朋友眼里有个“我”的投影，那就等同于朋友对我进行了观察，创造了一个全新的“我”。有无数人观察过“我”，世上就有千千万万个“我”，有人认为“我”善良，有人觉得“我”阴险，“我”同时存在不同地方，“我”总是随机出现，“我”已经死了，“我”还活着。这完全取决于那个观察“我”的人。</p>
+<p>量子，最神秘的幽灵，它颠覆了物理学，也被应用到了无数的行业。毋庸置疑，人类目前正游离在真理的边缘，世界将被重新阐释。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/58/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/58/" class="post-title-link" itemprop="url">写给未来的消息</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-10 20:45:23" itemprop="dateCreated datePublished" datetime="2019-10-10T20:45:23+08:00">2019-10-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/58/" class="post-meta-item leancloud_visitors" data-flag-title="写给未来的消息" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/58/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/58/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_58/">A Message to the Future </a></p>
+<p>多年来，我一边培育程序员，一边和他们工作。也许是他们大都很聪明的缘故，人们也大都认为他们整日苦思冥想的问题是极其困难的，给出来的解决方案对于普通人(或者初学者)而言像天书一样难以理解和维护。</p>
+<p>我记得一件在Joe身上发生的趣事，他是我数据结构班里的学生，突然跑来给我看他写的东西：“我敢打赌你猜不出这是什么”，他说。</p>
+<p>“确实”，我同意地说，并不想在他的作品上花太多时间，也不在乎传递的消息有多重要。“我敢肯定对此你很努力吧。我想，我觉得，你是不是忘了什么事。说！Joe，你是不是还有个弟弟？”</p>
+<p>“是的呀，他叫Phil！在你的入门班里，也是学编程！”Joe很自豪地说。</p>
+<p>“非常好，”我回答。“我想知道他是否能读这段代码。”</p>
+<p>“不行！”Joe说，“这是很难的！”</p>
+<p>我建议说，“假设这是真的可以工作的代码，几年后，Phil受雇去维护更新它。你能为他做点什么呢？”Joe盯着我眨眨眼。“我们都知道Phil很聪明，对吗？”</p>
+<p>Joe点点头，嬉皮笑脸的说：“我不想这么说，但我也很聪明呀！“</p>
+<p>”所以当我不能理解你所做的事，而你非常聪明的弟弟也对此十分困惑，那对于你写的东西又意味着什么呢？”在我看来，Joe看待他的代码有所不同。“这样如何，”我以“我是你最友好的导师”的口吻建议：“设想一下，你写的每行代码都是给未来某个人的消息——有可能是你的弟弟。你正在给这个聪明人解释如何解决这个问题。(…未来…)这是你的想法吗？未来那个聪明的程序员看到你的代码并赞叹：‘哇！太厉害了！我可以完美理解它如何工作的，它是多么优雅。不，等等——这段代码太漂亮了，我要展示给团队的其他人看。这就是一份杰作！’”</p>
+<p>“Joe，你认为能把这些解决了棘手问题的代码，也变得像歌曲一样优美吗？是的，就像一首令人陶醉的旋律。我觉得任何人只要能为困难提供解决方案，那他也能写出漂亮的东西。嗯…我想我应该开始在’漂亮’这方面打分了？你认为如何呢，Joe？”</p>
+<p>Joe拿起他的作品看着我，露出一丝微笑。“我懂了，教授，我要为Phil创造一个更美好的世界。谢谢你。”</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/RPiDriverInAction/06/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RPiDriverInAction/06/" class="post-title-link" itemprop="url">06：红外接收</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-08 22:01:20" itemprop="dateCreated datePublished" datetime="2019-10-08T22:01:20+08:00">2019-10-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">树莓派驱动开发实战</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/RPiDriverInAction/06/" class="post-meta-item leancloud_visitors" data-flag-title="06：红外接收" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/RPiDriverInAction/06/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/RPiDriverInAction/06/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文源码：<a target="_blank" rel="noopener" href="https://github.com/Philon/rpi-drivers/tree/master/06-infrared">https://github.com/Philon/rpi-drivers/tree/master/06-infrared</a></p>
+<p>由于我手上只有一个1838红外接收头和一个CAR-MP3遥控器，所以本文主要基于Linux内核实现红外NEC协议的解码。</p>
+<p>先来看看效果：</p>
+<iframe src="//player.bilibili.com/player.html?aid=70504618&cid=122149105&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:600px;height:400px"> </iframe>
+
+<h2 id="红外通信原理"><a href="#红外通信原理" class="headerlink" title="红外通信原理"></a>红外通信原理</h2><p>呐，太专业的电路原理呢我就不展开讲了，反正也没人看。简单点说吧：</p>
+<p>反正就是有一对红外发射管和接收管组成，通过产生脉冲信号来传递信息。脉冲信号是什么？你可以理解为摩尔斯电码那种样子，就是1和0。</p>
+<p>红外通信在日常生活中主要应用于家电控制，例如电视、空调、投影等等。市面上比较常见的红外通信协议是NEC，所以就来研究以下NEC的解码。</p>
+<h2 id="NEC协议"><a href="#NEC协议" class="headerlink" title="NEC协议"></a>NEC协议</h2><p>在讲述NEC协议之前，先来看看下面这几行数据打印。这是我随便按了几下遥控器，抓取的红外原始数据。“横杠”表示有红外信号，“下划线”表示无信号。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line"><span class="comment">#                   9ms           4.5ms  0 0 0 0 0 0 0 0 1   1   1   1   1   1   1   1   0 0 0 1   0 0 0 0 1   1   1   0 1   1   1   1   1</span></span><br><span class="line">[  203.718032] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-_-_-___-_-_-_-_-___-___-___-_-___-___-___-___-_</span><br><span class="line">[  207.647870] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-_-___-___-___-_-_-_-___-___-_-_-_-___-___-___-_</span><br><span class="line">[  209.927802] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-___-___-_-___-_-___-_-___-_-_-___-_-___-_</span><br><span class="line">[  214.557679] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-_-_-_-___-_-___-_-___-___-___-___-_-___-_</span><br><span class="line">[  216.917629] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-_-___-_-___-_-___-_-___-___-_-___-_-___-_</span><br><span class="line">[  219.457571] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-___-_-_-___-_-___-_-___-_-___-___-_-___-_</span><br></pre></td></tr></table></figure>
+
+<p>从上边的原始数据可以看出来，每个NEC红外协议很相似，以9毫秒的高电平、4.5毫秒的低电平开始，之后跟上一堆1和0，最后一部分才是不相同的地方。简直可以总结出NEC的协议格式是这样的：</p>
+<p><code>&lt;帧头9ms高+4.5低&gt;&lt;8位地址码&gt;&lt;8位地址码取反&gt;&lt;8位指令码&gt;&lt;8位指令码取反&gt;</code></p>
+<p>没错，就是这样的😁，不过需要注意，<strong>NEC协议采用PWM(脉宽调制)编码，一个脉冲周期表示一个bit，是0还是1取决于占空比</strong>。不信请看下图：</p>
+<p><img src="https://i.loli.net/2019/10/08/BQPUXCGspiTumE6.jpg" alt="NEC协议编码说明"></p>
+<p>⚠️我在程序中对接收到的数据取反，所以原始数据和上图的逻辑刚好相反。</p>
+<p>结合原始数据和图片可以总结出：</p>
+<ol>
+<li>协议帧头总是以9ms的高电平和4.5ms的低电平为一个脉冲周期</li>
+<li>协议内容的脉冲周期，‘<code>-___</code>’表示1，‘<code>-_</code>’表示0，且电平信号以560us为单位；</li>
+<li>9ms高电平和2.25ms的低电平表示重复码，即长按按键时触发</li>
+<li>帧间间隔为110ms</li>
+</ol>
+<h2 id="红外接收电路"><a href="#红外接收电路" class="headerlink" title="红外接收电路"></a>红外接收电路</h2><p><img src="https://i.loli.net/2019/10/08/aLufX8MJltyDCpF.png" alt="红外接收管树莓派接线图"></p>
+<p>如上图所示，红外接收管从左到右一共3个脚，分别是：地、3.3V、数据输出。所以供电就用树莓派自身的3.3V即可，而数据输出脚，我这里接的是GPIO18。</p>
+<h2 id="驱动实现"><a href="#驱动实现" class="headerlink" title="驱动实现"></a>驱动实现</h2><p>正如前文所述，NEC红外协议是高频脉冲信号，所以我用GPIO的中断来记录每一次脉冲信号及其时长。实现起来没什么太复杂的地方，大致流程为：</p>
+<ol>
+<li>申请并注册GPIO18的中断，务必是双边沿触发</li>
+<li>申请一个定时器用于超时断帧处理</li>
+<li>每次中断触发，都记录上升或者下降沿的状态及时长</li>
+<li>每当经过一个完整脉冲后，通过占空比判断数据类型</li>
+<li>每当记录了32个数据(一帧)后，处理协议指令</li>
+<li>我是直接把地址和指令推给用户层处理</li>
+</ol>
+<p>⚠️注意：以下代码有个很大的风险，为了简化程序，IRQ中断我并没有采取“底半部”来处理复杂的红外解码业务，如果业务逻辑进一步加大，可能会导致内核崩溃。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/uaccess.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/gpio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/interrupt.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/timer.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;Dual BSD/GPL&quot;</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Philon | https://ixx.life&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> gpio;</span><br><span class="line">  <span class="keyword">int</span> irq;</span><br><span class="line">  <span class="keyword">wait_queue_head_t</span> rwait;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">timer_list</span> <span class="title">timer</span>;</span></span><br><span class="line">  u32     pulse;  <span class="comment">// 脉冲上升沿持续时长</span></span><br><span class="line">  u32     space;  <span class="comment">// 脉冲下降沿持续时长</span></span><br><span class="line">  <span class="keyword">size_t</span>  count;  <span class="comment">// 脉冲个数</span></span><br><span class="line">  u32     data;   <span class="comment">// 脉冲解码后的值</span></span><br><span class="line">&#125; ir;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_head(p, s) (p &gt; 8900 &amp;&amp; p <span class="meta-string">&lt; 9100 &amp;&amp; s &gt;</span> 4400 &amp;&amp; s &lt; 4600)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_repeat(p, s) (p &gt; 8900 &amp;&amp; p <span class="meta-string">&lt; 9100 &amp;&amp; s &gt;</span> 2150 &amp;&amp; s &lt; 2350)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_bfalse(p, s) (p &gt; 500 &amp;&amp; p <span class="meta-string">&lt; 650 &amp;&amp; s &gt;</span> 500 &amp;&amp; s &lt; 650)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_btrue(p, s) (p &gt; 500 &amp;&amp; p <span class="meta-string">&lt; 650 &amp;&amp; s &gt;</span> 1500 &amp;&amp; s &lt; 1750)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 红外接收函数(即GPIO18的双边沿中断处理函数)</span></span><br><span class="line"><span class="comment">// 记录GPIO每次中断是“上升还是下降”，以及持续的时长</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">irqreturn_t</span> <span class="title">ir_rx</span><span class="params">(<span class="keyword">int</span> irq, <span class="keyword">void</span>* dev)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">ktime_t</span> last = <span class="number">0</span>;</span><br><span class="line">  u32 duration = (u32)ktime_to_us(ktime_get() - last);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ⚠️注意：1838红外头高低电平逻辑取反</span></span><br><span class="line">  <span class="keyword">if</span> (!gpio_get_value(ir.gpio)) &#123;</span><br><span class="line">    ir.space = duration;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 切换下降沿时，脉冲只有高电平部分，所以不做处理</span></span><br><span class="line">    ir.pulse = duration;</span><br><span class="line">    <span class="keyword">goto</span> irq_out;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (is_head(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.count = ir.data = <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_repeat(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.count = <span class="number">32</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_btrue(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.data |= <span class="number">1</span> &lt;&lt; ir.count++;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_bfalse(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.data |= <span class="number">0</span> &lt;&lt; ir.count++;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">goto</span> irq_out;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (ir.count &gt;= <span class="number">32</span>) &#123;</span><br><span class="line">    wake_up(&amp;ir.rwait);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">irq_out:</span><br><span class="line">  mod_timer(&amp;ir.timer, jiffies + (HZ / <span class="number">10</span>));</span><br><span class="line">  last = ktime_get();</span><br><span class="line">  <span class="keyword">return</span> IRQ_HANDLED;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时清除红外协议帧的相关信息，便于接收下一帧</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clear_flag</span><span class="params">(struct timer_list *timer)</span> </span>&#123;</span><br><span class="line">  ir.pulse = <span class="number">0</span>;</span><br><span class="line">  ir.space = <span class="number">0</span>;</span><br><span class="line">  ir.count = <span class="number">0</span>;</span><br><span class="line">  ir.data = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">ssize_t</span> <span class="title">ir_read</span><span class="params">(struct file *filp, <span class="keyword">char</span> __user *buf, <span class="keyword">size_t</span> len, <span class="keyword">loff_t</span> *off)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> rc = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((filp-&gt;f_flags &amp; O_NONBLOCK) &amp;&amp; ir.count &lt; <span class="number">32</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> -EAGAIN;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    DECLARE_WAITQUEUE(wq, current);</span><br><span class="line">    add_wait_queue(&amp;ir.rwait, &amp;wq);</span><br><span class="line">    wait_event(ir.rwait, ir.count == <span class="number">32</span>);</span><br><span class="line">    remove_wait_queue(&amp;ir.rwait, &amp;wq);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  rc = copy_to_user(buf, &amp;ir.data, <span class="keyword">sizeof</span>(u32));</span><br><span class="line">  <span class="keyword">if</span> (rc &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ir.count = <span class="number">0</span>;</span><br><span class="line">  *off += <span class="keyword">sizeof</span>(u32);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">sizeof</span>(u32);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">file_operations</span> <span class="title">fops</span> =</span> &#123;</span><br><span class="line">  .owner = THIS_MODULE,</span><br><span class="line">  .read = ir_read,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">miscdevice</span> <span class="title">irdev</span> =</span> &#123;</span><br><span class="line">  .minor = MISC_DYNAMIC_MINOR,</span><br><span class="line">  .name = <span class="string">&quot;IR1838-NEC&quot;</span>,</span><br><span class="line">  .fops = &amp;fops,</span><br><span class="line">  .nodename = <span class="string">&quot;ir0&quot;</span>,</span><br><span class="line">  .mode = <span class="number">0744</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> __init <span class="title">ir_init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> rc = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化脉冲处理函数</span></span><br><span class="line">  init_waitqueue_head(&amp;ir.rwait);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化定时器，用于断帧</span></span><br><span class="line">  timer_setup(&amp;ir.timer, clear_flag, <span class="number">0</span>);</span><br><span class="line">  add_timer(&amp;ir.timer);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 申请GPIO及其双边沿中断</span></span><br><span class="line">  ir.gpio = <span class="number">18</span>;</span><br><span class="line">  <span class="keyword">if</span> ((rc = gpio_request_one(ir.gpio, GPIOF_IN, <span class="string">&quot;IR&quot;</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">&quot;ERROR%d: can not request gpio%d\n&quot;</span>, rc, ir.gpio);</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ir.irq = gpio_to_irq(ir.gpio);</span><br><span class="line">  <span class="keyword">if</span> ((rc = request_irq(ir.irq, ir_rx,</span><br><span class="line">              IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,</span><br><span class="line">              <span class="string">&quot;IR&quot;</span>, <span class="literal">NULL</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">&quot;ERROR%d: can not request irq\n&quot;</span>, ir.irq);</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((rc = misc_register(&amp;irdev)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(ir_init);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> __exit <span class="title">ir_exit</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  misc_deregister(&amp;irdev);</span><br><span class="line">  free_irq(ir.irq, <span class="literal">NULL</span>);</span><br><span class="line">  gpio_free(ir.gpio);</span><br><span class="line">  del_timer(&amp;ir.timer);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(ir_exit);</span><br></pre></td></tr></table></figure>
+
+<p>以下是应用层的测试代码，有关CAR-MP3遥控器的指令码网上一搜一大把，如果你不嫌烦，也可以一个一个的试出来。</p>
+<p>由于驱动层是直接把原始数据的&lt;地址&gt;&lt;地址取反&gt;&lt;指令&gt;&lt;指令取反&gt;高低位反转后，直接给到进程，所以进程read出来的数据，指令码应该在第3段(16-24位)。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/fcntl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// car-mp3遥控器指令码</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span>* keyname[] = &#123;</span><br><span class="line">  [<span class="number">0x45</span>] = <span class="string">&quot;Channel-&quot;</span>,  [<span class="number">0x46</span>] = <span class="string">&quot;Channel&quot;</span>, [<span class="number">0x47</span>] = <span class="string">&quot;Channel+&quot;</span>,</span><br><span class="line">  [<span class="number">0x44</span>] = <span class="string">&quot;Speed-&quot;</span>,    [<span class="number">0x40</span>] = <span class="string">&quot;Speed+&quot;</span>,  [<span class="number">0x43</span>] = <span class="string">&quot;Play/Pause&quot;</span>,</span><br><span class="line">  [<span class="number">0x15</span>] = <span class="string">&quot;Vol+&quot;</span>,      [<span class="number">0x07</span>] = <span class="string">&quot;Vol-&quot;</span>,    [<span class="number">0x09</span>] = <span class="string">&quot;EQ&quot;</span>,</span><br><span class="line">  [<span class="number">0x16</span>] = <span class="string">&quot;No.0&quot;</span>,      [<span class="number">0x19</span>] = <span class="string">&quot;100+&quot;</span>,    [<span class="number">0x0d</span>] = <span class="string">&quot;200+&quot;</span>,</span><br><span class="line">  [<span class="number">0x0c</span>] = <span class="string">&quot;No.1&quot;</span>,      [<span class="number">0x18</span>] = <span class="string">&quot;No.2&quot;</span>,    [<span class="number">0x5e</span>] = <span class="string">&quot;No.3&quot;</span>,</span><br><span class="line">  [<span class="number">0x08</span>] = <span class="string">&quot;No.4&quot;</span>,      [<span class="number">0x1c</span>] = <span class="string">&quot;No.5&quot;</span>,    [<span class="number">0x5a</span>] = <span class="string">&quot;No.6&quot;</span>,</span><br><span class="line">  [<span class="number">0x42</span>] = <span class="string">&quot;No.7&quot;</span>,      [<span class="number">0x52</span>] = <span class="string">&quot;No.8&quot;</span>,    [<span class="number">0x4a</span>] = <span class="string">&quot;No.9&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ir = open(<span class="string">&quot;/dev/ir0&quot;</span>, O_RDONLY);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> frame = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (read(ir, &amp;frame, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      perror(<span class="string">&quot;read ir&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cmd = (frame &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, keyname[cmd]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  close(ir);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>NEC协议采用PWM编码，一个完整的脉冲周期表示一个bit</li>
+<li>1838红外接收头状态取反</li>
+<li>别看我写的这么轻松，前几天刚接触红外时简直被搞疯😫</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E4%B8%83%E5%A0%82%E6%9E%81%E7%AE%80%E7%89%A9%E7%90%86%E8%AF%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E4%B8%83%E5%A0%82%E6%9E%81%E7%AE%80%E7%89%A9%E7%90%86%E8%AF%BE/" class="post-title-link" itemprop="url">《七堂极简物理课》读书笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-06 17:03:21" itemprop="dateCreated datePublished" datetime="2019-10-06T17:03:21+08:00">2019-10-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E4%B8%83%E5%A0%82%E6%9E%81%E7%AE%80%E7%89%A9%E7%90%86%E8%AF%BE/" class="post-meta-item leancloud_visitors" data-flag-title="《七堂极简物理课》读书笔记" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E4%B8%83%E5%A0%82%E6%9E%81%E7%AE%80%E7%89%A9%E7%90%86%E8%AF%BE/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E4%B8%83%E5%A0%82%E6%9E%81%E7%AE%80%E7%89%A9%E7%90%86%E8%AF%BE/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-最美的理论-广义相对论"><a href="#1-最美的理论-广义相对论" class="headerlink" title="1. 最美的理论 - 广义相对论"></a>1. 最美的理论 - 广义相对论</h2><p>在牛顿的万有引力为主的经典物理学角度，我们认为万物皆有引力，甚至发明了“引力场”的概念来描述引力在空间中的传播，就像磁铁吸住铁一样，地球有巨大的引力让人无法飞起来，而太阳也用巨大的引力让地球围绕自己转。</p>
+<p>然而爱因斯坦发表了广义相对论，他认为所谓的“引力场”就是空间本身，巨大的星球并不是通过自身的吸引力吸住周围的物质，而是直接扭曲了空间——物体本身还是沿直线前进的，只不过“轨道”被弯曲了。就像一张拉平的床单上放了一颗铁球，它扭曲了原本平直的床单，导致其他小的铁球不得不围着它转动。</p>
+<p>爱因斯坦的广义相对论(时空弯曲)直接或间接导致了黑洞、宇宙大爆炸、引力波等概念的诞生以及被观测证实。</p>
+<h2 id="2-量子-不可分割的个体"><a href="#2-量子-不可分割的个体" class="headerlink" title="2. 量子 - 不可分割的个体"></a>2. 量子 - 不可分割的个体</h2><p>量子是一种最小的、不可在分割的物理量。就好比显示屏上的像素，它就是量子化的，一张图片的分辨率再细腻，最终还是要落实到每一个像素上(不存在半个像素)。</p>
+<p>经典物理学认为，能量是连续的，就像你把水从0烧到100度，这个过程是平滑而连续的。然而量子理论却认为，在微观世界，能量是一级一级地往上爬，能量单位是有最小极限的，我们姑且称之为“能量包”，原子核内的电子所包含的能量只会是一个特定值——即多少个能量包，当电子的能量包达到另一个特定值后，就会立刻跳到另一个运行轨道上，这是著名的——“量子跃迁”。</p>
+<p>量子理论的诞生颠覆了经典物理学的很多概念，在传统的科学观念里，一切都有规律，可以通过公式计算得出。然而在量子世界里，电子并不是一直存在的物质，它只有和某个物质发生作用是才会以一定的概率“现身”，否则你都无法用“存在”这个概念来形容它。</p>
+<p>我个人的理解，这就好比影子，有光照的时候就会有影子，没有光照的时候影子存在吗？即，在量子世界，我们不知道其内部的构造，只知道它是如何作用的。</p>
+<p>不论如何，我不是特别理解量子的概念，但是可以肯定的是，基于量子力学，晶体管问世了，进一步将人类文明推向信息时代。</p>
+<h2 id="3-宇宙的构造-世界有多大"><a href="#3-宇宙的构造-世界有多大" class="headerlink" title="3. 宇宙的构造 - 世界有多大"></a>3. 宇宙的构造 - 世界有多大</h2><p>从人类文明开始，“世界有多大？”这个命题经历了：</p>
+<p>世界只有天和地<br>世界是圆的，地球是中心<br>世界是圆的，太阳是中心<br>原来太阳只是银河系的一粒尘埃<br>原来还有数不清个像银河一样的星系<br>更多的星系和未知都包含在宇宙之中<br>宇宙的空间不是均匀的，而是被各种天体扭曲，像波澜起伏的海面<br>宇宙之外是什么？</p>
+<h2 id="4-粒子-世界有多小"><a href="#4-粒子-世界有多小" class="headerlink" title="4. 粒子 - 世界有多小"></a>4. 粒子 - 世界有多小</h2><p>原子曾被认为是物质的最小单位，它所形成的各种元素构成了宇宙中的万事万物，然而：</p>
+<p>原子由原子核及电子构成<br>原子核由更小的中子和质子构成<br>质子和中子又由夸克构成<br>夸克又被更小的胶子粘在一起  </p>
+<p>此外还有中微子、希格斯玻色子等粒子，共不到十种粒子，像乐高积木一样，以不同的组合方式，造就了万事万物。</p>
+<p>科学家们把目前已知的这几种基本粒子的物理理论拼拼凑凑，得出了一个叫“基本粒子标准模型”的东西，用于解释这个世界。不论如何，它很有用，但显然还不够完美。我们追求的应该是一套统一且简洁的理论，而不是在这个场景下用这套公式，那个场景下用那种方法的多种理论组合。</p>
+<p>不过近些年，这个标准模型出问题了。科学家发现在每个星系周围都存在着一团巨大的云状物，需要通过它自身的引力和对光产生的偏折现场，才能间接地“观察”到它。而构成它的基本粒子，不属于“基本粒子标准模型”中的任何一种。到底是什么，目前不得而知，科学家仅仅把它称为——暗物质。</p>
+<p>世界还能更小吗？不知道。人类目前对物质的认知：在屈指可数的几种基本粒子，不断以存在/不存在之间切换、震动、起伏，充斥在无边无际的空间中，构成了所有我们已知的世界。</p>
+<h2 id="5-空间的颗粒"><a href="#5-空间的颗粒" class="headerlink" title="5. 空间的颗粒"></a>5. 空间的颗粒</h2><ul>
+<li>广义相对论告诉我们，时空是光滑且可扭曲和压缩的，这是引力场的本质</li>
+<li>量子力学告诉我们，所谓的场是由量子构成，具有精细的颗粒状</li>
+</ul>
+<p>显然，前者认为世界平滑连续，后者认为世界是量子化的，二者矛盾。但两个理论在今天都非常有用，而且在各自的领域都很正确，这又作何解释？</p>
+<p><strong>圈量子引力</strong>试图统一二者。</p>
+<p>圈量子引力认为：空间本身是量子化的，也就是说我们存在的空间本身也是“物质或能量”的一种，那么构成空间的最基本单位姑且称之为“空间量子”。它们比原子小几亿亿倍，外表可能像个圆圈，环环相扣，编织出了我们存在的整个空间！不理解这一点很正常，就像河中的鱼儿，也不知道水的存在。</p>
+<p>圈量子引力还有个更极端的结论：即然空间可以被扭曲和压缩，那时间的连续性也就没有了。或者说根本就不需要“时间”这个变量。每个物理过程都有各自的节奏，有快有慢，彼此独立。</p>
+<p>形象点说，物质的物理过程，其实是物质的量子和空间的量子发生作用的结果。比如你从A运动到B点，并不是你挤开空间量子钻过去的，而是你身上的每个物质量子与前面的空间量子作用后，位移过去的。(不知道我这样理解对不对)，就像屏幕上移动的鼠标，其实是无数个像素的一次组合交替过程。</p>
+<p>接下来的结论更有意思——黑洞。由于巨大的质量会把空间压缩到极高的“密度”，如果你身处黑洞之中，“眨眼”这个上下眼皮的空间距离，是正常世界的成百上千倍，相当于这个运动过程的“节奏”被放慢了，可谓“眨眼瞬间，世界千年”。(让我想起了星际穿越)</p>
+<h2 id="6-概率、时间和黑洞的热"><a href="#6-概率、时间和黑洞的热" class="headerlink" title="6. 概率、时间和黑洞的热"></a>6. 概率、时间和黑洞的热</h2><p><strong>客观上的热</strong></p>
+<p>我们都知道，“热”的本质是分子运动的快慢程度。但为什么热量总是从热的地方留向冷的地方呢——概率。</p>
+<p>想象操场上有一堆球，它们都在不规则运动，有得很快，有得很慢。从统计学的角度看，快球总是有更大的概率撞到慢球，而由于能量守恒，碰撞后二球的速度(能量)为二者的平均值。再回到宏观看，最终整个操场的球的速度就会变得一样。反过来，如果用概率来看，水烧不开也是有可能的，但是无数的快球都完美避开慢球的可能性，几乎为零吧。</p>
+<p><strong>客观上的时间</strong></p>
+<p>时间其实是人们主观上的概念，例如现在、此时此刻、刚刚、将来、一分一秒等，都是以人的主观视角来描述世界的运行过程。在物理上，这是不客观的。那物理上应该如何描述时间的流逝呢——热量的转移。</p>
+<p>想象一个老式钟摆，你用摄像机把它摆来摆去的过程录了下来，然后不论你正着放还是倒着放这段录像，是不是没区别，因为它的过程是重复的。那又如何判断录像是正放还是倒放呢？物理上，钟摆运动会有摩擦力，摩擦生热，只要观察中摆是越来越热，还是越来越冷，就能搞清楚播放的顺序，即时间如何流逝的。（当然，搞懂道理即可，没必要在摩擦生热的问题上抬杠）</p>
+<p><strong>黑洞是火热的</strong>(这部分我每理解)</p>
+<p>史蒂芬·霍金经过一系列的计算推理证明，黑洞总是热得像火一样。尽管并未得到观察证实，但他的理论让人信服。黑洞并不总是往里吸东西，也会不停往外放热。这些的热涉及量子力学、广义相对论和热力学。仍未解开。</p>
+<h2 id="7-我们"><a href="#7-我们" class="headerlink" title="7. 我们"></a>7. 我们</h2><p>最后一章是在探讨物理和哲学，就不总结了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/57/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/57/" class="post-title-link" itemprop="url">消息传递可提高并行系统的可伸缩性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-05 17:11:06" itemprop="dateCreated datePublished" datetime="2019-10-05T17:11:06+08:00">2019-10-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/57/" class="post-meta-item leancloud_visitors" data-flag-title="消息传递可提高并行系统的可伸缩性" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/57/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/57/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="~https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_57/~">Message Passing Leads to Better Scalability in Parallel Systems</a></p>
+<p>程序员在他们还是个计算机小白时就被灌输并发的概念——尤其是并行(并发的一种子集)——相当有难度的东西，只能寄希望于极少数优秀的人把它们搞明白，但很可能最后他们也是一脸懵逼。有关多线程、信号量、监视器，以及如何并发访问变量的线程安全等问题，常常是人们关注的重点。</p>
+<p>说真的，这里面存在很多难题，而且想要解决它们都非常不容易。但这些问题的根源又是什么？共享内存。人们不断遇到的并发问题几乎都和共享内存的使用相关：竞争机制、死锁、活锁，等等。解决这些的答案也很明显：要么放弃并发，要么避开共享内存。</p>
+<p>放弃并发？呵呵，别闹了。几乎每个季度计算机都会有越来越多的核，因此真正利用并行优势也变得越来越重要。我们没必要完全依赖处理器的时钟速度的增长，来改善应用程序的性能。只需要充分发挥并行，应用程序性能就会改善。显然，不提高性能可能是个选项，但用户不答应！</p>
+<p>所以，我们只能避开共享内存咯？嗯哼。</p>
+<p>作为线程+共享内存的替代方案，可以使用进程和消息传递来作为我们的编程模型。这里所说的“进程”不一定是操作系统下的进程概念，只要是一段受保护且独立执行的代码即可。正如Relang(和它之前的occam)之类的编程语言所展示的那样：进程，是在并发和并行系统编程中非常成功的机制。此类系统没有共享内存的同步压力，而多线程系统却有。此外，还有一个正式的模型可应用于此类系统的引擎部分——通信顺序进程(CSP)。</p>
+<p>作为一种计算方法，我们会进一步介绍数据流系统。在数据流系统中，没有明确编程的控制流。而是通过一张操作图表，根据数据路径进行连接，将数据馈送到系统中。由系统数据的就绪情况进行评估控制，就杜绝了同步问题。</p>
+<p>说那么多，像C、C++、Java、Python和Groovy这样系统级的编程语言，都作为开发共享内存和多线程系统的语言提供给开发者。那该怎么办？答案是使用(如果不存在，就创建)——提供了进程模型和消息传递的库和框架，从而避免内存的使用。</p>
+<p>总之，不采用共享内存进行编程，而要用消息传递来取代，在现如今主流的计算机硬件的系统开发中，这或许是充分利用并行性的最好方式。也许这听起来很奇怪：尽管进程之前是用线程作为并发单元，但未来似乎将使用线程来实现进程。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

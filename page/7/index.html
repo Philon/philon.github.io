@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="一个程序员的成长足迹">
+<meta property="og:type" content="website">
+<meta property="og:title" content="自增人生">
+<meta property="og:url" content="https://ixx.life/page/7/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="一个程序员的成长足迹">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="自律 arts 编程 开发 c&#x2F;c++ java web go 读书 写作">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://ixx.life/page/7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/" class="post-title-link" itemprop="url">读《被讨厌的勇气》</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-28 23:38:05" itemprop="dateCreated datePublished" datetime="2019-09-28T23:38:05+08:00">2019-09-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/" class="post-meta-item leancloud_visitors" data-flag-title="读《被讨厌的勇气》" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="损失厌恶-从因果论到目的论"><a href="#损失厌恶-从因果论到目的论" class="headerlink" title="损失厌恶 - 从因果论到目的论"></a>损失厌恶 - 从因果论到目的论</h2><p>先解释下“损失厌恶”：当人们面对同等程序的收益和损失时，主观上会觉得损失更令人难以接受。举个例子：</p>
+<p>一个人买彩票，如果这一期没中500万，其实也无所谓，也不会觉得有什么损失，对吧？但是假如他这一期中了500万，满心欢喜零钱回家，钱还没捂热乎呢，夜里就被小偷洗劫一空。正常人的反应会很愤怒对吧？但是仔细想想，他过往买了很多期彩票，都没中奖，其结果就像是每一期都被小偷光顾了一样。为什么没中奖的时候他反而不会太难过？</p>
+<p>所以，人们在面对一件事情的时候，与其让他选择小概率收益，他更乐意选择大概率不要亏损。这就是损失厌恶。</p>
+<p>然而在复杂的生活环境中，收益？亏损？其实我们还有第三个选项——不作为！</p>
+<p>尽管“不作为”在道德上遭人唾弃，但这真的是大多数人的选择，然而人们为了心安理得地不作为，会在潜意识里编织各种借口来安慰自己，</p>
+<ul>
+<li>“比尔盖茨爱读书？呵呵，那是人家有钱有闲”</li>
+<li>“要是我有个有钱的爹，肯定比王思聪强”</li>
+<li>“被渣男伤过，无法再爱上别人”</li>
+<li>“我是内向性格，话很少，也比较宅”</li>
+<li>“先别管我买不买，iPhone的信号问题解决了吗”</li>
+<li>“中国社会的观念，只会把女性变为生育机器，所以我不结婚”</li>
+</ul>
+<p>(以上评论多数源于我刷头条时看到的)</p>
+<p>上述这些基本可以概括为佛洛依德式的“原因论”，就是先给出一个无法改变的原因或是过往，然后推导出一个看似合理的结果：“我现在这样，是一种无奈的选择”。</p>
+<p>如果你用阿德勒式的“目的论”来看待这些观点就会发现其中的奥妙。</p>
+<p>任何一种牵强的理由背后其实都隐藏着“懦弱和懒”的目的，这个目的是由人们的损失厌恶心理引起的，为了达成这个目的，经过潜意识的包装，甚至可以骗过自己。比如：</p>
+<ul>
+<li>懒得读书，所以去炮制各种忙/没时间的借口。</li>
+<li>自己主观不努力，就从客观找原因，否定他人成就。</li>
+<li>不愿再次承受爱情带来的痛苦，所以主动不肯放下过往的情感。</li>
+<li>不愿花精力交际，就拿内向来当挡箭牌，觉得话少和宅都是理所当然。</li>
+<li>自己不想买或卖不起，就把这一切归功于苹果的技术不行。</li>
+<li>通过放大婚姻和生孩子所带来的伤害，来掩饰自己对婚姻的自私。</li>
+</ul>
+<p>刚看到这种“目的论”观点的时候，可能会难以接受，先别急着较真儿，我们就从客观上来看看这些评论——发表这些观点的人，就事情本身而言，他们大概率是——做了？还是没做？</p>
+<p>答案显而易见对吧，这就是最开始所说的，人们因为损失厌恶，就在收益和亏损之间选择第三项——不作为。</p>
+<p>很多事情都有风险，都有好和坏两面。这是客观存在的，也是既定事实。然而对事实的解读却是非常主观的，就像现在的新闻媒体——焦点不同，反映的“事实”就不同。对于个人而言，你总把目光集中在事情消极的那一面，就达成了自己不想作为的目的。(最后举个例子，我们都知道跑步可以减肥，但你却选择听“跑步伤膝盖”这种言论)</p>
+<p>阿德勒心理学想要告诉我们的第一个重点就是：人是可以改变的，要不要改变，取决于你对客观事实的主观解读。但，勇敢面对你做或不做为的选择，为其结果负责到底，而不是编造一堆理由，把锅甩给别人。</p>
+<h2 id="课题分离-人之初，性本“善”"><a href="#课题分离-人之初，性本“善”" class="headerlink" title="课题分离 - 人之初，性本“善”"></a>课题分离 - 人之初，性本“善”</h2><p>我们的焦虑源自哪里？——社交！</p>
+<p>没办法，人是社会型动物，几乎没人可以脱离社会而生存。千万别觉得长期宅在家里就是脱离社会了，你家的水电Wi-Fi和食物可都是社会供给的。</p>
+<p>社会让生存变得简单，却让生活变得一点也不简单。</p>
+<p>生活的忧愁大多为：活在别人的期待中、对对方的厌烦、朋友同事间无形的攀比、讨厌现在的自己、情感困扰、维护各种亲朋好友的关系…诸如此类吧。这些忧愁基本都源自我与他人的关系。小到朋友/夫妻，到大的国家/民族都属于社交的范畴，它能定义我们与社会某个圈层的关系，我们也能从这个圈层中获得归属感。但人一旦踏入某个圈层，荣辱感也伴随而来，忧愁也就越来越多。再谈这个话题时先说另一个字——善。</p>
+<p>善，在希腊语中并不是道德层面善良的意思，而仅仅是“有好处”的意思。而我倒是觉得“人之初，性本善”的善，与其说是善良，不如说是“利己”更为贴切。人的任命之初，其实无所谓善恶，而是跟随本性，去做那些对自己有好处的事情。随着生命的成长，为了融入社会，才逐渐学会了“利他”。</p>
+<p>那么阿德勒心理学的第二个重点就是：人要学会“自私”地处理人际关系，你是你，我是我，彼此保持距离，互不干涉。考虑自己该怎么活才是重要的，因为你永远无法让所有人喜欢，你要拥有被讨厌的勇气。</p>
+<p>这里的“自私”并不单纯是以自我为中心的意思。简单来说，夫妻是一种社会关系，丈夫爱老婆是丈夫的课题，老婆爱不爱丈夫是老婆的课题，两者彼此独立。然而生活中却经常看到，一方爱，而另一方不爱，导致爱的那方歇斯底里：“我那么爱你，你怎么可以不爱我？”</p>
+<p>换而言之，建立了社会关系后，因为混淆了自己和对方的课题，然后发现对方并没有按照自己的意愿去完成课题，从而引发的一系列痛苦。(我觉得这才是真自私)</p>
+<p>生活中类似的例子也有很多：</p>
+<ul>
+<li>这个领导让我不爽，作为报复，我从此混日子，拖团队后腿</li>
+<li>我要给孩子最好的教育，让他将来成为XXX</li>
+<li>我是对的，所以你要听我的！</li>
+<li>怎么办？说了那样的话，他会不会从此讨厌我？</li>
+</ul>
+<p>以上都是混淆了自己和别人的课题，你一心一意为孩子付出，但同时又把自己的主观意愿“让他将来成为XXX”强加给了孩子，孩子以后要成为什么是他自己的人生课题；再如，一个人若要讨厌你，你再怎么言行得体，他还是会讨厌你；总之，一切的一切——“雨女无瓜😄”。</p>
+<p>书中的谚语很形象：“<strong>把马带到水边，但不能强迫其喝水</strong>”。</p>
+<h2 id="贡献感-有共同体才有幸福"><a href="#贡献感-有共同体才有幸福" class="headerlink" title="贡献感 - 有共同体才有幸福"></a>贡献感 - 有共同体才有幸福</h2><p>关于课题分离，有的人能理解，有的人会觉得荒谬，还有的人会选择性解读为“我就是我不一样的烟火”这种自私霸道的论调。</p>
+<p>这都无所谓，因为阿德勒给出了第三个重点：人生的意义是自己决定的，生活的本质是追求幸福，这就需要我们建立起共同体，并为此持续付出着。</p>
+<p>这一点我想用自己的生活态度来解释。面对自己的家庭我总会想——<strong>我可是一家之主啊！</strong></p>
+<p>我这么想是不是会给人一种大男子主义，道德政治都不正确的感觉？然而并没有，我的这种想法，就是我对家的态度。因为我始终觉得，身为一个爷们儿，我是这个家的首要责任人，这个家以及家人需要我保驾护航，作为这个家的顶梁柱，我要持续地支撑这个家的经济、安稳、进步、价值观等。每当我的家人有困惑的时候，他们更愿意向我寻求帮助，毕竟，我可是一家之主啊。</p>
+<p>实话实说，当我携手妻子从小蜗居一步步把住房变大变美，有了孩子，有了更好的生活条件，当每天都能看到小希望，看到家人的快乐时，我内心是幸福的，或许这种幸福也源于一个男人的成就感吧。</p>
+<p>同理，我曾和我老婆说过：“你可以选择出去挣钱，也可以选择做家庭主妇，我们可以角色互换，我都尊重你。但是你不能出去挣不到钱(事业上不努力)，又以此为借口不去照顾家庭。”一个家里，所有成员都是一体的，你的每一次轻松都意味着对方的付出，你的每一次付出都意味着对方的轻松。</p>
+<p>不要总想着付出就意味着自己吃亏了，共同体里有一个很重要的观点是“信赖伙伴”，既然组成了共同体，就应该信赖你的伙伴。这不是什么心灵鸡汤，就好比在中国这个大共同体里，你每天睡觉的时候难道还会担心边防战士有没有好好站岗放哨？这也太可笑了吧！</p>
+<p>用目的论看清自己，用课题分离找到适合自己的伙伴，建立共同体，赋予人生意义，然后幸福积极地活着。</p>
+<p>但我们总能看到这样的情况：一个女生，打开美颜滤镜瘦脸大眼，对自己的颜值抱有不切实际的幻想，爱上一个大帅哥，并觉得自己的付出驾驭得了他，然后每天查岗管制，最后分手了，她却感慨：“我被渣男伤了，再也无法相信爱情了”😂(我纯属开玩笑)</p>
+<p>至此，是我读岸见一郎这本《被讨厌的勇气》后的个人感悟。书的篇幅不算长，但我觉得非常值得一读，倒不是觉得它的内容有多么颠覆，其实里面的很多观点我之前就已经想明白了，只是说它能清晰地把我的一些思想给表达了出来。总之，选个安静的午后，泡杯清茶，舒舒服服地品一下这本书吧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/56/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/56/" class="post-title-link" itemprop="url">让不可见更可见</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-24 22:00:43" itemprop="dateCreated datePublished" datetime="2019-09-24T22:00:43+08:00">2019-09-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/56/" class="post-meta-item leancloud_visitors" data-flag-title="让不可见更可见" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/56/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/56/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_56/">Make the Invisible More Visible</a></p>
+<p>很多不可见的部分多应作为坚持软件原则被盛赞。我们有很多专业术语来隐喻比可见性，这里说两个——机器透明度和信息隐藏。用道格拉斯·亚当斯(Douglas Adams)的话说，软件及其开发过程几乎是不可见的：</p>
+<ul>
+<li>源码不是天然存在的，没有天然的行为，也不可能遵循物理规律。如果你通过编辑器打开它，它就可见，关了后就不可见。想象一下，就像一棵树花了很长时间才倒下，以至于你根本没听见，甚至怀疑它是否存在过。</li>
+<li>一个运行着的APP有样子也有行为，但却不会展示其构建的源码。google主页很简单，但它的背后真的很复杂。</li>
+<li>如果你完成了90%的工作，却在无限地调试最后10%，其实相当于你并没有做完那90%，同意吗？修复bug并没有在推进项目。调试很浪费时间，没必要花过多时间。最好是让浪费变得可见，你才能看到问题出在哪里，然后开始考虑创建它们的必要性。</li>
+<li>如果你的项目已步入正轨，但一周后又发现它需要推迟六个月，那么你的问题来了——最大的问题并不是项目被推迟六个月，而是有某种神秘而强大的力量，之前就对你隐瞒了项目要被拖六个月的事实！进度可见性的缺失，等同于进度的缺失。</li>
+</ul>
+<p>不可见会演变成危机。当你有一些具体的事物联想时，你会想得更清楚。当你看得见事物及其不断变化的过程时，你能更好地管理它们。</p>
+<ul>
+<li>编写单元测试可以提供代码单元测试难易度的凭证。这有助于暴露代码层面所展示出的开发质量的优势(或缺陷)，例如高内聚低耦合。</li>
+<li>运行单元测试可以提供代码行为的相关凭证。这有助于暴露应用程序在运行时展现的优势(或缺陷)，例如可靠性和稳定性。</li>
+<li>使用公告栏或卡片可以是进度变得可见和具体。任务能够以<em>未开始、执行中、已完成</em>被看到，不必引入隐晦的项目管理工具，不必为了虚构一份报告去盯着程序员要。</li>
+<li>增量开发增加了开发结果的曝光度，从而提高了开发进度(或滞后进度)的可见性。完成可发布的软件就能暴露事实，光靠估算是不可取的。</li>
+</ul>
+<p>大量定期可见的凭证是软件开发的最好方式。可见性给予你底气确信——这个进展是真的，而非骗人的，是经得起推敲的，而非瞎编的，是可复现的，不是歪打正着的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/RPiDriverInAction/05/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RPiDriverInAction/05/" class="post-title-link" itemprop="url">05：PWM音乐盒</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-22 17:05:51" itemprop="dateCreated datePublished" datetime="2019-09-22T17:05:51+08:00">2019-09-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">树莓派驱动开发实战</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/RPiDriverInAction/05/" class="post-meta-item leancloud_visitors" data-flag-title="05：PWM音乐盒" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/RPiDriverInAction/05/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/RPiDriverInAction/05/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文源码：<a target="_blank" rel="noopener" href="https://github.com/Philon/rpi-drivers/tree/master/05-pwm_musicbox">https://github.com/Philon/rpi-drivers/tree/master/05-pwm_musicbox</a></p>
+<p>上一篇用LED呼吸灯的方式，基本介绍了PWM原理以及在树莓派上的驱动开发，但总感觉意犹未尽，所以再写一篇PWM的应用场景——PWM+蜂鸣器，实现一个简易的音乐盒。</p>
+<p>说明一下： 本篇纯粹是“玩”，并不涉及任何新的知识点，如果不感兴趣可以掠过。</p>
+<p>先来看看我实现的效果：《保卫黄河》、《灌篮高手》、《欢乐斗地主》。这些谱子全是我从网上扒下来的，并根据蜂鸣器的效果修改过，自己不是专业搞音乐的，所以难免会有错误的地方。(反正我耳朵里听着没问题就行😁)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~ $ <span class="built_in">cd</span> modules/</span><br><span class="line">philon@rpi:~/modules $ sudo insmod musicbox.ko</span><br><span class="line">philon@rpi:~/modules $ ./player_test music/01-保卫黄河      <span class="comment"># 🎵</span></span><br><span class="line">philon@rpi:~/modules $ ./player_test music/04-灌篮高手主题曲 <span class="comment"># 🎵</span></span><br><span class="line">philon@rpi:~/modules $ ./player_test music/05-欢乐斗地主    <span class="comment"># 🎵</span></span><br></pre></td></tr></table></figure>
+
+<iframe src="//player.bilibili.com/player.html?aid=68617894&cid=118922238&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:960px;height:640px"> </iframe>
+
+<p>再来看看我是怎么实现的：</p>
+<ol>
+<li>实现PWM蜂鸣器驱动<code>musicbox</code>：通过<code>write</code>音符给设备节点，播放不同的声音；通过<code>ioctl</code>控制节拍</li>
+<li>实现应用层<code>player_test</code>，负责读取歌曲的乐谱</li>
+<li>编写乐谱，其实就是文本简谱，类似下面这首</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">C 3/4</span><br><span class="line"></span><br><span class="line"># ~前奏~</span><br><span class="line">(5` (4`) 3` 2` 1` 7 1` 0 3 (2) 3 5 (6 5 6 1`) 5 0) </span><br><span class="line">(6` (5`) 4` 3` 2` 1` 7 6 5 6 1` 2` 5 6 2` 3` 5 6 3` 4` 5 6 4` 5`) </span><br><span class="line"></span><br><span class="line"># 风在吼，马在叫，黄河在咆哮，黄河在咆哮</span><br><span class="line">1` (1` 3) 5- 1` (1` 3) 5-  (3) 3 (5) 1` 1` (6) 6 (4) 2` 2` </span><br><span class="line"></span><br><span class="line"># 河西山岗万丈高，河东河北高粱熟了</span><br><span class="line">(5 (6) 5 4) (3 2 3 0) (5 (6) 5 4) (3 2 3 1)</span><br><span class="line"></span><br><span class="line"># 万山丛中，抗日英雄真不少</span><br><span class="line">5 (6) 1` 3 (5 (3`) 2` 1`) 5 6 3- </span><br><span class="line"></span><br><span class="line"># 青纱帐里，游击健儿真不少</span><br><span class="line">5 (6) 1` 3 (5 (3`) 2` 1`) 5 6 1`- </span><br><span class="line"></span><br><span class="line"># 端起了土枪洋枪，挥动着大刀长矛</span><br><span class="line">(5 (3 5) 6 5 1` 1`) 0 (5 (3 5) 6 5 2` 2`) 0 </span><br><span class="line"></span><br><span class="line"># 保卫家乡，保卫黄河，保卫华北，保卫全中国</span><br><span class="line">(5 (6) 1` 1`) 0 (5 (6) 2` 2`) 0 (5 (6) 3` 3`) (5 (6) 3` 2` 1`----)</span><br></pre></td></tr></table></figure>
+
+<p>好，具体实现且听我慢慢道来～</p>
+<h2 id="PWM蜂鸣器驱动"><a href="#PWM蜂鸣器驱动" class="headerlink" title="PWM蜂鸣器驱动"></a>PWM蜂鸣器驱动</h2><p>有关蜂鸣器硬件原理、有源、无源这里不展开讨论。总之本文采用的是树莓派上的PWM0+一个无源蜂鸣器。接线如下图所示：</p>
+<p><img src="https://i.loli.net/2019/09/22/K1znqZhc6Bx4G3u.png" alt="PWM蜂鸣器树莓派接线图"><br><img src="https://i.loli.net/2019/09/22/VqfoJl5IXT8uMwm.png" alt="PWM蜂鸣器原理图"></p>
+<p>根据上一篇《PWM呼吸灯》的学习，基本知道PWM对脉冲的控制主要有<code>占空比</code>和<code>脉冲周期</code>两部分。用来控制LED的时，占空比可以调节灯光的强弱，在脉冲周期似乎没什么乱用。</p>
+<p>对于蜂鸣器声用作声乐，有三个基本要素：音调、节拍、音量大小。</p>
+<ul>
+<li>音调：由震动频率决定，对应PWM的脉冲周期</li>
+<li>音量：同样的频率，PWM占空比越高，声音越大</li>
+<li>节拍，声音的持续时长，和PWM毛关系都没有，做个定时开关即可</li>
+</ul>
+<p>综上，其实在蜂鸣器驱动<code>musicbox</code>里重点实现两个接口：</p>
+<ul>
+<li><code>write</code>: 解析用户层写入的字符串，例如音调do的高中低音分别为’<code>1`</code>‘和’<code>1</code>‘和’<code>1.</code>‘，然后换算出对应的<code>频率</code>即可。</li>
+<li><code>ioctl</code>: 解析用户层发来的指令，有节拍、音调、音量等控制。</li>
+</ul>
+<h3 id="不同音调的蜂鸣器频率"><a href="#不同音调的蜂鸣器频率" class="headerlink" title="不同音调的蜂鸣器频率"></a>不同音调的蜂鸣器频率</h3><p>注意：此部分涉及的乐理知识我不是很懂，基本是从网上抄来的，但我发现F和B调的发音不是很准，估计频率不对。</p>
+<p>下表分别是<code>Do Re Mi Fa So La Ti</code>对应的蜂鸣器震动频率。</p>
+<p>wait-！7个音符，怎么会干出13种频率呢？</p>
+<p>因为其中涵盖了A-G不同曲调，一首曲子可以由多个调子来演奏，比如我们经常听到的C小调，D大调之类的。其中的乐理只是更为复杂，这里只需要记住：</p>
+<p>以<code>C调的Do</code>为基准，其他调子做相应偏移。例如E调的Do相当于C调的Mi，而A调的Do相当于C调的La。</p>
+<table>
+<thead>
+<tr>
+<th>音域</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>C7</th>
+<th>D7</th>
+<th>E7</th>
+<th>F7</th>
+<th>G7</th>
+<th>A7</th>
+<th>B7</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>低音</td>
+<td>131</td>
+<td>147</td>
+<td>165</td>
+<td>175</td>
+<td>196</td>
+<td>221</td>
+<td>248</td>
+<td>278</td>
+<td>312</td>
+<td>330</td>
+<td>371</td>
+<td>416</td>
+<td>467</td>
+</tr>
+<tr>
+<td>中音</td>
+<td>262</td>
+<td>294</td>
+<td>330</td>
+<td>350</td>
+<td>393</td>
+<td>441</td>
+<td>495</td>
+<td>556</td>
+<td>624</td>
+<td>661</td>
+<td>742</td>
+<td>883</td>
+<td>935</td>
+</tr>
+<tr>
+<td>高音</td>
+<td>525</td>
+<td>589</td>
+<td>661</td>
+<td>700</td>
+<td>786</td>
+<td>882</td>
+<td>900</td>
+<td>1112</td>
+<td>1248</td>
+<td>1322</td>
+<td>1484</td>
+<td>1665</td>
+<td>1869</td>
+</tr>
+</tbody></table>
+<h3 id="如何计算PWM的周期"><a href="#如何计算PWM的周期" class="headerlink" title="如何计算PWM的周期"></a>如何计算PWM的周期</h3><p>有了不同音符的震动频率，也就得到了PWM的脉冲周期。举个例子，50Hz相当于1秒钟震动50次，那PWM的脉冲周期就应该为1s/50=0.02秒。因此周期的计算公式为：</p>
+<p>period = 1s / freq</p>
+<p>其中的freq就是音符表中的频率，而1s可以由Linux中的<code>HZ</code>变量表示。</p>
+<h3 id="如何计算PWM占空比"><a href="#如何计算PWM占空比" class="headerlink" title="如何计算PWM占空比"></a>如何计算PWM占空比</h3><p>有了脉冲周期，才能计算占空比。一个周期内高电平所占时间越大，输出声音也就越大。所以我们可以通过百分比来决定占空比大小。</p>
+<p>假设现在要输出高音<code>3`</code>，它对应的频率为661，并根据前面的公式求得脉冲周期为12345，而音量为75%，那占空比应该为12345*75/100 = 9528。因此占空比的计算公式为：</p>
+<p>duty = period * volume / 100</p>
+<h3 id="如何计算节拍"><a href="#如何计算节拍" class="headerlink" title="如何计算节拍"></a>如何计算节拍</h3><p>所谓节拍，如2/4拍，表示以4分音符为一拍，每小节有两拍。</p>
+<p>但在程序里，节拍即每个音符输出的时长，这一点我并没有在驱动层实现，但做的做法非常简单。并没有引入“小节”和“动次打次”的概念。就是强制一个小节为4秒，如果是2/4拍，就相当于4000/4/2 = 500毫秒，即每个音符默认响0.5秒。如果存在半拍的情况(就是音符下有画线)，那时间再减半。</p>
+<p>程序中把半拍用圆括号<code>()</code>表示，遇到左括号就减半时间，遇到右括号就加倍时间，就是那么粗暴。</p>
+<h3 id="驱动程序实现"><a href="#驱动程序实现" class="headerlink" title="驱动程序实现"></a>驱动程序实现</h3><p>当加载以下驱动后，可以通过命令行<code>echo 1 &gt; /dev/musicbox</code>来测试是否会响。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/pwm.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/uaccess.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/timer.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MUSICBOX_MAX_VOLUME 100 <span class="comment">// 最大音量100%</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ONE_SECOND  1000000000  <span class="comment">// 以纳秒为单位的一秒</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 各音域音符对应震动频率</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> tones[][<span class="number">14</span>] = &#123;</span><br><span class="line">  <span class="comment">//   C    D     E     F     G     A     B</span></span><br><span class="line">  <span class="comment">//   1.   2.    3.    4.    5.    6.    7.</span></span><br><span class="line">  &#123;<span class="number">0</span>, <span class="number">131</span>, <span class="number">147</span>,  <span class="number">165</span>,  <span class="number">175</span>,  <span class="number">196</span>,  <span class="number">221</span>,  <span class="number">248</span>,  <span class="number">278</span>,  <span class="number">312</span>,  <span class="number">330</span>,  <span class="number">371</span>,  <span class="number">416</span>,  <span class="number">476</span>&#125;,</span><br><span class="line">  <span class="comment">//   1    2     3     4     5     6     7 </span></span><br><span class="line">  &#123;<span class="number">0</span>, <span class="number">262</span>, <span class="number">294</span>,  <span class="number">330</span>,  <span class="number">350</span>,  <span class="number">393</span>,  <span class="number">441</span>,  <span class="number">496</span>,  <span class="number">556</span>,  <span class="number">624</span>,  <span class="number">661</span>,  <span class="number">742</span>,  <span class="number">833</span>,  <span class="number">935</span>&#125;,</span><br><span class="line">  <span class="comment">//   1&#x27;   2&#x27;    3&#x27;    4&#x27;    5&#x27;    6&#x27;    7&#x27;</span></span><br><span class="line">  &#123;<span class="number">0</span>, <span class="number">525</span>, <span class="number">589</span>,  <span class="number">661</span>,  <span class="number">700</span>,  <span class="number">786</span>,  <span class="number">882</span>,  <span class="number">990</span>,  <span class="number">1112</span>, <span class="number">1248</span>, <span class="number">1322</span>, <span class="number">1484</span>, <span class="number">1665</span>, <span class="number">1869</span>&#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">bool</span>                playing;    <span class="comment">// 是否正在播放</span></span><br><span class="line">  <span class="keyword">wait_queue_head_t</span>   wwait;      <span class="comment">// 写等待</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pwm_device</span>*  <span class="title">buzzer</span>;</span>     <span class="comment">// 蜂鸣器</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">timer_list</span>   <span class="title">timer</span>;</span>      <span class="comment">// 定时器</span></span><br><span class="line">  <span class="keyword">char</span>                volume;     <span class="comment">// 音量 0-100</span></span><br><span class="line">  <span class="keyword">char</span>                tonality;   <span class="comment">// 音调 A-G</span></span><br><span class="line">  <span class="keyword">char</span>                beat;       <span class="comment">// 节拍</span></span><br><span class="line">  <span class="keyword">char</span>                key;        <span class="comment">// 音调</span></span><br><span class="line">&#125; musicbox;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">music_stop</span><span class="params">(struct timer_list* timer)</span> </span>&#123;</span><br><span class="line">  pwm_disable(musicbox.buzzer);</span><br><span class="line">  musicbox.playing = <span class="literal">false</span>;</span><br><span class="line">  wake_up(&amp;musicbox.wwait);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">ssize_t</span> <span class="title">musicbox_write</span><span class="params">(struct file *filp, <span class="keyword">const</span> <span class="keyword">char</span> __user *buf, <span class="keyword">size_t</span> len, <span class="keyword">loff_t</span> *off)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 获取音符</span></span><br><span class="line">  <span class="keyword">int</span> note = (buf[<span class="number">0</span>] - <span class="string">&#x27;0&#x27;</span>) + musicbox.key;</span><br><span class="line">  <span class="comment">// 获取音域</span></span><br><span class="line">  <span class="keyword">int</span> pitch = (buf[<span class="number">1</span>] == <span class="string">&#x27;`&#x27;</span>) ? <span class="number">2</span> : (buf[<span class="number">1</span>] == <span class="string">&#x27;.&#x27;</span> ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">  <span class="comment">// 根据频率计算脉冲周期</span></span><br><span class="line">  <span class="keyword">int</span> tone = ONE_SECOND / tones[pitch][note];</span><br><span class="line">  <span class="comment">// 根据脉冲周期计算音量</span></span><br><span class="line">  <span class="keyword">int</span> volume = tone * musicbox.volume / <span class="number">100</span>;</span><br><span class="line">  <span class="comment">// 当音符后跟着&#x27;-&#x27;就延长一倍时间</span></span><br><span class="line">  <span class="keyword">int</span> delay = HZ / musicbox.beat * (len - (pitch != <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 写阻塞，一次只能播放一个音符</span></span><br><span class="line">  <span class="keyword">if</span> (musicbox.playing) &#123;</span><br><span class="line">    <span class="keyword">if</span> (filp-&gt;f_flags &amp; O_NONBLOCK) &#123;</span><br><span class="line">      <span class="keyword">return</span> -EAGAIN;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      DECLARE_WAITQUEUE(wq, current);</span><br><span class="line">      add_wait_queue(&amp;musicbox.wwait, &amp;wq);</span><br><span class="line">      wait_event(musicbox.wwait, !musicbox.playing);</span><br><span class="line">      remove_wait_queue(&amp;musicbox.wwait, &amp;wq);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  pwm_config(musicbox.buzzer, volume, tone);</span><br><span class="line">  <span class="keyword">if</span> (buf[<span class="number">0</span>] &gt; <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">    pwm_enable(musicbox.buzzer);</span><br><span class="line">  &#125;</span><br><span class="line">  mod_timer(&amp;musicbox.timer, jiffies + delay);</span><br><span class="line">  musicbox.playing = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 音量、音调、节拍控制</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">long</span> <span class="title">musicbox_ioctl</span><span class="params">(struct file *filp, <span class="keyword">unsigned</span> <span class="keyword">int</span> cmd, <span class="keyword">unsigned</span> <span class="keyword">long</span> arg)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (cmd) &#123;</span><br><span class="line">  <span class="keyword">case</span> MUSICBOX_SET_VOLUMN:</span><br><span class="line">    <span class="keyword">if</span> (arg &gt;= <span class="number">0</span> &amp;&amp; arg &lt;= MUSICBOX_MAX_VOLUME) &#123;</span><br><span class="line">      musicbox.volume = arg;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> -EINVAL;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> MUSICBOX_GET_VOLUMN:</span><br><span class="line">    <span class="keyword">return</span> musicbox.volume;</span><br><span class="line">  <span class="keyword">case</span> MUSICBOX_SET_BEAT:</span><br><span class="line">    <span class="keyword">if</span> (arg &gt; <span class="number">0</span> &amp;&amp; arg &lt;= <span class="number">1000</span>) &#123;</span><br><span class="line">      musicbox.beat = <span class="number">1000</span> / arg;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> -EINVAL;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> MUSICBOX_GET_BEAT:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1000</span> / musicbox.beat;</span><br><span class="line">  <span class="keyword">case</span> MUSICBOX_SET_KEY:</span><br><span class="line">    <span class="keyword">if</span> (arg &lt; <span class="string">&#x27;A&#x27;</span> || arg &gt; <span class="string">&#x27;G&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> -EINVAL;</span><br><span class="line">    &#125;</span><br><span class="line">    musicbox.key = arg &gt;= <span class="string">&#x27;C&#x27;</span> ? (arg - <span class="string">&#x27;C&#x27;</span>) : (arg - <span class="string">&#x27;A&#x27;</span> + <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> MUSICBOX_GET_KEY:</span><br><span class="line">    <span class="keyword">return</span> musicbox.key;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    printk(<span class="string">&quot;error cmd = %d\n&quot;</span>, cmd);</span><br><span class="line">    <span class="keyword">return</span> -EFAULT;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下是设备驱动注册/注销相关</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">file_operations</span> <span class="title">fops</span> =</span> &#123;</span><br><span class="line">  .owner = THIS_MODULE,</span><br><span class="line">  .write = musicbox_write,</span><br><span class="line">  .unlocked_ioctl = musicbox_ioctl,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">miscdevice</span> <span class="title">mdev</span> =</span> &#123;</span><br><span class="line">  .minor = MISC_DYNAMIC_MINOR,</span><br><span class="line">  .name = <span class="string">&quot;musicbox&quot;</span>,</span><br><span class="line">  .fops = &amp;fops,</span><br><span class="line">  .nodename = <span class="string">&quot;musicbox&quot;</span>,</span><br><span class="line">  .mode = S_IRWXUGO,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> __init <span class="title">musicbox_init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  musicbox.buzzer = pwm_request(<span class="number">0</span>, <span class="string">&quot;Buzzer&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (IS_ERR_OR_NULL(musicbox.buzzer)) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">&quot;failed to request pwm0\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> PTR_ERR(musicbox.buzzer);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  musicbox.volume = <span class="number">50</span>;</span><br><span class="line">  musicbox.tonality = <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">  musicbox.key = <span class="number">0</span>;</span><br><span class="line">  musicbox.beat = <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">  init_waitqueue_head(&amp;musicbox.wwait);</span><br><span class="line">  timer_setup(&amp;musicbox.timer, music_stop, <span class="number">0</span>);</span><br><span class="line">  add_timer(&amp;musicbox.timer);</span><br><span class="line"></span><br><span class="line">  misc_register(&amp;mdev);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(musicbox_init);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> __exit <span class="title">musicbox_exit</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  misc_deregister(&amp;mdev);</span><br><span class="line">  del_timer(&amp;musicbox.timer);</span><br><span class="line">  pwm_disable(musicbox.buzzer);</span><br><span class="line">  pwm_free(musicbox.buzzer);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(musicbox_exit);</span><br></pre></td></tr></table></figure>
+
+<h2 id="应用层加载乐谱"><a href="#应用层加载乐谱" class="headerlink" title="应用层加载乐谱"></a>应用层加载乐谱</h2><p>应用层<code>player_test</code>程序的业务逻辑就简单得多了：</p>
+<ol>
+<li>加载指定的乐谱文件</li>
+<li>配置音乐盒的节拍、音调</li>
+<li>按行读取文件内容(跳过注释行和空行)</li>
+<li>提取每一行的音符、括号</li>
+<li>将音符、节拍写入驱动</li>
+<li>重复第3-5步，直至文件末尾</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/ioctl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;musicbox.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MUSIC_BOX_FILE  <span class="meta-string">&quot;/dev/musicbox&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (argc &lt; <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Usage: ./player &lt;musicfile&gt;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> fd = open(MUSIC_BOX_FILE, O_RDWR);</span><br><span class="line">  <span class="keyword">if</span> (fd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    perror(<span class="string">&quot;open musicbox&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  FILE* music = fopen(argv[<span class="number">1</span>], <span class="string">&quot;r&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (music == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    perror(<span class="string">&quot;open music&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化音乐盒</span></span><br><span class="line">  <span class="keyword">char</span> line[<span class="number">128</span>] = &#123;<span class="string">&#x27;\0&#x27;</span>&#125;;</span><br><span class="line">  <span class="keyword">if</span> (fgets(line, <span class="keyword">sizeof</span>(line), music) == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    perror(<span class="string">&quot;read music&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4秒为一节，计算每拍的长度，如2/4拍时，每拍长度为500ms</span></span><br><span class="line">  <span class="keyword">int</span> beat = <span class="number">4000</span> / (line[<span class="number">4</span>]-<span class="string">&#x27;0&#x27;</span>) / (line[<span class="number">2</span>]-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">  <span class="keyword">if</span> (ioctl(fd, MUSICBOX_SET_BEAT, beat) &lt; <span class="number">0</span></span><br><span class="line">   || ioctl(fd, MUSICBOX_SET_VOLUMN, <span class="number">90</span>) &lt; <span class="number">0</span></span><br><span class="line">   || ioctl(fd, MUSICBOX_SET_KEY, line[<span class="number">0</span>]) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    perror(<span class="string">&quot;ioctl&quot;</span>);</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 按行加载乐谱文件</span></span><br><span class="line">  <span class="keyword">while</span> (fgets(line, <span class="keyword">sizeof</span>(line), music)) &#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>, line);</span><br><span class="line">    <span class="keyword">if</span> (line[<span class="number">0</span>] == <span class="string">&#x27;#&#x27;</span> || line[<span class="number">0</span>] == <span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">      <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span>* p = line;</span><br><span class="line">    <span class="keyword">while</span> (*p) &#123;</span><br><span class="line">      <span class="keyword">if</span> (*p == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">        ioctl(fd, MUSICBOX_SET_BEAT, ioctl(fd, MUSICBOX_GET_BEAT) / <span class="number">2</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (*p == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">        ioctl(fd, MUSICBOX_SET_BEAT, ioctl(fd, MUSICBOX_GET_BEAT) * <span class="number">2</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (*p &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; *p &lt;= <span class="string">&#x27;7&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">char</span>* q = p+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (*q == <span class="string">&#x27;`&#x27;</span>) q++;</span><br><span class="line">        <span class="keyword">while</span> (*q == <span class="string">&#x27;.&#x27;</span>) q++;</span><br><span class="line">        <span class="keyword">while</span> (*q == <span class="string">&#x27;-&#x27;</span>) q++;</span><br><span class="line">        write(fd, p, q-p);</span><br><span class="line">      &#125;</span><br><span class="line">      p++;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  close(fd);</span><br><span class="line">  fclose(music);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>由于本章没有新的知识点，就不做知识总结了，说说感受。</p>
+<p>当蜂鸣器按照我的预期演奏音乐是还是挺开心的，仿佛一下子把我拉回了大学的那个暑假，一个人默默在宿舍鼓弄51单片机的日子。时光荏苒，尽管做的是同一件事，但我现在的软件架构、编程基础不可同日而语。或许我重拾底层技术的同时，也重拾了当年学习的热情吧😊。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/" class="post-title-link" itemprop="url">《解忧杂货店》读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-20 23:30:55" itemprop="dateCreated datePublished" datetime="2019-09-20T23:30:55+08:00">2019-09-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/" class="post-meta-item leancloud_visitors" data-flag-title="《解忧杂货店》读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E8%A7%A3%E5%BF%A7%E6%9D%82%E8%B4%A7%E5%BA%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>《解忧杂货铺》讲述的是三个小偷在一名富婆家中盗窃+抢劫后，逃到一间破败已久的杂货铺中躲避。而这家店主生前喜欢通过匿名信件来往的方式，为孩子及年轻人排忧解难，一开始都是些玩笑，后来却真的有人咨询起人生烦恼。久而久之，店铺门前的牛奶箱就变成了信箱。</p>
+<p>店主曾建议一位怀有身孕的情妇留住孩子，导致这名女子成了单身妈妈而无法在社会立足，最终疑似自杀。尽管事后证明女子很爱自己的孩子，所谓自杀纯属一场意外，但店主深刻认识到自己的建议会影响前来咨询的人们的命运轨迹，并十分诡异地断言自己33年后的忌日，店铺的咨询服务窗口会复活，希望那些曾今被他建议的年轻人，再回一封信如实反馈之后的生活命运，他想要知道自己的建议是否有积极的作用，只求心安。</p>
+<p>碰巧的是，三个小偷躲进来的当晚正好在店主33年后的忌日，更离奇的是他们收到了40年前的咨询信。活在社会底层的他们第一次发觉身上居然还有一些帮助他人的价值。就这样，在这连接着过去未来的杂货店里，他们跨越时空去帮助曾今的年轻人。</p>
+<ul>
+<li>一个是运动员，她即将参加明年奥运会选拔，可男友身患癌症，不知该继续训练还是陪伴男友最后的生命时光。</li>
+<li>一个是穷酸的音乐人，他追逐音乐梦多年无果，不知该继续追逐还是回家子承父业。</li>
+<li>一个是刚毕业的女大学生，小时候被养父母从孤儿院认领并抚养至今，她希望做陪酒小姐快速赚钱来给父母最好的生活。却很担心被家里知道，她很困惑。</li>
+</ul>
+<p>三个小偷利用“未来的历史”向过去的人给出最正确的选择，然而令人诧异的是，其实每个人心中早已有了自己的答案或倾向选择，他们的来信咨询无非是为自己下定决心。不论杂货店给他们什么建议，他们最开始都是反驳，然后跟着感觉走，最后又感叹杂货店的精准预言，并表示感谢。</p>
+<p>不论如何，只有那个女大学生最终听从了他们的建议，在最恰当的时机买房买股票，运作事业，从此飞黄腾达。不过最讽刺的是，三个小偷昨晚入室抢劫的女主人，正是他们在杂货店里帮助过的女大学生。</p>
+<h2 id="简单点评"><a href="#简单点评" class="headerlink" title="简单点评"></a>简单点评</h2><p>不得不说，东野圭吾的写作手法还是挺新颖的，明明是部暖心治愈的小说，却偏偏用类似悬疑推理的框架来写，刚开始读的时候我还以为是部惊悚小说😂。不过随着谜团的一点点挖开，心中的疑问得到解答，才觉得这样的叙事逻辑还挺不错呢。</p>
+<p>书中有很多的人物关系，但是要理清爽却不难，因为他们都和那个小镇、杂货店、孤儿院或多或少有些关系。一开始我会觉得“怎么可能那么巧”，其实后来想想，就把它当作专门讲述这个小镇以及孤儿院里的神话传说就好，即便所有的人物都和这扯上关系也很正常嘛。</p>
+<p>此外，可能是我读的书一般都是各种心理学、科普、哲学之类的，总觉得每本书背后都会蕴含某个重大的理论或哲理。当然，这部小说出了暖心、治愈之外，好像也没什么，简简单单，东野圭吾的一部小说，挺好看的。</p>
+<h2 id="简单感悟"><a href="#简单感悟" class="headerlink" title="简单感悟"></a>简单感悟</h2><p>我们时常感叹命运的轮回，悔不当初。可曾想过冥冥之中，我们早已做好决定？《解忧杂货店》之所以好看，正是给了读者一个意淫的空间——触摸到过去，在自己力所能及的范围去改变过去，哪怕改变的那个人不是我。</p>
+<p>这部小说没有一个明确的主角，就暂且把三个小偷当作主角吧。他们是活在社会最底层的人群。文化低/见识少/头脑简单，不知还有多少贬义的标签可以往他们身上贴。但重要的一点是，越是这样的人越会想一个问题：“要是当年我XXX，现在肯定XXX”。没错，这也是一种意淫，也是庸人自扰的源头。</p>
+<p>忧，是对当下生活的无力感，也是对过去抉择的痛楚，那种痛楚并非简单的悔恨，而是死不认输的倔强，想要把现状变好以证明自己当初的抉择是对的，然而面对当下又很无奈，呵呵！</p>
+<p>其实，看看过去的来信人，在他们把信服递进卷帘门缝之前，内心早已有了抉择。运动员其实更希望去赛场上拼搏，音乐人更希望继续追逐梦想，女大学生更是从一开始就明确要继续做陪酒小姐。那么他们何必多此一举写信咨询呢？东野圭吾早已在书中给出了理由，即音乐家父亲的那句话：</p>
+<blockquote>
+<p>到了那个时候，你有很多理由替自己开脱。‘因为我爸病倒了，没办法只能继承了’，‘都是为了这个家做出的牺牲’，总之什么责任也不想负，全是别人的错。</p>
+</blockquote>
+<p>这就好比现实生活中的我们，在下任何重大决定之前，总会先听听别人的建议，然而很多时候真的只是听听而已。<strong>我们在做决定前内心早已有答案，只不过需要先为自己可能的失败找好台阶</strong>。就好像在比赛前我们总会说：“哎，今天状态不好，别和我抢最后一名哈”，然而枪声一枪，跑得比谁都狠。</p>
+<p>再有，要是心中还有“要是当年选择XXX就好了”的念头时，不妨换个思路想想，你已经穿越到未来20年后，可以给现在的你写一封信，你希望给自己什么样的建议呢？心中有些答案了么？还是说你会像三个小偷一样，只希望得到明确的彩票号码或股票代码或投资时机。😜</p>
+<h2 id="我想象中的结局"><a href="#我想象中的结局" class="headerlink" title="我想象中的结局"></a>我想象中的结局</h2><p>读到最后一章，晴美说自己要去做陪酒小姐，而敦也说自己的妈妈也是小姐，在那种环境下的女人会因纸醉金迷而丧失人的基本尊严。他也正是从小目睹到这一切，才在心中极力劝阻晴美不要选择这条路，终究是不归路。</p>
+<p>恰好最后一章的标题是“来自天上的祈祷”，我在想会不会是这样的结局：</p>
+<p>晴美其实就是敦也的妈妈，虽然不知道生父是谁，但妈妈始终想要给孩子最好的生活，因此更卖力的工作，但在这种环境呆久了，除了讨好男人什么也不会，结果不仅得不到儿子的理解，还一而再再而三被男人玩弄情感。不论生活还是心灵，都无法给儿子有利的成长环境。她近乎绝望，计划自杀并让孩子进入孤儿院。她十分纠结，所以提笔向解忧杂货店咨询。信，被未来的敦也收到了，由于对小姐行业的排斥心理，他自然在回信上一顿痛骂。但三番五次交流后，敦也似乎意识到咨询人可能是母亲年轻时候。敦也立刻回信劝阻母亲不要放弃生活，可惜母亲内心早有答案了，最后一封信投了进来：“浪矢先生，很感激你的开导。但我终究不知该如何面对孩子，他已经开始恨我了，我不希望因为自己的职业给孩子的未来造成困扰，我已经毁了自己的生活，不能再毁掉他的。在这里还要麻烦您一件事，如果你在镇上孤儿院里见到一个叫敦也的小男孩，恳请帮我转达：‘妈妈会在天上为你祈祷，妈妈永远爱着你’，拜托了！”</p>
+<p>以上，纯属我意淫😁</p>
+<p>东野圭吾给出的结局更微妙，晴美在飞黄腾达后只想在33年忌日那天回感谢信，碰巧遇上三个小偷，信和财务被连带洗劫一空。晴美很失落，但三个小偷最后很无语，因为他们确实收到了那封感谢信，尽管是他们自己抢来的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/55/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/55/" class="post-title-link" itemprop="url">让接口易于正确使用并难以出错</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-17 08:20:50" itemprop="dateCreated datePublished" datetime="2019-09-17T08:20:50+08:00">2019-09-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/55/" class="post-meta-item leancloud_visitors" data-flag-title="让接口易于正确使用并难以出错" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/55/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/55/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_55/">Make Interfaces Easy to Use Correctly and Hard to Use Incorrectly</a></p>
+<p>软件开发中最常见的一项任务就是接口规范。接口可以是顶层抽象(用户接口)，可以是底层抽象(函数接口)，也可以在两者之间(类接口、库接口等等)。不论你是否向最终用户说明过他们该如何与某个系统交互，或是向开发者解释如何调用API，或者给类声明私有函数，接口设计都会是你工作中非常重要的一部分。如果你做得好，接口就会被乐于使用，增加生产率。如果你做得不好，接口就会是抱怨和错误的源泉。</p>
+<p>好的接口应该是这样的：</p>
+<p><em>易于正确使用</em></p>
+<blockquote>
+<p>人们总能正确地使用优秀的接口设计，因为路径阻力最小。对于图形界面，他们总是可以正确地点击到图标、按钮、或者菜单入口，因为它太明显也太容易了。对于API，开发者总能正确地传递对的参数和对的值，因为它看起来理所当然。面对那些易于被正确使用的接口——直接用就是了。</p>
+</blockquote>
+<p><em>难以用错</em></p>
+<blockquote>
+<p>好的接口可以预测人们可能犯的错，并让它难以朝那方面想，几乎不可能去提交这种错误。一个图形界面可能会禁用或者益处那些在当前上下文中没有意义的命令。例如，API可以通过“允许传递任意顺序的参数”来消除传递参数时的顺序问题。</p>
+</blockquote>
+<p>设计易于正确使用的接口的好办法是在它们出现之前就开始使用它们。模拟一个图形界面——可以是一个白板或者桌上的索引卡片——在你创建任何底层代码之前就先开始用它们。再比如，在函数被声明之前就应该先去写如何调用它的代码。浏览常见的用例，并指定你期望该接口会产生的行为。你想点击什么？你想通过什么？易于使用的接口看起来总那么自然，因为它能让你做你想做的。如果你从用户视角去开发它们，你更有可能做出像样的接口。(这个观点也是测试优先编程(test-first programming)的优势之一)</p>
+<p>要让接口难以用错需要做两件事。首先，你必须预测用户可能犯的错，并找到阻止它们的方法。第二，你必须留意在早起发布期间接口是如何被滥用的，然后修改接口——是的，修改接口！——以阻止那些错误。禁止错误使用的最佳途径是让它们不可能这么用。如果用户坚持撤销一个不可能的撤销动作，就试着让这个动作变得可以撤销。如果它们坚持传入一个错误的值到API里，尽力修改API以让用户传递想要的值。</p>
+<p>综上，记住，一个接口的存在是为了方便它们用户，而非它们的实现者。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E6%9C%88%E4%BA%AE%E4%B8%8E%E5%85%AD%E4%BE%BF%E5%A3%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E6%9C%88%E4%BA%AE%E4%B8%8E%E5%85%AD%E4%BE%BF%E5%A3%AB/" class="post-title-link" itemprop="url">《月亮与六便士》读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-16 21:53:53" itemprop="dateCreated datePublished" datetime="2019-09-16T21:53:53+08:00">2019-09-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E6%9C%88%E4%BA%AE%E4%B8%8E%E5%85%AD%E4%BE%BF%E5%A3%AB/" class="post-meta-item leancloud_visitors" data-flag-title="《月亮与六便士》读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E6%9C%88%E4%BA%AE%E4%B8%8E%E5%85%AD%E4%BE%BF%E5%A3%AB/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E6%9C%88%E4%BA%AE%E4%B8%8E%E5%85%AD%E4%BE%BF%E5%A3%AB/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>坦白说，这部小说没什么跌宕起伏，没有太多吸引我的剧情，一切都那么平淡，就像书名一样——月亮？还是六便士？那么直白，那么简单，那么毫无深度的哲学。但不知为何，我总是魂牵梦绕地去想象：“斯特里克兰德的画到底是什么样子？”不得不说，我几乎是读到本书末尾，才由衷地感叹毛姆在描写人性时，尺度拿捏之精准，在下佩服！</p>
+<p>以上仅是我在读此书的一点小感触，如果没品味过这本书，可能会觉得我表达得有些莫名其妙。算了，还是来点谈不上剧透的剧透吧。</p>
+<p>《月亮与六便士》讲述了一位40来岁的中年男人离家出走转行做画家直到死亡的故事。他叫查尔斯·斯特里克兰德，在英国伦敦的证券交易所的交易员，生活美满家庭幸福，由于突然发现自己真正热爱的是画画，他便毫无征兆地出走，再也没回来。他去了巴黎，妻子及亲戚对他这种“始乱终弃”的行为咬牙切齿，他本人也由于性格的怪异，对世俗的冷漠，毫不在意与人社交的个性，使得他生活极为窘迫。但是这都无所谓，他只在乎画画，他只要精神追求。终于，把巴黎的朋友搅得天翻地覆之后，他流浪到了一个叫塔希提的热带小岛。那里与世隔绝，没什么是非恩怨，他在那里娶妻生子，静心创作，直到病故。死后，和很多画家一样无聊的命运，人们开始发现他的天才作品，他成了棺材里的明星，连他最初的妻子和亲戚都站出来像民众讲述他生前的事迹。</p>
+<p>故事到此结束，这便是剧情梗概，整部小说不过是对这无聊的剧情扩充一个又一个的小插曲，一段又一段的闲言碎语，一堆又一堆的时间地点人物，仅此而已。很无聊对吧，但小说的尾声才是最精妙的地方。</p>
+<p>或许很多读者都认为本书的主题就是颂赞一个追求精神充盈的伟大人物，唤醒读者要月亮而非六便士的潜层渴望。但我不以为然，我从书里读到的是——人性与文明。</p>
+<p><strong>爱与自私</strong></p>
+<p>婚姻，不论你和谁结婚，你都不可避免的要处理婚姻中的“裙带关系”。斯特里克兰德总共有三段所谓的婚恋史(他并没有和原配离婚)。</p>
+<p>一段是英国伦敦的原配，一段是法国巴黎的朋友妻，一段是荒岛上的土著。</p>
+<p>英国伦敦：丈夫的无故出走，让妻子伤心欲绝。“是我做得不够好吗？是他另有新欢了吗？是他厌倦我了吗？我该怎么和家里人交代？我今后要如何生活下去？孩子怎么办？为了这个家，忍忍吧，只要他肯回来，我全当什么都没发生过！”这是妻子遭遇晴天霹雳的反应，也能代表很多人的心理，当得知丈夫绝不会回家后，妻子以娘家作为后盾，励志要坚强起来，活得比现在还精彩，要让那个负心汉后悔当初的选择。</p>
+<p>法国巴黎：朋友的妻子爱上了查尔斯，她表现出女性对爱情最坚实的渴望，无所谓世俗眼光，不惧背负任何骂名，只要和这名落魄的画家在一起。最终，查尔斯依旧抛弃了她，而她选择了自杀。而表面上的原因也很简单——腻了！</p>
+<p>塔希提岛：一个土著黑人女性爱上这个白人画家，它们搬去了一个荒岛，与世隔绝，没有任何多余的社交。用文明世界的眼光来看，他们活得和原始人一样，然而他们从此无忧无虑，唯一的心痛便是夫妻的生离死别。</p>
+<p>查尔斯的前两段婚恋，让人觉的他就是个禽兽，但想想艺术家似乎就该有一丝风流和痞气，倒也情有可原。但是却又想不通，最后这个没见过世面的女人，她又凭什么俘获了这个天才画家的心？</p>
+<p>小说最后，当查尔斯举世闻名，记者去采访原配妻子，那个满心仇恨的女人，现在也能平静地向人们讲述她丈夫的生前；她的亲戚们，那些当初对他各种咒怨的亲戚，也在得知他后半生的悲惨后，流露出些许同情。理由很简单，画家死后的光环为这个家族带来了荣誉。而那个在法国巴黎自杀的女人，其实和这位英国伦敦的原配妻子一样——在爱这个男人的同时，用尽各种技俩试图在精神上占有这个男人。当然这种技俩的外表通常是爱的名义，不论用何种甜言蜜语，何种温柔体贴，本质上是满足拴住自己男人的私心。</p>
+<p>最后这位黑人小姑娘，或许是当地的文化，或许是没见过世面，她并没有选择栓住他。而是真正的陪着他，不打扰，不侵占，不霸道的爱。</p>
+<p><strong>六便士，终将是大多数人的选择</strong></p>
+<p>从农耕文明开始，人类摒弃了游山玩水的原始生活。定居以后，我们发展出了部落、村庄、国家、社会。与之相伴的还有文化、经济、工业、科技，玲琅满目的新闻。我们的作息从随遇而安变成了每天工作XX小时，我们的意义从纯粹的生理需求变为了社交需求，我们竭尽全力追求理想生活，然后时不时地问自己：“幸福了吗？”</p>
+<p>仔细想想，查尔斯为何在荒岛上找到了真正的快乐，而非伦敦，或者艺术气息浓厚的巴黎。因为当他灵魂苏醒的那一刻，他就明白了自己将全力以赴献身绘画创作，这是一种纯粹的精神追求。为此，他才会对饥饿、性冲动、社交、金钱，这等物欲恼火，如果可以，他真的不希望被这些事情分心。他抛妻弃子，冷落朋友，活成一个要饭的，是因为他清楚这是社会，不是艺术。</p>
+<p>荒岛是个奇妙的地方，那是人类文明未曾侵犯的净土。你为了追求艺术而蓬头垢面，天马行空，但没人会觉得你很怪。那里没有繁杂的社交活动，那里还是原始社会，人们的行为更多还是被本能驱使，不会渗入过多的杂质。就一个艺术家而言，那里才是灵魂该去的地方。</p>
+<p>但，你的灵魂在何方？抬头看看月亮——你能为此抛下文明吗？</p>
+<p>《月亮与六便士》可以被理解为《理想还是现实》。当然，我更愿意认为它是《净土还是文明》。因为我很清楚，心心念的理想，不过是忽略了文明对我的影响，我不可能把自己活成原始人。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/54/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/54/" class="post-title-link" itemprop="url">临时方案的持久性</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-09 23:53:03" itemprop="dateCreated datePublished" datetime="2019-09-09T23:53:03+08:00">2019-09-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/54/" class="post-meta-item leancloud_visitors" data-flag-title="临时方案的持久性" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/54/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/54/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_54/">The Longevity of Interim Solutions</a></p>
+<p><strong>我们为何要创建临时解决方案？</strong></p>
+<p>通常，总有一些紧迫的问题需要解决。它可能是开发团队内部的问题，例如用某些工具去填补工具链的空白。它也可能是外部问题，对最终用户可见，例如通过变通办法处理缺失的功能。</p>
+<p>在很多系统和团队里，你会发现一些系统会有隔离软件，它们被当作随时会变更的草案，即不符合标准，也未形成代码指南。而且可以肯定，你会听到开发者总在抱怨它们。最初创建这些的原因多种多样，但一个临时方案的成功非常简单：它有用！</p>
+<p>临时解决方案，无论如何，它获得了惯性（或者说动能，取决于你的观点）。因为它就在那里，最终有用且被广泛接受，并没什么紧急要做的事情。每当权衡利弊来决定哪种行为价值更大时，就会出现很多排名较高的，适合于整合到系统的临时解决方案。为什么？因为它就在那里，它正常运行，它被接受了。唯一的明显缺点是它不符合约定好的标准和指南——除了一些利基市场，但这并不重要。</p>
+<p>所以临时解决方案仍然存在，永远。</p>
+<p>如果临时解决方案出了问题呢，它大概率不会出现在产品质量认证的条目里。那怎么办？当然是迅速用一个临时更新来替代这次临时方案啦，这也将收获好评。它将和最初的临时方案一样健壮…只是更新了一个版本而已。</p>
+<p>这有什么问题吗？</p>
+<p>答案取决于你的项目，以及你个人在产品代码标准中的利益。当一个系统包含了太多的临时解决方案，它的熵或者内部复杂度就会上升，可维护性就会下降。不论如何，这可能是个首先要问的错误问题。请记住我们在探讨的是解决方案，而不是你更喜欢的那个方案——它不大可能是所有人都喜欢的方案——但重做这个方案的动机很弱。</p>
+<p>所以当我们发现问题是该做什么呢？</p>
+<ol>
+<li>避免一开始就创建临时方案。</li>
+<li>改变那些影响项目经理决策的因素。</li>
+<li>远离它。</li>
+</ol>
+<p>现在让我们进一步来探讨这些选项：</p>
+<ol>
+<li>很多时候，回避并不是一种选项。实际的问题就摆在眼前，而且标准又那么严格。你可能会伤精费神地去尝试改变标准——尽管那是单调乏味的努力——且这种改变通常不会对你手头的问题有任何影响。</li>
+<li>这些因素源自项目文化，那些抗拒改变的本能。如果项目非常小的情况下倒是可能成功——尤其是项目中只有你自己——以及在和高层反映之前就已经清理了混乱。当然，如果项目已经混乱到停滞的地步，(方案)也可能推行成功，不过通常需要一些时间来接受。</li>
+<li>如果前面两种选项都不行，那就自动进入这个选项。</li>
+</ol>
+<p>你会创建很多解决方案；它们其中一些是临时的，绝大部分是有用的。克服临时方案的最佳途径是让它们变得多余，提供更为优雅和有用的方案。愿你能平静地接受那些无法改变的事物，而鼓足勇气去改变那些可以改变的，并拥有甄别这些区别的智慧。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/RPiDriverInAction/04/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/RPiDriverInAction/04/" class="post-title-link" itemprop="url">04：PWM呼吸灯</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-08 23:33:01" itemprop="dateCreated datePublished" datetime="2019-09-08T23:33:01+08:00">2019-09-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98/" itemprop="url" rel="index"><span itemprop="name">树莓派驱动开发实战</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/RPiDriverInAction/04/" class="post-meta-item leancloud_visitors" data-flag-title="04：PWM呼吸灯" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/RPiDriverInAction/04/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/RPiDriverInAction/04/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文源码：<a target="_blank" rel="noopener" href="https://github.com/Philon/rpi-drivers/tree/master/04-pwm_led">https://github.com/Philon/rpi-drivers/tree/master/04-pwm_led</a></p>
+<p>如果你对硬件了解不是很深，看了标题可能会一脸懵逼，PWM是什么？别急，在回答这个问题之前，先看看PWM+一个普通的LED灯能实现什么效果：</p>
+<p><img src="https://i.loli.net/2019/09/08/zYci2Z4kymaEbho.gif" alt="pwmled.gif"></p>
+<p>(动图有点大，请稍等…)</p>
+<p>从结果来看可能第一反应是这样的，普通的LED灯只能控制开/关，既然PWM可以控制LED的亮和暗，那它应该是一种电压控制器！其实根本不是那么回事，和电压毛关系都没有。它背后的原理恰恰是它最有意思的地方，它的本领可不仅仅是拿来控制个灯的明暗那么low。</p>
+<h2 id="PWM基础"><a href="#PWM基础" class="headerlink" title="PWM基础"></a>PWM基础</h2><p>PWM——脉冲宽度调制，顾名思义，就是一个脉冲信号输出源，且方波的周期(period)以及高电平持续时间(duty)是可调的。从软件角度来看，主要关注两个地方：</p>
+<ul>
+<li><code>period</code>，脉冲周期，就是发送一次1和0交替的完整时间</li>
+<li><code>duty</code>，占空比，就是一个脉冲周期内1占了多长时间。</li>
+</ul>
+<p>有时候，还需要关注1秒钟发送多少个脉冲信号，即频率，不过对于本文要控制的led灯亮度而言，频率几乎可以忽略。关于PWM原理，如果还是云里雾里，就看一下这个视频介绍，非常简单。</p>
+<p>不过先提醒以下，PWM的实际应用非常广，有红外遥控、音频控制、通信等，最常见的要数直流电机控制，以及手机上的背光灯亮度。总之，掌握pwm的原理及应用是灰常有必要滴。</p>
+<iframe src="https://player.bilibili.com/player.html?aid=10356317&cid=17106116&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:480px;height:320px"> </iframe>
+
+<h2 id="树莓派上的PWM"><a href="#树莓派上的PWM" class="headerlink" title="树莓派上的PWM"></a>树莓派上的PWM</h2><p>树莓派上的PWM比较坑，明明很简单的东西我调了两天，网上99%的教程都是各种应用层的脚本或writingPi的函数调用，和Linux内核的边都沾不上，而且其中绝大多数还是相互复制粘贴。所以真正有用的资料寥寥无几，一直卡在<code>pwm_request</code>却获取不到pwm资源，当然最主要原因还是我对技术细节的不理解，好在发现了一个老外的博客：<a target="_blank" rel="noopener" href="https://jumpnowtek.com/rpi/Using-the-Raspberry-Pi-Hardware-PWM-timers.html">https://jumpnowtek.com/rpi/Using-the-Raspberry-Pi-Hardware-PWM-timers.html</a></p>
+<p>在官方的<a target="_blank" rel="noopener" href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf">《BCM2835外围指南》</a>第9章说得很清楚，处理器内部集成了两个独立的PWM控制器，理论上可以达到100MHz的脉冲频率。<strong>树莓派扩展接口共有4个GPIO引出PWM</strong>，具体为：</p>
+<table>
+<thead>
+<tr>
+<th>PWM通道</th>
+<th>GPIO号</th>
+<th>物理引脚</th>
+<th>复用功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PWM0</td>
+<td>GPIO12</td>
+<td>32</td>
+<td>Alt Fun 0</td>
+</tr>
+<tr>
+<td>PWM1</td>
+<td>GPIO13</td>
+<td>33</td>
+<td>Alt Fun 0</td>
+</tr>
+<tr>
+<td>PWM0</td>
+<td>GPIO18</td>
+<td>12</td>
+<td>Alt Fun 5</td>
+</tr>
+<tr>
+<td>PWM1</td>
+<td>GPIO19</td>
+<td>35</td>
+<td>Alt Fun 5</td>
+</tr>
+</tbody></table>
+<p><strong>第一步，启用pwm（默认情况下未启用）</strong></p>
+<p>简而言之，你无法通过Linux内核API获取到PWM资源，因为在树莓派官方的设备树配置(<code>/boot/config.txt</code>)里并没有通知内核要启用pwm。因此第一步自然是让内核支持pwm驱动，使用如下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim打开/boot/config.txt</span></span><br><span class="line"><span class="comment"># 在最后一行加入： dtoverlay=pwm</span></span><br><span class="line"><span class="comment"># 保存退出，重启</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~ $ sudo vim /boot/config.txt </span><br><span class="line">philon@rpi:~ $ sudo reboot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启之后，有两种方式确认pwm已启用</span></span><br><span class="line">philon@rpi:~ $ lsmod | grep pwm</span><br><span class="line">pwm_bcm2835            16384  1 <span class="comment"># 方式1: 加载了官方pwm驱动</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~ $ ls /sys/class/pwm/</span><br><span class="line">pwmchip0                        <span class="comment"># 方式2: sysfs里可以看到pwmchip0目录</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步，搭建硬件环境</strong></p>
+<p>非常简单，LED的正极拉到一个PWM通道，负极随便找一个GND接上。</p>
+<p><img src="https://i.loli.net/2019/09/08/fKURQTq8O6rgSAp.png" alt="PWMLED接线图"></p>
+<p>如图所示，将三色LED的绿灯脚接到GPIO18，也就是PWM0通道，再随便找一个GND接上即可，和第一章的点亮一个LED一样，关键看软件如何操作了。</p>
+<p><img src="https://i.loli.net/2019/09/08/IYM7C91OXikftjy.png" alt="PWMLED原理图"></p>
+<h2 id="使用命令行控制PWM"><a href="#使用命令行控制PWM" class="headerlink" title="使用命令行控制PWM"></a>使用命令行控制PWM</h2><p>根据之前的硬件接线，LED与树莓派的PWM0通道相连，所以使能pwm0即可点亮led，大体步骤为：</p>
+<ol>
+<li>请求pwm0资源</li>
+<li>设置脉冲周期</li>
+<li>设置占空比</li>
+<li>打开pwm0</li>
+</ol>
+<p>命令行控制pwm其实和gpio大同小异，都是通过sysfs这个虚拟文件系统完成的。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~ $ <span class="built_in">cd</span> /sys/class/pwm/pwmchip0/    <span class="comment"># 进入pwm资源目录</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 0 &gt; <span class="built_in">export</span>                <span class="comment"># 加载pwm0资源</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 10000000 &gt; pwm0/period    <span class="comment"># 设置脉冲周期为10ms(100Hz)</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 8000000 &gt; pwm0/duty_cycle <span class="comment"># 设置占空比为8ms</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 1 &gt; pwm0/<span class="built_in">enable</span>           <span class="comment"># 开始输出</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以自行调整脉冲周期和占空比，得到不同的亮度</span></span><br><span class="line"><span class="comment"># 如果玩够了，记得释放资源</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 0 &gt; pwm0/<span class="built_in">enable</span>           <span class="comment"># 关闭输出</span></span><br><span class="line">philon@rpi:~ $ <span class="built_in">echo</span> 0 &gt; unexport              <span class="comment"># 卸载pwm0资源</span></span><br></pre></td></tr></table></figure>
+
+<p>经过上面这番犀利操作，只要你够虔诚，就会看见一束绿光闯入你的眼里，心里，脑海里。</p>
+<h2 id="Linux驱动控制PWM"><a href="#Linux驱动控制PWM" class="headerlink" title="Linux驱动控制PWM"></a>Linux驱动控制PWM</h2><p>在实现pwm调光led之前，需要先交代清楚：</p>
+<p>由于本驱动仅仅是调节led的亮度，关于pwm的<code>占空比</code>和<code>脉冲周期</code>两个参数，其实只调节占空比就够了。你想一下，脉冲周期长短，无非就是led闪烁频率，只要人眼看着不闪，再快有个毛用。因此本驱动将脉冲周期固定为1ms，即1KHz，而占空比的取值为0~1000us，说白了，就是led从最暗到最亮一共分为一千个档位。</p>
+<p>内核为pwm提供了标准的API接口，需要掌握这几个：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// PWM channel object</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pwm_device</span> &#123;</span></span><br><span class="line">	<span class="keyword">const</span> <span class="keyword">char</span> *label;      <span class="comment">// name of the PWM device</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> flags;    <span class="comment">// flags associated with the PWM device</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> hwpwm;     <span class="comment">// per-chip relative index of the PWM device</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span> pwm;       <span class="comment">// global index of the PWM device</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pwm_chip</span> *<span class="title">chip</span>;</span>  <span class="comment">// PWM chip providing this PWM device</span></span><br><span class="line">	<span class="keyword">void</span> *chip_data;        <span class="comment">// chip-private data associated with the PWM device</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pwm_args</span> <span class="title">args</span>;</span>   <span class="comment">// PWM arguments</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pwm_state</span> <span class="title">state</span>;</span> <span class="comment">// curent PWM channel state</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过pwm通道号获取pwm通道对象</span></span><br><span class="line"><span class="comment"> * @pwm_id    通道号</span></span><br><span class="line"><span class="comment"> * @label     pwm通道别名</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct pwm_device *<span class="title">pwm_request</span><span class="params">(<span class="keyword">int</span> pwm_id, <span class="keyword">const</span> <span class="keyword">char</span> *label)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 释放pwm通道对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pwm_free</span><span class="params">(struct pwm_device *pwm)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置pwm通道的相关参数</span></span><br><span class="line"><span class="comment"> * @duty_ns     以纳秒为单位的占空比</span></span><br><span class="line"><span class="comment"> * @period_ns   以纳秒为单位的脉冲周期</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pwm_config</span><span class="params">(struct pwm_device *pwm, <span class="keyword">int</span> duty_ns, <span class="keyword">int</span> period_ns)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/**</span></span></span><br><span class="line"><span class="comment"><span class="function"> * 打开pwm通道，开始输出脉冲</span></span></span><br><span class="line"><span class="comment"><span class="function"> */</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pwm_enable</span><span class="params">(struct pwm_device *pwm)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">/**</span></span></span><br><span class="line"><span class="comment"><span class="function"> * 关闭pwm通道，停止输出脉冲</span></span></span><br><span class="line"><span class="comment"><span class="function"> */</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pwm_disable</span><span class="params">(struct pwm_device *pwm)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>接着，实现pwmled的驱动吧：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/********************* pwmled.h *********************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PWMLED_MAX_BRIGHTNESS 1000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line">  PWMLED_CMD_SET_BRIGHTNESS = <span class="number">0x1</span>,</span><br><span class="line">  PWMLED_CMD_GET_BRIGHTNESS,</span><br><span class="line">&#125; <span class="keyword">pwmled_cmd_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/********************* pwmled.c *********************/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/pwm.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;pwmled.h&quot;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">&quot;Dual MIT/GPL&quot;</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">&quot;Phlon | https://ixx.life&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PWMLED_PERIOD 1000000 <span class="comment">// 脉冲周期固定为1ms</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pwm_device</span>* <span class="title">pwm</span>;</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> brightness;</span><br><span class="line">&#125; pwmled;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">pwmled_ioctl</span><span class="params">(struct file *filp, <span class="keyword">unsigned</span> <span class="keyword">int</span> cmd, <span class="keyword">unsigned</span> <span class="keyword">long</span> arg)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (cmd) &#123;</span><br><span class="line">  <span class="keyword">case</span> PWMLED_CMD_SET_BRIGHTNESS:</span><br><span class="line">    <span class="comment">// 所谓调节亮度，就是配置占空比，然后使能pwm0</span></span><br><span class="line">    pwmled.brightness = arg &lt; PWMLED_MAX_BRIGHTNESS ? arg : PWMLED_MAX_BRIGHTNESS;</span><br><span class="line">    pwm_config(pwmled.pwm, pwmled.brightness * <span class="number">1000</span>, PWMLED_PERIOD);</span><br><span class="line">    <span class="keyword">if</span> (pwmled.brightness &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      pwm_enable(pwmled.pwm);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      pwm_disable(pwmled.pwm);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="keyword">case</span> PWMLED_CMD_GET_BRIGHTNESS:</span><br><span class="line">    <span class="keyword">return</span> pwmled.brightness;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">return</span> -EINVAL;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> pwmled.brightness;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">file_operations</span> <span class="title">fops</span> =</span> &#123;</span><br><span class="line">  .owner = THIS_MODULE,</span><br><span class="line">  .unlocked_ioctl = pwmled_ioctl,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">miscdevice</span> <span class="title">dev</span> =</span> &#123;</span><br><span class="line">  .minor = <span class="number">0</span>,</span><br><span class="line">  .name = <span class="string">&quot;pwmled&quot;</span>,</span><br><span class="line">  .fops = &amp;fops,</span><br><span class="line">  .nodename = <span class="string">&quot;pwmled&quot;</span>,</span><br><span class="line">  .mode = <span class="number">0666</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> __init <span class="title">pwmled_init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 请求PWM0通道</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">pwm_device</span>* <span class="title">pwm</span> =</span> pwm_request(<span class="number">0</span>, <span class="string">&quot;pwm0&quot;</span>);</span><br><span class="line">  <span class="keyword">if</span> (IS_ERR_OR_NULL(pwm)) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">&quot;failed to request pwm\n&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> PTR_ERR(pwm);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  pwmled.pwm = pwm;</span><br><span class="line">  pwmled.brightness = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  misc_register(&amp;dev);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(pwmled_init);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> __exit <span class="title">pwmled_exit</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  misc_deregister(&amp;dev);</span><br><span class="line">  <span class="comment">// 停止并释放PWM0通道</span></span><br><span class="line">  pwm_disable(pwmled.pwm);</span><br><span class="line">  pwm_free(pwmled.pwm);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(pwmled_exit);</span><br></pre></td></tr></table></figure>
+
+<p>该驱动会自动创建<code>/dev/pwmled</code>设备节点，然后应用层通过ioctl即可设置和获取灯的亮度等级。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> fd = open(<span class="string">&quot;/dev/pwmled&quot;</span>, O_RDWR);</span><br><span class="line">  <span class="keyword">int</span> brightness = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">char</span> key = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> ((key = getchar()) != <span class="string">&#x27;q&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">switch</span> (key) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;=&#x27;</span>:</span><br><span class="line">      brightness += brightness &lt; PWMLED_MAX_BRIGHTNESS ? <span class="number">10</span> : <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">      brightness -= brightness &gt; <span class="number">0</span> ? <span class="number">10</span> : <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (ioctl(fd, PWMLED_CMD_SET_BRIGHTNESS, brightness) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      perror(<span class="string">&quot;ioctl&quot;</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  close(fd);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>正如本文开头那张动图一样，用户只需要按<code>+/-</code>即可调节led的亮度，so easy~</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>PWM即脉冲宽度调制，可以实时改变脉冲源的占空比和周期时长</li>
+<li>树莓派Linux内核默认不加载pwm通道，需要在/boot/config.txt中增加一行dtoverlay=pwm</li>
+<li>pwm可以像gpio一样通过命令行对sysfs虚拟文件系统操作，即可控制pwm资源</li>
+<li>内核提供了标准的pwm接口，注意通道值的配置是以纳秒为单位</li>
+<li>pwm技术应用范围非常广，务必牢牢掌握</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/97ThingsEveryProgrammerShouldKnow/53/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/97ThingsEveryProgrammerShouldKnow/53/" class="post-title-link" itemprop="url">链接器并不是一个神奇程序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-02 23:13:31" itemprop="dateCreated datePublished" datetime="2019-09-02T23:13:31+08:00">2019-09-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%8497%E4%BB%B6%E4%BA%8B/" itemprop="url" rel="index"><span itemprop="name">程序员应该知道的97件事</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/97ThingsEveryProgrammerShouldKnow/53/" class="post-meta-item leancloud_visitors" data-flag-title="链接器并不是一个神奇程序" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/97ThingsEveryProgrammerShouldKnow/53/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/97ThingsEveryProgrammerShouldKnow/53/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_53/">The Linker Is not a Magical Program</a></p>
+<p><strong>DEPRESSINGLY OFTEN</strong>(在我写这篇文章之前又发生了)，很多程序员的观念中，将源码编译到静态链接的可执行文件的主要过程是：</p>
+<ol>
+<li>编辑源码</li>
+<li>将源码编译为目标文件(obj文件)</li>
+<li>然后发生了一些神奇的事情</li>
+<li>可以跑了</li>
+</ol>
+<p>第3步，即链接这一步。为毛我要将其说得如此荒诞？想当年，我还是个技术支持，就一次又一次地关注这些内容：</p>
+<ol>
+<li>链接器说<code>def</code>表示多次定义；</li>
+<li>链接器说<code>abc</code>表示某个符号未解析；</li>
+<li>为何最终执行文件会那么大？</li>
+</ol>
+<p>紧接着会告诉你“我接下来做什么？”，它们通常都融合了“seems to(貌似)”或者“somehow(某种程度)”的短句，一看就自带光环属性。所谓的“貌似”和“某种程度”会让人觉得链接处理是一个非常神奇的过程，只有巫师和术士才能理解。编译过程不会详细说明这些短句类型，这就意味着程序员要自己理解编译器是如何工作的，或者至少明白它们在做什么。</p>
+<p>链接器又笨、又乏味、又简单粗暴的程序。它所做的事情就是把目标文件的代码区和数据区串联起来，把引用连接到它们定义的地方，把未解析的符号推到库之外，然后输出一个可执行文件。仅此而已，没有咒语！没有魔法！链接器繁琐的地方是需要解码或生成极其复杂的文件格式，当然这并没有改变链接器的本质。</p>
+<p>所以，我们才说链接器提示<code>def</code>就是告诉你多次定义。很多编程语言，如C、C++和D，都包含声明和定义。申明通常放在头文件里，就像这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> iii;</span><br></pre></td></tr></table></figure>
+
+<p>用于生成<code>iii</code>符号给外部调用。此外，定义通常是为了给符号留出空间，它通常在实现文件中，就像这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> iii = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+
+<p>那么每个符号可以被定义多少次呢？就像电影<em>Highlander</em>一样，它们只允许一次。所以，如果<code>iii</code>定义在多个实现文件中出现？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file a.c</span></span><br><span class="line"><span class="keyword">int</span> iii = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// file b.c</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">iii</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> <span class="number">3.7</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>链接器就会警告说iii被多次定义。</p>
+<p>不仅是只能定义一个，也必须被定义一个。如果iii仅被声明过，却从来没有定义，那编译器同样会警告说iii是一个未定义的符号。</p>
+<p>要搞清楚可执行文件为什么体积大，就要看链接器选了哪些映射文件生成。在可执行文件中映射文件只是一堆符号表，以及它们对应的地址。这能告诉你哪些模块会从库中被链接，以及每个模块的大小。现在你就能看到肥胖的根源了。很多时候，你根本不清楚为什么要链接库中的某个模块，为了搞清楚这点，暂时将模块从库中删除，重新链接，然后“未定义符号”的错误会告诉你到底谁在引用这些模块。</p>
+<p>尽管链接器弹出的提示消息并不那么直观，但它真的没什么神奇的。它的机制很简单，你必须要掌握每种情况下的细节。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/books/%E8%BF%BD%E9%A3%8E%E7%AD%9D%E7%9A%84%E4%BA%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/books/%E8%BF%BD%E9%A3%8E%E7%AD%9D%E7%9A%84%E4%BA%BA/" class="post-title-link" itemprop="url">《追风筝的人》读后感</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-01 14:47:39" itemprop="dateCreated datePublished" datetime="2019-09-01T14:47:39+08:00">2019-09-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index"><span itemprop="name">读书</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/books/%E8%BF%BD%E9%A3%8E%E7%AD%9D%E7%9A%84%E4%BA%BA/" class="post-meta-item leancloud_visitors" data-flag-title="《追风筝的人》读后感" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/books/%E8%BF%BD%E9%A3%8E%E7%AD%9D%E7%9A%84%E4%BA%BA/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/books/%E8%BF%BD%E9%A3%8E%E7%AD%9D%E7%9A%84%E4%BA%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>为你，千千万万遍！</p>
+</blockquote>
+<p>一句简单朴实的话，直戳人性！犹如阿米尔的父亲——被拆成两半的男人，一半是富贵阶级的化生——阿米尔，一半是忠实仆人的化生——哈桑。本是亲兄弟的两个人，却因为阿富汗的人文与种族观念，而不得不定义为主仆关系。当然，对此事浑然不知的二人其实也没什么，有些事情如果从出生就一直是这样，就可以顺理成章地接受，即便它本身是个悲剧。</p>
+<p>或许对于哈桑而言，他无所谓“哈扎拉人”这个总是受人鄙夷的标签，从小作一个佣人，不能上学，见谁都要称呼“老爷，少爷”。这一切与生俱来，那就照单全收。而最让他牵肠挂肚的，应该就是自己的主子阿米尔了，或许不是主子，应该是儿时玩伴，亲梅竹马的好朋友。面对好友，以诚相待，为他付出再多也不求回报，唯一的期许也仅仅是他嘴角上扬。也正是这样，哈桑面对小主人下令去追风筝时，才会肆无忌惮地说：“为你，千千万万遍！”</p>
+<p>而身为主人的阿米尔呢？同样与身俱来的权贵，和一开始就确定的主仆关系，他会像哈桑撇开所谓的阶层，把对面这家伙当朋友吗？显然，一个正常人，在习惯于自己的崇高地位后，恐怕没那么容易放下身段，何况他还是个孩子。所以在阿米尔眼中，“哈扎拉仆人”才是哈桑理所当然的身份，他也应该这么面对哈桑。所以当没人的时候，他和哈桑玩得很开心；当家中有贵客时，他选择与哈桑保持距离；当他们被欺负时，他选择躲在哈桑身后；当他看到哈桑被强暴时，他选择视而不见。为了让自己良心好过点，他问哈桑是否会听自己的话去吃泥巴，他问父亲说：“有没有想过请新的佣人？”</p>
+<p>这位父亲，他永远保持正义，努力做善事，撑起整个家，永远公平地对待自己的亲儿子与哈桑。近乎怒吼自己的儿子永远不要说这种蠢话，哈桑他们是家人，不是佣人。父亲是那样伟岸，那样无可挑剔，直到后来，阿米尔才知晓真相，自己的父亲和妈妈生下了自己，父亲又睡了仆人的老婆，生下了哈桑。其实从一开始，父亲所做的一切，都是在自我救赎。</p>
+<p>可惜，战争来了，这场救赎被打断了，父亲带着阿米尔逃到美国避难，曾今的家园留给了佣人阿辛汗。而哈桑在得知阿辛年迈，无力守卫这座家园时，他第一时间回到这里，揽下所有本不属于他的责任，静静地守护着它。夜晚依旧回到破旧的佣人房里，哪怕体面的主人屋子早已人去楼空——这是他的态度。</p>
+<p>终于，阿辛汗叫回了阿米尔，近乎恳求他去完成一件非常重要的事。然而对阿米尔来说，哈桑是自己的弟弟，这只不过是个事实，与根深蒂固的“哈扎拉仆人”相比，似乎不重要。<br>哈桑在常年战乱的阿富汗死去…<br>哈桑还有个儿子被抓了…<br>那只是个仆人的孩子…<br>那是自己的亲侄儿…<br>哈桑一辈子对这个家不求回报地付出…<br>自己永远在索取，并选择在关键时刻牺牲掉哈桑…<br>父亲会怎么做？应该会毫不犹豫冲入战区去营救…<br>自己已定居美国，有美好的家庭与事业…</p>
+<p>阿米尔在挣扎，他已经当了一辈子的懦夫，他的父亲最失望的地方，就是他不懂得担当，他似乎明白了阿辛汗那句话：“那儿有再次成为好人的路”。</p>
+<p>我想，当阿米尔得知身世的真相，得知弟弟哈桑的凄惨，得知自己还有未完成的使命时，他内心时拒绝的。他依然想做回那个躲在父亲和哈桑身后的阿米尔，一切都与他无关，只不过是个仆人的孩子，没那么重要。也或许他已经遭受了大半辈子的煎熬，在他内心深处，依然无法回避良心的谴责，他欠哈桑太多，他一直希望父亲以他为荣，可父亲最看重的责任感，在他身上却找不到。</p>
+<p>他一开始仅仅是跟着感觉走，深入战区，枪林弹雨，看到了难民的疾苦，看到在球场被虐杀的男女，看到了左眼眶空空如也的乞丐(曾今的大学教授)，看到了人间地狱，看到战争可以夺走作为人的基本尊严。就像塔利班的那个魔头阿塞夫的理念，对待这些垃圾种族，杀了他们都算好的——“狗肉”应该拿给狗吃，事实上他们也正是这么做的。</p>
+<p>哈桑的儿子索拉博，他那么小，战争夺走了他的家人，他被抓紧难民营，幼小的身躯被强暴了，终有一天会在这里毫无尊严地死去，没人会在乎，和死了条野狗没什么区别。</p>
+<p>我想，阿米尔应该是在这短暂的回乡“旅途”中逐渐意识到了这些，才会从一开始被“剧情”推着走，到后来义无反顾地要救出索拉博，哪怕是为之付出生命。或者，他不仅仅是要救索拉博，更重要的是自我救赎。</p>
+<p>诚然，当他近乎被阿塞夫打死，用半条命带走了索拉博后，这场救赎才刚刚开始。哈桑的儿子已经被战争摧残到麻木，他的眼里空洞无光，一切的不公他都逆来顺受。他只想回到过去，和爸爸妈妈平静地过着生活，可惜一切都消失了，像梦一样。阿米尔能做的，只有代替哈桑，将这个孩子从战争的阴影中拖出来，帮他找回作为人的尊严，不仅仅是哈扎拉身份，不仅仅是见了谁都叫“老爷，少爷”。</p>
+<p>又或者，在那个新年，那片草坪，阿米尔并不打算代替哈桑。对他而言，索拉博就是哈桑的第二次生命，这是真主的指示，他们回到了十二三岁的时光。这次轮到阿米尔了，他努力斗风筝给哈桑看，唯一的期许是哈桑的嘴角微扬，他拼命追向风筝，并回头冲哈桑喊：“为你，千千万万遍！”</p>
+<p><strong>一点简单的书评</strong></p>
+<p>我很喜欢这部小说，翻译的简直不要太好，要不是小说内容清一色是国外人名，我甚至有点怀疑原著恐怕就是用中文完成的吧。《追风筝的人》其实并不是那种温情脉脉的剧情，或者一味批判战争和揭露人性。要不说作者的文字功底很强嘛，读此书的时候很有代入感，仿佛一幅幅画面从我脑海中闪过。书中每次描述人们的内心活动时，我都会想，其实我在这样的年纪这样的处境，搞不好会和他一样。所以，整部小说总能流露出一种情感上的真实，好像是作者本身的亲身经历一样。</p>
+<p>不论如何，本书都非常经典。剧情环环相扣，波澜起伏。我很同情哈桑，也很敬重他们的父亲，他们都很了不起。当然，阿米尔最终为自己，替父亲完成了救赎，这样的结局算不上圆满，却是应得的归宿。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

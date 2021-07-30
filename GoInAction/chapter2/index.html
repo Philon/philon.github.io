@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/logo48x48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/logo48x48.png">
+  <link rel="mask-icon" href="/images/logo.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ixx.life","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"default"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="⚠️警告⚠️本书第二章不适合新手阅读！本书第二章不适合新手阅读！本书第二章不适合新手阅读！   如果说第一章读起来还算愉快，就像上高数课一样，刚开始老师告诉你，这是Σi是求和的符号，i从0到100，很好理解对吧，然后你走神一秒钟，黑板上写满了各种微积分公示和计算过程…what the fuck?! 本章涉及到的知识点较多且杂：  RSS、XML和JSON语法规则 GO语言的并发操作goroutin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二：从入门到放弃">
+<meta property="og:url" content="https://ixx.life/GoInAction/chapter2/index.html">
+<meta property="og:site_name" content="自增人生">
+<meta property="og:description" content="⚠️警告⚠️本书第二章不适合新手阅读！本书第二章不适合新手阅读！本书第二章不适合新手阅读！   如果说第一章读起来还算愉快，就像上高数课一样，刚开始老师告诉你，这是Σi是求和的符号，i从0到100，很好理解对吧，然后你走神一秒钟，黑板上写满了各种微积分公示和计算过程…what the fuck?! 本章涉及到的知识点较多且杂：  RSS、XML和JSON语法规则 GO语言的并发操作goroutin">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/01/21/5c4536f520912.png">
+<meta property="article:published_time" content="2019-01-22T13:01:46.000Z">
+<meta property="article:modified_time" content="2021-07-21T22:56:15.018Z">
+<meta property="article:author" content="Philon">
+<meta property="article:tag" content="GO语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/21/5c4536f520912.png">
+
+<link rel="canonical" href="https://ixx.life/GoInAction/chapter2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>二：从入门到放弃 | 自增人生</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自增人生</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">何以解忧，唯有 i++</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-books">
+
+    <a href="/books/" rel="section"><i class="fa  fa-book fa-fw"></i>读书写作</a>
+
+  </li>
+        <li class="menu-item menu-item-notes">
+
+    <a href="/notes/" rel="section"><i class="fa fa-pen fa-fw"></i>学习笔记</a>
+
+  </li>
+        <li class="menu-item menu-item-leetcode">
+
+    <a href="/leetcode/" rel="section"><i class="fa fa-fire fa-fw"></i>LeetCode</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ixx.life/GoInAction/chapter2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Philon">
+      <meta itemprop="description" content="一个程序员的成长足迹">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自增人生">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二：从入门到放弃
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-22 21:01:46" itemprop="dateCreated datePublished" datetime="2019-01-22T21:01:46+08:00">2019-01-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E3%80%8AGO%E8%AF%AD%E8%A8%80%E5%AE%9E%E6%88%98%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">《GO语言实战》学习笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/GoInAction/chapter2/" class="post-meta-item leancloud_visitors" data-flag-title="二：从入门到放弃" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/GoInAction/chapter2/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/GoInAction/chapter2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>⚠️<strong>警告</strong>⚠️<br>本书第二章不适合新手阅读！<br>本书第二章不适合新手阅读！<br>本书第二章不适合新手阅读！  </p>
+<p>如果说第一章读起来还算愉快，就像上高数课一样，刚开始老师告诉你，这是<code>Σi是求和的符号，i从0到100</code>，很好理解对吧，然后你走神一秒钟，黑板上写满了各种微积分公示和计算过程…what the fuck?!</p>
+<p>本章涉及到的知识点较多且杂：</p>
+<ul>
+<li>RSS、XML和JSON语法规则</li>
+<li>GO语言的并发操作goroutine</li>
+<li>GO语言的数据同步</li>
+<li>GO语言类型、接口的定义与使用</li>
+<li>GO语言数组、切片的定义与使用</li>
+</ul>
+<p>其实本章一开始就说了，没必要第一次就读懂本章所有内容，我想作者的本意应该只是让读者感受一下GO语言的整体和编程思想，让读者明白，自己对力量的一无所知。</p>
+<p>本章相关的源码放在<a target="_blank" rel="noopener" href="https://github.com/goinaction/code/tree/master/chapter2/sample">https://github.com/goinaction/code/tree/master/chapter2/sample</a>，我读完本章并自我感觉理解之后自己“手抄”了一遍，大体和原著框架一致，细节上有所变动，基本上可以在当前文档执行<code>go run main.go</code>查看效果。</p>
+<h2 id="我的第一个RSS阅读器"><a href="#我的第一个RSS阅读器" class="headerlink" title="我的第一个RSS阅读器"></a>我的第一个RSS阅读器</h2><p>本章其实就做了一件事，写一个自己的RSS阅读器，根据用户的rss订阅表和关键字输入，搜集网上所有含有关键字的“新闻”，并在终端打印出来。</p>
+<p>用户的rss订阅表是由json写的，大概长这个样子：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;site&quot;</span> : <span class="string">&quot;npr&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;link&quot;</span> : <span class="string">&quot;http://www.npr.org/rss/rss.php?id=1001&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;type&quot;</span> : <span class="string">&quot;rss&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;site&quot;</span> : <span class="string">&quot;npr&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;link&quot;</span> : <span class="string">&quot;http://www.npr.org/rss/rss.php?id=1008&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;type&quot;</span> : <span class="string">&quot;rss&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">&quot;site&quot;</span> : <span class="string">&quot;npr&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;link&quot;</span> : <span class="string">&quot;http://www.npr.org/rss/rss.php?id=1006&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;type&quot;</span> : <span class="string">&quot;rss&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>所以我们的RSS阅读器程序需要完成一下几个步骤：</p>
+<ol>
+<li>读取并反序列化用户订阅表——data.json</li>
+<li>为订阅表中的每个URL启动一个并发任务——新闻搜索</li>
+<li>抓到之后，根据用户输入关键字，采用正则表达式过滤</li>
+<li>将过滤结果打印至终端后，单个并发任务退出</li>
+<li>启动一个并发任务，专门监听其他新闻搜索任务是否退出</li>
+<li>等待所有新闻搜索任务退出后，程序退出</li>
+</ol>
+<p>根据以上流程，书中对整个程序设计的架构图已经表达得比较清楚了：<br><img src="https://i.loli.net/2019/01/21/5c4536f520912.png" alt="RSS阅读器程序架构图"></p>
+<p>整个工程的目录结构：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- sample</span><br><span class="line">    - data</span><br><span class="line">        data.json   -- 包含一组数据源 </span><br><span class="line">    - matchers</span><br><span class="line">        rss.go      -- 搜索 rss 源的匹配器 </span><br><span class="line">    - search</span><br><span class="line">        default.go  -- 搜索数据用的默认匹配器</span><br><span class="line">        feed.go     -- 用于读取 json 数据文件</span><br><span class="line">        match.go    -- 用于支持不同匹配器的接口</span><br><span class="line">        search.go   -- 执行搜索的主控制逻辑</span><br><span class="line">  main.go           -- 程序的入口 </span><br></pre></td></tr></table></figure>
+
+<h3 id="1-关于数据源data-json和feed-go"><a href="#1-关于数据源data-json和feed-go" class="headerlink" title="1. 关于数据源data.json和feed.go"></a>1. 关于数据源data.json和feed.go</h3><p>可以简单理解，<code>feed.go</code>就是<code>data.json</code>的ORM。</p>
+<ul>
+<li><code>Feed</code>是一个类型，根据订阅表的数据结构<code>site/link/type</code>来对应其内部的三个属性。</li>
+<li><code>RetrieveFeeds()</code>仅负责加载data.json文件，并反序列化所有项目，装到Feed列表里。</li>
+</ul>
+<p>搞清楚结构体的定义就行：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Feed <span class="keyword">struct</span> &#123;</span><br><span class="line">  Name <span class="keyword">string</span> <span class="string">`json:&quot;npr&quot;`</span></span><br><span class="line">  URI  <span class="keyword">string</span> <span class="string">`json:&quot;link&quot;`</span></span><br><span class="line">  Type <span class="keyword">string</span> <span class="string">`json:&quot;type&quot;`</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意每个属性最后那个由反引号括起来的标签，这很重要，应为数据源是json格式，而GO语言的<code>json.Decoder</code>可以根据这个标签的内容标记对原始的json数据进行反序列化。</p>
+<h3 id="2-关于match-go接口，以及rss-go和default-go的实现"><a href="#2-关于match-go接口，以及rss-go和default-go的实现" class="headerlink" title="2. 关于match.go接口，以及rss.go和default.go的实现"></a>2. 关于match.go接口，以及rss.go和default.go的实现</h3><p>这三个文件一定要结合起来看，否则就云里雾里了。</p>
+<ul>
+<li>match模块声明了<code>Matcher.Search()</code>接口行为、结果的数据结构和统一输出结果。</li>
+<li>default/rss都是是<code>Search()</code>接口的具体实现。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// match.Matcher 定义搜索匹配接口行为</span></span><br><span class="line"><span class="keyword">type</span> Matcher <span class="keyword">interface</span> &#123;</span><br><span class="line">  Search(feed *Feed, keyword <span class="keyword">string</span>) ([]*Result, error)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// default.defaultMatcher 实现默认搜索匹配接口</span></span><br><span class="line"><span class="keyword">type</span> defaultMatcher <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m defaultMatcher)</span> <span class="title">Search</span><span class="params">(feed *search.Feed, searchTerm <span class="keyword">string</span>)</span> <span class="params">([]*search.Result, error)</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">nil</span>, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// rss.rssMatcher 实现rss规则的搜索匹配接口</span></span><br><span class="line"><span class="keyword">type</span> rssMatcher <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(m rssMatcher)</span> <span class="title">Search</span><span class="params">(feed *search.Feed, searchTerm <span class="keyword">string</span>)</span> <span class="params">([]*search.Result, error)</span> ...</span></span><br></pre></td></tr></table></figure>
+
+<p><code>default.go</code>里其实啥也没有，它的存在只是为了容错(或者说展示一下接口最简单的运用方式)，如果再看看<code>Feed.Type</code>就会发现，它映射的data.json里的type是字符串<code>rss</code>，而主函数<code>search.Run()</code>里其实是根据类型来查找相关匹配器的，换而言之，如果type的值不是<code>rss</code>而是其他类型，程序很可能会类似C/C++语言，越界访问数组而出错。所以干脆把找不到的类型全部设置成<code>default</code>类型。</p>
+<p><code>rss.go</code>模块就是具体的Http、XML、RSS、正则匹配的实现了，这部分相对独立与整体框架，不必太拘泥于此。</p>
+<p><strong>注意一点</strong></p>
+<p>default和rss都有个<code>init()</code>函数，而且实现得也很像，正如上面说的，init函数就是负责把自己以同名的方式保存到<code>search.matchers</code>当中，确保其他模块能后通过字符串的形式找到它们，这是个search模块的私有变量。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在main函数之前执行，将自己的匹配器类型注册到search模块</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> matcher rssMatcher</span><br><span class="line">  search.Register(<span class="string">&quot;rss&quot;</span>, matcher)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-关于search-go"><a href="#3-关于search-go" class="headerlink" title="3. 关于search.go"></a>3. 关于search.go</h3><p>是整个阅读器的业务逻辑实现，也就是架构图当中左半部分<code>获取数据、执行搜索、跟踪结果、显示结果</code>几大步骤的调用，它本身并不负责实现任何搜索和匹配相关的功能。</p>
+<ul>
+<li>负责调用feed模块，获取订阅表(数据源)，并保存到feeds的切片当中</li>
+<li>为每一个feed常见一个<code>goroutine</code>，具体业务由<code>Matcher</code>接口相关的实现去执行</li>
+<li>创建一个统一的<code>goroutine</code>，监听/等待所有feeds匹配业务执行结束</li>
+</ul>
+<p>我认为<code>search.Run()</code>比较重要，关于<code>Matcher接口、JSON/XML、http</code>等其他模块的实现看不懂也没关系，书后面的相关章节会深入解析，而Run函数中关于<code>goroutine</code>的并发启动和<code>chan</code>数据通道这两个概念一定要搞清楚。</p>
+<p>以最简单的主监听器waitGroup的并发启动为例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">  waitGroup.Wait()</span><br><span class="line">  <span class="built_in">close</span>(results)</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<p>关键字<code>go foo()</code>负责启动一个goroutine，紧随其后是一个闭包(当然，也可以在其他地方先定义一个函数)，在这里可以看到，<strong>GO语言启动一个“线程”有多么愉快</strong>！</p>
+<h3 id="4-关于Display-函数及其调用过程"><a href="#4-关于Display-函数及其调用过程" class="headerlink" title="4. 关于Display()函数及其调用过程"></a>4. 关于Display()函数及其调用过程</h3><p>Display是非常值得拎出来说道说道的，仔细观察就会发现<strong>Display是在所有goroutine启动完之后，才仅仅被调用了一次！</strong></p>
+<p>而该函数的内部实现却非常简单，就是个for循环：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Run</span><span class="params">(keyword <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 各种加载订阅表，匹配器之后</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="comment">// 启动goroutine，等待所有任务结束，最后关闭通道</span></span><br><span class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; ... &#125;()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 根据订阅表，启动相应数量的并发任务</span></span><br><span class="line">  <span class="keyword">for</span> _, feed := <span class="keyword">range</span> feeds &#123;</span><br><span class="line">    <span class="comment">// 启动goroutine，执行新闻搜索</span></span><br><span class="line">    <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(matcher Matcher, feed *Feed)</span></span> &#123; ... &#125;(matcher, feed)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Display仅仅被调用了一次</span></span><br><span class="line">  Display(results)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Display</span><span class="params">(results <span class="keyword">chan</span> *Result)</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span> result := <span class="keyword">range</span> results &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;%s: \n%s\n\n&quot;</span>, result.Field, result.Content)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>按照一个正常猿类的思维模式，如果集合被遍历完之后，循环就会自动跳出，而且由于并发情况下，一开始的<code>results</code>里面其实啥也没有，应该直接退出。而事实上的执行过程是：一旦results被写入数据，for循环就会执行一次。</p>
+<p>为什么？</p>
+<p>注意results的类型<code>chan *Result</code>，<strong>在for-range一个通道的情况下，只要通道没有被关闭，该循环就会被阻塞，一旦通道内写入数据，循环就会被唤醒，直到通道被关闭，循环跳出</strong>。(这种机制太风骚了)</p>
+<h3 id="5-关于main-go"><a href="#5-关于main-go" class="headerlink" title="5. 关于main.go"></a>5. 关于main.go</h3><p>主模块唯一值得留意的地方是<code>import _ &quot;./matchers&quot;</code>，这是刻意也是必须这样写的：  </p>
+<ol>
+<li>GO语言不允许导入一个包，却不使用它</li>
+<li>matchers里面的rss和default模块都有init函数，不导入就不会被执行，会导致程序出错</li>
+<li>下划线’_’表示一个占位符，类似for循环的占位操作，就是告诉编译器，我确实需要导入这个包，但并不调用它，我只需要它自己执行init函数</li>
+</ol>
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ol>
+<li><strong>包</strong></li>
+</ol>
+<ul>
+<li>每个代码文件都必须属于一个包，原则上包名和目录名一致</li>
+<li>不论函数还是变量，首字母大写的标识符相当于<code>public</code>，否则相当于<code>private</code></li>
+</ul>
+<ol start="2">
+<li><p>任何包内的**init()**函数，都会先于main函数执行，前提是包被导入了。</p>
+</li>
+<li><p><strong>多返回值</strong>是GO语言的一大特性，GO的很多核心库都是<code>result, err</code>两个返回值。</p>
+</li>
+<li><p>根据“江湖规矩”，如果定义一个变量需要初始化为零值，采用<code>var name type</code>声明，如果是定义变量且被赋值，则采用<code>name := value</code>的形式定义</p>
+</li>
+<li><p><strong>range</strong>关键字</p>
+</li>
+</ol>
+<ul>
+<li>可用于迭代<code>数组、字符串、切片、映射和通道</code></li>
+<li>每次迭代都有两个返回值，第一个是索引，第二个是当前元素的副本。</li>
+<li>下划线<code>&#39;_&#39;</code>表示一个占位符，就是说，“虽然你给我了，但老子就是不要”的意思</li>
+</ul>
+<ol start="6">
+<li><p><strong>defer</strong>关键字表示函数返回时才执行，可以在open一个文件后，立刻调用<code>defer close</code>，但关闭这个动作会等到调用函数返回的时候才真的执行。(妈妈再也不用担心我的句柄，so easy)</p>
+</li>
+<li><p><strong>goroutine</strong>，使用<code>go foo()</code>的形式来启动一个并发，foo也可以是一个闭包。</p>
+</li>
+<li><p><strong>channel</strong>，通过<code>chan</code>关键字声明一个通道，当使用<code>range</code>循环来遍历一个通道时，只要通道不关闭，循环就是阻塞，直到通道内的数据有变化，当通道关闭后，循环退出。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Philon
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://ixx.life/GoInAction/chapter2/" title="二：从入门到放弃">https://ixx.life/GoInAction/chapter2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/GO%E8%AF%AD%E8%A8%80/" rel="tag"># GO语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/19/" rel="prev" title="便利不是一种能力">
+      <i class="fa fa-chevron-left"></i> 便利不是一种能力
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/97ThingsEveryProgrammerShouldKnow/20/" rel="next" title="提前并经常部署">
+      提前并经常部署 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Philon"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Philon</p>
+  <div class="site-description" itemprop="description">一个程序员的成长足迹</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">177</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">77</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/philon" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;philon" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ixx.life</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'Y5scg9Ix4iae04UOae0uJSJA-gzGzoHsz',
+      appKey     : 'U9hHApgNVDExYRJqXvUs5ykr',
+      placeholder: "说点什么吧...",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
